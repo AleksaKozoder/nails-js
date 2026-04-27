@@ -1,0 +1,41 @@
+@import "../../scss/mixins";
+
+.mediaContent {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr; // Mobilni: jedna ispod drugog
+  gap: 40px;
+  align-items: center;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr); // Desktop: dve kolone
+  }
+
+  &--imageRight {
+    @include tablet {
+      .mediaContent__imageWrapper {
+        order: 2; // Prebacuje sliku desno na desktopu
+      }
+      .mediaContent__textContent {
+        order: 1;
+      }
+    }
+  }
+
+  &__imageWrapper {
+    width: 100%;
+    position: relative;
+    aspect-ratio: 16 / 9;
+
+    img {
+      object-fit: cover;
+      border-radius: 8px; // Tvoj dizajn sistem
+    }
+  }
+
+  &__textContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

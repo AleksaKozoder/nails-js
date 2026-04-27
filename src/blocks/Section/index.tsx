@@ -1,0 +1,50 @@
+import React from 'react'
+import Image from 'next/image'
+import { BlockRenderer } from '../BlockRenderer'
+import s from './style.module.scss'
+
+export const Section: React.FC<any> = ({ settings, blocks }) => {
+  const {
+    backgroundType,
+    colorTheme,
+    gradientTheme,
+    bgImage,
+    paddingTop,
+    paddingBottom,
+    widthType,
+    containerType,
+    heightType,
+  } = settings
+
+  console.log(settings)
+
+  // Spajanje klasa za pozadinu (BEM)
+  const sectionClasses = [
+    s['section'],
+    backgroundType === 'color' && s[`section--color-${colorTheme}`],
+    backgroundType === 'gradient' && s[`section--gradient-${gradientTheme}`],
+    backgroundType === 'image' && s['section--image'],
+    heightType === 'fullHeight' && s[`section--full-height`],
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  const container =
+    widthType === 'boxed' ? [...new Set(['container', containerType])].join(' ') : null
+
+  return (
+    <section
+      className={sectionClasses}
+      style={{
+        paddingTop: `${paddingTop}px`,
+        paddingBottom: `${paddingBottom}px`,
+      }}
+    >
+      {backgroundType === 'image' && bgImage && (
+        <Image src={bgImage.url} alt="" fill className={s['section__bgImage']} />
+      )}
+
+      <BlockRenderer blocks={blocks} container={container} />
+    </section>
+  )
+}

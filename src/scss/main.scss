@@ -1,0 +1,39 @@
+@import "./mixins";
+@import "./variables";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: $color-bg;
+  color: $color-text;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+
+  &-xl {
+    max-width: 1600px;
+  }
+
+  &-l {
+    max-width: 1440px;
+  }
+
+  &-xs {
+    max-width: 768px;
+  }
+}

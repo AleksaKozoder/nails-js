@@ -1,0 +1,26 @@
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1440px;
+
+// Container width
+$container-max-width: 1280px;
+
+// Colors
+$colors: (
+        "primary": #0070f3,
+        "secondary": #1a1a1a,
+        "dark": #0a0a0a,
+        "light": #f5f5f5
+);
+
+// Gradients
+$gradients: (
+        "warm": linear-gradient(45deg, #fb8c00, #ffab40),
+        "cool": linear-gradient(135deg, #1e3a8a, #3b82f6)
+);
+
+$color-bg: map-get($colors, "light");
+$color-text: map-get($colors, "dark");
+$color-primary: map-get($colors, "primary");

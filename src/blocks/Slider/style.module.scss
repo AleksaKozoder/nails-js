@@ -1,0 +1,48 @@
+@import "../../scss/mixins";
+
+.slider {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+
+  // Swiper kontejner
+  &__wrapper {
+    width: 100%;
+    height: 400px; // Default visina za horizontalni
+
+    :global(.swiper) {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &--vertical {
+    .slider__wrapper {
+      height: 600px; // Veća visina za vertikalni prikaz
+    }
+  }
+
+  &__slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 4px;
+  }
+}

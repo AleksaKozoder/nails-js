@@ -67,6 +67,7 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    pages: Page;
     users: User;
     media: Media;
     'payload-kv': PayloadKv;
@@ -76,6 +77,7 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    pages: PagesSelect<false> | PagesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -84,7 +86,7 @@ export interface Config {
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: string;
+    defaultIDType: number;
   };
   fallbackLocale: null;
   globals: {};
@@ -119,10 +121,154 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  layout?:
+    | {
+        settings?: {
+          widthType?: ('fullWidth' | 'boxed') | null;
+          containerType?: ('container-xl' | 'container-lg' | 'container' | 'container-xs') | null;
+          heightType?: ('fullHeight' | 'auto') | null;
+          backgroundType?: ('blank' | 'color' | 'gradient' | 'image') | null;
+          colorTheme?: ('primary' | 'secondary' | 'dark' | 'light') | null;
+          gradientTheme?: ('warm' | 'cool') | null;
+          bgImage?: (number | null) | Media;
+          paddingTop?: number | null;
+          paddingBottom?: number | null;
+        };
+        blocks?:
+          | (
+              | {
+                  layout?: ('imageLeft' | 'imageRight') | null;
+                  image: number | Media;
+                  textContent: {
+                    verticalPosition?: ('top' | 'center' | 'bottom' | 'space-between' | 'space-around') | null;
+                    horizontalPosition?: ('left' | 'center' | 'right') | null;
+                    supTitle?: string | null;
+                    supTitleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
+                    title: string;
+                    titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
+                    subTitle?: string | null;
+                    subTitleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
+                    text?: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: any;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
+                  };
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'mediaContent';
+                }
+              | {
+                  settings?: {
+                    orientation?: ('horizontal' | 'vertical') | null;
+                    /**
+                     * Razmak između slajdova u px
+                     */
+                    spaceBetween?: number | null;
+                    slidesPerView?: number | null;
+                  };
+                  slides?:
+                    | {
+                        image: number | Media;
+                        caption?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'slider';
+                }
+              | {
+                  verticalPosition?: ('top' | 'center' | 'bottom' | 'space-between' | 'space-around') | null;
+                  horizontalPosition?: ('left' | 'center' | 'right') | null;
+                  supTitle?: string | null;
+                  supTitleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
+                  title: string;
+                  titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
+                  subTitle?: string | null;
+                  subTitleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
+                  text?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'textBlock';
+                }
+            )[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'section';
+      }[]
+    | null;
+  /**
+   * Naslov koji se pojavljuje u Google rezultatima (preporučeno do 60 karaktera).
+   */
+  seoTitle?: string | null;
+  /**
+   * Kratak opis stranice za pretraživače (preporučeno do 160 karaktera).
+   */
+  seoDescription?: string | null;
+  /**
+   * Slika koja će se prikazivati pri deljenju na društvenim mrežama.
+   */
+  seoImage?: (number | null) | Media;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
+  id: number;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -144,29 +290,10 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: string;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
-  id: string;
+  id: number;
   key: string;
   data:
     | {
@@ -183,20 +310,24 @@ export interface PayloadKv {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: string;
+  id: number;
   document?:
     | ({
+        relationTo: 'pages';
+        value: number | Page;
+      } | null)
+    | ({
         relationTo: 'users';
-        value: string | User;
+        value: number | User;
       } | null)
     | ({
         relationTo: 'media';
-        value: string | Media;
+        value: number | Media;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -206,10 +337,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -229,11 +360,107 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  layout?:
+    | T
+    | {
+        section?:
+          | T
+          | {
+              settings?:
+                | T
+                | {
+                    widthType?: T;
+                    containerType?: T;
+                    heightType?: T;
+                    backgroundType?: T;
+                    colorTheme?: T;
+                    gradientTheme?: T;
+                    bgImage?: T;
+                    paddingTop?: T;
+                    paddingBottom?: T;
+                  };
+              blocks?:
+                | T
+                | {
+                    mediaContent?:
+                      | T
+                      | {
+                          layout?: T;
+                          image?: T;
+                          textContent?:
+                            | T
+                            | {
+                                verticalPosition?: T;
+                                horizontalPosition?: T;
+                                supTitle?: T;
+                                supTitleTag?: T;
+                                title?: T;
+                                titleTag?: T;
+                                subTitle?: T;
+                                subTitleTag?: T;
+                                text?: T;
+                              };
+                          id?: T;
+                          blockName?: T;
+                        };
+                    slider?:
+                      | T
+                      | {
+                          settings?:
+                            | T
+                            | {
+                                orientation?: T;
+                                spaceBetween?: T;
+                                slidesPerView?: T;
+                              };
+                          slides?:
+                            | T
+                            | {
+                                image?: T;
+                                caption?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                          blockName?: T;
+                        };
+                    textBlock?:
+                      | T
+                      | {
+                          verticalPosition?: T;
+                          horizontalPosition?: T;
+                          supTitle?: T;
+                          supTitleTag?: T;
+                          title?: T;
+                          titleTag?: T;
+                          subTitle?: T;
+                          subTitleTag?: T;
+                          text?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  seoTitle?: T;
+  seoDescription?: T;
+  seoImage?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

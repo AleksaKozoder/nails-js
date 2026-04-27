@@ -1,0 +1,77 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+
+  &.justify-top {
+    justify-content: flex-start;
+  }
+
+  &.justify-center {
+    justify-content: center;
+  }
+
+  &.justify-bottom {
+    justify-content: flex-end;
+  }
+
+  &.justify-space-between {
+    justify-content: space-between;
+  }
+
+  &.justify-space-around {
+    justify-content: space-around;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.align-left {
+    align-items: flex-start;
+  }
+
+  &.align-right {
+    align-items: flex-end;
+  }
+
+  &__supTitle {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: map-get($colors, "primary");
+    font-weight: 600;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 1.2;
+    color: map-get($colors, "dark");
+    margin: 0;
+
+    @include tablet {
+      font-size: 48px;
+    }
+  }
+
+  &__subTitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: lighten(map-get($colors, "secondary"), 20%);
+  }
+
+  &__content {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: map-get($colors, "secondary");
+
+    // Stilovi za Lexical HTML
+    p { margin-bottom: 15px; }
+    strong { font-weight: 700; }
+  }
+}
