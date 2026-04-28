@@ -9,10 +9,9 @@ $container-max-width: 1280px;
 
 // Colors
 $colors: (
-        "primary": #0070f3,
-        "secondary": #1a1a1a,
-        "dark": #0a0a0a,
-        "light": #f5f5f5
+        "primary": var(--color-primary),
+        "secondary": var(--color-secondary),
+        "blue": var(--color-blue),
 );
 
 // Gradients

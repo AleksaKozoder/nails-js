@@ -30,6 +30,6 @@
   &--subTitle {
     font-size: 18px;
     font-weight: 400;
-    color: lighten(map-get($colors, "secondary"), 15%);
+    color: color-mix(in srgb, map-get($colors, "primary") 85%, white);
   }
 }

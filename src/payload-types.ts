@@ -89,8 +89,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    colors: Color;
+  };
+  globalsSelect: {
+    colors: ColorsSelect<false> | ColorsSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -133,7 +137,7 @@ export interface Page {
           containerType?: ('container-xl' | 'container-lg' | 'container' | 'container-xs') | null;
           heightType?: ('fullHeight' | 'auto') | null;
           backgroundType?: ('blank' | 'color' | 'gradient' | 'image') | null;
-          colorTheme?: ('primary' | 'secondary' | 'dark' | 'light') | null;
+          colorTheme?: string | null;
           gradientTheme?: ('warm' | 'cool') | null;
           bgImage?: (number | null) | Media;
           paddingTop?: number | null;
@@ -269,6 +273,7 @@ export interface Media {
  */
 export interface User {
   id: number;
+  role: 'admin' | 'editor';
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -467,6 +472,7 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -541,6 +547,43 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "colors".
+ */
+export interface Color {
+  id: number;
+  colors?:
+    | {
+        label: string;
+        /**
+         * It will be used as a CSS class/variable — without spaces
+         */
+        value: string;
+        hex?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "colors_select".
+ */
+export interface ColorsSelect<T extends boolean = true> {
+  colors?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        hex?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

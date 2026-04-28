@@ -56,16 +56,19 @@ export const SectionBlock: Block = {
         },
         {
           name: 'colorTheme',
-          type: 'select',
+          type: 'text',
           admin: {
+            components: {
+              Field: '/components/admin/ColorSelectField',
+            },
             condition: (_, siblingData) => siblingData?.backgroundType === 'color',
           },
-          options: [
-            { label: 'Primary', value: 'primary' },
-            { label: 'Secondary', value: 'secondary' },
-            { label: 'Dark', value: 'dark' },
-            { label: 'Light', value: 'light' },
-          ],
+          // options: [
+          //   { label: 'Primary', value: 'primary' },
+          //   { label: 'Secondary', value: 'secondary' },
+          //   { label: 'Dark', value: 'dark' },
+          //   { label: 'Light', value: 'light' },
+          // ],
         },
         {
           name: 'gradientTheme',

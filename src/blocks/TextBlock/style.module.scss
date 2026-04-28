@@ -50,7 +50,7 @@
   &__title {
     font-size: 32px;
     line-height: 1.2;
-    color: map-get($colors, "dark");
+    color: map-get($colors, "primary");
     margin: 0;
 
     @include tablet {
@@ -61,7 +61,7 @@
   &__subTitle {
     font-size: 18px;
     font-weight: 500;
-    color: lighten(map-get($colors, "secondary"), 20%);
+    color: color-mix(in srgb, map-get($colors, 'primary') 50%, white);
   }
 
   &__content {
