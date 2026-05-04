@@ -1,20 +1,22 @@
+// src/components/atoms/Heading/index.tsx
 import React from 'react'
 import s from './style.module.scss'
 
-interface HeadingProps {
-  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
-  visualLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'supTitle' | 'subTitle'
-  children: React.ReactNode
-  className?: string
+type HeadingProps = {
+  title: string
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span'
+  color?: string
 }
 
-export const Heading: React.FC<HeadingProps> = ({
-  tag: Tag = 'h2',
-  visualLevel = 'h2',
-  children,
-  className,
-}) => {
-  const classes = [s.heading, s[`heading--${visualLevel}`], className].filter(Boolean).join(' ')
+export const Heading: React.FC<HeadingProps> = ({ title, titleTag: Tag = 'h2', color }) => {
+  if (!title) return null
 
-  return <Tag className={classes}>{children}</Tag>
+  return (
+    <Tag
+      className={s[Tag]}
+      style={color ? { color: `var(--color-${color})` } : undefined}
+    >
+      {title}
+    </Tag>
+  )
 }

@@ -17,14 +17,12 @@ export const Pages: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Sadržaj',
+          label: 'Content',
           fields: [
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [
-                SectionBlock
-              ],
+              blocks: [SectionBlock],
             },
           ],
         },
@@ -36,14 +34,15 @@ export const Pages: CollectionConfig = {
               type: 'text',
               admin: {
                 description:
-                  'Naslov koji se pojavljuje u Google rezultatima (preporučeno do 60 karaktera).',
+                  'Title tag appearing in Google results (recommended up to 60 characters).',
               },
             },
             {
               name: 'seoDescription',
               type: 'textarea',
               admin: {
-                description: 'Kratak opis stranice za pretraživače (preporučeno do 160 karaktera).',
+                description:
+                  'Meta description for search engines (recommended up to 160 characters).',
               },
             },
             {
@@ -51,7 +50,7 @@ export const Pages: CollectionConfig = {
               type: 'upload',
               relationTo: 'media',
               admin: {
-                description: 'Slika koja će se prikazivati pri deljenju na društvenim mrežama.',
+                description: 'Social media share image.',
               },
             },
           ],

@@ -132,46 +132,47 @@ export interface Page {
   title: string;
   layout?:
     | {
-        settings?: {
-          widthType?: ('fullWidth' | 'boxed') | null;
-          containerType?: ('container-xl' | 'container-lg' | 'container' | 'container-xs') | null;
-          heightType?: ('fullHeight' | 'auto') | null;
-          backgroundType?: ('blank' | 'color' | 'gradient' | 'image') | null;
-          colorTheme?: string | null;
-          gradientTheme?: ('warm' | 'cool') | null;
-          bgImage?: (number | null) | Media;
-          paddingTop?: number | null;
-          paddingBottom?: number | null;
-        };
         blocks?:
           | (
               | {
                   layout?: ('imageLeft' | 'imageRight') | null;
                   image: number | Media;
-                  textContent: {
+                  textContent?: {
+                    content?:
+                      | (
+                          | {
+                              title?: string | null;
+                              titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
+                              color?: string | null;
+                              id?: string | null;
+                              blockName?: string | null;
+                              blockType: 'heading';
+                            }
+                          | {
+                              text?: {
+                                root: {
+                                  type: string;
+                                  children: {
+                                    type: any;
+                                    version: number;
+                                    [k: string]: unknown;
+                                  }[];
+                                  direction: ('ltr' | 'rtl') | null;
+                                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                                  indent: number;
+                                  version: number;
+                                };
+                                [k: string]: unknown;
+                              } | null;
+                              color?: string | null;
+                              id?: string | null;
+                              blockName?: string | null;
+                              blockType: 'richText';
+                            }
+                        )[]
+                      | null;
                     verticalPosition?: ('top' | 'center' | 'bottom' | 'space-between' | 'space-around') | null;
                     horizontalPosition?: ('left' | 'center' | 'right') | null;
-                    supTitle?: string | null;
-                    supTitleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                    title: string;
-                    titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                    subTitle?: string | null;
-                    subTitleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                    text?: {
-                      root: {
-                        type: string;
-                        children: {
-                          type: any;
-                          version: number;
-                          [k: string]: unknown;
-                        }[];
-                        direction: ('ltr' | 'rtl') | null;
-                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                        indent: number;
-                        version: number;
-                      };
-                      [k: string]: unknown;
-                    } | null;
                   };
                   id?: string | null;
                   blockName?: string | null;
@@ -198,50 +199,73 @@ export interface Page {
                   blockType: 'slider';
                 }
               | {
+                  content?:
+                    | (
+                        | {
+                            title?: string | null;
+                            titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
+                            color?: string | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'heading';
+                          }
+                        | {
+                            text?: {
+                              root: {
+                                type: string;
+                                children: {
+                                  type: any;
+                                  version: number;
+                                  [k: string]: unknown;
+                                }[];
+                                direction: ('ltr' | 'rtl') | null;
+                                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                                indent: number;
+                                version: number;
+                              };
+                              [k: string]: unknown;
+                            } | null;
+                            color?: string | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'richText';
+                          }
+                      )[]
+                    | null;
                   verticalPosition?: ('top' | 'center' | 'bottom' | 'space-between' | 'space-around') | null;
                   horizontalPosition?: ('left' | 'center' | 'right') | null;
-                  supTitle?: string | null;
-                  supTitleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                  title: string;
-                  titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                  subTitle?: string | null;
-                  subTitleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                  text?: {
-                    root: {
-                      type: string;
-                      children: {
-                        type: any;
-                        version: number;
-                        [k: string]: unknown;
-                      }[];
-                      direction: ('ltr' | 'rtl') | null;
-                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                      indent: number;
-                      version: number;
-                    };
-                    [k: string]: unknown;
-                  } | null;
                   id?: string | null;
                   blockName?: string | null;
                   blockType: 'textBlock';
                 }
             )[]
           | null;
+        settings?: {
+          widthType?: ('fullWidth' | 'boxed') | null;
+          containerType?: ('container-xl' | 'container-lg' | 'container' | 'container-xs') | null;
+          paddingTop?: number | null;
+          paddingBottom?: number | null;
+          heightType?: ('fullHeight' | 'auto') | null;
+          backgroundType?: ('blank' | 'color' | 'gradient' | 'image') | null;
+          colorTheme?: string | null;
+          gradientTheme?: ('warm' | 'cool') | null;
+          bgImage?: (number | null) | Media;
+        };
         id?: string | null;
         blockName?: string | null;
         blockType: 'section';
       }[]
     | null;
   /**
-   * Naslov koji se pojavljuje u Google rezultatima (preporučeno do 60 karaktera).
+   * Title tag appearing in Google results (recommended up to 60 characters).
    */
   seoTitle?: string | null;
   /**
-   * Kratak opis stranice za pretraživače (preporučeno do 160 karaktera).
+   * Meta description for search engines (recommended up to 160 characters).
    */
   seoDescription?: string | null;
   /**
-   * Slika koja će se prikazivati pri deljenju na društvenim mrežama.
+   * Social media share image.
    */
   seoImage?: (number | null) | Media;
   slug: string;
@@ -383,19 +407,6 @@ export interface PagesSelect<T extends boolean = true> {
         section?:
           | T
           | {
-              settings?:
-                | T
-                | {
-                    widthType?: T;
-                    containerType?: T;
-                    heightType?: T;
-                    backgroundType?: T;
-                    colorTheme?: T;
-                    gradientTheme?: T;
-                    bgImage?: T;
-                    paddingTop?: T;
-                    paddingBottom?: T;
-                  };
               blocks?:
                 | T
                 | {
@@ -407,15 +418,29 @@ export interface PagesSelect<T extends boolean = true> {
                           textContent?:
                             | T
                             | {
+                                content?:
+                                  | T
+                                  | {
+                                      heading?:
+                                        | T
+                                        | {
+                                            title?: T;
+                                            titleTag?: T;
+                                            color?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      richText?:
+                                        | T
+                                        | {
+                                            text?: T;
+                                            color?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                    };
                                 verticalPosition?: T;
                                 horizontalPosition?: T;
-                                supTitle?: T;
-                                supTitleTag?: T;
-                                title?: T;
-                                titleTag?: T;
-                                subTitle?: T;
-                                subTitleTag?: T;
-                                text?: T;
                               };
                           id?: T;
                           blockName?: T;
@@ -443,18 +468,45 @@ export interface PagesSelect<T extends boolean = true> {
                     textBlock?:
                       | T
                       | {
+                          content?:
+                            | T
+                            | {
+                                heading?:
+                                  | T
+                                  | {
+                                      title?: T;
+                                      titleTag?: T;
+                                      color?: T;
+                                      id?: T;
+                                      blockName?: T;
+                                    };
+                                richText?:
+                                  | T
+                                  | {
+                                      text?: T;
+                                      color?: T;
+                                      id?: T;
+                                      blockName?: T;
+                                    };
+                              };
                           verticalPosition?: T;
                           horizontalPosition?: T;
-                          supTitle?: T;
-                          supTitleTag?: T;
-                          title?: T;
-                          titleTag?: T;
-                          subTitle?: T;
-                          subTitleTag?: T;
-                          text?: T;
                           id?: T;
                           blockName?: T;
                         };
+                  };
+              settings?:
+                | T
+                | {
+                    widthType?: T;
+                    containerType?: T;
+                    paddingTop?: T;
+                    paddingBottom?: T;
+                    heightType?: T;
+                    backgroundType?: T;
+                    colorTheme?: T;
+                    gradientTheme?: T;
+                    bgImage?: T;
                   };
               id?: T;
               blockName?: T;

@@ -1,0 +1,8 @@
+.richText {
+  p { font-size: 1rem; line-height: 1.6; }
+  h1, h2, h3, h4 { font-weight: bold; }
+  ul, ol { padding-left: 1.5rem; }
+  a { color: var(--color-primary); text-decoration: underline; }
+  strong { font-weight: bold; }
+  em { font-style: italic; }
+}

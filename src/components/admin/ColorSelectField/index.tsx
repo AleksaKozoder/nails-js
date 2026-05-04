@@ -1,5 +1,5 @@
 'use client'
-import { useField } from '@payloadcms/ui'
+import { useField, FieldLabel } from '@payloadcms/ui'
 import { useEffect, useState, useRef } from 'react'
 
 type ColorOption = {
@@ -10,15 +10,15 @@ type ColorOption = {
 
 type Props = {
   path: string
-  label?: string
+  field: any
 }
 
-export const ColorSelectField = ({ path, label }: Props) => {
+export const ColorSelectField = ({ path, field }: Props) => {
   const [options, setOptions] = useState<ColorOption[]>([])
   const [open, setOpen] = useState(false)
   const { value, setValue } = useField<string>({ path }) // path kao prop
   const ref = useRef<HTMLDivElement>(null)
-
+console.log(path, field)
   useEffect(() => {
     fetch('/api/globals/colors')
       .then((res) => res.json())
@@ -39,9 +39,9 @@ export const ColorSelectField = ({ path, label }: Props) => {
 
   return (
     <div ref={ref} style={{ position: 'relative' }}>
-      <label style={{ display: 'block', marginBottom: '8px', fontSize: '13px' }}>
-        {label || 'Background Color'}
-      </label>
+      <div style={{ display: 'block', marginBottom: '6px', fontSize: '13px' }}>
+        <FieldLabel label={field.label} required={field.required} />
+      </div>
 
       <div
         onClick={() => setOpen(!open)}

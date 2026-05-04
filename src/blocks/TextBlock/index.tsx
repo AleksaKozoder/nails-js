@@ -1,44 +1,40 @@
+// src/blocks/TextBlock/index.tsx
 import React from 'react'
 import s from './style.module.scss'
-
 import { Heading } from '@/components/atoms/Heading'
+import { RichText } from '@/components/atoms/RichText'
 
-export const TextBlock: React.FC<any> = ({
-  supTitle,
-  supTitleTag,
-  title,
-  titleTag,
-  subTitle,
-  subTitleTag,
-  horizontalPosition,
+type TextBlockProps = {
+  content: any[]
+  verticalPosition?: 'top' | 'center' | 'bottom' | 'space-between' | 'space-around'
+  horizontalPosition?: 'left' | 'center' | 'right'
+}
+
+export const TextBlock: React.FC<TextBlockProps> = ({
+  content,
   verticalPosition,
-  text,
+  horizontalPosition,
 }) => {
   const classes = [
     s.textBlock,
-    horizontalPosition && s[`align-${horizontalPosition}`],
     verticalPosition && s[`justify-${verticalPosition}`],
-  ].filter(Boolean).join(' ')
-console.log(horizontalPosition, verticalPosition)
+    horizontalPosition && s[`align-${horizontalPosition}`],
+  ]
+    .filter(Boolean)
+    .join(' ')
+
   return (
     <div className={classes}>
-      {supTitle && (
-        <Heading tag={supTitleTag} visualLevel="supTitle">
-          {supTitle}
-        </Heading>
-      )}
-
-      <Heading tag={titleTag} visualLevel="h2">
-        {title}
-      </Heading>
-
-      {subTitle && (
-        <Heading tag={subTitleTag} visualLevel="subTitle">
-          {subTitle}
-        </Heading>
-      )}
-
-      {/* RichText... */}
+      {content?.map((block, index) => {
+        switch (block.blockType) {
+          case 'heading':
+            return <Heading key={index} {...block} />
+          case 'richText':
+            return <RichText key={index} {...block} />
+          default:
+            return null
+        }
+      })}
     </div>
   )
 }
