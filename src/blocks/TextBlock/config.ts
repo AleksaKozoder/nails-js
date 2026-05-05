@@ -2,6 +2,8 @@ import { Block } from 'payload'
 import {HeadingBlock} from '@/components/atoms/Heading/config'
 import { RichTextBlock } from '@/components/atoms/RichText/config'
 
+const variants = [{ label: 'Default', value: 'default' }]
+
 export const TextBlockConfig: Block = {
   slug: 'textBlock',
   fields: [
@@ -19,7 +21,7 @@ export const TextBlockConfig: Block = {
           ],
         },
         {
-          label: 'Setings',
+          label: 'Settings',
           fields: [
             {
               type: 'row',
@@ -27,7 +29,7 @@ export const TextBlockConfig: Block = {
                 {
                   name: 'verticalPosition',
                   type: 'select',
-                  admin: { width: '50%' },
+                  admin: { width: '33%' },
                   dbName: 'v_pos',
                   defaultValue: 'top',
                   options: [
@@ -41,7 +43,7 @@ export const TextBlockConfig: Block = {
                 {
                   name: 'horizontalPosition',
                   type: 'select',
-                  admin: { width: '50%' },
+                  admin: { width: '33%' },
                   dbName: 'h_pos',
                   defaultValue: 'left',
                   options: [
@@ -49,6 +51,13 @@ export const TextBlockConfig: Block = {
                     { label: 'Center', value: 'center' },
                     { label: 'Right', value: 'right' },
                   ],
+                },
+                {
+                  name: 'variant',
+                  type: 'select',
+                  admin: { width: '33%' },
+                  defaultValue: 'default',
+                  options: variants,
                 },
               ],
             },

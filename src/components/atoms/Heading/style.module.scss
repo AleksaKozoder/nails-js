@@ -17,19 +17,4 @@
     font-weight: 700;
     @include tablet { font-size: 48px; }
   }
-
-  &--supTitle {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: map-get($colors, "primary");
-    font-weight: 600;
-    display: block;
-  }
-
-  &--subTitle {
-    font-size: 18px;
-    font-weight: 400;
-    color: color-mix(in srgb, map-get($colors, "primary") 85%, white);
-  }
 }

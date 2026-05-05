@@ -29,13 +29,14 @@
 
     img {
       object-fit: cover;
-      border-radius: 8px; // Tvoj dizajn sistem
+      border-radius: 8px;
     }
   }
 
-  &__textContent {
+  &__textWrapper {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    height: 100%;
   }
 }

@@ -14,17 +14,16 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
     widthType,
     containerType,
     heightType,
+    variant,
   } = settings
 
-  console.log(settings)
-
-  // Spajanje klasa za pozadinu (BEM)
   const sectionClasses = [
     s['section'],
     backgroundType === 'color' && s[`section--color-${colorTheme}`],
     backgroundType === 'gradient' && s[`section--gradient-${gradientTheme}`],
     backgroundType === 'image' && s['section--image'],
     heightType === 'fullHeight' && s[`section--full-height`],
+    variant && s[`section--${variant}`],
   ]
     .filter(Boolean)
     .join(' ')

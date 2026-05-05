@@ -3,15 +3,15 @@ import { TextBlockConfig } from '../TextBlock/config'
 
 export const MediaContentBlock: Block = {
   slug: 'mediaContent',
-  labels: { singular: 'Slika i Tekst', plural: 'Slike i Tekstovi' },
+  labels: { singular: 'Image & Text', plural: 'Images & Texts' },
   fields: [
     {
       name: 'layout',
       type: 'select',
       defaultValue: 'imageLeft',
       options: [
-        { label: 'Slika levo, Tekst desno', value: 'imageLeft' },
-        { label: 'Slika desno, Tekst levo', value: 'imageRight' },
+        { label: 'Image left', value: 'imageLeft' },
+        { label: 'Image right', value: 'imageRight' },
       ],
     },
     {

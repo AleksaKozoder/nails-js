@@ -1,5 +1,7 @@
 import {Block} from 'payload'
 
+const variants = [{ label: 'Default', value: 'default' }]
+
 export const RichTextBlock: Block = {
   slug: 'richText',
   fields: [
@@ -21,6 +23,13 @@ export const RichTextBlock: Block = {
             {
               type: 'row',
               fields: [
+                {
+                  name: 'variant',
+                  type: 'select',
+                  admin: { width: '33%' },
+                  defaultValue: 'default',
+                  options: variants,
+                },
                 {
                   name: 'color',
                   type: 'text',

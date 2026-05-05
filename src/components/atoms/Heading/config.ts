@@ -9,6 +9,8 @@ const tagOptions = [
   { label: 'Span', value: 'span' },
 ]
 
+const variants = [{ label: 'Default', value: 'default' }]
+
 export const HeadingBlock: Block = {
   slug: 'heading',
   fields: [
@@ -31,10 +33,17 @@ export const HeadingBlock: Block = {
               type: 'row',
               fields: [
                 {
+                  name: 'variant',
+                  type: 'select',
+                  admin: { width: '33%' },
+                  defaultValue: 'default',
+                  options: variants,
+                },
+                {
                   name: 'titleTag',
                   type: 'select',
                   defaultValue: 'h2',
-                  admin: { width: '50%' },
+                  admin: { width: '33%' },
                   options: tagOptions,
                 },
                 {
@@ -45,7 +54,7 @@ export const HeadingBlock: Block = {
                     components: {
                       Field: '/components/admin/ColorSelectField',
                     },
-                    width: '50%',
+                    width: '33%',
                   },
                 },
               ],

@@ -26,6 +26,7 @@ export const TextBlock: React.FC<TextBlockProps> = ({
   return (
     <div className={classes}>
       {content?.map((block, index) => {
+console.log(block)
         switch (block.blockType) {
           case 'heading':
             return <Heading key={index} {...block} />

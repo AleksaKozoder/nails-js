@@ -135,6 +135,86 @@ export interface Page {
         blocks?:
           | (
               | {
+                  Blocks?:
+                    | (
+                        | {
+                            content?:
+                              | (
+                                  | {
+                                      title?: string | null;
+                                      variant?: 'default' | null;
+                                      titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
+                                      color?: string | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'heading';
+                                    }
+                                  | {
+                                      text?: {
+                                        root: {
+                                          type: string;
+                                          children: {
+                                            type: any;
+                                            version: number;
+                                            [k: string]: unknown;
+                                          }[];
+                                          direction: ('ltr' | 'rtl') | null;
+                                          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                                          indent: number;
+                                          version: number;
+                                        };
+                                        [k: string]: unknown;
+                                      } | null;
+                                      variant?: 'default' | null;
+                                      color?: string | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'richText';
+                                    }
+                                )[]
+                              | null;
+                            verticalPosition?: ('top' | 'center' | 'bottom' | 'space-between' | 'space-around') | null;
+                            horizontalPosition?: ('left' | 'center' | 'right') | null;
+                            variant?: 'default' | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'textBlock';
+                          }
+                        | {
+                            image?: (number | null) | Media;
+                            aspectRatio?: ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '9/16' | 'custom') | null;
+                            /**
+                             * Format: 16/9, 4/3, 1/1...
+                             */
+                            customAspectRatio?: string | null;
+                            overlay?: {
+                              enabled?: boolean | null;
+                              color?: string | null;
+                              /**
+                               * 0 - 100
+                               */
+                              opacity?: number | null;
+                            };
+                            variant?: 'default' | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'image';
+                          }
+                      )[]
+                    | null;
+                  layout?: ('grid' | 'flex' | 'block') | null;
+                  gap?: number | null;
+                  variant?: 'default' | null;
+                  Direction?: ('row' | 'column') | null;
+                  Justify?: ('start' | 'center' | 'end' | 'space-between' | 'space-around') | null;
+                  Align?: ('start' | 'center' | 'end' | 'stretch') | null;
+                  Wrap?: ('nowrap' | 'wrap' | 'wrap-reverse') | null;
+                  Columns?: number | null;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'blockHolder';
+                }
+              | {
                   layout?: ('imageLeft' | 'imageRight') | null;
                   image: number | Media;
                   textContent?: {
@@ -142,6 +222,7 @@ export interface Page {
                       | (
                           | {
                               title?: string | null;
+                              variant?: 'default' | null;
                               titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
                               color?: string | null;
                               id?: string | null;
@@ -164,6 +245,7 @@ export interface Page {
                                 };
                                 [k: string]: unknown;
                               } | null;
+                              variant?: 'default' | null;
                               color?: string | null;
                               id?: string | null;
                               blockName?: string | null;
@@ -173,6 +255,7 @@ export interface Page {
                       | null;
                     verticalPosition?: ('top' | 'center' | 'bottom' | 'space-between' | 'space-around') | null;
                     horizontalPosition?: ('left' | 'center' | 'right') | null;
+                    variant?: 'default' | null;
                   };
                   id?: string | null;
                   blockName?: string | null;
@@ -203,6 +286,7 @@ export interface Page {
                     | (
                         | {
                             title?: string | null;
+                            variant?: 'default' | null;
                             titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
                             color?: string | null;
                             id?: string | null;
@@ -225,6 +309,7 @@ export interface Page {
                               };
                               [k: string]: unknown;
                             } | null;
+                            variant?: 'default' | null;
                             color?: string | null;
                             id?: string | null;
                             blockName?: string | null;
@@ -234,6 +319,7 @@ export interface Page {
                     | null;
                   verticalPosition?: ('top' | 'center' | 'bottom' | 'space-between' | 'space-around') | null;
                   horizontalPosition?: ('left' | 'center' | 'right') | null;
+                  variant?: 'default' | null;
                   id?: string | null;
                   blockName?: string | null;
                   blockType: 'textBlock';
@@ -243,6 +329,7 @@ export interface Page {
         settings?: {
           widthType?: ('fullWidth' | 'boxed') | null;
           containerType?: ('container-xl' | 'container-lg' | 'container' | 'container-xs') | null;
+          variant?: 'default' | null;
           paddingTop?: number | null;
           paddingBottom?: number | null;
           heightType?: ('fullHeight' | 'auto') | null;
@@ -410,6 +497,73 @@ export interface PagesSelect<T extends boolean = true> {
               blocks?:
                 | T
                 | {
+                    blockHolder?:
+                      | T
+                      | {
+                          Blocks?:
+                            | T
+                            | {
+                                textBlock?:
+                                  | T
+                                  | {
+                                      content?:
+                                        | T
+                                        | {
+                                            heading?:
+                                              | T
+                                              | {
+                                                  title?: T;
+                                                  variant?: T;
+                                                  titleTag?: T;
+                                                  color?: T;
+                                                  id?: T;
+                                                  blockName?: T;
+                                                };
+                                            richText?:
+                                              | T
+                                              | {
+                                                  text?: T;
+                                                  variant?: T;
+                                                  color?: T;
+                                                  id?: T;
+                                                  blockName?: T;
+                                                };
+                                          };
+                                      verticalPosition?: T;
+                                      horizontalPosition?: T;
+                                      variant?: T;
+                                      id?: T;
+                                      blockName?: T;
+                                    };
+                                image?:
+                                  | T
+                                  | {
+                                      image?: T;
+                                      aspectRatio?: T;
+                                      customAspectRatio?: T;
+                                      overlay?:
+                                        | T
+                                        | {
+                                            enabled?: T;
+                                            color?: T;
+                                            opacity?: T;
+                                          };
+                                      variant?: T;
+                                      id?: T;
+                                      blockName?: T;
+                                    };
+                              };
+                          layout?: T;
+                          gap?: T;
+                          variant?: T;
+                          Direction?: T;
+                          Justify?: T;
+                          Align?: T;
+                          Wrap?: T;
+                          Columns?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
                     mediaContent?:
                       | T
                       | {
@@ -425,6 +579,7 @@ export interface PagesSelect<T extends boolean = true> {
                                         | T
                                         | {
                                             title?: T;
+                                            variant?: T;
                                             titleTag?: T;
                                             color?: T;
                                             id?: T;
@@ -434,6 +589,7 @@ export interface PagesSelect<T extends boolean = true> {
                                         | T
                                         | {
                                             text?: T;
+                                            variant?: T;
                                             color?: T;
                                             id?: T;
                                             blockName?: T;
@@ -441,6 +597,7 @@ export interface PagesSelect<T extends boolean = true> {
                                     };
                                 verticalPosition?: T;
                                 horizontalPosition?: T;
+                                variant?: T;
                               };
                           id?: T;
                           blockName?: T;
@@ -475,6 +632,7 @@ export interface PagesSelect<T extends boolean = true> {
                                   | T
                                   | {
                                       title?: T;
+                                      variant?: T;
                                       titleTag?: T;
                                       color?: T;
                                       id?: T;
@@ -484,6 +642,7 @@ export interface PagesSelect<T extends boolean = true> {
                                   | T
                                   | {
                                       text?: T;
+                                      variant?: T;
                                       color?: T;
                                       id?: T;
                                       blockName?: T;
@@ -491,6 +650,7 @@ export interface PagesSelect<T extends boolean = true> {
                               };
                           verticalPosition?: T;
                           horizontalPosition?: T;
+                          variant?: T;
                           id?: T;
                           blockName?: T;
                         };
@@ -500,6 +660,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     widthType?: T;
                     containerType?: T;
+                    variant?: T;
                     paddingTop?: T;
                     paddingBottom?: T;
                     heightType?: T;

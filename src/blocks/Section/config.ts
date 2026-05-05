@@ -3,6 +3,11 @@ import { Block } from 'payload'
 import { MediaContentBlock } from '@/blocks/MediaContent/config'
 import { SliderBlock } from '@/blocks/Slider/config'
 import { TextBlockConfig } from '@/blocks/TextBlock/config'
+import { BlockHolder } from '@/blocks/BlockHolder/config'
+
+const variants = [
+  { label: 'Default', value: 'default' },
+]
 
 export const SectionBlock: Block = {
   slug: 'section',
@@ -16,7 +21,7 @@ export const SectionBlock: Block = {
             {
               name: 'blocks',
               type: 'blocks',
-              blocks: [MediaContentBlock, SliderBlock, TextBlockConfig],
+              blocks: [BlockHolder, MediaContentBlock, SliderBlock, TextBlockConfig],
             },
           ],
         },
@@ -34,7 +39,7 @@ export const SectionBlock: Block = {
                       name: 'widthType',
                       type: 'select',
                       defaultValue: 'boxed',
-                      admin: { width: '50%' },
+                      admin: { width: '33%' },
                       options: [
                         { label: 'Full Width', value: 'fullWidth' },
                         { label: 'Boxed', value: 'boxed' },
@@ -46,7 +51,7 @@ export const SectionBlock: Block = {
                       defaultValue: 'container',
                       admin: {
                         condition: (_, siblingData) => siblingData?.widthType === 'boxed',
-                        width: '50%',
+                        width: '33%',
                       },
                       options: [
                         { label: 'Container XL', value: 'container-xl' },
@@ -55,6 +60,13 @@ export const SectionBlock: Block = {
                         { label: 'Container XS', value: 'container-xs' },
                       ],
                     },
+                    {
+                      name: 'variant',
+                      type: 'select',
+                      admin: { width: '33%' },
+                      defaultValue: 'default',
+                      options: variants,
+                    }
                   ],
                 },
                 {
