@@ -2,7 +2,7 @@ import { Block } from 'payload'
 
 export const SliderBlock: Block = {
   slug: 'slider',
-  labels: { singular: 'Slajder', plural: 'Slajderi' },
+  labels: { singular: 'Slider', plural: 'Sliders' },
   fields: [
     {
       name: 'settings',
@@ -13,15 +13,15 @@ export const SliderBlock: Block = {
           type: 'select',
           defaultValue: 'horizontal',
           options: [
-            { label: 'Horizontalni', value: 'horizontal' },
-            { label: 'Vertikalni', value: 'vertical' },
+            { label: 'Horizontal', value: 'horizontal' },
+            { label: 'Vertical', value: 'vertical' },
           ],
         },
         {
           name: 'spaceBetween',
           type: 'number',
           defaultValue: 20,
-          admin: { description: 'Razmak između slajdova u px' },
+          admin: { description: 'Space between slides in px' },
         },
         {
           name: 'slidesPerView',

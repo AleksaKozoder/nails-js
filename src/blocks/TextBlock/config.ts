@@ -1,6 +1,7 @@
 import { Block } from 'payload'
 import {HeadingBlock} from '@/components/atoms/Heading/config'
 import { RichTextBlock } from '@/components/atoms/RichText/config'
+import { ButtonBlock } from '@/components/atoms/Button/config'
 
 const variants = [{ label: 'Default', value: 'default' }]
 
@@ -16,7 +17,7 @@ export const TextBlockConfig: Block = {
             {
               name: 'content',
               type: 'blocks',
-              blocks: [HeadingBlock, RichTextBlock], // dodaješ Heading kao block
+              blocks: [HeadingBlock, RichTextBlock, ButtonBlock], // dodaješ Heading kao block
             },
           ],
         },

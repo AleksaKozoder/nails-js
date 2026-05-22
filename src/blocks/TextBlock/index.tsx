@@ -3,6 +3,7 @@ import React from 'react'
 import s from './style.module.scss'
 import { Heading } from '@/components/atoms/Heading'
 import { RichText } from '@/components/atoms/RichText'
+import { Button } from '@/components/atoms/Button'
 
 type TextBlockProps = {
   content: any[]
@@ -32,6 +33,8 @@ console.log(block)
             return <Heading key={index} {...block} />
           case 'richText':
             return <RichText key={index} {...block} />
+          case 'button':
+            return <Button key={index} {...block} />
           default:
             return null
         }
