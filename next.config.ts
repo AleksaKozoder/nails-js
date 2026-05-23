@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(dirname),
   },
+  transpilePackages: ['@fortawesome/react-fontawesome'],
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })

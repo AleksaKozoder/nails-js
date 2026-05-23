@@ -135,7 +135,7 @@ export interface Page {
         blocks?:
           | (
               | {
-                  Blocks?:
+                  blocks?:
                     | (
                         | {
                             content?:
@@ -171,6 +171,22 @@ export interface Page {
                                       blockName?: string | null;
                                       blockType: 'richText';
                                     }
+                                  | {
+                                      text: string;
+                                      linkType?: ('internal' | 'external') | null;
+                                      internalLink?: (number | null) | Page;
+                                      externalUrl?: string | null;
+                                      newTab?: boolean | null;
+                                      variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
+                                      hasIcon?: boolean | null;
+                                      iconType?: ('picker' | 'customSvg') | null;
+                                      icon?: string | null;
+                                      customSvg?: (number | null) | Media;
+                                      iconPosition?: ('left' | 'right') | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'button';
+                                    }
                                 )[]
                               | null;
                             verticalPosition?: ('top' | 'center' | 'bottom' | 'space-between' | 'space-around') | null;
@@ -200,16 +216,47 @@ export interface Page {
                             blockName?: string | null;
                             blockType: 'image';
                           }
+                        | {
+                            text: string;
+                            linkType?: ('internal' | 'external') | null;
+                            internalLink?: (number | null) | Page;
+                            externalUrl?: string | null;
+                            newTab?: boolean | null;
+                            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
+                            hasIcon?: boolean | null;
+                            iconType?: ('picker' | 'customSvg') | null;
+                            icon?: string | null;
+                            customSvg?: (number | null) | Media;
+                            iconPosition?: ('left' | 'right') | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'button';
+                          }
                       )[]
                     | null;
-                  layout?: ('grid' | 'flex' | 'block') | null;
+                  layout?: ('block' | 'flex' | 'grid') | null;
                   gap?: number | null;
                   variant?: 'default' | null;
-                  Direction?: ('row' | 'column') | null;
-                  Justify?: ('start' | 'center' | 'end' | 'space-between' | 'space-around') | null;
-                  Align?: ('start' | 'center' | 'end' | 'stretch') | null;
-                  Wrap?: ('nowrap' | 'wrap' | 'wrap-reverse') | null;
-                  Columns?: number | null;
+                  flexDirection?: ('row' | 'column' | 'row-reverse' | 'column-reverse') | null;
+                  flexJustify?:
+                    | ('start' | 'center' | 'end' | 'stretch' | 'space-between' | 'space-around' | 'space-evenly')
+                    | null;
+                  flexAlign?: ('start' | 'center' | 'end' | 'stretch') | null;
+                  flexWrap?: ('nowrap' | 'wrap' | 'wrap-reverse') | null;
+                  gridMode?: ('auto' | 'custom') | null;
+                  gridJustifyItems?: ('start' | 'center' | 'end' | 'stretch') | null;
+                  gridAlignItems?: ('start' | 'center' | 'end' | 'stretch') | null;
+                  gridAutoRepeat?: ('auto-fill' | 'auto-fit') | null;
+                  gridAutoMinValue?: number | null;
+                  gridAutoMinUnit?: ('px' | '%' | 'rem') | null;
+                  gridAutoMax?: ('1fr' | '2fr' | '3fr' | '100%') | null;
+                  gridColumns?:
+                    | {
+                        value?: number | null;
+                        unit?: ('fr' | 'px' | '%' | 'rem' | 'auto' | 'min-content' | 'max-content') | null;
+                        id?: string | null;
+                      }[]
+                    | null;
                   id?: string | null;
                   blockName?: string | null;
                   blockType: 'blockHolder';
@@ -251,6 +298,22 @@ export interface Page {
                               blockName?: string | null;
                               blockType: 'richText';
                             }
+                          | {
+                              text: string;
+                              linkType?: ('internal' | 'external') | null;
+                              internalLink?: (number | null) | Page;
+                              externalUrl?: string | null;
+                              newTab?: boolean | null;
+                              variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
+                              hasIcon?: boolean | null;
+                              iconType?: ('picker' | 'customSvg') | null;
+                              icon?: string | null;
+                              customSvg?: (number | null) | Media;
+                              iconPosition?: ('left' | 'right') | null;
+                              id?: string | null;
+                              blockName?: string | null;
+                              blockType: 'button';
+                            }
                         )[]
                       | null;
                     verticalPosition?: ('top' | 'center' | 'bottom' | 'space-between' | 'space-around') | null;
@@ -265,7 +328,7 @@ export interface Page {
                   settings?: {
                     orientation?: ('horizontal' | 'vertical') | null;
                     /**
-                     * Razmak između slajdova u px
+                     * Space between slides in px
                      */
                     spaceBetween?: number | null;
                     slidesPerView?: number | null;
@@ -314,6 +377,22 @@ export interface Page {
                             id?: string | null;
                             blockName?: string | null;
                             blockType: 'richText';
+                          }
+                        | {
+                            text: string;
+                            linkType?: ('internal' | 'external') | null;
+                            internalLink?: (number | null) | Page;
+                            externalUrl?: string | null;
+                            newTab?: boolean | null;
+                            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
+                            hasIcon?: boolean | null;
+                            iconType?: ('picker' | 'customSvg') | null;
+                            icon?: string | null;
+                            customSvg?: (number | null) | Media;
+                            iconPosition?: ('left' | 'right') | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'button';
                           }
                       )[]
                     | null;
@@ -500,7 +579,7 @@ export interface PagesSelect<T extends boolean = true> {
                     blockHolder?:
                       | T
                       | {
-                          Blocks?:
+                          blocks?:
                             | T
                             | {
                                 textBlock?:
@@ -528,6 +607,23 @@ export interface PagesSelect<T extends boolean = true> {
                                                   id?: T;
                                                   blockName?: T;
                                                 };
+                                            button?:
+                                              | T
+                                              | {
+                                                  text?: T;
+                                                  linkType?: T;
+                                                  internalLink?: T;
+                                                  externalUrl?: T;
+                                                  newTab?: T;
+                                                  variant?: T;
+                                                  hasIcon?: T;
+                                                  iconType?: T;
+                                                  icon?: T;
+                                                  customSvg?: T;
+                                                  iconPosition?: T;
+                                                  id?: T;
+                                                  blockName?: T;
+                                                };
                                           };
                                       verticalPosition?: T;
                                       horizontalPosition?: T;
@@ -552,15 +648,45 @@ export interface PagesSelect<T extends boolean = true> {
                                       id?: T;
                                       blockName?: T;
                                     };
+                                button?:
+                                  | T
+                                  | {
+                                      text?: T;
+                                      linkType?: T;
+                                      internalLink?: T;
+                                      externalUrl?: T;
+                                      newTab?: T;
+                                      variant?: T;
+                                      hasIcon?: T;
+                                      iconType?: T;
+                                      icon?: T;
+                                      customSvg?: T;
+                                      iconPosition?: T;
+                                      id?: T;
+                                      blockName?: T;
+                                    };
                               };
                           layout?: T;
                           gap?: T;
                           variant?: T;
-                          Direction?: T;
-                          Justify?: T;
-                          Align?: T;
-                          Wrap?: T;
-                          Columns?: T;
+                          flexDirection?: T;
+                          flexJustify?: T;
+                          flexAlign?: T;
+                          flexWrap?: T;
+                          gridMode?: T;
+                          gridJustifyItems?: T;
+                          gridAlignItems?: T;
+                          gridAutoRepeat?: T;
+                          gridAutoMinValue?: T;
+                          gridAutoMinUnit?: T;
+                          gridAutoMax?: T;
+                          gridColumns?:
+                            | T
+                            | {
+                                value?: T;
+                                unit?: T;
+                                id?: T;
+                              };
                           id?: T;
                           blockName?: T;
                         };
@@ -591,6 +717,23 @@ export interface PagesSelect<T extends boolean = true> {
                                             text?: T;
                                             variant?: T;
                                             color?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      button?:
+                                        | T
+                                        | {
+                                            text?: T;
+                                            linkType?: T;
+                                            internalLink?: T;
+                                            externalUrl?: T;
+                                            newTab?: T;
+                                            variant?: T;
+                                            hasIcon?: T;
+                                            iconType?: T;
+                                            icon?: T;
+                                            customSvg?: T;
+                                            iconPosition?: T;
                                             id?: T;
                                             blockName?: T;
                                           };
@@ -644,6 +787,23 @@ export interface PagesSelect<T extends boolean = true> {
                                       text?: T;
                                       variant?: T;
                                       color?: T;
+                                      id?: T;
+                                      blockName?: T;
+                                    };
+                                button?:
+                                  | T
+                                  | {
+                                      text?: T;
+                                      linkType?: T;
+                                      internalLink?: T;
+                                      externalUrl?: T;
+                                      newTab?: T;
+                                      variant?: T;
+                                      hasIcon?: T;
+                                      iconType?: T;
+                                      icon?: T;
+                                      customSvg?: T;
+                                      iconPosition?: T;
                                       id?: T;
                                       blockName?: T;
                                     };
