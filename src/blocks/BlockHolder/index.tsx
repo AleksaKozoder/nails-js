@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
+import s from './style.module.scss'
 
 type GridColumn = {
   value?: number | null
@@ -35,7 +36,6 @@ type BlockHolderProps = {
   blocks?: any[]
 }
 
-// Mapira array kolona u grid-template-columns string
 function buildColumnsFromArray(columns: GridColumn[]): string {
   return columns
     .map(({ value, unit }) => {
@@ -46,8 +46,6 @@ function buildColumnsFromArray(columns: GridColumn[]): string {
     .join(' ')
 }
 
-// Kad je gridMode broj ("2", "3"...) i nema customizovanih kolona,
-// generišemo defaultni repeat(n, 1fr)
 function buildDefaultRepeat(n: number): string {
   return `repeat(${n}, 1fr)`
 }
@@ -87,13 +85,13 @@ export const BlockHolder: React.FC<BlockHolderProps> = (props) => {
     gridAlignItems = 'stretch',
     // content
     blocks,
+    variant,
   } = props
 
   let style: CSSProperties = {}
 
   if (layout === 'flex') {
     style = {
-      display: 'flex',
       flexDirection: flexDirection,
       justifyContent: flexJustify,
       alignItems: flexAlign,
@@ -102,7 +100,6 @@ export const BlockHolder: React.FC<BlockHolderProps> = (props) => {
     }
   } else if (layout === 'grid') {
     style = {
-      display: 'grid',
       gridTemplateColumns: buildGridTemplateColumns(props),
       justifyItems: gridJustifyItems,
       alignItems: gridAlignItems,
@@ -110,8 +107,14 @@ export const BlockHolder: React.FC<BlockHolderProps> = (props) => {
     }
   }
 
+  const blockClasses = [
+    layout === 'block' ? s['block-holder'] : s[`block-holder--${layout}`],
+    variant && s[`block-holder--${variant}`]]
+    .filter(Boolean)
+    .join(' ')
+
   return (
-    <div style={style}>
+    <div style={style} className={blockClasses}>
       <BlockRenderer blocks={blocks ?? []} />
     </div>
   )

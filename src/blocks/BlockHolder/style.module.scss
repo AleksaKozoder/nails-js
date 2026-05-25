@@ -1,0 +1,11 @@
+.block-holder {
+  display: block;
+
+  &--flex {
+    display: flex;
+  }
+
+  &--grid {
+    display: grid;
+  }
+}

@@ -26,3 +26,5 @@ $gradients: (
 $color-bg: map-get($colors, "light");
 $color-text: map-get($colors, "dark");
 $color-primary: map-get($colors, "primary");
+
+$container-inline-padding: 30px;
