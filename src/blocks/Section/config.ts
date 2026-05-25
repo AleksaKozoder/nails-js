@@ -1,8 +1,6 @@
 // src/blocks/Section/config.ts
 import { Block } from 'payload'
-import { MediaContentBlock } from '@/blocks/MediaContent/config'
 import { SliderBlock } from '@/blocks/Slider/config'
-import { TextBlockConfig } from '@/blocks/TextBlock/config'
 import { BlockHolder } from '@/blocks/BlockHolder/config'
 
 const variants = [
@@ -21,7 +19,7 @@ export const SectionBlock: Block = {
             {
               name: 'blocks',
               type: 'blocks',
-              blocks: [BlockHolder, MediaContentBlock, SliderBlock, TextBlockConfig],
+              blocks: [BlockHolder, SliderBlock],
             },
           ],
         },
