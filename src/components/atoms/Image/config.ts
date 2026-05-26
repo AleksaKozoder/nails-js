@@ -36,6 +36,7 @@ export const ImageBlock: Block = {
                     { label: '4:3', value: '4/3' },
                     { label: '16:9', value: '16/9' },
                     { label: '3:2', value: '3/2' },
+                    { label: '3:4', value: '3/4' },
                     { label: '9:16', value: '9/16' },
                     { label: 'Custom', value: 'custom' },
                   ],
@@ -56,6 +57,18 @@ export const ImageBlock: Block = {
               type: 'row',
               fields: [
                 {
+                  name: 'variant',
+                  type: 'select',
+                  admin: { width: '50%' },
+                  defaultValue: 'default',
+                  options: variants,
+                },
+              ],
+            },
+            {
+              type: 'row',
+              fields: [
+                {
                   name: 'overlay',
                   type: 'group',
                   label: 'Overlay',
@@ -65,7 +78,7 @@ export const ImageBlock: Block = {
                       type: 'checkbox',
                       label: 'Enable Overlay',
                       defaultValue: false,
-                      admin: { width: '20%' },
+                      admin: { width: '50%' },
                     },
                     {
                       name: 'color',
@@ -91,18 +104,6 @@ export const ImageBlock: Block = {
                         description: '0 - 100',
                         condition: (_, siblingData) => siblingData?.enabled === true,
                       },
-                    },
-                  ],
-                },
-                {
-                  type: 'row',
-                  fields: [
-                    {
-                      name: 'variant',
-                      type: 'select',
-                      admin: { width: '50%' },
-                      defaultValue: 'default',
-                      options: variants,
                     },
                   ],
                 },

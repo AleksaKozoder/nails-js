@@ -1,0 +1,82 @@
+@import "@/scss/mixins.scss";
+@import "@/scss/variables.scss";
+
+.accordion {
+  width: 100%;
+
+  &--bordered {
+    .accordion__item {
+      border: 1px solid color-alpha($color-primary, 20%);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+  }
+
+  &--minimal {
+    .accordion__trigger {
+      background: transparent;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.accordion__item {
+  border-bottom: 1px solid color-alpha($color-primary, 10%);
+
+  & + & {
+    margin-top: 4px;
+  }
+}
+
+.accordion__trigger {
+  appearance: none;
+  border: 0;
+  background: color-alpha($color-primary, 5%);
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  color: $color-primary;
+  text-align: left;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: color-alpha($color-primary, 15%);
+  }
+}
+
+.accordion__item--open {
+  .accordion__trigger {
+    color: $color-secondary;
+    background: color-alpha($color-primary, 10%);
+  }
+}
+
+.accordion__icon {
+  flex-shrink: 0;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+
+  &--open {
+    grid-template-rows: 1fr;
+  }
+}
+
+.accordion__panel_inner {
+  overflow: hidden;
+}
+
+.accordion__panel_content {
+  padding: 16px 20px;
+}

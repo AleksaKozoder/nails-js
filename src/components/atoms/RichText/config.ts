@@ -1,6 +1,10 @@
 import {Block} from 'payload'
 
-const variants = [{ label: 'Default', value: 'default' }]
+const variants = [
+  { label: 'Default', value: 'default' },
+  { label: 'Center', value: 'center' },
+  { label: 'Right', value: 'right' },
+]
 
 export const RichTextBlock: Block = {
   slug: 'richText',

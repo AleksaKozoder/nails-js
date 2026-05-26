@@ -8,7 +8,7 @@ type TabsItem = {
   label?: string
   icon?: string
   defaultActive?: boolean
-  content?: any[]
+  blocks?: any[]
 }
 
 type TabsBlockProps = {
@@ -59,7 +59,7 @@ export const TabsBlock: React.FC<TabsBlockProps> = (props) => {
       </div>
 
       <div className={s.tabs__panel} role="tabpanel">
-        <BlockRenderer blocks={activeItem?.content ?? []} />
+        <BlockRenderer blocks={activeItem?.blocks ?? []} />
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+// src/blocks/Accordion/config.ts
 import { Block } from 'payload'
 import { ImageBlock } from '@/components/atoms/Image/config'
 import { ButtonBlock } from '@/components/atoms/Button/config'
@@ -5,8 +6,8 @@ import { HeadingBlock } from '@/components/atoms/Heading/config'
 import { RichTextBlock } from '@/components/atoms/RichText/config'
 import { iconFields } from '@/components/atoms/Icon/config'
 
-export const TabsBlock: Block = {
-  slug: 'tabs',
+export const AccordionBlock: Block = {
+  slug: 'accordion',
   fields: [
     {
       type: 'tabs',
@@ -45,13 +46,13 @@ export const TabsBlock: Block = {
                               name: 'label',
                               type: 'text',
                               required: true,
-                              admin: { width: '33%' },
+                              admin: { width: '50%' },
                             },
                             {
-                              name: 'defaultActive',
+                              name: 'defaultOpen',
                               type: 'checkbox',
                               defaultValue: false,
-                              admin: { width: '33%' },
+                              admin: { width: '50%' },
                             },
                           ],
                         },
@@ -74,14 +75,11 @@ export const TabsBlock: Block = {
               type: 'row',
               fields: [
                 {
-                  name: 'orientation',
-                  type: 'select',
-                  defaultValue: 'horizontal',
+                  name: 'allowMultiple',
+                  type: 'checkbox',
+                  label: 'Allow Multiple Open',
+                  defaultValue: false,
                   admin: { width: '50%' },
-                  options: [
-                    { label: 'Horizontal', value: 'horizontal' },
-                    { label: 'Vertical', value: 'vertical' },
-                  ],
                 },
                 {
                   name: 'variant',
@@ -90,7 +88,7 @@ export const TabsBlock: Block = {
                   admin: { width: '50%' },
                   options: [
                     { label: 'Default', value: 'default' },
-                    { label: 'Full with tabs', value: 'full' },
+                    { label: 'Bordered', value: 'bordered' },
                     { label: 'Minimal', value: 'minimal' },
                   ],
                 },

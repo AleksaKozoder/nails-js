@@ -4,6 +4,8 @@ import { ButtonBlock } from '@/components/atoms/Button/config'
 import { HeadingBlock } from '@/components/atoms/Heading/config'
 import { RichTextBlock } from '@/components/atoms/RichText/config'
 import { TabsBlock } from '@/blocks/Tabs/config'
+import { SliderBlock } from '@/blocks/Slider/config'
+import { AccordionBlock } from '@/blocks/Accordion/config'
 
 const alignOptions = [
   { label: 'Start', value: 'start' },
@@ -44,7 +46,9 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                   RichTextBlock,
                   ImageBlock,
                   ButtonBlock,
-                  TabsBlock
+                  TabsBlock,
+                  SliderBlock,
+                  AccordionBlock
                 ],
               },
             ],

@@ -4,6 +4,7 @@
 .heading {
   margin: 0;
   line-height: 1.2;
+  width: 100%;
   color: map-get($colors, "dark");
 
   &--h1 {
@@ -16,5 +17,13 @@
     font-size: 32px;
     font-weight: 700;
     @include tablet { font-size: 48px; }
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
   }
 }

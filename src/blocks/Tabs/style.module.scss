@@ -1,46 +1,60 @@
+@import "@/scss/mixins.scss";
+@import "@/scss/variables";
+
 .tabs {
   width: 100%;
+
+  &--default {
+    display: block;
+  }
+
+  &--full {
+    .tabs__trigger {
+      flex: 1 1 auto;
+    }
+  }
+
+  &--horizontal {
+  }
+
+  &--vertical {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+  }
 }
 
 .tabs__nav {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 4px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
+  border-bottom: 1px solid color-alpha($color-primary, 10%);
 }
 
 .tabs__trigger {
   appearance: none;
   border: 0;
-  background: transparent;
+  background: color-alpha($color-primary, 10%);
   cursor: pointer;
-  padding: 0.75rem 1rem;
+  padding: 12px 18px;
   border-bottom: 2px solid transparent;
-  color: #666;
+  color: $color-primary;
+  border-radius: 5px 5px 0 0;
   transition: color 0.2s ease, border-color 0.2s ease;
+  margin-bottom: -1px;
 }
 
 .tabs__trigger:hover {
-  color: #111;
+  color: $color-secondary;
+  background: color-alpha($color-primary, 30%);
 }
 
 .tabs__trigger--active {
-  color: #111;
+  color: $color-red;
   border-bottom-color: currentColor;
 }
 
 .tabs__panel {
   width: 100%;
-}
-
-.tabs--horizontal {
-}
-
-.tabs--vertical {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
-}
-
-.tabs--default {
 }

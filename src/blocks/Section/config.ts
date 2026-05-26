@@ -64,7 +64,7 @@ export const SectionBlock: Block = {
                       admin: { width: '33%' },
                       defaultValue: 'default',
                       options: variants,
-                    }
+                    },
                   ],
                 },
                 {
@@ -132,6 +132,48 @@ export const SectionBlock: Block = {
                   admin: {
                     condition: (_, siblingData) => siblingData?.backgroundType === 'image',
                   },
+                },
+                {
+                  name: 'overlay',
+                  type: 'group',
+                  label: 'Overlay',
+                  admin: {
+                    condition: (_, siblingData) => siblingData?.backgroundType === 'image',
+                  },
+                  fields: [
+                    {
+                      name: 'enabled',
+                      type: 'checkbox',
+                      label: 'Enable Overlay',
+                      defaultValue: false,
+                      admin: { width: '20%' },
+                    },
+                    {
+                      name: 'color',
+                      type: 'text',
+                      label: 'Overlay Color',
+                      admin: {
+                        width: '40%',
+                        components: {
+                          Field: '/components/admin/ColorSelectField',
+                        },
+                        condition: (_, siblingData) => siblingData?.enabled === true,
+                      },
+                    },
+                    {
+                      name: 'opacity',
+                      type: 'number',
+                      label: 'Opacity',
+                      min: 0,
+                      max: 100,
+                      defaultValue: 50,
+                      admin: {
+                        width: '40%',
+                        description: '0 - 100',
+                        condition: (_, siblingData) => siblingData?.enabled === true,
+                      },
+                    },
+                  ],
                 },
               ],
             },

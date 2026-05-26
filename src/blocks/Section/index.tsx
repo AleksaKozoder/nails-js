@@ -15,6 +15,7 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
     containerType,
     heightType,
     variant,
+    overlay,
   } = settings
 
   const sectionClasses = [
@@ -31,6 +32,8 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
   const container =
     widthType === 'boxed' ? [...new Set(['container', containerType])].join(' ') : null
 
+  const showOverlay = overlay?.enabled && overlay?.color
+
   return (
     <section
       className={sectionClasses}
@@ -41,6 +44,16 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
     >
       {backgroundType === 'image' && bgImage && (
         <Image src={bgImage.url} alt="" fill className={s['section__bgImage']} />
+      )}
+
+      {showOverlay && (
+        <div
+          className={s.overlay}
+          style={{
+            backgroundColor: `var(--color-${overlay.color})`,
+            opacity: (overlay.opacity ?? 50) / 100,
+          }}
+        />
       )}
 
       <BlockRenderer blocks={blocks} container={container} />

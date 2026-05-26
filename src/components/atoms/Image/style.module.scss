@@ -3,3 +3,9 @@
   position: relative;
   width: 100%;
 }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}

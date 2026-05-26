@@ -9,7 +9,11 @@ const tagOptions = [
   { label: 'Span', value: 'span' },
 ]
 
-const variants = [{ label: 'Default', value: 'default' }]
+const variants = [
+  { label: 'Default', value: 'default' },
+  { label: 'Center', value: 'center' },
+  { label: 'Right', value: 'right' },
+]
 
 export const HeadingBlock: Block = {
   slug: 'heading',

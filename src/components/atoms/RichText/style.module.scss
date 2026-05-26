@@ -1,0 +1,132 @@
+@import "@/scss/mixins.scss";
+@import "@/scss/variables.scss";
+
+.richText {
+  font-size: 16px;
+  line-height: 1.7;
+  color: inherit;
+
+  // Variants
+  &--center { text-align: center; }
+  &--right  { text-align: right; }
+
+  // Headings
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 24px;
+    margin-bottom: 8px;
+
+    &:first-child { margin-top: 0; }
+  }
+
+  h1 { font-size: 32px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 22px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 16px; }
+  h6 { font-size: 14px; }
+
+  // Paragraph
+  p {
+    margin-bottom: 16px;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  // Links
+  a {
+    color: $color-primary;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+
+  // Bold & Italic
+  strong, b { font-weight: 700; }
+  em, i     { font-style: italic; }
+  u         { text-decoration: underline; text-underline-offset: 3px; }
+  s         { text-decoration: line-through; }
+
+  // Lists
+  ul, ol {
+    margin-bottom: 16px;
+    padding-left: 24px;
+
+    &:last-child { margin-bottom: 0; }
+
+    li {
+      margin-bottom: 6px;
+
+      &:last-child { margin-bottom: 0; }
+    }
+  }
+
+  ul { list-style: disc; }
+  ol { list-style: decimal; }
+
+  // Blockquote
+  blockquote {
+    border-left: 3px solid $color-primary;
+    margin: 24px 0;
+    padding: 12px 20px;
+    background: color-alpha($color-primary, 5%);
+    font-style: italic;
+    color: color-alpha($color-text, 80%);
+
+    p:last-child { margin-bottom: 0; }
+  }
+
+  // Inline code
+  code {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 14px;
+    background: color-alpha($color-primary, 8%);
+    color: $color-primary;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  // Code block
+  pre {
+    background: color-alpha($color-primary, 6%);
+    border: 1px solid color-alpha($color-primary, 15%);
+    border-radius: 6px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin-bottom: 16px;
+
+    code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      font-size: 14px;
+    }
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  // Horizontal rule
+  hr {
+    border: none;
+    border-top: 1px solid color-alpha($color-primary, 15%);
+    margin: 32px 0;
+  }
+
+  // Images
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 16px 0;
+  }
+
+  // Subscript / Superscript
+  sub { font-size: 12px; vertical-align: sub; }
+  sup { font-size: 12px; vertical-align: super; }
+}
+
