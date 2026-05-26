@@ -2,42 +2,41 @@ version: '3'
 
 services:
   payload:
-    image: node:20-alpine
+    image: node:22-alpine
     ports:
       - '3000:3000'
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app/
-    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
+    command: sh -c "corepack enable && corepack prepare pnpm@10 --activate && pnpm install && pnpm dev"
     depends_on:
-      - mongo
-      # - postgres
-    env_file:
-      - .env
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URI: postgresql://payload:payload@postgres:5432/payload
+      PAYLOAD_SECRET: your-secret-here
+      NODE_ENV: development
 
-  # Ensure your DATABASE_URL uses 'mongo' as the hostname ie. mongodb://mongo/my-db-name
-  mongo:
-    image: mongo:latest
-    ports:
-      - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
+  postgres:
+    image: postgres:17-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: payload
+      POSTGRES_DB: payload
     volumes:
-      - data:/data/db
+      - pg:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: "pg_isready -U payload -d payload"
+      interval: 5s
+      timeout: 5s
+      retries: 5
     logging:
       driver: none
 
-  # Uncomment the following to use postgres
-  # postgres:
-  #   restart: always
-  #   image: postgres:latest
-  #   volumes:
-  #     - pgdata:/var/lib/postgresql/data
-  #   ports:
-  #     - "5432:5432"
-
 volumes:
-  data:
-  # pgdata:
+  pg:
   node_modules:
