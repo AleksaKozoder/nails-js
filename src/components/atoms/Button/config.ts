@@ -1,4 +1,4 @@
-import { Block } from 'payload'
+import { Block, Field } from 'payload'
 import { iconFields } from '@/components/atoms/Icon/config'
 
 const variants = [
@@ -8,9 +8,7 @@ const variants = [
   { label: 'Outline', value: 'outline' },
 ]
 
-export const ButtonBlock: Block = {
-  slug: 'button',
-  fields: [
+export const buttonFields: Field[] = [
     {
       type: 'tabs',
       tabs: [
@@ -76,5 +74,9 @@ export const ButtonBlock: Block = {
         },
       ],
     },
-  ],
+  ]
+
+export const ButtonBlock: Block = {
+  slug: 'button',
+  fields: buttonFields,
 }
