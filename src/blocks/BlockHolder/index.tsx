@@ -85,7 +85,7 @@ export const BlockHolder: React.FC<BlockHolderProps> = (props) => {
     gridAlignItems = 'stretch',
     // content
     blocks,
-    variant,
+    variant = 'default',
   } = props
 
   let style: CSSProperties = {}

@@ -70,6 +70,7 @@ export interface Config {
     pages: Page;
     users: User;
     media: Media;
+    menus: Menu;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    menus: MenusSelect<false> | MenusSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -91,9 +93,13 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     colors: Color;
+    header: Header;
+    'site-settings': SiteSetting;
   };
   globalsSelect: {
     colors: ColorsSelect<false> | ColorsSelect<true>;
+    header: HeaderSelect<false> | HeaderSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1212,6 +1218,9 @@ export interface Page {
    * Social media share image.
    */
   seoImage?: (number | null) | Media;
+  /**
+   * Dozvoljena su mala slova, brojevi i crtice. Ako ostavljaš prazno, generisaće se automatski iz naslova.
+   */
   slug: string;
   updatedAt: string;
   createdAt: string;
@@ -1263,6 +1272,49 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "menus".
+ */
+export interface Menu {
+  id: number;
+  name: string;
+  items?:
+    | {
+        /**
+         * Select a page
+         */
+        page?: (number | null) | Page;
+        /**
+         * Optional — element ID on the page (without #)
+         */
+        anchor?: string | null;
+        /**
+         * Full URL (https://...)
+         */
+        url?: string | null;
+        label: string;
+        type?: ('internal' | 'external') | null;
+        newTab?: boolean | null;
+        children?:
+          | {
+              page?: (number | null) | Page;
+              anchor?: string | null;
+              url?: string | null;
+              label: string;
+              type?: ('internal' | 'external') | null;
+              newTab?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  orientation?: ('horizontal' | 'vertical') | null;
+  variant?: 'default' | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -1296,6 +1348,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'menus';
+        value: number | Menu;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -2224,6 +2280,39 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "menus_select".
+ */
+export interface MenusSelect<T extends boolean = true> {
+  name?: T;
+  items?:
+    | T
+    | {
+        page?: T;
+        anchor?: T;
+        url?: T;
+        label?: T;
+        type?: T;
+        newTab?: T;
+        children?:
+          | T
+          | {
+              page?: T;
+              anchor?: T;
+              url?: T;
+              label?: T;
+              type?: T;
+              newTab?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  orientation?: T;
+  variant?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -2284,6 +2373,98 @@ export interface Color {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
+export interface Header {
+  id: number;
+  /**
+   * Select which menu to use for main navigation
+   */
+  menu?: (number | null) | Menu;
+  cta: {
+    text: string;
+    linkType?: ('internal' | 'external') | null;
+    internalLink?: (number | null) | Page;
+    externalUrl?: string | null;
+    newTab?: boolean | null;
+    variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
+    hasIcon?: boolean | null;
+    iconType?: ('picker' | 'customSvg') | null;
+    icon?: string | null;
+    customSvg?: (number | null) | Media;
+    iconPosition?: ('left' | 'right') | null;
+  };
+  variant?: ('default' | 'transparent' | 'minimal') | null;
+  sticky?: ('none' | 'sticky' | 'sticky-up') | null;
+  width?: ('default' | 'wide' | 'full') | null;
+  /**
+   * Optional — custom ID attribute on the header element
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — additional CSS class
+   */
+  className?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  /**
+   * Used in browser tab, SEO fallback, and logo alt text
+   */
+  siteTitle: string;
+  /**
+   * Short description — used in default SEO if no meta description is set
+   */
+  tagline?: string | null;
+  /**
+   * Displayed in header — recommended SVG or PNG with transparency
+   */
+  logo?: (number | null) | Media;
+  /**
+   * Optional — used when header is on dark background
+   */
+  logoDark?: (number | null) | Media;
+  /**
+   * ICO, PNG ili SVG — preporučeno 32×32px ili 512×512px
+   */
+  favicon?: (number | null) | Media;
+  /**
+   * PNG, 180×180px — koristi se na iOS home screen
+   */
+  appleTouchIcon?: (number | null) | Media;
+  /**
+   * Fallback vrijednosti kada stranica nema custom SEO
+   */
+  defaultMeta?: {
+    /**
+     * Ako je prazno, koristi Site Title
+     */
+    title?: string | null;
+    /**
+     * Preporučeno: 120–160 karaktera
+     */
+    description?: string | null;
+    /**
+     * Za social sharing — preporučeno 1200×630px
+     */
+    ogImage?: (number | null) | Media;
+  };
+  /**
+   * Koristi %s za naziv stranice, %site za naziv sajta
+   */
+  titleTemplate?: string | null;
+  robots?: ('index, follow' | 'noindex, nofollow' | 'index, nofollow' | 'noindex, follow') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "colors_select".
  */
 export interface ColorsSelect<T extends boolean = true> {
@@ -2295,6 +2476,60 @@ export interface ColorsSelect<T extends boolean = true> {
         hex?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  menu?: T;
+  cta?:
+    | T
+    | {
+        text?: T;
+        linkType?: T;
+        internalLink?: T;
+        externalUrl?: T;
+        newTab?: T;
+        variant?: T;
+        hasIcon?: T;
+        iconType?: T;
+        icon?: T;
+        customSvg?: T;
+        iconPosition?: T;
+      };
+  variant?: T;
+  sticky?: T;
+  width?: T;
+  htmlId?: T;
+  className?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  siteTitle?: T;
+  tagline?: T;
+  logo?: T;
+  logoDark?: T;
+  favicon?: T;
+  appleTouchIcon?: T;
+  defaultMeta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+      };
+  titleTemplate?: T;
+  robots?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

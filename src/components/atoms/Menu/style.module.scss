@@ -1,0 +1,118 @@
+@import "@/scss/mixins.scss";
+@import "@/scss/variables.scss";
+
+.menu {
+  width: 100%;
+
+  &--horizontal {
+    .menu__list {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .menu__dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid color-alpha($color-primary, 12%);
+      border-radius: 6px;
+      box-shadow: 0 8px 24px color-alpha($color-primary, 10%);
+      padding: 6px;
+      z-index: 100;
+    }
+  }
+
+  &--vertical {
+    .menu__list {
+      flex-direction: column;
+    }
+
+    .menu__dropdown {
+      position: static;
+      padding-left: 16px;
+      border-left: 2px solid color-alpha($color-primary, 15%);
+      margin-top: 4px;
+    }
+  }
+}
+
+.menu__list {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu__item {
+  position: relative;
+}
+
+.menu__item_inner {
+  display: flex;
+  align-items: center;
+}
+
+.menu__link {
+  display: block;
+  padding: 8px 12px;
+  color: $color-primary;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: color-alpha($color-primary, 8%);
+    color: $color-secondary;
+  }
+}
+
+.menu__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 4px;
+  color: $color-primary;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: color-alpha($color-primary, 8%);
+  }
+}
+
+.menu__toggle_icon {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+
+  .menu__item--open & {
+    transform: rotate(-135deg);
+  }
+}
+
+// Dropdown
+.menu__dropdown {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+
+  &--open {
+    grid-template-rows: 1fr;
+  }
+
+  > * {
+    overflow: hidden;
+  }
+}
