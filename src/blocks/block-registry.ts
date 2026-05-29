@@ -7,12 +7,14 @@ import { Heading } from '@/components/atoms/Heading'
 import {Image} from '@/components/atoms/Image'
 import {Button} from '@/components/atoms/Button'
 import {AccordionBlock} from '@/blocks/Accordion'
+import { Menu } from '@/components/atoms/Menu'
 
 const TabsBlock = React.lazy(() => import('@/blocks/Tabs').then((m) => ({ default: m.TabsBlock })))
 
 
 export const blockComponents: { [key: string]: React.FC<any> } = {
   section: Section,
+  menu: Menu,
   slider: Slider,
   heading: Heading,
   image: Image,

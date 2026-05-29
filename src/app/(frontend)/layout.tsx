@@ -18,7 +18,7 @@ async function getSiteSettings(): Promise<SiteSetting> {
 
 async function getHeader(): Promise<PayloadHeader> {
   const payload = await getPayload({ config })
-  return payload.findGlobal({ slug: 'header', depth: 2 })
+  return payload.findGlobal({ slug: 'header', depth: 10 })
 }
 
 export const metadata = {
@@ -37,18 +37,6 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   const cssVariables = colors.map(({ value, hex }) => `--color-${value}: ${hex};`).join('\n')
 
-  const logoMedia =
-    siteSettings.logo && typeof siteSettings.logo === 'object' ? (siteSettings.logo as Media) : null
-
-  const logo = logoMedia
-    ? {
-        url: logoMedia.url!,
-        alt: logoMedia.alt || siteSettings.siteTitle || 'Logo',
-        width: logoMedia.width ?? undefined,
-        height: logoMedia.height ?? undefined,
-      }
-    : undefined
-
   const faviconUrl =
     siteSettings.favicon && typeof siteSettings.favicon === 'object'
       ? (siteSettings.favicon as Media).url
@@ -66,15 +54,13 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       </head>
       <body>
         <Header
-          menu={header.menu}
-          cta={header.cta}
+          blocks={header.blocks ?? []}
           variant={header.variant ?? 'default'}
           sticky={header.sticky ?? 'none'}
-          width={header.width ?? 'default'}
           htmlId={header.htmlId ?? undefined}
-          className={header.className ?? undefined}
-          logo={logo}
-          siteTitle={siteSettings.siteTitle}
+          containerType={header.containerType ?? undefined}
+          paddingTop={header.paddingTop ?? undefined}
+          paddingBottom={header.paddingBottom ?? undefined}
         />
         <main>{children}</main>
       </body>

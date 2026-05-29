@@ -16,7 +16,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks, container 
   if (!blocks || !Array.isArray(blocks)) {
     return null
   }
-
+console.log('blocks: ', blocks, container)
   // Definišemo unutrašnji sadržaj (niz blokova)
   const content = (
     <>

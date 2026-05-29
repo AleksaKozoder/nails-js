@@ -1,6 +1,5 @@
 // src/blocks/Section/config.ts
 import { Block } from 'payload'
-import { SliderBlock } from '@/blocks/Slider/config'
 import { BlockHolder } from '@/blocks/BlockHolder/config'
 
 const variants = [
@@ -19,7 +18,7 @@ export const SectionBlock: Block = {
             {
               name: 'blocks',
               type: 'blocks',
-              blocks: [BlockHolder, SliderBlock],
+              blocks: [BlockHolder],
             },
           ],
         },
@@ -37,7 +36,7 @@ export const SectionBlock: Block = {
                       name: 'widthType',
                       type: 'select',
                       defaultValue: 'boxed',
-                      admin: { width: '33%' },
+                      admin: { width: '25%' },
                       options: [
                         { label: 'Full Width', value: 'fullWidth' },
                         { label: 'Boxed', value: 'boxed' },
@@ -49,7 +48,7 @@ export const SectionBlock: Block = {
                       defaultValue: 'container',
                       admin: {
                         condition: (_, siblingData) => siblingData?.widthType === 'boxed',
-                        width: '33%',
+                        width: '25%',
                       },
                       options: [
                         { label: 'Container XL', value: 'container-xl' },
@@ -61,9 +60,18 @@ export const SectionBlock: Block = {
                     {
                       name: 'variant',
                       type: 'select',
-                      admin: { width: '33%' },
+                      admin: { width: '25%' },
                       defaultValue: 'default',
                       options: variants,
+                    },
+                    {
+                      name: 'htmlId',
+                      type: 'text',
+                      label: 'HTML ID',
+                      admin: {
+                        width: '25%',
+                        description: 'Optional — custom ID / anchor',
+                      },
                     },
                   ],
                 },

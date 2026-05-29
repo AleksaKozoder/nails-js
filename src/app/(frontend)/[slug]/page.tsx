@@ -24,8 +24,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <main>
       <BlockRenderer blocks={page.layout} />
-    </main>
   )
 }

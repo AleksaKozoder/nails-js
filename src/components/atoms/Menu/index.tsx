@@ -16,6 +16,7 @@ type MenuItem = {
 
 type MenuProps = {
   items?: MenuItem[] | null
+  menu?: { items?: MenuItem[] | null } | null
   orientation?: 'horizontal' | 'vertical'
   variant?: string
   className?: string
@@ -82,13 +83,14 @@ const MenuItemComponent: React.FC<{ item: MenuItem; depth?: number }> = ({ item,
 }
 
 export const Menu: React.FC<MenuProps> = ({
-  items,
+  items: itemsProp,
+  menu,
   orientation = 'horizontal',
   variant = 'default',
   className,
 }) => {
+  const items = itemsProp ?? menu?.items
   if (!items?.length) return null
-
   const classes = [s.menu, s[`menu--${orientation}`], s[`menu--${variant}`], className]
     .filter(Boolean)
     .join(' ')

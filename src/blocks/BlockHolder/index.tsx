@@ -11,6 +11,7 @@ type BlockHolderProps = {
   layout?: 'block' | 'flex' | 'grid'
   gap?: number | null
   variant?: string
+  htmlId?: string
 
   // Flex
   flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
@@ -75,6 +76,7 @@ export const BlockHolder: React.FC<BlockHolderProps> = (props) => {
   const {
     layout = 'block',
     gap = 20,
+    htmlId,
     // flex
     flexDirection = 'row',
     flexJustify = 'start',
@@ -114,7 +116,7 @@ export const BlockHolder: React.FC<BlockHolderProps> = (props) => {
     .join(' ')
 
   return (
-    <div style={style} className={blockClasses}>
+    <div style={style} className={blockClasses} id={htmlId || undefined}>
       <BlockRenderer blocks={blocks ?? []} />
     </div>
   )

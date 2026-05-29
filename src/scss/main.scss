@@ -1,6 +1,8 @@
 @import "./mixins";
 @import "./variables";
 
+$container-w-extension: calc($container-inline-padding * 2);
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -21,20 +23,21 @@ img {
 
 .container {
   padding-inline: $container-inline-padding;
-  max-width: calc(1200px + $container-inline-padding);
+  max-width: calc(1280px + $container-w-extension);
+  width: 100%;
   margin: 0 auto;
   position: relative;
   height: 100%;
 
   &-xl {
-    max-width: calc(1600px + $container-inline-padding);
+    max-width: calc(1600px + $container-w-extension);
   }
 
   &-l {
-    max-width: calc(1440px + $container-inline-padding);
+    max-width: calc(1440px + $container-w-extension);
   }
 
   &-xs {
-    max-width: calc(768px + $container-inline-padding);
+    max-width: calc(768px + $container-w-extension);
   }
 }

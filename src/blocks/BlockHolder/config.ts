@@ -1,4 +1,4 @@
-import { Block } from 'payload'
+import { Block, Field } from 'payload'
 import { ImageBlock } from '@/components/atoms/Image/config'
 import { ButtonBlock } from '@/components/atoms/Button/config'
 import { HeadingBlock } from '@/components/atoms/Heading/config'
@@ -6,6 +6,7 @@ import { RichTextBlock } from '@/components/atoms/RichText/config'
 import { TabsBlock } from '@/blocks/Tabs/config'
 import { SliderBlock } from '@/blocks/Slider/config'
 import { AccordionBlock } from '@/blocks/Accordion/config'
+import { MenuBlock } from '@/components/atoms/Menu/config'
 
 const alignOptions = [
   { label: 'Start', value: 'start' },
@@ -42,13 +43,14 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                 type: 'blocks',
                 blocks: [
                   ...(canNest ? [createBlockHolder(depth + 1, maxDepth)] : []),
+                  MenuBlock,
                   HeadingBlock,
                   RichTextBlock,
                   ImageBlock,
                   ButtonBlock,
                   TabsBlock,
                   SliderBlock,
-                  AccordionBlock
+                  AccordionBlock,
                 ],
               },
             ],
@@ -63,7 +65,7 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     name: 'layout',
                     type: 'select',
                     defaultValue: 'block',
-                    admin: { width: '33%' },
+                    admin: { width: '25%' },
                     options: [
                       { label: 'Block', value: 'block' },
                       { label: 'Flex', value: 'flex' },
@@ -76,16 +78,25 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     type: 'number',
                     defaultValue: 20,
                     admin: {
-                      width: '33%',
+                      width: '25%',
                       condition: (_, s) => s?.layout === 'flex' || s?.layout === 'grid',
                     },
                   },
                   {
                     name: 'variant',
                     type: 'select',
-                    admin: { width: '33%' },
+                    admin: { width: '25%' },
                     defaultValue: 'default',
                     options: [{ label: 'Default', value: 'default' }],
+                  },
+                  {
+                    name: 'htmlId',
+                    type: 'text',
+                    label: 'HTML ID',
+                    admin: {
+                      width: '25%',
+                      description: 'Optional — custom ID / anchor',
+                    },
                   },
                 ],
               },
@@ -271,5 +282,23 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
     ],
   }
 }
+
+export const blockHolderFields: Field[] = [
+  {
+    name: 'blocks',
+    type: 'blocks',
+    blocks: [
+      createBlockHolder(0, 3),
+      MenuBlock,
+      HeadingBlock,
+      RichTextBlock,
+      ImageBlock,
+      ButtonBlock,
+      TabsBlock,
+      SliderBlock,
+      AccordionBlock,
+    ],
+  },
+]
 
 export const BlockHolder = createBlockHolder(0, 3)

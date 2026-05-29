@@ -15,6 +15,7 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
     containerType,
     heightType,
     variant,
+    htmlId,
     overlay,
   } = settings
 
@@ -41,6 +42,7 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
         paddingTop: `${paddingTop}px`,
         paddingBottom: `${paddingBottom}px`,
       }}
+      id={htmlId || undefined}
     >
       {backgroundType === 'image' && bgImage && (
         <Image src={bgImage.url} alt="" fill className={s['section__bgImage']} />

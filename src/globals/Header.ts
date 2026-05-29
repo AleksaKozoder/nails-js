@@ -1,5 +1,5 @@
 import { GlobalConfig } from 'payload'
-import { buttonFields } from '@/components/atoms/Button/config'
+import { blockHolderFields } from '@/blocks/BlockHolder/config'
 
 export const Header: GlobalConfig = {
   slug: 'header',
@@ -11,22 +11,7 @@ export const Header: GlobalConfig = {
       tabs: [
         {
           label: 'Content',
-          fields: [
-            {
-              name: 'menu',
-              type: 'relationship',
-              relationTo: 'menus',
-              admin: {
-                description: 'Select which menu to use for main navigation',
-              },
-            },
-            {
-              name: 'cta',
-              type: 'group',
-              label: 'CTA Button',
-              fields: buttonFields,
-            },
-          ],
+          fields: blockHolderFields,
         },
         {
           label: 'Settings',
@@ -57,14 +42,17 @@ export const Header: GlobalConfig = {
                   ],
                 },
                 {
-                  name: 'width',
+                  name: 'containerType',
                   type: 'select',
-                  defaultValue: 'default',
-                  admin: { width: '33%' },
+                  defaultValue: 'container',
+                  admin: {
+                    width: '33%',
+                  },
                   options: [
-                    { label: 'Default', value: 'default' },
-                    { label: 'Wide', value: 'wide' },
-                    { label: 'Full', value: 'full' },
+                    { label: 'Container XL', value: 'container-xl' },
+                    { label: 'Container L', value: 'container-lg' },
+                    { label: 'Container', value: 'container' },
+                    { label: 'Container XS', value: 'container-xs' },
                   ],
                 },
               ],
@@ -82,13 +70,16 @@ export const Header: GlobalConfig = {
                   },
                 },
                 {
-                  name: 'className',
-                  type: 'text',
-                  label: 'CSS Class',
-                  admin: {
-                    width: '50%',
-                    description: 'Optional — additional CSS class',
-                  },
+                  name: 'paddingTop',
+                  type: 'number',
+                  defaultValue: 10,
+                  admin: { width: '25%' },
+                },
+                {
+                  name: 'paddingBottom',
+                  type: 'number',
+                  defaultValue: 10,
+                  admin: { width: '25%' },
                 },
               ],
             },
