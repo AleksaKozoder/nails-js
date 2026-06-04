@@ -192,8 +192,22 @@ export interface Page {
                                           }
                                         | {
                                             image?: (number | null) | Media;
+                                            linkType?: ('none' | 'internal' | 'external') | null;
+                                            internalLink?: (number | null) | Page;
+                                            externalUrl?: string | null;
+                                            newTab?: boolean | null;
                                             aspectRatio?:
-                                              | ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom')
+                                              | (
+                                                  | 'auto'
+                                                  | '1/1'
+                                                  | '3/2'
+                                                  | '4/3'
+                                                  | '16/9'
+                                                  | '2/3'
+                                                  | '3/4'
+                                                  | '9/16'
+                                                  | 'custom'
+                                                )
                                               | null;
                                             /**
                                              * Format: 16/9, 4/3, 1/1...
@@ -275,13 +289,18 @@ export interface Page {
                                                           }
                                                         | {
                                                             image?: (number | null) | Media;
+                                                            linkType?: ('none' | 'internal' | 'external') | null;
+                                                            internalLink?: (number | null) | Page;
+                                                            externalUrl?: string | null;
+                                                            newTab?: boolean | null;
                                                             aspectRatio?:
                                                               | (
                                                                   | 'auto'
                                                                   | '1/1'
+                                                                  | '3/2'
                                                                   | '4/3'
                                                                   | '16/9'
-                                                                  | '3/2'
+                                                                  | '2/3'
                                                                   | '3/4'
                                                                   | '9/16'
                                                                   | 'custom'
@@ -407,13 +426,18 @@ export interface Page {
                                                           }
                                                         | {
                                                             image?: (number | null) | Media;
+                                                            linkType?: ('none' | 'internal' | 'external') | null;
+                                                            internalLink?: (number | null) | Page;
+                                                            externalUrl?: string | null;
+                                                            newTab?: boolean | null;
                                                             aspectRatio?:
                                                               | (
                                                                   | 'auto'
                                                                   | '1/1'
+                                                                  | '3/2'
                                                                   | '4/3'
                                                                   | '16/9'
-                                                                  | '3/2'
+                                                                  | '2/3'
                                                                   | '3/4'
                                                                   | '9/16'
                                                                   | 'custom'
@@ -559,8 +583,12 @@ export interface Page {
                                 }
                               | {
                                   image?: (number | null) | Media;
+                                  linkType?: ('none' | 'internal' | 'external') | null;
+                                  internalLink?: (number | null) | Page;
+                                  externalUrl?: string | null;
+                                  newTab?: boolean | null;
                                   aspectRatio?:
-                                    | ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom')
+                                    | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
                                     | null;
                                   /**
                                    * Format: 16/9, 4/3, 1/1...
@@ -640,13 +668,18 @@ export interface Page {
                                                 }
                                               | {
                                                   image?: (number | null) | Media;
+                                                  linkType?: ('none' | 'internal' | 'external') | null;
+                                                  internalLink?: (number | null) | Page;
+                                                  externalUrl?: string | null;
+                                                  newTab?: boolean | null;
                                                   aspectRatio?:
                                                     | (
                                                         | 'auto'
                                                         | '1/1'
+                                                        | '3/2'
                                                         | '4/3'
                                                         | '16/9'
-                                                        | '3/2'
+                                                        | '2/3'
                                                         | '3/4'
                                                         | '9/16'
                                                         | 'custom'
@@ -768,13 +801,18 @@ export interface Page {
                                                 }
                                               | {
                                                   image?: (number | null) | Media;
+                                                  linkType?: ('none' | 'internal' | 'external') | null;
+                                                  internalLink?: (number | null) | Page;
+                                                  externalUrl?: string | null;
+                                                  newTab?: boolean | null;
                                                   aspectRatio?:
                                                     | (
                                                         | 'auto'
                                                         | '1/1'
+                                                        | '3/2'
                                                         | '4/3'
                                                         | '16/9'
-                                                        | '3/2'
+                                                        | '2/3'
                                                         | '3/4'
                                                         | '9/16'
                                                         | 'custom'
@@ -908,7 +946,13 @@ export interface Page {
                       }
                     | {
                         image?: (number | null) | Media;
-                        aspectRatio?: ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom') | null;
+                        linkType?: ('none' | 'internal' | 'external') | null;
+                        internalLink?: (number | null) | Page;
+                        externalUrl?: string | null;
+                        newTab?: boolean | null;
+                        aspectRatio?:
+                          | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
+                          | null;
                         /**
                          * Format: 16/9, 4/3, 1/1...
                          */
@@ -980,8 +1024,22 @@ export interface Page {
                                       }
                                     | {
                                         image?: (number | null) | Media;
+                                        linkType?: ('none' | 'internal' | 'external') | null;
+                                        internalLink?: (number | null) | Page;
+                                        externalUrl?: string | null;
+                                        newTab?: boolean | null;
                                         aspectRatio?:
-                                          | ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom')
+                                          | (
+                                              | 'auto'
+                                              | '1/1'
+                                              | '3/2'
+                                              | '4/3'
+                                              | '16/9'
+                                              | '2/3'
+                                              | '3/4'
+                                              | '9/16'
+                                              | 'custom'
+                                            )
                                           | null;
                                         /**
                                          * Format: 16/9, 4/3, 1/1...
@@ -1092,8 +1150,22 @@ export interface Page {
                                       }
                                     | {
                                         image?: (number | null) | Media;
+                                        linkType?: ('none' | 'internal' | 'external') | null;
+                                        internalLink?: (number | null) | Page;
+                                        externalUrl?: string | null;
+                                        newTab?: boolean | null;
                                         aspectRatio?:
-                                          | ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom')
+                                          | (
+                                              | 'auto'
+                                              | '1/1'
+                                              | '3/2'
+                                              | '4/3'
+                                              | '16/9'
+                                              | '2/3'
+                                              | '3/4'
+                                              | '9/16'
+                                              | 'custom'
+                                            )
                                           | null;
                                         /**
                                          * Format: 16/9, 4/3, 1/1...
@@ -1463,6 +1535,10 @@ export interface PagesSelect<T extends boolean = true> {
                                                           | T
                                                           | {
                                                               image?: T;
+                                                              linkType?: T;
+                                                              internalLink?: T;
+                                                              externalUrl?: T;
+                                                              newTab?: T;
                                                               aspectRatio?: T;
                                                               customAspectRatio?: T;
                                                               variant?: T;
@@ -1525,6 +1601,10 @@ export interface PagesSelect<T extends boolean = true> {
                                                                             | T
                                                                             | {
                                                                                 image?: T;
+                                                                                linkType?: T;
+                                                                                internalLink?: T;
+                                                                                externalUrl?: T;
+                                                                                newTab?: T;
                                                                                 aspectRatio?: T;
                                                                                 customAspectRatio?: T;
                                                                                 variant?: T;
@@ -1622,6 +1702,10 @@ export interface PagesSelect<T extends boolean = true> {
                                                                             | T
                                                                             | {
                                                                                 image?: T;
+                                                                                linkType?: T;
+                                                                                internalLink?: T;
+                                                                                externalUrl?: T;
+                                                                                newTab?: T;
                                                                                 aspectRatio?: T;
                                                                                 customAspectRatio?: T;
                                                                                 variant?: T;
@@ -1725,6 +1809,10 @@ export interface PagesSelect<T extends boolean = true> {
                                               | T
                                               | {
                                                   image?: T;
+                                                  linkType?: T;
+                                                  internalLink?: T;
+                                                  externalUrl?: T;
+                                                  newTab?: T;
                                                   aspectRatio?: T;
                                                   customAspectRatio?: T;
                                                   variant?: T;
@@ -1787,6 +1875,10 @@ export interface PagesSelect<T extends boolean = true> {
                                                                 | T
                                                                 | {
                                                                     image?: T;
+                                                                    linkType?: T;
+                                                                    internalLink?: T;
+                                                                    externalUrl?: T;
+                                                                    newTab?: T;
                                                                     aspectRatio?: T;
                                                                     customAspectRatio?: T;
                                                                     variant?: T;
@@ -1884,6 +1976,10 @@ export interface PagesSelect<T extends boolean = true> {
                                                                 | T
                                                                 | {
                                                                     image?: T;
+                                                                    linkType?: T;
+                                                                    internalLink?: T;
+                                                                    externalUrl?: T;
+                                                                    newTab?: T;
                                                                     aspectRatio?: T;
                                                                     customAspectRatio?: T;
                                                                     variant?: T;
@@ -1987,6 +2083,10 @@ export interface PagesSelect<T extends boolean = true> {
                                   | T
                                   | {
                                       image?: T;
+                                      linkType?: T;
+                                      internalLink?: T;
+                                      externalUrl?: T;
+                                      newTab?: T;
                                       aspectRatio?: T;
                                       customAspectRatio?: T;
                                       variant?: T;
@@ -2049,6 +2149,10 @@ export interface PagesSelect<T extends boolean = true> {
                                                     | T
                                                     | {
                                                         image?: T;
+                                                        linkType?: T;
+                                                        internalLink?: T;
+                                                        externalUrl?: T;
+                                                        newTab?: T;
                                                         aspectRatio?: T;
                                                         customAspectRatio?: T;
                                                         variant?: T;
@@ -2146,6 +2250,10 @@ export interface PagesSelect<T extends boolean = true> {
                                                     | T
                                                     | {
                                                         image?: T;
+                                                        linkType?: T;
+                                                        internalLink?: T;
+                                                        externalUrl?: T;
+                                                        newTab?: T;
                                                         aspectRatio?: T;
                                                         customAspectRatio?: T;
                                                         variant?: T;
@@ -2446,8 +2554,22 @@ export interface Header {
                                         }
                                       | {
                                           image?: (number | null) | Media;
+                                          linkType?: ('none' | 'internal' | 'external') | null;
+                                          internalLink?: (number | null) | Page;
+                                          externalUrl?: string | null;
+                                          newTab?: boolean | null;
                                           aspectRatio?:
-                                            | ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom')
+                                            | (
+                                                | 'auto'
+                                                | '1/1'
+                                                | '3/2'
+                                                | '4/3'
+                                                | '16/9'
+                                                | '2/3'
+                                                | '3/4'
+                                                | '9/16'
+                                                | 'custom'
+                                              )
                                             | null;
                                           /**
                                            * Format: 16/9, 4/3, 1/1...
@@ -2527,13 +2649,18 @@ export interface Header {
                                                         }
                                                       | {
                                                           image?: (number | null) | Media;
+                                                          linkType?: ('none' | 'internal' | 'external') | null;
+                                                          internalLink?: (number | null) | Page;
+                                                          externalUrl?: string | null;
+                                                          newTab?: boolean | null;
                                                           aspectRatio?:
                                                             | (
                                                                 | 'auto'
                                                                 | '1/1'
+                                                                | '3/2'
                                                                 | '4/3'
                                                                 | '16/9'
-                                                                | '3/2'
+                                                                | '2/3'
                                                                 | '3/4'
                                                                 | '9/16'
                                                                 | 'custom'
@@ -2657,13 +2784,18 @@ export interface Header {
                                                         }
                                                       | {
                                                           image?: (number | null) | Media;
+                                                          linkType?: ('none' | 'internal' | 'external') | null;
+                                                          internalLink?: (number | null) | Page;
+                                                          externalUrl?: string | null;
+                                                          newTab?: boolean | null;
                                                           aspectRatio?:
                                                             | (
                                                                 | 'auto'
                                                                 | '1/1'
+                                                                | '3/2'
                                                                 | '4/3'
                                                                 | '16/9'
-                                                                | '3/2'
+                                                                | '2/3'
                                                                 | '3/4'
                                                                 | '9/16'
                                                                 | 'custom'
@@ -2809,8 +2941,12 @@ export interface Header {
                               }
                             | {
                                 image?: (number | null) | Media;
+                                linkType?: ('none' | 'internal' | 'external') | null;
+                                internalLink?: (number | null) | Page;
+                                externalUrl?: string | null;
+                                newTab?: boolean | null;
                                 aspectRatio?:
-                                  | ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom')
+                                  | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
                                   | null;
                                 /**
                                  * Format: 16/9, 4/3, 1/1...
@@ -2890,13 +3026,18 @@ export interface Header {
                                               }
                                             | {
                                                 image?: (number | null) | Media;
+                                                linkType?: ('none' | 'internal' | 'external') | null;
+                                                internalLink?: (number | null) | Page;
+                                                externalUrl?: string | null;
+                                                newTab?: boolean | null;
                                                 aspectRatio?:
                                                   | (
                                                       | 'auto'
                                                       | '1/1'
+                                                      | '3/2'
                                                       | '4/3'
                                                       | '16/9'
-                                                      | '3/2'
+                                                      | '2/3'
                                                       | '3/4'
                                                       | '9/16'
                                                       | 'custom'
@@ -3018,13 +3159,18 @@ export interface Header {
                                               }
                                             | {
                                                 image?: (number | null) | Media;
+                                                linkType?: ('none' | 'internal' | 'external') | null;
+                                                internalLink?: (number | null) | Page;
+                                                externalUrl?: string | null;
+                                                newTab?: boolean | null;
                                                 aspectRatio?:
                                                   | (
                                                       | 'auto'
                                                       | '1/1'
+                                                      | '3/2'
                                                       | '4/3'
                                                       | '16/9'
-                                                      | '3/2'
+                                                      | '2/3'
                                                       | '3/4'
                                                       | '9/16'
                                                       | 'custom'
@@ -3158,7 +3304,13 @@ export interface Header {
                     }
                   | {
                       image?: (number | null) | Media;
-                      aspectRatio?: ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom') | null;
+                      linkType?: ('none' | 'internal' | 'external') | null;
+                      internalLink?: (number | null) | Page;
+                      externalUrl?: string | null;
+                      newTab?: boolean | null;
+                      aspectRatio?:
+                        | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
+                        | null;
                       /**
                        * Format: 16/9, 4/3, 1/1...
                        */
@@ -3230,8 +3382,12 @@ export interface Header {
                                     }
                                   | {
                                       image?: (number | null) | Media;
+                                      linkType?: ('none' | 'internal' | 'external') | null;
+                                      internalLink?: (number | null) | Page;
+                                      externalUrl?: string | null;
+                                      newTab?: boolean | null;
                                       aspectRatio?:
-                                        | ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom')
+                                        | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
                                         | null;
                                       /**
                                        * Format: 16/9, 4/3, 1/1...
@@ -3342,8 +3498,12 @@ export interface Header {
                                     }
                                   | {
                                       image?: (number | null) | Media;
+                                      linkType?: ('none' | 'internal' | 'external') | null;
+                                      internalLink?: (number | null) | Page;
+                                      externalUrl?: string | null;
+                                      newTab?: boolean | null;
                                       aspectRatio?:
-                                        | ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom')
+                                        | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
                                         | null;
                                       /**
                                        * Format: 16/9, 4/3, 1/1...
@@ -3473,7 +3633,11 @@ export interface Header {
           }
         | {
             image?: (number | null) | Media;
-            aspectRatio?: ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom') | null;
+            linkType?: ('none' | 'internal' | 'external') | null;
+            internalLink?: (number | null) | Page;
+            externalUrl?: string | null;
+            newTab?: boolean | null;
+            aspectRatio?: ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom') | null;
             /**
              * Format: 16/9, 4/3, 1/1...
              */
@@ -3545,7 +3709,13 @@ export interface Header {
                           }
                         | {
                             image?: (number | null) | Media;
-                            aspectRatio?: ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom') | null;
+                            linkType?: ('none' | 'internal' | 'external') | null;
+                            internalLink?: (number | null) | Page;
+                            externalUrl?: string | null;
+                            newTab?: boolean | null;
+                            aspectRatio?:
+                              | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
+                              | null;
                             /**
                              * Format: 16/9, 4/3, 1/1...
                              */
@@ -3655,7 +3825,13 @@ export interface Header {
                           }
                         | {
                             image?: (number | null) | Media;
-                            aspectRatio?: ('auto' | '1/1' | '4/3' | '16/9' | '3/2' | '3/4' | '9/16' | 'custom') | null;
+                            linkType?: ('none' | 'internal' | 'external') | null;
+                            internalLink?: (number | null) | Page;
+                            externalUrl?: string | null;
+                            newTab?: boolean | null;
+                            aspectRatio?:
+                              | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
+                              | null;
                             /**
                              * Format: 16/9, 4/3, 1/1...
                              */
@@ -3851,6 +4027,10 @@ export interface HeaderSelect<T extends boolean = true> {
                                               | T
                                               | {
                                                   image?: T;
+                                                  linkType?: T;
+                                                  internalLink?: T;
+                                                  externalUrl?: T;
+                                                  newTab?: T;
                                                   aspectRatio?: T;
                                                   customAspectRatio?: T;
                                                   variant?: T;
@@ -3913,6 +4093,10 @@ export interface HeaderSelect<T extends boolean = true> {
                                                                 | T
                                                                 | {
                                                                     image?: T;
+                                                                    linkType?: T;
+                                                                    internalLink?: T;
+                                                                    externalUrl?: T;
+                                                                    newTab?: T;
                                                                     aspectRatio?: T;
                                                                     customAspectRatio?: T;
                                                                     variant?: T;
@@ -4010,6 +4194,10 @@ export interface HeaderSelect<T extends boolean = true> {
                                                                 | T
                                                                 | {
                                                                     image?: T;
+                                                                    linkType?: T;
+                                                                    internalLink?: T;
+                                                                    externalUrl?: T;
+                                                                    newTab?: T;
                                                                     aspectRatio?: T;
                                                                     customAspectRatio?: T;
                                                                     variant?: T;
@@ -4113,6 +4301,10 @@ export interface HeaderSelect<T extends boolean = true> {
                                   | T
                                   | {
                                       image?: T;
+                                      linkType?: T;
+                                      internalLink?: T;
+                                      externalUrl?: T;
+                                      newTab?: T;
                                       aspectRatio?: T;
                                       customAspectRatio?: T;
                                       variant?: T;
@@ -4175,6 +4367,10 @@ export interface HeaderSelect<T extends boolean = true> {
                                                     | T
                                                     | {
                                                         image?: T;
+                                                        linkType?: T;
+                                                        internalLink?: T;
+                                                        externalUrl?: T;
+                                                        newTab?: T;
                                                         aspectRatio?: T;
                                                         customAspectRatio?: T;
                                                         variant?: T;
@@ -4272,6 +4468,10 @@ export interface HeaderSelect<T extends boolean = true> {
                                                     | T
                                                     | {
                                                         image?: T;
+                                                        linkType?: T;
+                                                        internalLink?: T;
+                                                        externalUrl?: T;
+                                                        newTab?: T;
                                                         aspectRatio?: T;
                                                         customAspectRatio?: T;
                                                         variant?: T;
@@ -4375,6 +4575,10 @@ export interface HeaderSelect<T extends boolean = true> {
                       | T
                       | {
                           image?: T;
+                          linkType?: T;
+                          internalLink?: T;
+                          externalUrl?: T;
+                          newTab?: T;
                           aspectRatio?: T;
                           customAspectRatio?: T;
                           variant?: T;
@@ -4437,6 +4641,10 @@ export interface HeaderSelect<T extends boolean = true> {
                                         | T
                                         | {
                                             image?: T;
+                                            linkType?: T;
+                                            internalLink?: T;
+                                            externalUrl?: T;
+                                            newTab?: T;
                                             aspectRatio?: T;
                                             customAspectRatio?: T;
                                             variant?: T;
@@ -4534,6 +4742,10 @@ export interface HeaderSelect<T extends boolean = true> {
                                         | T
                                         | {
                                             image?: T;
+                                            linkType?: T;
+                                            internalLink?: T;
+                                            externalUrl?: T;
+                                            newTab?: T;
                                             aspectRatio?: T;
                                             customAspectRatio?: T;
                                             variant?: T;
@@ -4637,6 +4849,10 @@ export interface HeaderSelect<T extends boolean = true> {
           | T
           | {
               image?: T;
+              linkType?: T;
+              internalLink?: T;
+              externalUrl?: T;
+              newTab?: T;
               aspectRatio?: T;
               customAspectRatio?: T;
               variant?: T;
@@ -4699,6 +4915,10 @@ export interface HeaderSelect<T extends boolean = true> {
                             | T
                             | {
                                 image?: T;
+                                linkType?: T;
+                                internalLink?: T;
+                                externalUrl?: T;
+                                newTab?: T;
                                 aspectRatio?: T;
                                 customAspectRatio?: T;
                                 variant?: T;
@@ -4796,6 +5016,10 @@ export interface HeaderSelect<T extends boolean = true> {
                             | T
                             | {
                                 image?: T;
+                                linkType?: T;
+                                internalLink?: T;
+                                externalUrl?: T;
+                                newTab?: T;
                                 aspectRatio?: T;
                                 customAspectRatio?: T;
                                 variant?: T;

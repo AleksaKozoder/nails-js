@@ -2,10 +2,26 @@
   display: block;
   position: relative;
   width: 100%;
+
+  img {
+    transition: transform 0.2s ease;
+  }
 }
 
 .overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
+}
+
+.link {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+  }
 }

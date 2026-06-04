@@ -22,6 +22,47 @@ export const ImageBlock: Block = {
           label: 'Settings',
           fields: [
             {
+              name: 'linkType',
+              type: 'radio',
+              label: 'Link Type',
+              defaultValue: 'none',
+              options: [
+                { label: 'None', value: 'none' },
+                { label: 'Internal', value: 'internal' },
+                { label: 'External', value: 'external' },
+              ],
+              admin: {
+                layout: 'horizontal',
+              },
+            },
+            {
+              name: 'internalLink',
+              type: 'relationship',
+              label: 'Internal Page',
+              relationTo: 'pages',
+              admin: {
+                condition: (_, siblingData) => siblingData?.linkType === 'internal',
+              },
+            },
+            {
+              name: 'externalUrl',
+              type: 'text',
+              label: 'External URL',
+              admin: {
+                condition: (_, siblingData) => siblingData?.linkType === 'external',
+              },
+            },
+            {
+              name: 'newTab',
+              type: 'checkbox',
+              label: 'Open in new tab',
+              defaultValue: false,
+              admin: {
+                condition: (_, siblingData) =>
+                  siblingData?.linkType === 'internal' || siblingData?.linkType === 'external',
+              },
+            },
+            {
               type: 'row',
               fields: [
                 {
@@ -33,9 +74,10 @@ export const ImageBlock: Block = {
                   options: [
                     { label: 'Auto', value: 'auto' },
                     { label: '1:1', value: '1/1' },
+                    { label: '3:2', value: '3/2' },
                     { label: '4:3', value: '4/3' },
                     { label: '16:9', value: '16/9' },
-                    { label: '3:2', value: '3/2' },
+                    { label: '2:3', value: '2/3' },
                     { label: '3:4', value: '3/4' },
                     { label: '9:16', value: '9/16' },
                     { label: 'Custom', value: 'custom' },

@@ -1,7 +1,12 @@
 // src/components/atoms/Image/index.tsx
 import React from 'react'
+import Link from 'next/link'
 import NextImage from 'next/image'
 import s from './style.module.scss'
+
+type InternalLink = {
+  slug?: string
+}
 
 type ImageProps = {
   image: {
@@ -13,6 +18,10 @@ type ImageProps = {
   aspectRatio?: string
   customAspectRatio?: string
   variant?: string
+  linkType?: 'none' | 'internal' | 'external'
+  internalLink?: InternalLink | string | null
+  externalUrl?: string | null
+  newTab?: boolean
   overlay?: {
     enabled?: boolean
     color?: string
@@ -25,6 +34,10 @@ export const Image: React.FC<ImageProps> = ({
   aspectRatio,
   customAspectRatio,
   variant,
+  linkType = 'none',
+  internalLink,
+  externalUrl,
+  newTab = false,
   overlay,
 }) => {
   if (!image?.url) return null
@@ -39,7 +52,16 @@ export const Image: React.FC<ImageProps> = ({
 
   const showOverlay = overlay?.enabled && overlay?.color
 
-  return (
+  const resolvedHref =
+    linkType === 'internal'
+      ? typeof internalLink === 'object' && internalLink !== null
+        ? `/${internalLink.slug ?? ''}`
+        : typeof internalLink === 'string'
+          ? `/${internalLink}`
+          : '/'
+      : externalUrl ?? '#'
+
+  const content = (
     <div className={classes} style={{ aspectRatio: ratio }}>
       <NextImage
         src={image.url}
@@ -61,4 +83,25 @@ export const Image: React.FC<ImageProps> = ({
       )}
     </div>
   )
+
+  const linkProps =
+    newTab || linkType === 'external' ? { target: '_blank', rel: 'noopener noreferrer' } : {}
+
+  if (linkType === 'external' && externalUrl) {
+    return (
+      <a className={s.link} href={resolvedHref} {...linkProps}>
+        {content}
+      </a>
+    )
+  }
+
+  if (linkType === 'internal' && internalLink) {
+    return (
+      <Link className={s.link} href={resolvedHref} {...linkProps}>
+        {content}
+      </Link>
+    )
+  }
+
+  return content
 }
