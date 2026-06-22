@@ -52,7 +52,6 @@ export const Header: React.FC<HeaderProps> = ({
     .filter(Boolean)
     .join(' ')
 
-  console.log(containerType)
   return (
     <header
       id={htmlId || undefined}

@@ -178,20 +178,20 @@ export const IconPickerField: React.FC<Props> = ({ path, label = 'Icon', require
         .icp-wrap {
           display: flex;
           flex-direction: column;
-          gap: 8px;
-          margin-bottom: 8px;
+          gap: .8rem;
+          margin-bottom: .8rem;
         }
         .icp-preview {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          padding: 6px 12px;
+          gap: .8rem;
+          padding: .6rem 1.2rem;
           background: var(--theme-elevation-100, #f0f0f0);
           border-radius: 4px;
           width: fit-content;
         }
         .icp-preview__name {
-          font-size: 12px;
+          font-size: 1.2rem;
           color: var(--theme-text, #333);
         }
         .icp-preview__clear {
@@ -201,7 +201,7 @@ export const IconPickerField: React.FC<Props> = ({ path, label = 'Icon', require
           background: none;
           border: none;
           cursor: pointer;
-          padding: 2px;
+          padding: .2rem;
           color: var(--theme-text, #666);
           border-radius: 3px;
           line-height: 1;
@@ -210,33 +210,33 @@ export const IconPickerField: React.FC<Props> = ({ path, label = 'Icon', require
           background: var(--theme-elevation-200, #e0e0e0);
         }
         .icp-none {
-          font-size: 12px;
+          font-size: 1.2rem;
           color: var(--theme-text-secondary, #888);
           font-style: italic;
           margin: 0;
         }
         .icp-search {
           width: 100%;
-          max-width: 280px;
-          padding: 6px 10px;
+          max-width: 28rem;
+          padding: .6rem 1rem;
           border: 1px solid var(--theme-elevation-300, #ccc);
           border-radius: 4px;
-          font-size: 13px;
+          font-size: 1.3rem;
           background: var(--theme-input-bg, #fff);
           color: var(--theme-text, #333);
         }
         .icp-grid {
           display: flex;
           flex-wrap: wrap;
-          gap: 4px;
-          max-width: 480px;
+          gap: .4rem;
+          max-width: 48rem;
         }
         .icp-item {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 36px;
-          height: 36px;
+          width: 3.6rem;
+          height: 3.6rem;
           border-radius: 4px;
           border: 1px solid var(--theme-elevation-200, #ddd);
           background: var(--theme-elevation-50, #fafafa);
@@ -254,9 +254,9 @@ export const IconPickerField: React.FC<Props> = ({ path, label = 'Icon', require
           color: #155724;
         }
         .icp-empty {
-          font-size: 13px;
+          font-size: 1.3rem;
           color: var(--theme-text-secondary, #888);
-          padding: 4px 0;
+          padding: .4rem 0;
           margin: 0;
         }
       `}</style>

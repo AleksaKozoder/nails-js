@@ -1,8 +1,8 @@
 @import "@/scss/mixins.scss";
 @import "@/scss/variables.scss";
 
-$header-height: 72px;
-$header-height-scrolled: 60px;
+$header-height: 7.2rem;
+$header-height-scrolled: 6rem;
 
 .header {
   width: 100%;
@@ -44,10 +44,10 @@ $header-height-scrolled: 60px;
 .header__inner {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 2.4rem;
   height: $header-height;
   margin: 0 auto;
-  padding-inline: 30px;
+  padding-inline: 3rem;
   transition: height 0.3s ease;
 
   .header--scrolled & {
@@ -55,8 +55,8 @@ $header-height-scrolled: 60px;
   }
 
   // Width variants
-  &--default { max-width: 1200px + 60px; }
-  &--wide    { max-width: 1440px + 60px; }
+  &--default { max-width: 128rem + 6rem; }
+  &--wide    { max-width: 144rem + 6rem; }
   &--full    { max-width: 100%; }
 }
 
@@ -68,14 +68,14 @@ $header-height-scrolled: 60px;
   text-decoration: none;
 
   img {
-    height: 40px;
+    height: 4rem;
     width: auto;
     display: block;
   }
 }
 
 .header__logo_text {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
   color: $color-primary;
 }
@@ -86,7 +86,7 @@ $header-height-scrolled: 60px;
   display: flex;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 76.8rem) {
     display: none;
   }
 }
@@ -96,7 +96,7 @@ $header-height-scrolled: 60px;
   flex-shrink: 0;
   margin-left: auto;
 
-  @media (max-width: 768px) {
+  @media (max-width: 76.8rem) {
     display: none;
   }
 }

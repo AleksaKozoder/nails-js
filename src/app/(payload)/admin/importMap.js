@@ -23,7 +23,6 @@ import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997e
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { IconPickerField as IconPickerField_e49465dfd4615054e9b1f106ca21d7a6 } from '@/components/atoms/Icon/IconPickerField'
-import { GridColumnRowLabel as GridColumnRowLabel_52d59f0879e108dbf941476b8923c230 } from '@/blocks/BlockHolder/GridColumnRowLabel'
 import { default as default_4673ac1f44b6ffdfedd94c386f83b8c1 } from '../../../components/admin/ColorRowLabel'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
@@ -54,7 +53,6 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@/components/atoms/Icon/IconPickerField#IconPickerField": IconPickerField_e49465dfd4615054e9b1f106ca21d7a6,
-  "@/blocks/BlockHolder/GridColumnRowLabel#GridColumnRowLabel": GridColumnRowLabel_52d59f0879e108dbf941476b8923c230,
   "/components/admin/ColorRowLabel#default": default_4673ac1f44b6ffdfedd94c386f83b8c1,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

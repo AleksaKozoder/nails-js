@@ -18,7 +18,7 @@ export const ColorSelectField = ({ path, field }: Props) => {
   const [open, setOpen] = useState(false)
   const { value, setValue } = useField<string>({ path }) // path kao prop
   const ref = useRef<HTMLDivElement>(null)
-console.log(path, field)
+
   useEffect(() => {
     fetch('/api/globals/colors')
       .then((res) => res.json())

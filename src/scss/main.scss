@@ -3,6 +3,10 @@
 
 $container-w-extension: calc($container-inline-padding * 2);
 
+html {
+  font-size: 62.5%;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -14,6 +18,7 @@ body {
   background-color: $color-bg;
   color: $color-text;
   -webkit-font-smoothing: antialiased;
+  font-size: 1.6rem;
 }
 
 img {
@@ -23,21 +28,50 @@ img {
 
 .container {
   padding-inline: $container-inline-padding;
-  max-width: calc(1280px + $container-w-extension);
+  max-width: calc(128rem + $container-w-extension);
   width: 100%;
   margin: 0 auto;
   position: relative;
   height: 100%;
 
   &-xl {
-    max-width: calc(1600px + $container-w-extension);
+    max-width: calc(160rem + $container-w-extension);
   }
 
   &-l {
-    max-width: calc(1440px + $container-w-extension);
+    max-width: calc(144rem + $container-w-extension);
   }
 
   &-xs {
-    max-width: calc(768px + $container-w-extension);
+    max-width: calc(76.8rem + $container-w-extension);
+  }
+
+  &--align {
+    &-center {
+      display: flex;
+      align-items: center;
+    }
+
+    &-bottom {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+}
+
+
+.padding {
+  @each $name, $value in $sizes {
+    &-#{$name} {
+      padding: $value 0;
+    }
+  }
+}
+
+.gap {
+  @each $name, $value in $sizes {
+    &-#{$name} {
+      gap: $value;
+    }
   }
 }

@@ -11,8 +11,8 @@ const formatSlug = (value: string): string =>
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '')
 
-export const Pages: CollectionConfig = {
-  slug: 'pages',
+export const Posts: CollectionConfig = {
+  slug: 'posts',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
@@ -51,6 +51,26 @@ export const Pages: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               blocks: [SectionBlock],
+            },
+          ],
+        },
+        {
+          label: 'Settings',
+          fields: [
+            {
+              name: 'featuredImage',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description: 'The primary image for this post.',
+              },
+            },
+            {
+              name: 'excerpt',
+              type: 'textarea',
+              admin: {
+                description: 'A short summary of the post used for previews.',
+              },
             },
           ],
         },

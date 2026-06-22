@@ -16,12 +16,13 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks, container 
   if (!blocks || !Array.isArray(blocks)) {
     return null
   }
-console.log('blocks: ', blocks, container)
-  // Definišemo unutrašnji sadržaj (niz blokova)
+
   const content = (
     <>
       {blocks.map((block, index) => {
         const { blockType } = block
+console.log('blockType', blockType)
+        console.log('block', block)
         const Component = blockComponents[blockType]
 
         if (Component) {
@@ -34,6 +35,11 @@ console.log('blocks: ', blocks, container)
     </>
   )
 
+
   // Ako postoji container prop, vraćamo content umotan u div, inače samo content
-  return container ? <div className={container}>{content}</div> : content
+  return container ? (
+    <div className={container}>{content}</div>
+  ) : (
+    content
+  )
 }

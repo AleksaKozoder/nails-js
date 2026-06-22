@@ -1,9 +1,25 @@
 // src/blocks/Section/config.ts
 import { Block } from 'payload'
 import { BlockHolder } from '@/blocks/BlockHolder/config'
+import { PostsBlock } from '@/blocks/PostsBlock/config'
 
 const variants = [
   { label: 'Default', value: 'default' },
+]
+
+const alignment = [
+  {label: 'Top', value: 'top'},
+  {label: 'Center', value: 'center'},
+  {label: 'Bottom', value: 'bottom'},
+]
+
+const paddings = [
+  {label: 'None', value: 'none'},
+  {label: 'Extra Small', value: 'xs'},
+  {label: 'Small', value: 'sm' },
+  {label: 'Medium', value: 'md' },
+  {label: 'Large', value: 'lg' },
+  {label: 'Extra Large', value: 'xl'}
 ]
 
 export const SectionBlock: Block = {
@@ -18,7 +34,7 @@ export const SectionBlock: Block = {
             {
               name: 'blocks',
               type: 'blocks',
-              blocks: [BlockHolder],
+              blocks: [BlockHolder, PostsBlock],
             },
           ],
         },
@@ -33,6 +49,39 @@ export const SectionBlock: Block = {
                   type: 'row',
                   fields: [
                     {
+                      name: 'htmlId',
+                      type: 'text',
+                      label: 'HTML ID',
+                      admin: {
+                        width: '33%',
+                        description: 'Optional — custom ID / anchor',
+                      },
+                    },
+                    {
+                      name: 'variant',
+                      type: 'select',
+                      admin: { width: '33%' },
+                      defaultValue: 'default',
+                      options: variants,
+                    },
+                    {
+                      name: 'viewport',
+                      type: 'select',
+                      defaultValue: 'auto',
+                      admin: {
+                        width: '33%',
+                      },
+                      options: [
+                        { label: 'auto', value: 'auto' },
+                        { label: 'full', value: 'full' },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    {
                       name: 'widthType',
                       type: 'select',
                       defaultValue: 'boxed',
@@ -41,6 +90,17 @@ export const SectionBlock: Block = {
                         { label: 'Full Width', value: 'fullWidth' },
                         { label: 'Boxed', value: 'boxed' },
                       ],
+                    },
+                    {
+                      name: 'alignment',
+                      type: 'select',
+                      defaultValue: 'top',
+                      options: alignment,
+                      admin: {
+                        width: '25%',
+                        condition: (_, siblingData) => siblingData?.viewport === 'full',
+                        description: 'Optional — vertical alignment',
+                      },
                     },
                     {
                       name: 'containerType',
@@ -58,47 +118,15 @@ export const SectionBlock: Block = {
                       ],
                     },
                     {
-                      name: 'variant',
+                      name: 'padding',
                       type: 'select',
-                      admin: { width: '25%' },
-                      defaultValue: 'default',
-                      options: variants,
-                    },
-                    {
-                      name: 'htmlId',
-                      type: 'text',
-                      label: 'HTML ID',
+                      defaultValue: 'none',
+                      options: paddings,
                       admin: {
                         width: '25%',
-                        description: 'Optional — custom ID / anchor',
+                        description: 'Optional — space on top & bottom',
                       },
                     },
-                  ],
-                },
-                {
-                  type: 'row',
-                  fields: [
-                    {
-                      name: 'paddingTop',
-                      type: 'number',
-                      defaultValue: 80,
-                      admin: { width: '50%' },
-                    },
-                    {
-                      name: 'paddingBottom',
-                      type: 'number',
-                      defaultValue: 80,
-                      admin: { width: '50%' },
-                    },
-                  ],
-                },
-                {
-                  name: 'heightType',
-                  type: 'select',
-                  defaultValue: 'auto',
-                  options: [
-                    { label: 'Full Height', value: 'fullHeight' },
-                    { label: 'Auto', value: 'auto' },
                   ],
                 },
                 {

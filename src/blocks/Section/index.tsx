@@ -9,12 +9,12 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
     colorTheme,
     gradientTheme,
     bgImage,
-    paddingTop,
-    paddingBottom,
+    padding,
+    viewport,
     widthType,
     containerType,
-    heightType,
     variant,
+    alignment,
     htmlId,
     overlay,
   } = settings
@@ -24,26 +24,30 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
     backgroundType === 'color' && s[`section--color-${colorTheme}`],
     backgroundType === 'gradient' && s[`section--gradient-${gradientTheme}`],
     backgroundType === 'image' && s['section--image'],
-    heightType === 'fullHeight' && s[`section--full-height`],
-    variant && s[`section--${variant}`],
+    viewport === 'full' && s[`section--full-height`],
+    variant !== 'default' && s[`section--${variant}`],
+    padding && padding !== 'none' && `padding-${padding}`,
   ]
     .filter(Boolean)
     .join(' ')
 
   const container =
-    widthType === 'boxed' ? [...new Set(['container', containerType])].join(' ') : null
+    widthType === 'boxed'
+      ? [
+          ...new Set([
+            'container',
+            containerType,
+            viewport === 'full' && alignment && alignment !== 'top' && `container--align-${alignment}`,
+          ]),
+        ]
+          .filter(Boolean)
+          .join(' ')
+      : null
 
   const showOverlay = overlay?.enabled && overlay?.color
 
   return (
-    <section
-      className={sectionClasses}
-      style={{
-        paddingTop: `${paddingTop}px`,
-        paddingBottom: `${paddingBottom}px`,
-      }}
-      id={htmlId || undefined}
-    >
+    <section className={sectionClasses} id={htmlId || undefined}>
       {backgroundType === 'image' && bgImage && (
         <Image src={bgImage.url} alt="" fill className={s['section__bgImage']} />
       )}

@@ -104,7 +104,12 @@ export const IconPickerField: React.FC<Props> = ({ path, label = 'Icon', require
         <div className="icp-preview">
           <selectedIcon.icon width={16} height={16} size={16} />
           <span className="icp-preview__name">{selectedIcon.label}</span>
-          <button type="button" className="icp-preview__clear" onClick={() => setValue('')} aria-label="Remove icon">
+          <button
+            type="button"
+            className="icp-preview__clear"
+            onClick={() => setValue('')}
+            aria-label="Remove icon"
+          >
             <X size={12} strokeWidth={2} />
           </button>
         </div>
@@ -143,18 +148,18 @@ export const IconPickerField: React.FC<Props> = ({ path, label = 'Icon', require
       </div>
 
       <style>{`
-        .icp-wrap { display:flex; flex-direction:column; gap:8px; margin-bottom:8px; }
-        .icp-preview { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; background:var(--theme-elevation-100,#f0f0f0); border-radius:4px; width:fit-content; }
-        .icp-preview__name { font-size:12px; color:var(--theme-text,#333); }
-        .icp-preview__clear { display:inline-flex; align-items:center; justify-content:center; background:none; border:none; cursor:pointer; padding:2px; color:var(--theme-text,#666); border-radius:3px; }
+        .icp-wrap { display:flex; flex-direction:column; gap:.8rem; margin-bottom:.8rem; }
+        .icp-preview { display:inline-flex; align-items:center; gap:.8rem; padding:.6rem 1.2ewm; background:var(--theme-elevation-100,#f0f0f0); border-radius:4px; width:fit-content; }
+        .icp-preview__name { font-size:1.2rem; color:var(--theme-text,#333); }
+        .icp-preview__clear { display:inline-flex; align-items:center; justify-content:center; background:none; border:none; cursor:pointer; padding:.2rem; color:var(--theme-text,#666); border-radius:.3rem; }
         .icp-preview__clear:hover { background:var(--theme-elevation-200,#e0e0e0); }
-        .icp-none { font-size:12px; color:var(--theme-text-secondary,#888); font-style:italic; margin:0; }
-        .icp-search { width:100%; max-width:280px; padding:6px 10px; border:1px solid var(--theme-elevation-300,#ccc); border-radius:4px; font-size:13px; background:var(--theme-input-bg,#fff); color:var(--theme-text,#333); }
-        .icp-grid { display:flex; flex-wrap:wrap; gap:4px; max-width:480px; }
-        .icp-item { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:4px; border:1px solid var(--theme-elevation-200,#ddd); background:var(--theme-elevation-50,#fafafa); cursor:pointer; color:var(--theme-text,#333); transition:background 120ms ease,border-color 120ms ease; }
+        .icp-none { font-size:1.2rem; color:var(--theme-text-secondary,#888); font-style:italic; margin:0; }
+        .icp-search { width:100%; max-width:28rem; padding:.6rem 1rem; border:1px solid var(--theme-elevation-300,#ccc); border-radius:4px; font-size:13px; background:var(--theme-input-bg,#fff); color:var(--theme-text,#333); }
+        .icp-grid { display:flex; flex-wrap:wrap; gap:.4rem; max-width:48rem; }
+        .icp-item { display:flex; align-items:center; justify-content:center; width:3.6rem; height:3.6rem; border-radius:4px; border:1px solid var(--theme-elevation-200,#ddd); background:var(--theme-elevation-50,#fafafa); cursor:pointer; color:var(--theme-text,#333); transition:background 120ms ease,border-color 120ms ease; }
         .icp-item:hover { background:var(--theme-elevation-150,#ebebeb); border-color:var(--theme-elevation-400,#bbb); }
         .icp-item--selected { background:#d4edda; border-color:#28a745; color:#155724; }
-        .icp-empty { font-size:13px; color:var(--theme-text-secondary,#888); padding:4px 0; margin:0; }
+        .icp-empty { font-size:1.3rem; color:var(--theme-text-secondary,#888); padding:.4rem 0; margin:0; }
       `}</style>
     </div>
   )

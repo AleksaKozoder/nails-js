@@ -71,7 +71,6 @@ export const Menus: CollectionConfig = {
                             {
                               name: 'label',
                               type: 'text',
-                              required: true,
                               admin: { width: '50%' },
                             },
                             {

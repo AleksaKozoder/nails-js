@@ -1,11 +1,12 @@
 // Breakpoints
-$breakpoint-mobile: 480px;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1024px;
-$breakpoint-wide: 1440px;
+$breakpoint-mobile: 48rem;
+$breakpoint-tablet: 76.8rem;
+$breakpoint-desktop: 102.4rem;
+$breakpoint-wide: 144rem;
 
 // Container width
-$container-max-width: 1280px;
+$container-max-width: 128rem;
+$container-inline-padding: 3rem;
 
 // Colors
 $colors: (
@@ -17,16 +18,31 @@ $colors: (
         'green': var(--color-green),
 );
 
-// Gradients
-$gradients: (
-        "warm": linear-gradient(45deg, #fb8c00, #ffab40),
-        "cool": linear-gradient(135deg, #1e3a8a, #3b82f6)
-);
-
 $color-bg: map-get($colors, "light");
 $color-text: map-get($colors, "dark");
 $color-primary: map-get($colors, "primary");
 $color-secondary: map-get($colors, "secondary");
 $color-red: map-get($colors, "red");
 
-$container-inline-padding: 30px;
+
+// Gradients
+$gradients: (
+        "warm": linear-gradient(45deg, #fb8c00, #ffab40),
+        "cool": linear-gradient(135deg, #1e3a8a, #3b82f6)
+);
+
+
+//Paddings & Gaps
+$xs: .8rem;
+$sm: 1.6rem;
+$md: 3.2rem;
+$lg: 6.4rem;
+$xl: 12.8rem;
+
+$sizes: (
+  "xs": $xs,
+  "sm": $sm,
+  "md": $md,
+  "lg": $lg,
+  "xl": $xl
+);

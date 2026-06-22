@@ -8,6 +8,8 @@ import {Image} from '@/components/atoms/Image'
 import {Button} from '@/components/atoms/Button'
 import {AccordionBlock} from '@/blocks/Accordion'
 import { Menu } from '@/components/atoms/Menu'
+import { PostsBlock } from '@/blocks/PostsBlock'
+
 
 const TabsBlock = React.lazy(() => import('@/blocks/Tabs').then((m) => ({ default: m.TabsBlock })))
 
@@ -23,6 +25,7 @@ export const blockComponents: { [key: string]: React.FC<any> } = {
   blockHolder0: BlockHolder,
   blockHolder1: BlockHolder,
   blockHolder2: BlockHolder,
+  postsBlock: PostsBlock,
   tabs: TabsBlock,
   accordion: AccordionBlock,
 }
