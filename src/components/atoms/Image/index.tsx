@@ -64,7 +64,13 @@ console.log(image)
       : externalUrl ?? '#'
 
   const content = (
-    <div className={classes} style={{ aspectRatio: ratio }}>
+    <div
+      className={classes}
+      style={{
+        aspectRatio: ratio !== 'auto' ? ratio : image.width / image.height,
+        width: ratio !== 'auto' ? '100%' : `${image.width}px`,
+      }}
+    >
       <NextImage
         src={image.url}
         alt={image.alt || ''}
