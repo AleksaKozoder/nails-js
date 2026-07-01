@@ -68,9 +68,7 @@ console.log(image)
       <NextImage
         src={image.url}
         alt={image.alt || ''}
-        width={image.width}
-        height={image.height}
-        fill={!image.width }
+        fill
         sizes={'100vw'}
         style={{
           objectFit: 'cover',
