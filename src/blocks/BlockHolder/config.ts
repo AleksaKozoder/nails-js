@@ -72,7 +72,7 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     type: 'text',
                     label: 'HTML ID',
                     admin: {
-                      width: '50%',
+                      width: '33%',
                       description: 'Optional — custom ID / anchor',
                     },
                   },
@@ -80,13 +80,24 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     name: 'layout',
                     type: 'select',
                     defaultValue: 'block',
-                    admin: { width: '50%' },
+                    admin: { width: '33%' },
                     options: [
                       { label: 'Block', value: 'block' },
                       { label: 'Flex', value: 'flex' },
                       { label: 'Grid', value: 'grid' },
                     ],
                   },
+                  {
+                    name: 'verticalAlignment',
+                    type: 'select',
+                    defaultValue: 'top',
+                    admin: {width: '33%'},
+                    options: [
+                      { label: 'Top', value: 'top' },
+                      { label: 'Middle', value: 'middle' },
+                      { label: 'Bottom', value: 'bottom' },
+                    ],
+                  }
                 ],
               },
               {

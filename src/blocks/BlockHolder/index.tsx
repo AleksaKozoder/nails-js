@@ -7,6 +7,7 @@ type BlockHolderProps = {
   gap?: number | null
   flexVariant?: string
   gridVariant?: string
+  verticalAlignment?: 'top' | 'center' | 'bottom'
   htmlId?: string
 
   // Content
@@ -21,14 +22,15 @@ export const BlockHolder: React.FC<BlockHolderProps> = (props) => {
     atoms,
     flexVariant,
     gridVariant,
+    verticalAlignment,
   } = props
-
 
   const blockClasses = [
     layout === 'block' ? s['block-holder'] : s[`block-holder--${layout}`],
     gap !== 'none' && `gap-${gap}`,
     flexVariant !== 'row' && s[`block-holder--flex-${flexVariant}`],
     gridVariant !== 'auto' && s[`block-holder--grid-${gridVariant}`],
+    verticalAlignment !== 'top' && s[`block-holder--align-${verticalAlignment}`],
   ]
     .filter(Boolean)
     .join(' ')

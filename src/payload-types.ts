@@ -513,6 +513,7 @@ export interface Page {
                                        */
                                       htmlId?: string | null;
                                       layout?: ('block' | 'flex' | 'grid') | null;
+                                      verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                                       flexVariant?:
                                         | ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse')
                                         | null;
@@ -859,6 +860,7 @@ export interface Page {
                              */
                             htmlId?: string | null;
                             layout?: ('block' | 'flex' | 'grid') | null;
+                            verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                             flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
                             gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
                             gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
@@ -1189,6 +1191,7 @@ export interface Page {
                    */
                   htmlId?: string | null;
                   layout?: ('block' | 'flex' | 'grid') | null;
+                  verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                   flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
                   gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
                   gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
@@ -1722,6 +1725,7 @@ export interface Post {
                                        */
                                       htmlId?: string | null;
                                       layout?: ('block' | 'flex' | 'grid') | null;
+                                      verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                                       flexVariant?:
                                         | ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse')
                                         | null;
@@ -2068,6 +2072,7 @@ export interface Post {
                              */
                             htmlId?: string | null;
                             layout?: ('block' | 'flex' | 'grid') | null;
+                            verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                             flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
                             gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
                             gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
@@ -2398,6 +2403,7 @@ export interface Post {
                    */
                   htmlId?: string | null;
                   layout?: ('block' | 'flex' | 'grid') | null;
+                  verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                   flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
                   gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
                   gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
@@ -2891,6 +2897,7 @@ export interface PagesSelect<T extends boolean = true> {
                                                       };
                                                   htmlId?: T;
                                                   layout?: T;
+                                                  verticalAlignment?: T;
                                                   flexVariant?: T;
                                                   gridVariant?: T;
                                                   gap?: T;
@@ -3148,6 +3155,7 @@ export interface PagesSelect<T extends boolean = true> {
                                           };
                                       htmlId?: T;
                                       layout?: T;
+                                      verticalAlignment?: T;
                                       flexVariant?: T;
                                       gridVariant?: T;
                                       gap?: T;
@@ -3405,6 +3413,7 @@ export interface PagesSelect<T extends boolean = true> {
                               };
                           htmlId?: T;
                           layout?: T;
+                          verticalAlignment?: T;
                           flexVariant?: T;
                           gridVariant?: T;
                           gap?: T;
@@ -3744,6 +3753,7 @@ export interface PostsSelect<T extends boolean = true> {
                                                       };
                                                   htmlId?: T;
                                                   layout?: T;
+                                                  verticalAlignment?: T;
                                                   flexVariant?: T;
                                                   gridVariant?: T;
                                                   gap?: T;
@@ -4001,6 +4011,7 @@ export interface PostsSelect<T extends boolean = true> {
                                           };
                                       htmlId?: T;
                                       layout?: T;
+                                      verticalAlignment?: T;
                                       flexVariant?: T;
                                       gridVariant?: T;
                                       gap?: T;
@@ -4258,6 +4269,7 @@ export interface PostsSelect<T extends boolean = true> {
                               };
                           htmlId?: T;
                           layout?: T;
+                          verticalAlignment?: T;
                           flexVariant?: T;
                           gridVariant?: T;
                           gap?: T;
@@ -4817,6 +4829,7 @@ export interface Header {
                                  */
                                 htmlId?: string | null;
                                 layout?: ('block' | 'flex' | 'grid') | null;
+                                verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                                 flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
                                 gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
                                 gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
@@ -5161,6 +5174,7 @@ export interface Header {
                        */
                       htmlId?: string | null;
                       layout?: ('block' | 'flex' | 'grid') | null;
+                      verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                       flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
                       gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
                       gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
@@ -5471,6 +5485,7 @@ export interface Header {
              */
             htmlId?: string | null;
             layout?: ('block' | 'flex' | 'grid') | null;
+            verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
             flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
             gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
             gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
@@ -6135,6 +6150,7 @@ export interface HeaderSelect<T extends boolean = true> {
                                           };
                                       htmlId?: T;
                                       layout?: T;
+                                      verticalAlignment?: T;
                                       flexVariant?: T;
                                       gridVariant?: T;
                                       gap?: T;
@@ -6392,6 +6408,7 @@ export interface HeaderSelect<T extends boolean = true> {
                               };
                           htmlId?: T;
                           layout?: T;
+                          verticalAlignment?: T;
                           flexVariant?: T;
                           gridVariant?: T;
                           gap?: T;
@@ -6649,6 +6666,7 @@ export interface HeaderSelect<T extends boolean = true> {
                   };
               htmlId?: T;
               layout?: T;
+              verticalAlignment?: T;
               flexVariant?: T;
               gridVariant?: T;
               gap?: T;
