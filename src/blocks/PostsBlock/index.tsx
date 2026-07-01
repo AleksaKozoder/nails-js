@@ -1,9 +1,11 @@
 // src/components/blocks/PostsBlock/index.tsx
 import React from 'react'
 import s from './style.module.scss'
+import Link from 'next/link'
 
 // Tipovi za pojedinačni post (prilagođeno tvojoj Posts kolekciji)
 type Post = {
+  category?: []
   id: string
   title: string
   slug: string
@@ -26,6 +28,7 @@ export type PostsBlockProps = {
   gridColumns?: 'col-2' | 'col-3' | 'col-4'
   autoplay?: boolean
   showArrows?: boolean
+  gap: string
   posts?: Post[]
 }
 
@@ -36,6 +39,7 @@ export const PostsBlock: React.FC<PostsBlockProps> = ({
   gridColumns = 'col-3',
   autoplay,
   showArrows,
+  gap = 'none',
   posts = [],
 }) => {
   // if (!posts || posts.length === 0) return null
@@ -43,6 +47,7 @@ export const PostsBlock: React.FC<PostsBlockProps> = ({
   // Klasa za omotač u zavisnosti od izabranog layout-a (grid ili slider)
   const wrapperClasses = [
     s['posts-block'],
+    gap !== 'none' && `gap-${gap}`,
     layout === 'grid' && s[`posts-block--grid`],
     layout === 'grid' && gridColumns && s[`posts-block--${gridColumns}`],
     layout === 'slider' && s[`posts-block--slider`],
@@ -59,6 +64,7 @@ export const PostsBlock: React.FC<PostsBlockProps> = ({
           // GRID RENDER
           posts.map((post) => (
             <article key={post.id} className={s['post-card']}>
+              <Link className={s.link} href={`/posts/${post.slug}`}/>
               {post.featuredImage && (
                 <div className={s['post-card__image-wrapper']}>
                   <img
@@ -73,6 +79,13 @@ export const PostsBlock: React.FC<PostsBlockProps> = ({
                 </div>
               )}
               <div className={s['post-card__content']}>
+                {post.category && Array.isArray(post.category) && post.category.length > 0 && (
+                  <div className={s['post-card__category']}>
+                    {post.category.map((cat: any) => (
+                      <span key={cat.id}>{cat.title}</span>
+                    ))}
+                  </div>
+                )}
                 <h3 className={s['post-card__title']}>{post.title}</h3>
                 {post.excerpt && <p className={s['post-card__excerpt']}>{post.excerpt}</p>}
               </div>

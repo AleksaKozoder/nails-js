@@ -11,6 +11,15 @@ const gridColumns = [
   { label: '4 columns', value: 'col-4' },
 ]
 
+const gaps = [
+  { label: 'None', value: 'none' },
+  { label: 'Extra Small', value: 'xs' },
+  { label: 'Small', value: 'sm' },
+  { label: 'Medium', value: 'md' },
+  { label: 'Large', value: 'lg' },
+  { label: 'Extra Large', value: 'xl' },
+]
+
 export const PostsBlock: Block = {
   slug: 'postsBlock',
   labels: {
@@ -42,6 +51,7 @@ export const PostsBlock: Block = {
                   defaultValue: 'latest',
                   options: [
                     { label: 'Latest Posts (Automatic)', value: 'latest' },
+                    { label: 'Categories', value: 'categories' },
                     { label: 'Manual Selection', value: 'manual' },
                   ],
                   admin: { width: '50%' },
@@ -53,11 +63,22 @@ export const PostsBlock: Block = {
                   defaultValue: 3,
                   required: true,
                   admin: {
-                    width: '50%',
+                    width: '25%',
                     description: 'Maximum number of posts to fetch',
                   },
                 },
               ],
+            },
+            {
+              name: 'selectedCategories',
+              label: 'Selected Category / Categories',
+              type: 'relationship',
+              relationTo: 'categories',
+              hasMany: true,
+              admin: {
+                condition: (_, s) => s?.populateBy === 'categories',
+                description: 'Manually select which category/categries to display',
+              },
             },
             {
               name: 'selectedPosts',
@@ -83,7 +104,7 @@ export const PostsBlock: Block = {
                   type: 'text',
                   label: 'HTML ID',
                   admin: {
-                    width: '50%',
+                    width: '30%',
                     description: 'Optional — custom ID / anchor',
                   },
                 },
@@ -93,7 +114,18 @@ export const PostsBlock: Block = {
                   type: 'select',
                   defaultValue: 'grid',
                   options: layoutOptions,
-                  admin: { width: '50%' },
+                  admin: { width: '30%' },
+                },
+                {
+                  name: 'gap',
+                  label: 'Gap',
+                  type: 'select',
+                  defaultValue: 'none',
+                  options: gaps,
+                  admin: {
+                    width: '30%',
+                    condition: (_, s) => s?.layout === 'flex' || s?.layout === 'grid',
+                  },
                 },
               ],
             },

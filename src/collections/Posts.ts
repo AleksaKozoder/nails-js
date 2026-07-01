@@ -72,6 +72,12 @@ export const Posts: CollectionConfig = {
                 description: 'A short summary of the post used for previews.',
               },
             },
+            {
+              name: 'category',
+              type: 'relationship',
+              relationTo: 'categories',
+              hasMany: true,
+            }
           ],
         },
         {

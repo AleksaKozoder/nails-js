@@ -70,6 +70,7 @@ export interface Config {
     pages: Page;
     posts: Post;
     media: Media;
+    categories: Category;
     menus: Menu;
     users: User;
     'payload-kv': PayloadKv;
@@ -82,6 +83,7 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
     menus: MenusSelect<false> | MenusSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -1204,11 +1206,15 @@ export interface Page {
                    * Optional — section title above the posts loop
                    */
                   title?: string | null;
-                  populateBy?: ('latest' | 'manual') | null;
+                  populateBy?: ('latest' | 'categories' | 'manual') | null;
                   /**
                    * Maximum number of posts to fetch
                    */
                   limit: number;
+                  /**
+                   * Manually select which category/categries to display
+                   */
+                  selectedCategories?: (number | Category)[] | null;
                   /**
                    * Manually select which posts to display
                    */
@@ -1218,6 +1224,7 @@ export interface Page {
                    */
                   htmlId?: string | null;
                   layout?: ('grid' | 'slider') | null;
+                  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
                   gridColumns?: ('col-2' | 'col-3' | 'col-4') | null;
                   autoplay?: boolean | null;
                   showArrows?: boolean | null;
@@ -1342,6 +1349,17 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  title: string;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2416,11 +2434,15 @@ export interface Post {
                    * Optional — section title above the posts loop
                    */
                   title?: string | null;
-                  populateBy?: ('latest' | 'manual') | null;
+                  populateBy?: ('latest' | 'categories' | 'manual') | null;
                   /**
                    * Maximum number of posts to fetch
                    */
                   limit: number;
+                  /**
+                   * Manually select which category/categries to display
+                   */
+                  selectedCategories?: (number | Category)[] | null;
                   /**
                    * Manually select which posts to display
                    */
@@ -2430,6 +2452,7 @@ export interface Post {
                    */
                   htmlId?: string | null;
                   layout?: ('grid' | 'slider') | null;
+                  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
                   gridColumns?: ('col-2' | 'col-3' | 'col-4') | null;
                   autoplay?: boolean | null;
                   showArrows?: boolean | null;
@@ -2482,6 +2505,7 @@ export interface Post {
    * A short summary of the post used for previews.
    */
   excerpt?: string | null;
+  category?: (number | Category)[] | null;
   /**
    * Title tag appearing in Google results (recommended up to 60 characters).
    */
@@ -2562,6 +2586,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'categories';
+        value: number | Category;
       } | null)
     | ({
         relationTo: 'menus';
@@ -3426,9 +3454,11 @@ export interface PagesSelect<T extends boolean = true> {
                           title?: T;
                           populateBy?: T;
                           limit?: T;
+                          selectedCategories?: T;
                           selectedPosts?: T;
                           htmlId?: T;
                           layout?: T;
+                          gap?: T;
                           gridColumns?: T;
                           autoplay?: T;
                           showArrows?: T;
@@ -4282,9 +4312,11 @@ export interface PostsSelect<T extends boolean = true> {
                           title?: T;
                           populateBy?: T;
                           limit?: T;
+                          selectedCategories?: T;
                           selectedPosts?: T;
                           htmlId?: T;
                           layout?: T;
+                          gap?: T;
                           gridColumns?: T;
                           autoplay?: T;
                           showArrows?: T;
@@ -4320,6 +4352,7 @@ export interface PostsSelect<T extends boolean = true> {
       };
   featuredImage?: T;
   excerpt?: T;
+  category?: T;
   seoTitle?: T;
   seoDescription?: T;
   seoImage?: T;
@@ -4344,6 +4377,16 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

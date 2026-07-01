@@ -1,9 +1,45 @@
 .posts-block {
+  position: relative;
+
   &--grid {
     display: grid;
   }
 
+  &--col-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   &--col-3 {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--col-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .post-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    .link {
+      position: absolute;
+      inset: 0;
+    }
+
+    .post-card__content {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+  }
+
+  .post-card__category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
   }
 }

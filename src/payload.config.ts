@@ -11,6 +11,7 @@ import { Pages } from '@/collections/Pages'
 import { Colors, Header, SiteSettings } from '@/globals'
 import { Menus } from '@/collections/Menus'
 import { Posts } from '@/collections/Posts'
+import { Categories } from '@/collections/Categories'
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -23,7 +24,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Pages, Posts, Media, Menus, Users],
+  collections: [Pages, Posts, Media, Categories, Menus, Users],
   globals: [Colors, Header, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

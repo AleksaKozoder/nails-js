@@ -12,8 +12,8 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_URI: ${DATABASE_URI}
-      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      DATABASE_URI: postgresql://payload:payload@postgres:5432/payload
+      PAYLOAD_SECRET: 7ba1dc90f26f7e11a4f48c77
       NODE_ENV: development
 
   postgres:

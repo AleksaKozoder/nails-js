@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 
 type BlockItem = {
   blockType: string
-  populateBy?: 'latest' | 'manual'
+  populateBy?: 'latest' | 'manual' | 'categories'
   limit?: number
   selectedPosts?: any[]
   atoms?: BlockItem[]
@@ -29,13 +29,40 @@ async function enrichBlocks(blocksArray: BlockItem[], payload: any): Promise<Blo
             limit: block.limit || 3,
             sort: '-createdAt', // Najnoviji idu prvi
           })
-          console.log(postsQuery)
+
           postsData = postsQuery.docs
         } else if (block.populateBy === 'manual' && block.selectedPosts) {
           postsData = block.selectedPosts
             .map((post) => (typeof post === 'object' ? post : null))
             .filter(Boolean)
+        } else if (block.populateBy === 'categories' && block.selectedCategories) {
+        // 1. Mapiramo kroz niz selectedCategories i izvlačimo sve ID-eve
+        const categoryIds = block.selectedCategories
+          .map((cat: any) => {
+            if (typeof cat === 'object' && cat !== null) return cat.id
+            if (typeof cat === 'string' || typeof cat === 'number') return cat
+            return null
+          })
+          .filter(Boolean) // Čistimo null vrednosti
+
+        // 2. Pokrećemo upit samo ako imamo barem jedan validan ID kategorije
+        if (categoryIds.length > 0) {
+          const postsQuery = await payload.find({
+            collection: 'posts',
+            limit: block.limit || 3,
+            sort: '-createdAt',
+            where: {
+              // Koristimo 'in' operator jer admin može da izabere više kategorija u nizu
+              category: {
+                in: categoryIds,
+              },
+            },
+          })
+          postsData = postsQuery.docs
+        } else {
+          console.warn('Nema validnih ID-eva u selectedCategories:', block.selectedCategories)
         }
+      }
 
         // Vraćamo blok sa ubacenim "posts" nizom
         return {
