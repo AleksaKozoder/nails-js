@@ -16,6 +16,7 @@ type ButtonProps = IconProps & {
   newTab?: boolean
   variant?: 'primary' | 'secondary' | 'ghost' | 'outline'
   className?: string
+  iconPosition?: 'left' | 'right'
 }
 
 export const Button: React.FC<ButtonProps> = ({

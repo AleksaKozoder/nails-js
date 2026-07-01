@@ -70,7 +70,7 @@ export const ImageBlock: Block = {
                   type: 'select',
                   label: 'Aspect Ratio',
                   defaultValue: 'auto',
-                  admin: { width: '50%' },
+                  admin: { width: '25%' },
                   options: [
                     { label: 'Auto', value: 'auto' },
                     { label: '1:1', value: '1/1' },
@@ -88,16 +88,11 @@ export const ImageBlock: Block = {
                   type: 'text',
                   label: 'Custom Aspect Ratio',
                   admin: {
-                    width: '50%',
+                    width: '25%',
                     description: 'Format: 16/9, 4/3, 1/1...',
                     condition: (_, siblingData) => siblingData?.aspectRatio === 'custom',
                   },
                 },
-              ],
-            },
-            {
-              type: 'row',
-              fields: [
                 {
                   name: 'variant',
                   type: 'select',
@@ -120,32 +115,37 @@ export const ImageBlock: Block = {
                       type: 'checkbox',
                       label: 'Enable Overlay',
                       defaultValue: false,
-                      admin: { width: '50%' },
+                      admin: { width: '25%' },
                     },
                     {
-                      name: 'color',
-                      type: 'text',
-                      label: 'Overlay Color',
-                      admin: {
-                        width: '40%',
-                        components: {
-                          Field: '/components/admin/ColorSelectField',
+                      type: 'row',
+                      fields: [
+                        {
+                          name: 'color',
+                          type: 'text',
+                          label: 'Overlay Color',
+                          admin: {
+                            width: '25%',
+                            components: {
+                              Field: '/components/admin/ColorSelectField',
+                            },
+                            condition: (_, siblingData) => siblingData?.enabled === true,
+                          },
                         },
-                        condition: (_, siblingData) => siblingData?.enabled === true,
-                      },
-                    },
-                    {
-                      name: 'opacity',
-                      type: 'number',
-                      label: 'Opacity',
-                      min: 0,
-                      max: 100,
-                      defaultValue: 50,
-                      admin: {
-                        width: '40%',
-                        description: '0 - 100',
-                        condition: (_, siblingData) => siblingData?.enabled === true,
-                      },
+                        {
+                          name: 'opacity',
+                          type: 'number',
+                          label: 'Opacity',
+                          min: 0,
+                          max: 100,
+                          defaultValue: 50,
+                          admin: {
+                            width: '20%',
+                            description: '0 - 100',
+                            condition: (_, siblingData) => siblingData?.enabled === true,
+                          },
+                        },
+                      ],
                     },
                   ],
                 },

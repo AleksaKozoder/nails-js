@@ -14,6 +14,8 @@ type ImageProps = {
     alt: string
     focalX?: number
     focalY?: number
+    width: number
+    height: number
   }
   aspectRatio?: string
   customAspectRatio?: string
@@ -41,11 +43,11 @@ export const Image: React.FC<ImageProps> = ({
   overlay,
 }) => {
   if (!image?.url) return null
-
+console.log(image)
   const classes = [s.wrapper, variant && s[`wrapper-${variant}`]].filter(Boolean).join(' ')
 
   const ratio =
-    aspectRatio === 'custom' ? customAspectRatio : aspectRatio !== 'auto' ? aspectRatio : undefined
+    aspectRatio === 'custom' ? customAspectRatio :  aspectRatio
 
   const objectPosition =
     image.focalX && image.focalY ? `${image.focalX}% ${image.focalY}%` : 'center'
@@ -66,7 +68,10 @@ export const Image: React.FC<ImageProps> = ({
       <NextImage
         src={image.url}
         alt={image.alt || ''}
-        fill
+        width={image.width}
+        height={image.height}
+        fill={!image.width }
+        sizes={'100vw'}
         style={{
           objectFit: 'cover',
           objectPosition,

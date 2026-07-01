@@ -1,0 +1,7 @@
+@import "@/scss/mixins.scss";
+
+$bg-color: var(--theme-text);
+
+  .collapsible__content {
+    background: color-alpha($bg-color, 8%);
+  }

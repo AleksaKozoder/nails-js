@@ -53,15 +53,17 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         />
       </head>
       <body>
-        <Header
-          blocks={header.blocks ?? []}
-          variant={header.variant ?? 'default'}
-          sticky={header.sticky ?? 'none'}
-          htmlId={header.htmlId ?? undefined}
-          containerType={header.containerType ?? undefined}
-          paddingTop={header.paddingTop ?? undefined}
-          paddingBottom={header.paddingBottom ?? undefined}
-        />
+        {header.id && (
+          <Header
+            blocks={header.blocks ?? []}
+            variant={header.variant ?? 'default'}
+            sticky={header.sticky ?? 'none'}
+            htmlId={header.htmlId ?? undefined}
+            containerType={header.containerType ?? undefined}
+            paddingTop={header.paddingTop ?? undefined}
+            paddingBottom={header.paddingBottom ?? undefined}
+          />
+        )}
         <main>{children}</main>
       </body>
     </html>
