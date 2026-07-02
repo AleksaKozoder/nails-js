@@ -14,15 +14,14 @@ interface BlockRendererProps {
 
 export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks, container }) => {
   if (!blocks || !Array.isArray(blocks)) {
-    return null
+    return undefined
   }
 
   const content = (
     <>
       {blocks.map((block, index) => {
         const { blockType } = block
-console.log('blockType', blockType)
-        console.log('block', block)
+
         const Component = blockComponents[blockType]
 
         if (Component) {

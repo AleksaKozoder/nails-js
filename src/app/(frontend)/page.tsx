@@ -29,9 +29,9 @@ async function enrichBlocks(blocksArray: BlockItem[], payload: any): Promise<Blo
           const postsQuery = await payload.find({
             collection: 'posts',
             limit: block.limit || 3,
-            sort: '-createdAt', // Najnoviji idu prvi
+            sort: '-createdAt',
           })
-          console.log(postsQuery)
+
           postsData = postsQuery.docs
         } else if (block.populateBy === 'manual' && block.selectedPosts) {
           postsData = block.selectedPosts

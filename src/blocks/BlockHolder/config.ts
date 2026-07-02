@@ -31,12 +31,14 @@ const gaps = [
   { label: 'Extra Large', value: 'xl' },
 ]
 
+const variants = [{ label: 'Default', value: 'default' }]
+
 const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
   const canNest = depth < maxDepth - 1
 
   return {
     slug: `blockHolder${depth}`,
-    labels: { singular: 'Block Holder', plural: 'Blocks Holder' },
+    labels: { singular: `Block Holder - level ${depth + 1}`, plural: 'Blocks Holder' },
     fields: [
       {
         type: 'tabs',
@@ -72,15 +74,22 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     type: 'text',
                     label: 'HTML ID',
                     admin: {
-                      width: '33%',
+                      width: '25%',
                       description: 'Optional — custom ID / anchor',
                     },
+                  },
+                  {
+                    name: 'variant',
+                    type: 'select',
+                    defaultValue: 'default',
+                    admin: { width: '25%' },
+                    options: variants,
                   },
                   {
                     name: 'layout',
                     type: 'select',
                     defaultValue: 'block',
-                    admin: { width: '33%' },
+                    admin: { width: '25%' },
                     options: [
                       { label: 'Block', value: 'block' },
                       { label: 'Flex', value: 'flex' },
@@ -91,13 +100,13 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     name: 'verticalAlignment',
                     type: 'select',
                     defaultValue: 'top',
-                    admin: {width: '33%'},
+                    admin: { width: '25%' },
                     options: [
                       { label: 'Top', value: 'top' },
                       { label: 'Middle', value: 'middle' },
                       { label: 'Bottom', value: 'bottom' },
                     ],
-                  }
+                  },
                 ],
               },
               {
@@ -121,7 +130,7 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     admin: {
                       width: '50%',
                       condition: (_, s) => s?.layout === 'grid',
-                    }
+                    },
                   },
                   {
                     name: 'gap',

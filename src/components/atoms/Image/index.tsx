@@ -43,7 +43,7 @@ export const Image: React.FC<ImageProps> = ({
   overlay,
 }) => {
   if (!image?.url) return null
-console.log(image)
+
   const classes = [s.wrapper, variant && s[`wrapper-${variant}`]].filter(Boolean).join(' ')
 
   const ratio =

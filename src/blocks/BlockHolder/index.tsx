@@ -5,6 +5,7 @@ import s from './style.module.scss'
 type BlockHolderProps = {
   layout?: 'block' | 'flex' | 'grid'
   gap?: number | null
+  variant?: string
   flexVariant?: string
   gridVariant?: string
   verticalAlignment?: 'top' | 'center' | 'bottom'
@@ -22,12 +23,14 @@ export const BlockHolder: React.FC<BlockHolderProps> = (props) => {
     atoms,
     flexVariant,
     gridVariant,
+    variant,
     verticalAlignment,
   } = props
 
   const blockClasses = [
     layout === 'block' ? s['block-holder'] : s[`block-holder--${layout}`],
     gap !== 'none' && `gap-${gap}`,
+    variant !== 'default' && s[`block-holder--${variant}`],
     flexVariant !== 'row' && s[`block-holder--flex-${flexVariant}`],
     gridVariant !== 'auto' && s[`block-holder--grid-${gridVariant}`],
     verticalAlignment !== 'top' && s[`block-holder--align-${verticalAlignment}`],

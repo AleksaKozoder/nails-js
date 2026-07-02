@@ -514,6 +514,7 @@ export interface Page {
                                        * Optional — custom ID / anchor
                                        */
                                       htmlId?: string | null;
+                                      variant?: 'default' | null;
                                       layout?: ('block' | 'flex' | 'grid') | null;
                                       verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                                       flexVariant?:
@@ -861,6 +862,7 @@ export interface Page {
                              * Optional — custom ID / anchor
                              */
                             htmlId?: string | null;
+                            variant?: 'default' | null;
                             layout?: ('block' | 'flex' | 'grid') | null;
                             verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                             flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -1192,6 +1194,7 @@ export interface Page {
                    * Optional — custom ID / anchor
                    */
                   htmlId?: string | null;
+                  variant?: 'default' | null;
                   layout?: ('block' | 'flex' | 'grid') | null;
                   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                   flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -1742,6 +1745,7 @@ export interface Post {
                                        * Optional — custom ID / anchor
                                        */
                                       htmlId?: string | null;
+                                      variant?: 'default' | null;
                                       layout?: ('block' | 'flex' | 'grid') | null;
                                       verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                                       flexVariant?:
@@ -2089,6 +2093,7 @@ export interface Post {
                              * Optional — custom ID / anchor
                              */
                             htmlId?: string | null;
+                            variant?: 'default' | null;
                             layout?: ('block' | 'flex' | 'grid') | null;
                             verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                             flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -2420,6 +2425,7 @@ export interface Post {
                    * Optional — custom ID / anchor
                    */
                   htmlId?: string | null;
+                  variant?: 'default' | null;
                   layout?: ('block' | 'flex' | 'grid') | null;
                   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                   flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -2924,6 +2930,7 @@ export interface PagesSelect<T extends boolean = true> {
                                                             };
                                                       };
                                                   htmlId?: T;
+                                                  variant?: T;
                                                   layout?: T;
                                                   verticalAlignment?: T;
                                                   flexVariant?: T;
@@ -3182,6 +3189,7 @@ export interface PagesSelect<T extends boolean = true> {
                                                 };
                                           };
                                       htmlId?: T;
+                                      variant?: T;
                                       layout?: T;
                                       verticalAlignment?: T;
                                       flexVariant?: T;
@@ -3440,6 +3448,7 @@ export interface PagesSelect<T extends boolean = true> {
                                     };
                               };
                           htmlId?: T;
+                          variant?: T;
                           layout?: T;
                           verticalAlignment?: T;
                           flexVariant?: T;
@@ -3782,6 +3791,7 @@ export interface PostsSelect<T extends boolean = true> {
                                                             };
                                                       };
                                                   htmlId?: T;
+                                                  variant?: T;
                                                   layout?: T;
                                                   verticalAlignment?: T;
                                                   flexVariant?: T;
@@ -4040,6 +4050,7 @@ export interface PostsSelect<T extends boolean = true> {
                                                 };
                                           };
                                       htmlId?: T;
+                                      variant?: T;
                                       layout?: T;
                                       verticalAlignment?: T;
                                       flexVariant?: T;
@@ -4298,6 +4309,7 @@ export interface PostsSelect<T extends boolean = true> {
                                     };
                               };
                           htmlId?: T;
+                          variant?: T;
                           layout?: T;
                           verticalAlignment?: T;
                           flexVariant?: T;
@@ -4871,6 +4883,7 @@ export interface Header {
                                  * Optional — custom ID / anchor
                                  */
                                 htmlId?: string | null;
+                                variant?: 'default' | null;
                                 layout?: ('block' | 'flex' | 'grid') | null;
                                 verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                                 flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -5216,6 +5229,7 @@ export interface Header {
                        * Optional — custom ID / anchor
                        */
                       htmlId?: string | null;
+                      variant?: 'default' | null;
                       layout?: ('block' | 'flex' | 'grid') | null;
                       verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
                       flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -5527,6 +5541,7 @@ export interface Header {
              * Optional — custom ID / anchor
              */
             htmlId?: string | null;
+            variant?: 'default' | null;
             layout?: ('block' | 'flex' | 'grid') | null;
             verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
             flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -6192,6 +6207,7 @@ export interface HeaderSelect<T extends boolean = true> {
                                                 };
                                           };
                                       htmlId?: T;
+                                      variant?: T;
                                       layout?: T;
                                       verticalAlignment?: T;
                                       flexVariant?: T;
@@ -6450,6 +6466,7 @@ export interface HeaderSelect<T extends boolean = true> {
                                     };
                               };
                           htmlId?: T;
+                          variant?: T;
                           layout?: T;
                           verticalAlignment?: T;
                           flexVariant?: T;
@@ -6708,6 +6725,7 @@ export interface HeaderSelect<T extends boolean = true> {
                         };
                   };
               htmlId?: T;
+              variant?: T;
               layout?: T;
               verticalAlignment?: T;
               flexVariant?: T;

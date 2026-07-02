@@ -9,72 +9,72 @@ const variants = [
 ]
 
 export const buttonFields: Field[] = [
-    {
-      type: 'tabs',
-      tabs: [
-        {
-          label: 'Content',
-          fields: [
-            {
-              name: 'text',
-              type: 'text',
-              label: 'Button Text',
-              required: true,
+  {
+    type: 'tabs',
+    tabs: [
+      {
+        label: 'Content',
+        fields: [
+          {
+            name: 'text',
+            type: 'text',
+            label: 'Button Text',
+            required: true,
+          },
+          {
+            name: 'linkType',
+            type: 'radio',
+            label: 'Link Type',
+            defaultValue: 'internal',
+            options: [
+              { label: 'Internal', value: 'internal' },
+              { label: 'External', value: 'external' },
+            ],
+            admin: {
+              layout: 'horizontal',
             },
-            {
-              name: 'linkType',
-              type: 'radio',
-              label: 'Link Type',
-              defaultValue: 'internal',
-              options: [
-                { label: 'Internal', value: 'internal' },
-                { label: 'External', value: 'external' },
-              ],
-              admin: {
-                layout: 'horizontal',
-              },
+          },
+          {
+            name: 'internalLink',
+            type: 'relationship',
+            label: 'Internal Page',
+            relationTo: 'pages',
+            admin: {
+              condition: (_, siblingData) => siblingData?.linkType === 'internal',
             },
-            {
-              name: 'internalLink',
-              type: 'relationship',
-              label: 'Internal Page',
-              relationTo: 'pages',
-              admin: {
-                condition: (_, siblingData) => siblingData?.linkType === 'internal',
-              },
+          },
+          {
+            name: 'externalUrl',
+            type: 'text',
+            label: 'External URL',
+            admin: {
+              condition: (_, siblingData) => siblingData?.linkType === 'external',
             },
-            {
-              name: 'externalUrl',
-              type: 'text',
-              label: 'External URL',
-              admin: {
-                condition: (_, siblingData) => siblingData?.linkType === 'external',
-              },
-            },
-            {
-              name: 'newTab',
-              type: 'checkbox',
-              label: 'Open in new tab',
-              defaultValue: false,
-            },
-          ],
-        },
-        {
-          label: 'Settings',
-          fields: [
-            {
-              name: 'variant',
-              type: 'select',
-              label: 'Variant',
-              defaultValue: 'primary',
-              options: variants,
-            },
-            ...iconFields,
-          ],
-        },
-      ],
-    },
-  ]
+          },
+          {
+            name: 'newTab',
+            type: 'checkbox',
+            label: 'Open in new tab',
+            defaultValue: false,
+          },
+        ],
+      },
+      {
+        label: 'Settings',
+        fields: [
+          {
+            name: 'variant',
+            type: 'select',
+            label: 'Variant',
+            defaultValue: 'primary',
+            options: variants,
+          },
+          ...iconFields,
+        ],
+      },
+    ],
+  },
+]
 
 export const ButtonBlock: Block = {
   slug: 'button',

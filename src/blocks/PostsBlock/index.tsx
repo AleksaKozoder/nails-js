@@ -61,7 +61,6 @@ export const PostsBlock: React.FC<PostsBlockProps> = ({
 
       <div className={wrapperClasses}>
         {layout === 'grid' ? (
-          // GRID RENDER
           posts.map((post) => (
             <article key={post.id} className={s['post-card']}>
               <Link className={s.link} href={`/posts/${post.slug}`}/>
