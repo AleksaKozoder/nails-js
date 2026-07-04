@@ -1,19 +1,16 @@
 import { Block, Field } from 'payload'
-import { ImageBlock } from '@/components/atoms/Image/config'
-import { ButtonBlock } from '@/components/atoms/Button/config'
-import { HeadingBlock } from '@/components/atoms/Heading/config'
-import { RichTextBlock } from '@/components/atoms/RichText/config'
-import { TabsBlock } from '@/blocks/Tabs/config'
-import { SliderBlock } from '@/blocks/Slider/config'
-import { AccordionBlock } from '@/blocks/Accordion/config'
-import { MenuBlock } from '@/components/atoms/Menu/config'
-import { CTABlock } from '@/blocks/CTA/config'
-import { TestimonialsBlock } from '@/blocks/Testimonials/config'
-import { StatsBlock } from '@/blocks/Stats/config'
-import { TeamBlock } from '@/blocks/Team/config'
-import { FormBlock } from '@/blocks/FormBlock/config'
+import { blockManifest } from '@/blocks/block-manifest'
 import { advancedFields } from '@/fields/advanced/config'
 import { SPACING_OPTIONS } from '@/fields/constants'
+
+/**
+ * Blocks nestable inside BlockHolder's atoms/blocks arrays, derived from the
+ * shared manifest. blockHolder itself is added separately per depth level
+ * below (see the block-manifest.ts comment for why it isn't in the manifest).
+ */
+const nestableBlocks: Block[] = blockManifest
+  .filter((entry) => entry.nestable !== false)
+  .map((entry) => entry.config)
 
 const flexOptions = [
   { label: 'Row', value: 'row' },
@@ -48,19 +45,7 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                 type: 'blocks',
                 blocks: [
                   ...(canNest ? [createBlockHolder(depth + 1, maxDepth)] : []),
-                  MenuBlock,
-                  HeadingBlock,
-                  RichTextBlock,
-                  ImageBlock,
-                  ButtonBlock,
-                  TabsBlock,
-                  SliderBlock,
-                  AccordionBlock,
-                  CTABlock,
-                  TestimonialsBlock,
-                  StatsBlock,
-                  TeamBlock,
-                  FormBlock,
+                  ...nestableBlocks,
                 ],
               },
             ],
@@ -144,22 +129,7 @@ export const blockHolderFields: Field[] = [
   {
     name: 'blocks',
     type: 'blocks',
-    blocks: [
-      createBlockHolder(0, 3),
-      MenuBlock,
-      HeadingBlock,
-      RichTextBlock,
-      ImageBlock,
-      ButtonBlock,
-      TabsBlock,
-      SliderBlock,
-      AccordionBlock,
-      CTABlock,
-      TestimonialsBlock,
-      StatsBlock,
-      TeamBlock,
-      FormBlock,
-    ],
+    blocks: [createBlockHolder(0, 3), ...nestableBlocks],
   },
 ]
 

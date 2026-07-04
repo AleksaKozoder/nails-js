@@ -1,39 +1,14 @@
 import React from 'react'
-import { Slider } from '@/blocks/Slider'
-import { Section } from '@/blocks/Section'
 import { BlockHolder } from '@/blocks/BlockHolder'
-import { RichText } from '@/components/atoms/RichText'
-import { Heading } from '@/components/atoms/Heading'
-import { Image } from '@/components/atoms/Image'
-import { Button } from '@/components/atoms/Button'
-import { AccordionBlock } from '@/blocks/Accordion'
-import { Menu } from '@/components/atoms/Menu'
-import { PostsBlock } from '@/blocks/PostsBlock'
-import { CTA } from '@/blocks/CTA'
-import { Testimonials } from '@/blocks/Testimonials'
-import { Stats } from '@/blocks/Stats'
-import { Team } from '@/blocks/Team'
-import { FormBlock } from '@/blocks/FormBlock'
+import { Section } from '@/blocks/Section'
+import { blockManifest } from '@/blocks/block-manifest'
 
-const TabsBlock = React.lazy(() => import('@/blocks/Tabs').then((m) => ({ default: m.TabsBlock })))
-
+// blockHolder0/1/2 and section are hand-wired here rather than in the
+// manifest — see the comment above blockManifest in block-manifest.ts for why.
 export const blockComponents: { [key: string]: React.FC<any> } = {
-  section: Section,
-  menu: Menu,
-  slider: Slider,
-  heading: Heading,
-  image: Image,
-  button: Button,
-  richText: RichText,
   blockHolder0: BlockHolder,
   blockHolder1: BlockHolder,
   blockHolder2: BlockHolder,
-  postsBlock: PostsBlock,
-  tabs: TabsBlock,
-  accordion: AccordionBlock,
-  cta: CTA,
-  testimonials: Testimonials,
-  stats: Stats,
-  team: Team,
-  formBlock: FormBlock,
+  section: Section,
+  ...Object.fromEntries(blockManifest.map(({ slug, component }) => [slug, component])),
 }
