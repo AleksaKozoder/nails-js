@@ -2,37 +2,30 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import type { Menu as MenuDoc, MenuBlockProps } from '@/payload-types'
 import s from './style.module.scss'
 
-type MenuItem = {
-  label?: string
-  type?: 'internal' | 'external'
-  page?: { slug?: string; title?: string }
-  anchor?: string
-  url?: string
-  newTab?: boolean
-  children?: MenuItem[]
+// The schema only models 2 levels of nesting, but the component supports arbitrary depth.
+type MenuItemNode = Omit<NonNullable<MenuDoc['items']>[number], 'children'> & {
+  children?: MenuItemNode[] | null
 }
 
-type MenuProps = {
-  items?: MenuItem[] | null
-  menu?: { items?: MenuItem[] | null } | null
-  orientation?: 'horizontal' | 'vertical'
-  variant?: string
-  className?: string
-}
-
-const resolveHref = (item: MenuItem): string => {
+const resolveHref = (item: MenuItemNode): string => {
   if (item.type === 'external') return item.url || '#'
-  const slug = item.page?.slug ? `/${item.page.slug}` : '/'
+  const page = typeof item.page === 'object' ? item.page : undefined
+  const slug = page?.slug ? `/${page.slug}` : '/'
   return item.anchor ? `${slug}#${item.anchor}` : slug
 }
 
-const MenuItemComponent: React.FC<{ item: MenuItem; depth?: number }> = ({ item, depth = 0 }) => {
+const MenuItemComponent: React.FC<{ item: MenuItemNode; depth?: number }> = ({
+  item,
+  depth = 0,
+}) => {
   const [open, setOpen] = useState(false)
   const hasChildren = !!item.children?.length
   const href = resolveHref(item)
   const isExternal = item.type === 'external'
+  const page = typeof item.page === 'object' ? item.page : undefined
 
   return (
     <li
@@ -51,7 +44,7 @@ const MenuItemComponent: React.FC<{ item: MenuItem; depth?: number }> = ({ item,
           target={isExternal && item.newTab ? '_blank' : undefined}
           rel={isExternal && item.newTab ? 'noopener noreferrer' : undefined}
         >
-          {item.label || item.page?.title}
+          {item.label || page?.title}
         </Link>
 
         {hasChildren && (
@@ -82,16 +75,14 @@ const MenuItemComponent: React.FC<{ item: MenuItem; depth?: number }> = ({ item,
   )
 }
 
-export const Menu: React.FC<MenuProps> = ({
-  items: itemsProp,
+export const Menu: React.FC<MenuBlockProps> = ({
   menu,
   orientation = 'horizontal',
   variant = 'default',
-  className,
 }) => {
-  const items = itemsProp ?? menu?.items
+  const items = typeof menu === 'object' ? (menu?.items as MenuItemNode[] | null | undefined) : null
   if (!items?.length) return null
-  const classes = [s.menu, s[`menu--${orientation}`], s[`menu--${variant}`], className]
+  const classes = [s.menu, s[`menu--${orientation}`], s[`menu--${variant}`]]
     .filter(Boolean)
     .join(' ')
 

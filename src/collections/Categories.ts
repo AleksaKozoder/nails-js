@@ -1,4 +1,3 @@
-// src/collections/Categories.ts
 import type { CollectionConfig } from 'payload'
 
 export const Categories: CollectionConfig = {

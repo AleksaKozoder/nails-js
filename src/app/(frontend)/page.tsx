@@ -25,7 +25,6 @@ async function enrichBlocks(blocksArray: BlockItem[], payload: any): Promise<Blo
         let postsData: any[] = []
 
         if (block.populateBy === 'latest') {
-
           const postsQuery = await payload.find({
             collection: 'posts',
             limit: block.limit || 3,

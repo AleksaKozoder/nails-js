@@ -1,4 +1,3 @@
-// src/blocks/Accordion/config.ts
 import { Block } from 'payload'
 import { ImageBlock } from '@/components/atoms/Image/config'
 import { ButtonBlock } from '@/components/atoms/Button/config'
@@ -8,6 +7,7 @@ import { iconFields } from '@/components/atoms/Icon/config'
 
 export const AccordionBlock: Block = {
   slug: 'accordion',
+  interfaceName: 'AccordionBlockProps',
   fields: [
     {
       type: 'tabs',

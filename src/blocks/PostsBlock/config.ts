@@ -22,6 +22,7 @@ const gaps = [
 
 export const PostsBlock: Block = {
   slug: 'postsBlock',
+  interfaceName: 'PostsBlockProps',
   labels: {
     singular: 'Posts View',
     plural: 'Posts Views',

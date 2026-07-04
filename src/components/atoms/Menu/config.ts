@@ -55,6 +55,7 @@ export const menuFields: Field[] = [
 
 export const MenuBlock: Block = {
   slug: 'menu',
+  interfaceName: 'MenuBlockProps',
   labels: { singular: 'Menu', plural: 'Menus' },
   fields: menuFields,
 }

@@ -1,29 +1,27 @@
-// src/blocks/Section/config.ts
 import { Block } from 'payload'
 import { BlockHolder } from '@/blocks/BlockHolder/config'
 import { PostsBlock } from '@/blocks/PostsBlock/config'
 
-const variants = [
-  { label: 'Default', value: 'default' },
-]
+const variants = [{ label: 'Default', value: 'default' }]
 
 const alignment = [
-  {label: 'Top', value: 'top'},
-  {label: 'Center', value: 'center'},
-  {label: 'Bottom', value: 'bottom'},
+  { label: 'Top', value: 'top' },
+  { label: 'Center', value: 'center' },
+  { label: 'Bottom', value: 'bottom' },
 ]
 
 const paddings = [
-  {label: 'None', value: 'none'},
-  {label: 'Extra Small', value: 'xs'},
-  {label: 'Small', value: 'sm' },
-  {label: 'Medium', value: 'md' },
-  {label: 'Large', value: 'lg' },
-  {label: 'Extra Large', value: 'xl'}
+  { label: 'None', value: 'none' },
+  { label: 'Extra Small', value: 'xs' },
+  { label: 'Small', value: 'sm' },
+  { label: 'Medium', value: 'md' },
+  { label: 'Large', value: 'lg' },
+  { label: 'Extra Large', value: 'xl' },
 ]
 
 export const SectionBlock: Block = {
   slug: 'section',
+  interfaceName: 'SectionBlockProps',
   fields: [
     {
       type: 'tabs',

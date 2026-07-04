@@ -78,5 +78,6 @@ export const buttonFields: Field[] = [
 
 export const ButtonBlock: Block = {
   slug: 'button',
+  interfaceName: 'ButtonBlockProps',
   fields: buttonFields,
 }

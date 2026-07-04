@@ -7,6 +7,7 @@ import { iconFields } from '@/components/atoms/Icon/config'
 
 export const TabsBlock: Block = {
   slug: 'tabs',
+  interfaceName: 'TabsBlockProps',
   fields: [
     {
       type: 'tabs',

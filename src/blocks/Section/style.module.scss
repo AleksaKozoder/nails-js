@@ -1,18 +1,18 @@
-@import "../../scss/mixins";
+@use '@/scss/variables' as vars;
 
 .section {
   width: 100%;
   position: relative;
 
   // Renderovanje boja iz mape
-  @each $name, $value in $colors {
+  @each $name, $value in vars.$colors {
     &--color-#{$name} {
       background-color: $value;
     }
   }
 
   // Renderovanje gradijenata iz mape
-  @each $name, $value in $gradients {
+  @each $name, $value in vars.$gradients {
     &--gradient-#{$name} {
       background: $value;
     }

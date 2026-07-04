@@ -1,19 +1,16 @@
-import React, { CSSProperties } from 'react'
+import React from 'react'
+import type {
+  BlockHolderLevel0BlockProps,
+  BlockHolderLevel1BlockProps,
+  BlockHolderLevel2BlockProps,
+} from '@/payload-types'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
 import s from './style.module.scss'
 
-type BlockHolderProps = {
-  layout?: 'block' | 'flex' | 'grid'
-  gap?: number | null
-  variant?: string
-  flexVariant?: string
-  gridVariant?: string
-  verticalAlignment?: 'top' | 'center' | 'bottom'
-  htmlId?: string
-
-  // Content
-  atoms?: any[]
-}
+type BlockHolderProps =
+  | BlockHolderLevel0BlockProps
+  | BlockHolderLevel1BlockProps
+  | BlockHolderLevel2BlockProps
 
 export const BlockHolder: React.FC<BlockHolderProps> = (props) => {
   const {

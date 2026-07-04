@@ -1,7 +1,6 @@
-@import "./mixins";
-@import "./variables";
+@use './variables' as vars;
 
-$container-w-extension: calc($container-inline-padding * 2);
+$container-w-extension: calc(vars.$container-inline-padding * 2);
 
 html {
   font-size: 62.5%;
@@ -15,8 +14,8 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: $color-bg;
-  color: $color-text;
+  background-color: vars.$color-bg;
+  color: vars.$color-text;
   -webkit-font-smoothing: antialiased;
   font-size: 1.6rem;
 }
@@ -27,7 +26,7 @@ img {
 }
 
 .container {
-  padding-inline: $container-inline-padding;
+  padding-inline: vars.$container-inline-padding;
   max-width: calc(128rem + $container-w-extension);
   width: 100%;
   margin: 0 auto;
@@ -59,9 +58,8 @@ img {
   }
 }
 
-
 .padding {
-  @each $name, $value in $sizes {
+  @each $name, $value in vars.$sizes {
     &-#{$name} {
       padding: $value 0;
     }
@@ -69,7 +67,7 @@ img {
 }
 
 .gap {
-  @each $name, $value in $sizes {
+  @each $name, $value in vars.$sizes {
     &-#{$name} {
       gap: $value;
     }

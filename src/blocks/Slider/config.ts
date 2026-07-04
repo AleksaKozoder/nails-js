@@ -2,6 +2,7 @@ import { Block } from 'payload'
 
 export const SliderBlock: Block = {
   slug: 'slider',
+  interfaceName: 'SliderBlockProps',
   labels: { singular: 'Slider', plural: 'Sliders' },
   fields: [
     {

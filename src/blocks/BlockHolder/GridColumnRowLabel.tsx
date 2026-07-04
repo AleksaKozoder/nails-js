@@ -14,5 +14,9 @@ export const GridColumnRowLabel: React.FC<RowLabelProps> = ({ data, rowNumber })
         ? `${value}${unit}`
         : `Kolona ${rowNumber}`
 
-  return <span>Col {rowNumber} — {label}</span>
+  return (
+    <span>
+      Col {rowNumber} — {label}
+    </span>
+  )
 }

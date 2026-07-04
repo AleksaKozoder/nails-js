@@ -1,21 +1,9 @@
-// src/blocks/Accordion/index.tsx
 'use client'
 
 import React, { useState } from 'react'
+import type { AccordionBlockProps } from '@/payload-types'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
 import s from './style.module.scss'
-
-type AccordionItem = {
-  label?: string
-  defaultOpen?: boolean
-  blocks?: any[]
-}
-
-type AccordionBlockProps = {
-  items?: AccordionItem[] | null
-  allowMultiple?: boolean
-  variant?: string
-}
 
 export const AccordionBlock: React.FC<AccordionBlockProps> = (props) => {
   const { items = [], allowMultiple = false, variant = 'default' } = props

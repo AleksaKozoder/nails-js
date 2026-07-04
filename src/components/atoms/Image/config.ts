@@ -4,6 +4,7 @@ const variants = [{ label: 'Default', value: 'default' }]
 
 export const ImageBlock: Block = {
   slug: 'image',
+  interfaceName: 'ImageBlockProps',
   fields: [
     {
       type: 'tabs',

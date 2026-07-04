@@ -1,4 +1,4 @@
-@import "../../scss/mixins";
+@use '@/scss/mixins' as mixins;
 
 .slider {
   width: 100%;
@@ -40,7 +40,7 @@
     position: absolute;
     bottom: 20px;
     left: 20px;
-    background: rgba(0,0,0,0.6);
+    background: mixins.color-alpha(#000, 60%);
     color: #fff;
     padding: 10px 15px;
     border-radius: 4px;

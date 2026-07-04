@@ -1,37 +1,10 @@
-// src/components/atoms/Image/index.tsx
 import React from 'react'
 import Link from 'next/link'
 import NextImage from 'next/image'
+import type { ImageBlockProps } from '@/payload-types'
 import s from './style.module.scss'
 
-type InternalLink = {
-  slug?: string
-}
-
-type ImageProps = {
-  image: {
-    url: string
-    alt: string
-    focalX?: number
-    focalY?: number
-    width: number
-    height: number
-  }
-  aspectRatio?: string
-  customAspectRatio?: string
-  variant?: string
-  linkType?: 'none' | 'internal' | 'external'
-  internalLink?: InternalLink | string | null
-  externalUrl?: string | null
-  newTab?: boolean
-  overlay?: {
-    enabled?: boolean
-    color?: string
-    opacity?: number
-  }
-}
-
-export const Image: React.FC<ImageProps> = ({
+export const Image: React.FC<ImageBlockProps> = ({
   image,
   aspectRatio,
   customAspectRatio,
@@ -42,15 +15,15 @@ export const Image: React.FC<ImageProps> = ({
   newTab = false,
   overlay,
 }) => {
-  if (!image?.url) return null
+  const media = typeof image === 'object' ? image : undefined
+  if (!media?.url) return null
 
   const classes = [s.wrapper, variant && s[`wrapper-${variant}`]].filter(Boolean).join(' ')
 
-  const ratio =
-    aspectRatio === 'custom' ? customAspectRatio :  aspectRatio
+  const ratio = aspectRatio === 'custom' ? customAspectRatio : aspectRatio
 
   const objectPosition =
-    image.focalX && image.focalY ? `${image.focalX}% ${image.focalY}%` : 'center'
+    media.focalX && media.focalY ? `${media.focalX}% ${media.focalY}%` : 'center'
 
   const showOverlay = overlay?.enabled && overlay?.color
 
@@ -58,22 +31,23 @@ export const Image: React.FC<ImageProps> = ({
     linkType === 'internal'
       ? typeof internalLink === 'object' && internalLink !== null
         ? `/${internalLink.slug ?? ''}`
-        : typeof internalLink === 'string'
-          ? `/${internalLink}`
-          : '/'
-      : externalUrl ?? '#'
+        : '/'
+      : (externalUrl ?? '#')
+
+  const width = media.width ?? 0
+  const height = media.height ?? 0
 
   const content = (
     <div
       className={classes}
       style={{
-        aspectRatio: ratio !== 'auto' ? ratio : image.width / image.height,
-        width: ratio !== 'auto' ? '100%' : `${image.width}px`,
+        aspectRatio: ratio !== 'auto' ? (ratio ?? undefined) : width / height,
+        width: ratio !== 'auto' ? '100%' : `${width}px`,
       }}
     >
       <NextImage
-        src={image.url}
-        alt={image.alt || ''}
+        src={media.url}
+        alt={media.alt || ''}
         fill
         sizes={'100vw'}
         style={{

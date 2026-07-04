@@ -13,7 +13,6 @@ import { Menus } from '@/collections/Menus'
 import { Posts } from '@/collections/Posts'
 import { Categories } from '@/collections/Categories'
 
-
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 

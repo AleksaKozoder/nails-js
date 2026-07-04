@@ -40,13 +40,7 @@ import {
   Grid3X3,
   MessageCircle,
 } from 'lucide-react'
-import {
-  SiFacebook,
-  SiInstagram,
-  SiYoutube,
-  SiX,
-  SiWhatsapp,
-} from '@icons-pack/react-simple-icons'
+import { SiFacebook, SiInstagram, SiYoutube, SiX, SiWhatsapp } from '@icons-pack/react-simple-icons'
 
 const ICON_SET = [
   { label: 'Arrow Right', value: 'arrowRight', icon: ArrowRight },

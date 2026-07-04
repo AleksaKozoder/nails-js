@@ -1,25 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@/components/atoms/Icon'
-import type { IconProps } from '@/components/atoms/Icon'
-import styles from './style.module.scss'
+import type { ButtonBlockProps } from '@/payload-types'
+import s from './style.module.scss'
 
-type InternalLink = {
-  slug?: string
-}
-
-type ButtonProps = IconProps & {
-  text: string
-  linkType: 'internal' | 'external'
-  internalLink?: InternalLink | string | null
-  externalUrl?: string | null
-  newTab?: boolean
-  variant?: 'primary' | 'secondary' | 'ghost' | 'outline'
-  className?: string
-  iconPosition?: 'left' | 'right'
-}
-
-export const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonBlockProps> = ({
   text,
   linkType,
   internalLink,
@@ -31,25 +16,22 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   customSvg,
   iconPosition = 'right',
-  className = '',
 }) => {
   const resolvedHref =
     linkType === 'internal'
       ? typeof internalLink === 'object' && internalLink !== null
         ? `/${internalLink.slug ?? ''}`
-        : typeof internalLink === 'string'
-          ? `/${internalLink}`
-          : '/'
-      : externalUrl ?? '#'
+        : '/'
+      : (externalUrl ?? '#')
 
   const iconEl = (
     <Icon
-      hasIcon={hasIcon}
-      iconType={iconType}
+      hasIcon={hasIcon ?? false}
+      iconType={iconType ?? 'picker'}
       icon={icon}
-      customSvg={customSvg}
+      customSvg={typeof customSvg === 'object' ? customSvg : null}
       size={16}
-      className={styles.icon}
+      className={s.icon}
     />
   )
 
@@ -61,7 +43,7 @@ export const Button: React.FC<ButtonProps> = ({
     </>
   )
 
-  const classes = [styles.button, styles[variant], className].filter(Boolean).join(' ')
+  const classes = [s.button, s[variant ?? 'primary']].filter(Boolean).join(' ')
 
   const linkProps =
     newTab || linkType === 'external' ? { target: '_blank', rel: 'noopener noreferrer' } : {}

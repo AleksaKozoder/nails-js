@@ -1,19 +1,14 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
+import type { Header as HeaderGlobal } from '@/payload-types'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
 import s from './style.module.scss'
 
-type HeaderProps = {
-  blocks?: any[]
-  variant?: string
-  sticky?: 'none' | 'sticky' | 'sticky-up'
-  width?: 'default' | 'wide' | 'full'
-  htmlId?: string
-  containerType?: string
-  paddingTop?: number
-  paddingBottom?: number
-}
+type HeaderProps = Pick<
+  HeaderGlobal,
+  'blocks' | 'variant' | 'sticky' | 'htmlId' | 'containerType' | 'paddingTop' | 'paddingBottom'
+>
 
 export const Header: React.FC<HeaderProps> = ({
   blocks,

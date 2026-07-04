@@ -1,4 +1,4 @@
-import {Block} from 'payload'
+import { Block } from 'payload'
 
 const variants = [
   { label: 'Default', value: 'default' },
@@ -8,6 +8,7 @@ const variants = [
 
 export const RichTextBlock: Block = {
   slug: 'richText',
+  interfaceName: 'RichTextBlockProps',
   fields: [
     {
       type: 'tabs',

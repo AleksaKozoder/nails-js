@@ -38,6 +38,7 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
 
   return {
     slug: `blockHolder${depth}`,
+    interfaceName: `BlockHolderLevel${depth}BlockProps`,
     labels: { singular: `Block Holder - level ${depth + 1}`, plural: 'Blocks Holder' },
     fields: [
       {

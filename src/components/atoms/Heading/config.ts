@@ -17,6 +17,7 @@ const variants = [
 
 export const HeadingBlock: Block = {
   slug: 'heading',
+  interfaceName: 'HeadingBlockProps',
   fields: [
     {
       type: 'tabs',

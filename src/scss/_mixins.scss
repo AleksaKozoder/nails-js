@@ -1,20 +1,20 @@
-@import "variables";
+@use 'variables' as vars;
 
 // Mobile-first mixini
 @mixin tablet {
-  @media (min-width: #{$breakpoint-tablet}) {
+  @media (min-width: #{vars.$breakpoint-tablet}) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: #{$breakpoint-desktop}) {
+  @media (min-width: #{vars.$breakpoint-desktop}) {
     @content;
   }
 }
 
 @mixin wide {
-  @media (min-width: #{$breakpoint-wide}) {
+  @media (min-width: #{vars.$breakpoint-wide}) {
     @content;
   }
 }

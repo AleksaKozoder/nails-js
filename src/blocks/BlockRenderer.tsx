@@ -1,13 +1,12 @@
-// src/blocks/BlockRenderer.tsx
 import React from 'react'
 import { blockComponents } from './block-registry'
 
-interface BlockData {
+type BlockData = {
   blockType: string
   [key: string]: any
 }
 
-interface BlockRendererProps {
+type BlockRendererProps = {
   blocks?: BlockData[] | null
   container?: string | null
 }
@@ -34,11 +33,6 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks, container 
     </>
   )
 
-
   // Ako postoji container prop, vraćamo content umotan u div, inače samo content
-  return container ? (
-    <div className={container}>{content}</div>
-  ) : (
-    content
-  )
+  return container ? <div className={container}>{content}</div> : content
 }

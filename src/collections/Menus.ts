@@ -1,4 +1,3 @@
-// src/collections/Menus.ts
 import { CollectionConfig } from 'payload'
 
 export const Menus: CollectionConfig = {

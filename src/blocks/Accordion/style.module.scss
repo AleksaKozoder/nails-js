@@ -1,12 +1,12 @@
-@import "@/scss/mixins.scss";
-@import "@/scss/variables.scss";
+@use '@/scss/mixins' as mixins;
+@use '@/scss/variables' as vars;
 
 .accordion {
   width: 100%;
 
   &--bordered {
     .accordion__item {
-      border: 1px solid color-alpha($color-primary, 20%);
+      border: 1px solid mixins.color-alpha(vars.$color-primary, 20%);
       border-radius: 6px;
       overflow: hidden;
     }
@@ -22,17 +22,17 @@
 }
 
 .accordion__item {
-  border-bottom: 1px solid color-alpha($color-primary, 10%);
+  border-bottom: 1px solid mixins.color-alpha(vars.$color-primary, 10%);
 
   & + & {
-    margin-top: .4rem;
+    margin-top: 0.4rem;
   }
 }
 
 .accordion__trigger {
   appearance: none;
   border: 0;
-  background: color-alpha($color-primary, 5%);
+  background: mixins.color-alpha(vars.$color-primary, 5%);
   cursor: pointer;
   width: 100%;
   display: flex;
@@ -40,20 +40,22 @@
   justify-content: space-between;
   gap: 1.6rem;
   padding: 1.6rem 2rem;
-  color: $color-primary;
+  color: vars.$color-primary;
   text-align: left;
   font-weight: 600;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 
   &:hover {
-    background: color-alpha($color-primary, 15%);
+    background: mixins.color-alpha(vars.$color-primary, 15%);
   }
 }
 
 .accordion__item--open {
   .accordion__trigger {
-    color: $color-secondary;
-    background: color-alpha($color-primary, 10%);
+    color: vars.$color-secondary;
+    background: mixins.color-alpha(vars.$color-primary, 10%);
   }
 }
 

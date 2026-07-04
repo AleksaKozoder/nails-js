@@ -1,26 +1,15 @@
 'use client'
 
 import React, { useMemo, useState } from 'react'
+import type { TabsBlockProps } from '@/payload-types'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
 import s from './style.module.scss'
 
-type TabsItem = {
-  label?: string
-  icon?: string
-  defaultActive?: boolean
-  blocks?: any[]
-}
-
-type TabsBlockProps = {
-  orientation?: 'horizontal' | 'vertical'
-  variant?: string
-  items?: TabsItem[] | null
-}
-
 export const TabsBlock: React.FC<TabsBlockProps> = (props) => {
-  const { orientation = 'horizontal', variant = 'default', items = [] } = props
+  const { orientation: orientationProp, variant = 'default', items = [] } = props
+  const orientation = orientationProp ?? 'horizontal'
 
-  const tabs = items ?? [];
+  const tabs = items ?? []
   const defaultIndex = useMemo(() => {
     const found = tabs.findIndex((item) => item?.defaultActive)
     return found >= 0 ? found : 0

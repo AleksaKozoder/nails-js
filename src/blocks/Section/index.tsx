@@ -1,9 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
+import type { SectionBlockProps } from '@/payload-types'
 import { BlockRenderer } from '../BlockRenderer'
 import s from './style.module.scss'
 
-export const Section: React.FC<any> = ({ settings, blocks }) => {
+export const Section: React.FC<SectionBlockProps> = ({ settings = {}, blocks }) => {
   const {
     backgroundType,
     colorTheme,
@@ -18,6 +19,8 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
     htmlId,
     overlay,
   } = settings
+
+  const bgImageMedia = typeof bgImage === 'object' ? bgImage : undefined
 
   const sectionClasses = [
     s['section'],
@@ -37,7 +40,10 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
           ...new Set([
             'container',
             containerType,
-            viewport === 'full' && alignment && alignment !== 'top' && `container--align-${alignment}`,
+            viewport === 'full' &&
+              alignment &&
+              alignment !== 'top' &&
+              `container--align-${alignment}`,
           ]),
         ]
           .filter(Boolean)
@@ -48,8 +54,8 @@ export const Section: React.FC<any> = ({ settings, blocks }) => {
 
   return (
     <section className={sectionClasses} id={htmlId || undefined}>
-      {backgroundType === 'image' && bgImage && (
-        <Image src={bgImage.url} alt="" fill className={s['section__bgImage']} />
+      {backgroundType === 'image' && bgImageMedia?.url && (
+        <Image src={bgImageMedia.url} alt="" fill className={s['section__bgImage']} />
       )}
 
       {showOverlay && (

@@ -36,33 +36,33 @@ async function enrichBlocks(blocksArray: BlockItem[], payload: any): Promise<Blo
             .map((post) => (typeof post === 'object' ? post : null))
             .filter(Boolean)
         } else if (block.populateBy === 'categories' && block.selectedCategories) {
-        // 1. Mapiramo kroz niz selectedCategories i izvlačimo sve ID-eve
-        const categoryIds = block.selectedCategories
-          .map((cat: any) => {
-            if (typeof cat === 'object' && cat !== null) return cat.id
-            if (typeof cat === 'string' || typeof cat === 'number') return cat
-            return null
-          })
-          .filter(Boolean) // Čistimo null vrednosti
+          // 1. Mapiramo kroz niz selectedCategories i izvlačimo sve ID-eve
+          const categoryIds = block.selectedCategories
+            .map((cat: any) => {
+              if (typeof cat === 'object' && cat !== null) return cat.id
+              if (typeof cat === 'string' || typeof cat === 'number') return cat
+              return null
+            })
+            .filter(Boolean) // Čistimo null vrednosti
 
-        // 2. Pokrećemo upit samo ako imamo barem jedan validan ID kategorije
-        if (categoryIds.length > 0) {
-          const postsQuery = await payload.find({
-            collection: 'posts',
-            limit: block.limit || 3,
-            sort: '-createdAt',
-            where: {
-              // Koristimo 'in' operator jer admin može da izabere više kategorija u nizu
-              category: {
-                in: categoryIds,
+          // 2. Pokrećemo upit samo ako imamo barem jedan validan ID kategorije
+          if (categoryIds.length > 0) {
+            const postsQuery = await payload.find({
+              collection: 'posts',
+              limit: block.limit || 3,
+              sort: '-createdAt',
+              where: {
+                // Koristimo 'in' operator jer admin može da izabere više kategorija u nizu
+                category: {
+                  in: categoryIds,
+                },
               },
-            },
-          })
-          postsData = postsQuery.docs
-        } else {
-          console.warn('Nema validnih ID-eva u selectedCategories:', block.selectedCategories)
+            })
+            postsData = postsQuery.docs
+          } else {
+            console.warn('Nema validnih ID-eva u selectedCategories:', block.selectedCategories)
+          }
         }
-      }
 
         // Vraćamo blok sa ubacenim "posts" nizom
         return {

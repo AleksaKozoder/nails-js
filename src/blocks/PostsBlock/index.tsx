@@ -1,34 +1,10 @@
-// src/components/blocks/PostsBlock/index.tsx
 import React from 'react'
-import s from './style.module.scss'
 import Link from 'next/link'
+import type { PostsBlockProps as GeneratedPostsBlockProps, Post } from '@/payload-types'
+import s from './style.module.scss'
 
-// Tipovi za pojedinačni post (prilagođeno tvojoj Posts kolekciji)
-type Post = {
-  category?: []
-  id: string
-  title: string
-  slug: string
-  featuredImage?:
-    | {
-        url?: string
-        alt?: string
-      }
-    | string
-  excerpt?: string
-}
-
-export type PostsBlockProps = {
-  title?: string
-  populateBy: 'latest' | 'manual'
-  limit: number
-  selectedPosts?: (string | Post)[]
-  htmlId?: string
-  layout: 'grid' | 'slider'
-  gridColumns?: 'col-2' | 'col-3' | 'col-4'
-  autoplay?: boolean
-  showArrows?: boolean
-  gap: string
+// `posts` is injected server-side by enrichBlocks() in app/(frontend)/page.tsx, not part of the CMS schema
+export type PostsBlockProps = GeneratedPostsBlockProps & {
   posts?: Post[]
 }
 
@@ -42,8 +18,6 @@ export const PostsBlock: React.FC<PostsBlockProps> = ({
   gap = 'none',
   posts = [],
 }) => {
-  // if (!posts || posts.length === 0) return null
-
   // Klasa za omotač u zavisnosti od izabranog layout-a (grid ili slider)
   const wrapperClasses = [
     s['posts-block'],
@@ -61,35 +35,39 @@ export const PostsBlock: React.FC<PostsBlockProps> = ({
 
       <div className={wrapperClasses}>
         {layout === 'grid' ? (
-          posts.map((post) => (
-            <article key={post.id} className={s['post-card']}>
-              <Link className={s.link} href={`/posts/${post.slug}`}/>
-              {post.featuredImage && (
-                <div className={s['post-card__image-wrapper']}>
-                  <img
-                    src={typeof post.featuredImage === 'object' ? post.featuredImage.url : ''}
-                    alt={
-                      typeof post.featuredImage === 'object'
-                        ? post.featuredImage.alt || post.title
-                        : post.title
-                    }
-                    className={s['post-card__image']}
-                  />
-                </div>
-              )}
-              <div className={s['post-card__content']}>
-                {post.category && Array.isArray(post.category) && post.category.length > 0 && (
-                  <div className={s['post-card__category']}>
-                    {post.category.map((cat: any) => (
-                      <span key={cat.id}>{cat.title}</span>
-                    ))}
+          posts.map((post) => {
+            const featuredImage =
+              typeof post.featuredImage === 'object' ? post.featuredImage : undefined
+            const categories = (post.category ?? []).filter(
+              (cat): cat is Extract<typeof cat, object> => typeof cat === 'object',
+            )
+
+            return (
+              <article key={post.id} className={s['post-card']}>
+                <Link className={s.link} href={`/posts/${post.slug}`} />
+                {featuredImage?.url && (
+                  <div className={s['post-card__image-wrapper']}>
+                    <img
+                      src={featuredImage.url}
+                      alt={featuredImage.alt || post.title}
+                      className={s['post-card__image']}
+                    />
                   </div>
                 )}
-                <h3 className={s['post-card__title']}>{post.title}</h3>
-                {post.excerpt && <p className={s['post-card__excerpt']}>{post.excerpt}</p>}
-              </div>
-            </article>
-          ))
+                <div className={s['post-card__content']}>
+                  {categories.length > 0 && (
+                    <div className={s['post-card__category']}>
+                      {categories.map((cat) => (
+                        <span key={cat.id}>{cat.title}</span>
+                      ))}
+                    </div>
+                  )}
+                  <h3 className={s['post-card__title']}>{post.title}</h3>
+                  {post.excerpt && <p className={s['post-card__excerpt']}>{post.excerpt}</p>}
+                </div>
+              </article>
+            )
+          })
         ) : (
           // SLIDER RENDER (ovde implementiraš svoj Slider/Swiper sa autoplay i showArrows opcijama)
           <div className={s['slider-placeholder']}>

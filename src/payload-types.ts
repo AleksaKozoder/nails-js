@@ -140,1138 +140,7 @@ export interface UserAuthOperations {
 export interface Page {
   id: number;
   title: string;
-  layout?:
-    | {
-        blocks?:
-          | (
-              | {
-                  atoms?:
-                    | (
-                        | {
-                            atoms?:
-                              | (
-                                  | {
-                                      atoms?:
-                                        | (
-                                            | {
-                                                /**
-                                                 * Select a menu from the Menus collection
-                                                 */
-                                                menu: number | Menu;
-                                                orientation?: ('horizontal' | 'vertical') | null;
-                                                variant?: ('default' | 'minimal' | 'pills') | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'menu';
-                                              }
-                                            | {
-                                                title?: string | null;
-                                                variant?: ('default' | 'center' | 'right') | null;
-                                                titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                                color?: string | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'heading';
-                                              }
-                                            | {
-                                                text?: {
-                                                  root: {
-                                                    type: string;
-                                                    children: {
-                                                      type: any;
-                                                      version: number;
-                                                      [k: string]: unknown;
-                                                    }[];
-                                                    direction: ('ltr' | 'rtl') | null;
-                                                    format:
-                                                      | 'left'
-                                                      | 'start'
-                                                      | 'center'
-                                                      | 'right'
-                                                      | 'end'
-                                                      | 'justify'
-                                                      | '';
-                                                    indent: number;
-                                                    version: number;
-                                                  };
-                                                  [k: string]: unknown;
-                                                } | null;
-                                                variant?: ('default' | 'center' | 'right') | null;
-                                                color?: string | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'richText';
-                                              }
-                                            | {
-                                                image?: (number | null) | Media;
-                                                linkType?: ('none' | 'internal' | 'external') | null;
-                                                internalLink?: (number | null) | Page;
-                                                externalUrl?: string | null;
-                                                newTab?: boolean | null;
-                                                aspectRatio?:
-                                                  | (
-                                                      | 'auto'
-                                                      | '1/1'
-                                                      | '3/2'
-                                                      | '4/3'
-                                                      | '16/9'
-                                                      | '2/3'
-                                                      | '3/4'
-                                                      | '9/16'
-                                                      | 'custom'
-                                                    )
-                                                  | null;
-                                                /**
-                                                 * Format: 16/9, 4/3, 1/1...
-                                                 */
-                                                customAspectRatio?: string | null;
-                                                variant?: 'default' | null;
-                                                overlay?: {
-                                                  enabled?: boolean | null;
-                                                  color?: string | null;
-                                                  /**
-                                                   * 0 - 100
-                                                   */
-                                                  opacity?: number | null;
-                                                };
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'image';
-                                              }
-                                            | {
-                                                text: string;
-                                                linkType?: ('internal' | 'external') | null;
-                                                internalLink?: (number | null) | Page;
-                                                externalUrl?: string | null;
-                                                newTab?: boolean | null;
-                                                variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                                hasIcon?: boolean | null;
-                                                iconType?: ('picker' | 'customSvg') | null;
-                                                icon?: string | null;
-                                                customSvg?: (number | null) | Media;
-                                                iconPosition?: ('left' | 'right') | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'button';
-                                              }
-                                            | {
-                                                items?:
-                                                  | {
-                                                      blocks?:
-                                                        | (
-                                                            | {
-                                                                title?: string | null;
-                                                                variant?: ('default' | 'center' | 'right') | null;
-                                                                titleTag?:
-                                                                  | ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span')
-                                                                  | null;
-                                                                color?: string | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'heading';
-                                                              }
-                                                            | {
-                                                                text?: {
-                                                                  root: {
-                                                                    type: string;
-                                                                    children: {
-                                                                      type: any;
-                                                                      version: number;
-                                                                      [k: string]: unknown;
-                                                                    }[];
-                                                                    direction: ('ltr' | 'rtl') | null;
-                                                                    format:
-                                                                      | 'left'
-                                                                      | 'start'
-                                                                      | 'center'
-                                                                      | 'right'
-                                                                      | 'end'
-                                                                      | 'justify'
-                                                                      | '';
-                                                                    indent: number;
-                                                                    version: number;
-                                                                  };
-                                                                  [k: string]: unknown;
-                                                                } | null;
-                                                                variant?: ('default' | 'center' | 'right') | null;
-                                                                color?: string | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'richText';
-                                                              }
-                                                            | {
-                                                                image?: (number | null) | Media;
-                                                                linkType?: ('none' | 'internal' | 'external') | null;
-                                                                internalLink?: (number | null) | Page;
-                                                                externalUrl?: string | null;
-                                                                newTab?: boolean | null;
-                                                                aspectRatio?:
-                                                                  | (
-                                                                      | 'auto'
-                                                                      | '1/1'
-                                                                      | '3/2'
-                                                                      | '4/3'
-                                                                      | '16/9'
-                                                                      | '2/3'
-                                                                      | '3/4'
-                                                                      | '9/16'
-                                                                      | 'custom'
-                                                                    )
-                                                                  | null;
-                                                                /**
-                                                                 * Format: 16/9, 4/3, 1/1...
-                                                                 */
-                                                                customAspectRatio?: string | null;
-                                                                variant?: 'default' | null;
-                                                                overlay?: {
-                                                                  enabled?: boolean | null;
-                                                                  color?: string | null;
-                                                                  /**
-                                                                   * 0 - 100
-                                                                   */
-                                                                  opacity?: number | null;
-                                                                };
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'image';
-                                                              }
-                                                            | {
-                                                                text: string;
-                                                                linkType?: ('internal' | 'external') | null;
-                                                                internalLink?: (number | null) | Page;
-                                                                externalUrl?: string | null;
-                                                                newTab?: boolean | null;
-                                                                variant?:
-                                                                  | ('primary' | 'secondary' | 'ghost' | 'outline')
-                                                                  | null;
-                                                                hasIcon?: boolean | null;
-                                                                iconType?: ('picker' | 'customSvg') | null;
-                                                                icon?: string | null;
-                                                                customSvg?: (number | null) | Media;
-                                                                iconPosition?: ('left' | 'right') | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'button';
-                                                              }
-                                                          )[]
-                                                        | null;
-                                                      label: string;
-                                                      defaultActive?: boolean | null;
-                                                      hasIcon?: boolean | null;
-                                                      iconType?: ('picker' | 'customSvg') | null;
-                                                      icon?: string | null;
-                                                      customSvg?: (number | null) | Media;
-                                                      iconPosition?: ('left' | 'right') | null;
-                                                      id?: string | null;
-                                                    }[]
-                                                  | null;
-                                                orientation?: ('horizontal' | 'vertical') | null;
-                                                variant?: ('default' | 'full' | 'minimal') | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'tabs';
-                                              }
-                                            | {
-                                                settings?: {
-                                                  orientation?: ('horizontal' | 'vertical') | null;
-                                                  /**
-                                                   * Space between slides in px
-                                                   */
-                                                  spaceBetween?: number | null;
-                                                  slidesPerView?: number | null;
-                                                };
-                                                slides?:
-                                                  | {
-                                                      image: number | Media;
-                                                      caption?: string | null;
-                                                      id?: string | null;
-                                                    }[]
-                                                  | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'slider';
-                                              }
-                                            | {
-                                                items?:
-                                                  | {
-                                                      blocks?:
-                                                        | (
-                                                            | {
-                                                                title?: string | null;
-                                                                variant?: ('default' | 'center' | 'right') | null;
-                                                                titleTag?:
-                                                                  | ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span')
-                                                                  | null;
-                                                                color?: string | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'heading';
-                                                              }
-                                                            | {
-                                                                text?: {
-                                                                  root: {
-                                                                    type: string;
-                                                                    children: {
-                                                                      type: any;
-                                                                      version: number;
-                                                                      [k: string]: unknown;
-                                                                    }[];
-                                                                    direction: ('ltr' | 'rtl') | null;
-                                                                    format:
-                                                                      | 'left'
-                                                                      | 'start'
-                                                                      | 'center'
-                                                                      | 'right'
-                                                                      | 'end'
-                                                                      | 'justify'
-                                                                      | '';
-                                                                    indent: number;
-                                                                    version: number;
-                                                                  };
-                                                                  [k: string]: unknown;
-                                                                } | null;
-                                                                variant?: ('default' | 'center' | 'right') | null;
-                                                                color?: string | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'richText';
-                                                              }
-                                                            | {
-                                                                image?: (number | null) | Media;
-                                                                linkType?: ('none' | 'internal' | 'external') | null;
-                                                                internalLink?: (number | null) | Page;
-                                                                externalUrl?: string | null;
-                                                                newTab?: boolean | null;
-                                                                aspectRatio?:
-                                                                  | (
-                                                                      | 'auto'
-                                                                      | '1/1'
-                                                                      | '3/2'
-                                                                      | '4/3'
-                                                                      | '16/9'
-                                                                      | '2/3'
-                                                                      | '3/4'
-                                                                      | '9/16'
-                                                                      | 'custom'
-                                                                    )
-                                                                  | null;
-                                                                /**
-                                                                 * Format: 16/9, 4/3, 1/1...
-                                                                 */
-                                                                customAspectRatio?: string | null;
-                                                                variant?: 'default' | null;
-                                                                overlay?: {
-                                                                  enabled?: boolean | null;
-                                                                  color?: string | null;
-                                                                  /**
-                                                                   * 0 - 100
-                                                                   */
-                                                                  opacity?: number | null;
-                                                                };
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'image';
-                                                              }
-                                                            | {
-                                                                text: string;
-                                                                linkType?: ('internal' | 'external') | null;
-                                                                internalLink?: (number | null) | Page;
-                                                                externalUrl?: string | null;
-                                                                newTab?: boolean | null;
-                                                                variant?:
-                                                                  | ('primary' | 'secondary' | 'ghost' | 'outline')
-                                                                  | null;
-                                                                hasIcon?: boolean | null;
-                                                                iconType?: ('picker' | 'customSvg') | null;
-                                                                icon?: string | null;
-                                                                customSvg?: (number | null) | Media;
-                                                                iconPosition?: ('left' | 'right') | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'button';
-                                                              }
-                                                          )[]
-                                                        | null;
-                                                      label: string;
-                                                      defaultOpen?: boolean | null;
-                                                      hasIcon?: boolean | null;
-                                                      iconType?: ('picker' | 'customSvg') | null;
-                                                      icon?: string | null;
-                                                      customSvg?: (number | null) | Media;
-                                                      iconPosition?: ('left' | 'right') | null;
-                                                      id?: string | null;
-                                                    }[]
-                                                  | null;
-                                                allowMultiple?: boolean | null;
-                                                variant?: ('default' | 'bordered' | 'minimal') | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'accordion';
-                                              }
-                                          )[]
-                                        | null;
-                                      /**
-                                       * Optional — custom ID / anchor
-                                       */
-                                      htmlId?: string | null;
-                                      variant?: 'default' | null;
-                                      layout?: ('block' | 'flex' | 'grid') | null;
-                                      verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-                                      flexVariant?:
-                                        | ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse')
-                                        | null;
-                                      gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
-                                      gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'blockHolder2';
-                                    }
-                                  | {
-                                      /**
-                                       * Select a menu from the Menus collection
-                                       */
-                                      menu: number | Menu;
-                                      orientation?: ('horizontal' | 'vertical') | null;
-                                      variant?: ('default' | 'minimal' | 'pills') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'menu';
-                                    }
-                                  | {
-                                      title?: string | null;
-                                      variant?: ('default' | 'center' | 'right') | null;
-                                      titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                      color?: string | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'heading';
-                                    }
-                                  | {
-                                      text?: {
-                                        root: {
-                                          type: string;
-                                          children: {
-                                            type: any;
-                                            version: number;
-                                            [k: string]: unknown;
-                                          }[];
-                                          direction: ('ltr' | 'rtl') | null;
-                                          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                          indent: number;
-                                          version: number;
-                                        };
-                                        [k: string]: unknown;
-                                      } | null;
-                                      variant?: ('default' | 'center' | 'right') | null;
-                                      color?: string | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'richText';
-                                    }
-                                  | {
-                                      image?: (number | null) | Media;
-                                      linkType?: ('none' | 'internal' | 'external') | null;
-                                      internalLink?: (number | null) | Page;
-                                      externalUrl?: string | null;
-                                      newTab?: boolean | null;
-                                      aspectRatio?:
-                                        | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
-                                        | null;
-                                      /**
-                                       * Format: 16/9, 4/3, 1/1...
-                                       */
-                                      customAspectRatio?: string | null;
-                                      variant?: 'default' | null;
-                                      overlay?: {
-                                        enabled?: boolean | null;
-                                        color?: string | null;
-                                        /**
-                                         * 0 - 100
-                                         */
-                                        opacity?: number | null;
-                                      };
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'image';
-                                    }
-                                  | {
-                                      text: string;
-                                      linkType?: ('internal' | 'external') | null;
-                                      internalLink?: (number | null) | Page;
-                                      externalUrl?: string | null;
-                                      newTab?: boolean | null;
-                                      variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                      hasIcon?: boolean | null;
-                                      iconType?: ('picker' | 'customSvg') | null;
-                                      icon?: string | null;
-                                      customSvg?: (number | null) | Media;
-                                      iconPosition?: ('left' | 'right') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'button';
-                                    }
-                                  | {
-                                      items?:
-                                        | {
-                                            blocks?:
-                                              | (
-                                                  | {
-                                                      title?: string | null;
-                                                      variant?: ('default' | 'center' | 'right') | null;
-                                                      titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                                      color?: string | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'heading';
-                                                    }
-                                                  | {
-                                                      text?: {
-                                                        root: {
-                                                          type: string;
-                                                          children: {
-                                                            type: any;
-                                                            version: number;
-                                                            [k: string]: unknown;
-                                                          }[];
-                                                          direction: ('ltr' | 'rtl') | null;
-                                                          format:
-                                                            | 'left'
-                                                            | 'start'
-                                                            | 'center'
-                                                            | 'right'
-                                                            | 'end'
-                                                            | 'justify'
-                                                            | '';
-                                                          indent: number;
-                                                          version: number;
-                                                        };
-                                                        [k: string]: unknown;
-                                                      } | null;
-                                                      variant?: ('default' | 'center' | 'right') | null;
-                                                      color?: string | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'richText';
-                                                    }
-                                                  | {
-                                                      image?: (number | null) | Media;
-                                                      linkType?: ('none' | 'internal' | 'external') | null;
-                                                      internalLink?: (number | null) | Page;
-                                                      externalUrl?: string | null;
-                                                      newTab?: boolean | null;
-                                                      aspectRatio?:
-                                                        | (
-                                                            | 'auto'
-                                                            | '1/1'
-                                                            | '3/2'
-                                                            | '4/3'
-                                                            | '16/9'
-                                                            | '2/3'
-                                                            | '3/4'
-                                                            | '9/16'
-                                                            | 'custom'
-                                                          )
-                                                        | null;
-                                                      /**
-                                                       * Format: 16/9, 4/3, 1/1...
-                                                       */
-                                                      customAspectRatio?: string | null;
-                                                      variant?: 'default' | null;
-                                                      overlay?: {
-                                                        enabled?: boolean | null;
-                                                        color?: string | null;
-                                                        /**
-                                                         * 0 - 100
-                                                         */
-                                                        opacity?: number | null;
-                                                      };
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'image';
-                                                    }
-                                                  | {
-                                                      text: string;
-                                                      linkType?: ('internal' | 'external') | null;
-                                                      internalLink?: (number | null) | Page;
-                                                      externalUrl?: string | null;
-                                                      newTab?: boolean | null;
-                                                      variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                                      hasIcon?: boolean | null;
-                                                      iconType?: ('picker' | 'customSvg') | null;
-                                                      icon?: string | null;
-                                                      customSvg?: (number | null) | Media;
-                                                      iconPosition?: ('left' | 'right') | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'button';
-                                                    }
-                                                )[]
-                                              | null;
-                                            label: string;
-                                            defaultActive?: boolean | null;
-                                            hasIcon?: boolean | null;
-                                            iconType?: ('picker' | 'customSvg') | null;
-                                            icon?: string | null;
-                                            customSvg?: (number | null) | Media;
-                                            iconPosition?: ('left' | 'right') | null;
-                                            id?: string | null;
-                                          }[]
-                                        | null;
-                                      orientation?: ('horizontal' | 'vertical') | null;
-                                      variant?: ('default' | 'full' | 'minimal') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'tabs';
-                                    }
-                                  | {
-                                      settings?: {
-                                        orientation?: ('horizontal' | 'vertical') | null;
-                                        /**
-                                         * Space between slides in px
-                                         */
-                                        spaceBetween?: number | null;
-                                        slidesPerView?: number | null;
-                                      };
-                                      slides?:
-                                        | {
-                                            image: number | Media;
-                                            caption?: string | null;
-                                            id?: string | null;
-                                          }[]
-                                        | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'slider';
-                                    }
-                                  | {
-                                      items?:
-                                        | {
-                                            blocks?:
-                                              | (
-                                                  | {
-                                                      title?: string | null;
-                                                      variant?: ('default' | 'center' | 'right') | null;
-                                                      titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                                      color?: string | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'heading';
-                                                    }
-                                                  | {
-                                                      text?: {
-                                                        root: {
-                                                          type: string;
-                                                          children: {
-                                                            type: any;
-                                                            version: number;
-                                                            [k: string]: unknown;
-                                                          }[];
-                                                          direction: ('ltr' | 'rtl') | null;
-                                                          format:
-                                                            | 'left'
-                                                            | 'start'
-                                                            | 'center'
-                                                            | 'right'
-                                                            | 'end'
-                                                            | 'justify'
-                                                            | '';
-                                                          indent: number;
-                                                          version: number;
-                                                        };
-                                                        [k: string]: unknown;
-                                                      } | null;
-                                                      variant?: ('default' | 'center' | 'right') | null;
-                                                      color?: string | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'richText';
-                                                    }
-                                                  | {
-                                                      image?: (number | null) | Media;
-                                                      linkType?: ('none' | 'internal' | 'external') | null;
-                                                      internalLink?: (number | null) | Page;
-                                                      externalUrl?: string | null;
-                                                      newTab?: boolean | null;
-                                                      aspectRatio?:
-                                                        | (
-                                                            | 'auto'
-                                                            | '1/1'
-                                                            | '3/2'
-                                                            | '4/3'
-                                                            | '16/9'
-                                                            | '2/3'
-                                                            | '3/4'
-                                                            | '9/16'
-                                                            | 'custom'
-                                                          )
-                                                        | null;
-                                                      /**
-                                                       * Format: 16/9, 4/3, 1/1...
-                                                       */
-                                                      customAspectRatio?: string | null;
-                                                      variant?: 'default' | null;
-                                                      overlay?: {
-                                                        enabled?: boolean | null;
-                                                        color?: string | null;
-                                                        /**
-                                                         * 0 - 100
-                                                         */
-                                                        opacity?: number | null;
-                                                      };
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'image';
-                                                    }
-                                                  | {
-                                                      text: string;
-                                                      linkType?: ('internal' | 'external') | null;
-                                                      internalLink?: (number | null) | Page;
-                                                      externalUrl?: string | null;
-                                                      newTab?: boolean | null;
-                                                      variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                                      hasIcon?: boolean | null;
-                                                      iconType?: ('picker' | 'customSvg') | null;
-                                                      icon?: string | null;
-                                                      customSvg?: (number | null) | Media;
-                                                      iconPosition?: ('left' | 'right') | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'button';
-                                                    }
-                                                )[]
-                                              | null;
-                                            label: string;
-                                            defaultOpen?: boolean | null;
-                                            hasIcon?: boolean | null;
-                                            iconType?: ('picker' | 'customSvg') | null;
-                                            icon?: string | null;
-                                            customSvg?: (number | null) | Media;
-                                            iconPosition?: ('left' | 'right') | null;
-                                            id?: string | null;
-                                          }[]
-                                        | null;
-                                      allowMultiple?: boolean | null;
-                                      variant?: ('default' | 'bordered' | 'minimal') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'accordion';
-                                    }
-                                )[]
-                              | null;
-                            /**
-                             * Optional — custom ID / anchor
-                             */
-                            htmlId?: string | null;
-                            variant?: 'default' | null;
-                            layout?: ('block' | 'flex' | 'grid') | null;
-                            verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-                            flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
-                            gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
-                            gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'blockHolder1';
-                          }
-                        | {
-                            /**
-                             * Select a menu from the Menus collection
-                             */
-                            menu: number | Menu;
-                            orientation?: ('horizontal' | 'vertical') | null;
-                            variant?: ('default' | 'minimal' | 'pills') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'menu';
-                          }
-                        | {
-                            title?: string | null;
-                            variant?: ('default' | 'center' | 'right') | null;
-                            titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                            color?: string | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'heading';
-                          }
-                        | {
-                            text?: {
-                              root: {
-                                type: string;
-                                children: {
-                                  type: any;
-                                  version: number;
-                                  [k: string]: unknown;
-                                }[];
-                                direction: ('ltr' | 'rtl') | null;
-                                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                indent: number;
-                                version: number;
-                              };
-                              [k: string]: unknown;
-                            } | null;
-                            variant?: ('default' | 'center' | 'right') | null;
-                            color?: string | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'richText';
-                          }
-                        | {
-                            image?: (number | null) | Media;
-                            linkType?: ('none' | 'internal' | 'external') | null;
-                            internalLink?: (number | null) | Page;
-                            externalUrl?: string | null;
-                            newTab?: boolean | null;
-                            aspectRatio?:
-                              | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
-                              | null;
-                            /**
-                             * Format: 16/9, 4/3, 1/1...
-                             */
-                            customAspectRatio?: string | null;
-                            variant?: 'default' | null;
-                            overlay?: {
-                              enabled?: boolean | null;
-                              color?: string | null;
-                              /**
-                               * 0 - 100
-                               */
-                              opacity?: number | null;
-                            };
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'image';
-                          }
-                        | {
-                            text: string;
-                            linkType?: ('internal' | 'external') | null;
-                            internalLink?: (number | null) | Page;
-                            externalUrl?: string | null;
-                            newTab?: boolean | null;
-                            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                            hasIcon?: boolean | null;
-                            iconType?: ('picker' | 'customSvg') | null;
-                            icon?: string | null;
-                            customSvg?: (number | null) | Media;
-                            iconPosition?: ('left' | 'right') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'button';
-                          }
-                        | {
-                            items?:
-                              | {
-                                  blocks?:
-                                    | (
-                                        | {
-                                            title?: string | null;
-                                            variant?: ('default' | 'center' | 'right') | null;
-                                            titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                            color?: string | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'heading';
-                                          }
-                                        | {
-                                            text?: {
-                                              root: {
-                                                type: string;
-                                                children: {
-                                                  type: any;
-                                                  version: number;
-                                                  [k: string]: unknown;
-                                                }[];
-                                                direction: ('ltr' | 'rtl') | null;
-                                                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                                indent: number;
-                                                version: number;
-                                              };
-                                              [k: string]: unknown;
-                                            } | null;
-                                            variant?: ('default' | 'center' | 'right') | null;
-                                            color?: string | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'richText';
-                                          }
-                                        | {
-                                            image?: (number | null) | Media;
-                                            linkType?: ('none' | 'internal' | 'external') | null;
-                                            internalLink?: (number | null) | Page;
-                                            externalUrl?: string | null;
-                                            newTab?: boolean | null;
-                                            aspectRatio?:
-                                              | (
-                                                  | 'auto'
-                                                  | '1/1'
-                                                  | '3/2'
-                                                  | '4/3'
-                                                  | '16/9'
-                                                  | '2/3'
-                                                  | '3/4'
-                                                  | '9/16'
-                                                  | 'custom'
-                                                )
-                                              | null;
-                                            /**
-                                             * Format: 16/9, 4/3, 1/1...
-                                             */
-                                            customAspectRatio?: string | null;
-                                            variant?: 'default' | null;
-                                            overlay?: {
-                                              enabled?: boolean | null;
-                                              color?: string | null;
-                                              /**
-                                               * 0 - 100
-                                               */
-                                              opacity?: number | null;
-                                            };
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'image';
-                                          }
-                                        | {
-                                            text: string;
-                                            linkType?: ('internal' | 'external') | null;
-                                            internalLink?: (number | null) | Page;
-                                            externalUrl?: string | null;
-                                            newTab?: boolean | null;
-                                            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                            hasIcon?: boolean | null;
-                                            iconType?: ('picker' | 'customSvg') | null;
-                                            icon?: string | null;
-                                            customSvg?: (number | null) | Media;
-                                            iconPosition?: ('left' | 'right') | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'button';
-                                          }
-                                      )[]
-                                    | null;
-                                  label: string;
-                                  defaultActive?: boolean | null;
-                                  hasIcon?: boolean | null;
-                                  iconType?: ('picker' | 'customSvg') | null;
-                                  icon?: string | null;
-                                  customSvg?: (number | null) | Media;
-                                  iconPosition?: ('left' | 'right') | null;
-                                  id?: string | null;
-                                }[]
-                              | null;
-                            orientation?: ('horizontal' | 'vertical') | null;
-                            variant?: ('default' | 'full' | 'minimal') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'tabs';
-                          }
-                        | {
-                            settings?: {
-                              orientation?: ('horizontal' | 'vertical') | null;
-                              /**
-                               * Space between slides in px
-                               */
-                              spaceBetween?: number | null;
-                              slidesPerView?: number | null;
-                            };
-                            slides?:
-                              | {
-                                  image: number | Media;
-                                  caption?: string | null;
-                                  id?: string | null;
-                                }[]
-                              | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'slider';
-                          }
-                        | {
-                            items?:
-                              | {
-                                  blocks?:
-                                    | (
-                                        | {
-                                            title?: string | null;
-                                            variant?: ('default' | 'center' | 'right') | null;
-                                            titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                            color?: string | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'heading';
-                                          }
-                                        | {
-                                            text?: {
-                                              root: {
-                                                type: string;
-                                                children: {
-                                                  type: any;
-                                                  version: number;
-                                                  [k: string]: unknown;
-                                                }[];
-                                                direction: ('ltr' | 'rtl') | null;
-                                                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                                indent: number;
-                                                version: number;
-                                              };
-                                              [k: string]: unknown;
-                                            } | null;
-                                            variant?: ('default' | 'center' | 'right') | null;
-                                            color?: string | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'richText';
-                                          }
-                                        | {
-                                            image?: (number | null) | Media;
-                                            linkType?: ('none' | 'internal' | 'external') | null;
-                                            internalLink?: (number | null) | Page;
-                                            externalUrl?: string | null;
-                                            newTab?: boolean | null;
-                                            aspectRatio?:
-                                              | (
-                                                  | 'auto'
-                                                  | '1/1'
-                                                  | '3/2'
-                                                  | '4/3'
-                                                  | '16/9'
-                                                  | '2/3'
-                                                  | '3/4'
-                                                  | '9/16'
-                                                  | 'custom'
-                                                )
-                                              | null;
-                                            /**
-                                             * Format: 16/9, 4/3, 1/1...
-                                             */
-                                            customAspectRatio?: string | null;
-                                            variant?: 'default' | null;
-                                            overlay?: {
-                                              enabled?: boolean | null;
-                                              color?: string | null;
-                                              /**
-                                               * 0 - 100
-                                               */
-                                              opacity?: number | null;
-                                            };
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'image';
-                                          }
-                                        | {
-                                            text: string;
-                                            linkType?: ('internal' | 'external') | null;
-                                            internalLink?: (number | null) | Page;
-                                            externalUrl?: string | null;
-                                            newTab?: boolean | null;
-                                            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                            hasIcon?: boolean | null;
-                                            iconType?: ('picker' | 'customSvg') | null;
-                                            icon?: string | null;
-                                            customSvg?: (number | null) | Media;
-                                            iconPosition?: ('left' | 'right') | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'button';
-                                          }
-                                      )[]
-                                    | null;
-                                  label: string;
-                                  defaultOpen?: boolean | null;
-                                  hasIcon?: boolean | null;
-                                  iconType?: ('picker' | 'customSvg') | null;
-                                  icon?: string | null;
-                                  customSvg?: (number | null) | Media;
-                                  iconPosition?: ('left' | 'right') | null;
-                                  id?: string | null;
-                                }[]
-                              | null;
-                            allowMultiple?: boolean | null;
-                            variant?: ('default' | 'bordered' | 'minimal') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'accordion';
-                          }
-                      )[]
-                    | null;
-                  /**
-                   * Optional — custom ID / anchor
-                   */
-                  htmlId?: string | null;
-                  variant?: 'default' | null;
-                  layout?: ('block' | 'flex' | 'grid') | null;
-                  verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-                  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
-                  gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
-                  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-                  id?: string | null;
-                  blockName?: string | null;
-                  blockType: 'blockHolder0';
-                }
-              | {
-                  /**
-                   * Optional — section title above the posts loop
-                   */
-                  title?: string | null;
-                  populateBy?: ('latest' | 'categories' | 'manual') | null;
-                  /**
-                   * Maximum number of posts to fetch
-                   */
-                  limit: number;
-                  /**
-                   * Manually select which category/categries to display
-                   */
-                  selectedCategories?: (number | Category)[] | null;
-                  /**
-                   * Manually select which posts to display
-                   */
-                  selectedPosts?: (number | Post)[] | null;
-                  /**
-                   * Optional — custom ID / anchor
-                   */
-                  htmlId?: string | null;
-                  layout?: ('grid' | 'slider') | null;
-                  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-                  gridColumns?: ('col-2' | 'col-3' | 'col-4') | null;
-                  autoplay?: boolean | null;
-                  showArrows?: boolean | null;
-                  id?: string | null;
-                  blockName?: string | null;
-                  blockType: 'postsBlock';
-                }
-            )[]
-          | null;
-        settings?: {
-          /**
-           * Optional — custom ID / anchor
-           */
-          htmlId?: string | null;
-          variant?: 'default' | null;
-          viewport?: ('auto' | 'full') | null;
-          widthType?: ('fullWidth' | 'boxed') | null;
-          /**
-           * Optional — vertical alignment
-           */
-          alignment?: ('top' | 'center' | 'bottom') | null;
-          containerType?: ('container-xl' | 'container-lg' | 'container' | 'container-xs') | null;
-          /**
-           * Optional — space on top & bottom
-           */
-          padding?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-          backgroundType?: ('blank' | 'color' | 'gradient' | 'image') | null;
-          colorTheme?: string | null;
-          gradientTheme?: ('warm' | 'cool') | null;
-          bgImage?: (number | null) | Media;
-          overlay?: {
-            enabled?: boolean | null;
-            color?: string | null;
-            /**
-             * 0 - 100
-             */
-            opacity?: number | null;
-          };
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'section';
-      }[]
-    | null;
+  layout?: SectionBlockProps[] | null;
   /**
    * Title tag appearing in Google results (recommended up to 60 characters).
    */
@@ -1290,6 +159,156 @@ export interface Page {
   slug: string;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionBlockProps".
+ */
+export interface SectionBlockProps {
+  blocks?: (BlockHolderLevel0BlockProps | PostsBlockProps)[] | null;
+  settings?: {
+    /**
+     * Optional — custom ID / anchor
+     */
+    htmlId?: string | null;
+    variant?: 'default' | null;
+    viewport?: ('auto' | 'full') | null;
+    widthType?: ('fullWidth' | 'boxed') | null;
+    /**
+     * Optional — vertical alignment
+     */
+    alignment?: ('top' | 'center' | 'bottom') | null;
+    containerType?: ('container-xl' | 'container-lg' | 'container' | 'container-xs') | null;
+    /**
+     * Optional — space on top & bottom
+     */
+    padding?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    backgroundType?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    bgImage?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'section';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockHolderLevel0BlockProps".
+ */
+export interface BlockHolderLevel0BlockProps {
+  atoms?:
+    | (
+        | BlockHolderLevel1BlockProps
+        | MenuBlockProps
+        | HeadingBlockProps
+        | RichTextBlockProps
+        | ImageBlockProps
+        | ButtonBlockProps
+        | TabsBlockProps
+        | SliderBlockProps
+        | AccordionBlockProps
+      )[]
+    | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  variant?: 'default' | null;
+  layout?: ('block' | 'flex' | 'grid') | null;
+  verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
+  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
+  gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
+  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'blockHolder0';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockHolderLevel1BlockProps".
+ */
+export interface BlockHolderLevel1BlockProps {
+  atoms?:
+    | (
+        | BlockHolderLevel2BlockProps
+        | MenuBlockProps
+        | HeadingBlockProps
+        | RichTextBlockProps
+        | ImageBlockProps
+        | ButtonBlockProps
+        | TabsBlockProps
+        | SliderBlockProps
+        | AccordionBlockProps
+      )[]
+    | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  variant?: 'default' | null;
+  layout?: ('block' | 'flex' | 'grid') | null;
+  verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
+  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
+  gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
+  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'blockHolder1';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockHolderLevel2BlockProps".
+ */
+export interface BlockHolderLevel2BlockProps {
+  atoms?:
+    | (
+        | MenuBlockProps
+        | HeadingBlockProps
+        | RichTextBlockProps
+        | ImageBlockProps
+        | ButtonBlockProps
+        | TabsBlockProps
+        | SliderBlockProps
+        | AccordionBlockProps
+      )[]
+    | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  variant?: 'default' | null;
+  layout?: ('block' | 'flex' | 'grid') | null;
+  verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
+  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
+  gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
+  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'blockHolder2';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MenuBlockProps".
+ */
+export interface MenuBlockProps {
+  /**
+   * Select a menu from the Menus collection
+   */
+  menu: number | Menu;
+  orientation?: ('horizontal' | 'vertical') | null;
+  variant?: ('default' | 'minimal' | 'pills') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'menu';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1336,6 +355,73 @@ export interface Menu {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeadingBlockProps".
+ */
+export interface HeadingBlockProps {
+  title?: string | null;
+  variant?: ('default' | 'center' | 'right') | null;
+  titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
+  color?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'heading';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RichTextBlockProps".
+ */
+export interface RichTextBlockProps {
+  text?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  variant?: ('default' | 'center' | 'right') | null;
+  color?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'richText';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageBlockProps".
+ */
+export interface ImageBlockProps {
+  image?: (number | null) | Media;
+  linkType?: ('none' | 'internal' | 'external') | null;
+  internalLink?: (number | null) | Page;
+  externalUrl?: string | null;
+  newTab?: boolean | null;
+  aspectRatio?: ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom') | null;
+  /**
+   * Format: 16/9, 4/3, 1/1...
+   */
+  customAspectRatio?: string | null;
+  variant?: 'default' | null;
+  overlay?: {
+    enabled?: boolean | null;
+    color?: string | null;
+    /**
+     * 0 - 100
+     */
+    opacity?: number | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'image';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
@@ -1355,6 +441,133 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ButtonBlockProps".
+ */
+export interface ButtonBlockProps {
+  text: string;
+  linkType?: ('internal' | 'external') | null;
+  internalLink?: (number | null) | Page;
+  externalUrl?: string | null;
+  newTab?: boolean | null;
+  variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
+  hasIcon?: boolean | null;
+  iconType?: ('picker' | 'customSvg') | null;
+  icon?: string | null;
+  customSvg?: (number | null) | Media;
+  iconPosition?: ('left' | 'right') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'button';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TabsBlockProps".
+ */
+export interface TabsBlockProps {
+  items?:
+    | {
+        blocks?: (HeadingBlockProps | RichTextBlockProps | ImageBlockProps | ButtonBlockProps)[] | null;
+        label: string;
+        defaultActive?: boolean | null;
+        hasIcon?: boolean | null;
+        iconType?: ('picker' | 'customSvg') | null;
+        icon?: string | null;
+        customSvg?: (number | null) | Media;
+        iconPosition?: ('left' | 'right') | null;
+        id?: string | null;
+      }[]
+    | null;
+  orientation?: ('horizontal' | 'vertical') | null;
+  variant?: ('default' | 'full' | 'minimal') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'tabs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SliderBlockProps".
+ */
+export interface SliderBlockProps {
+  settings?: {
+    orientation?: ('horizontal' | 'vertical') | null;
+    /**
+     * Space between slides in px
+     */
+    spaceBetween?: number | null;
+    slidesPerView?: number | null;
+  };
+  slides?:
+    | {
+        image: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'slider';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlockProps".
+ */
+export interface AccordionBlockProps {
+  items?:
+    | {
+        blocks?: (HeadingBlockProps | RichTextBlockProps | ImageBlockProps | ButtonBlockProps)[] | null;
+        label: string;
+        defaultOpen?: boolean | null;
+        hasIcon?: boolean | null;
+        iconType?: ('picker' | 'customSvg') | null;
+        icon?: string | null;
+        customSvg?: (number | null) | Media;
+        iconPosition?: ('left' | 'right') | null;
+        id?: string | null;
+      }[]
+    | null;
+  allowMultiple?: boolean | null;
+  variant?: ('default' | 'bordered' | 'minimal') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'accordion';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PostsBlockProps".
+ */
+export interface PostsBlockProps {
+  /**
+   * Optional — section title above the posts loop
+   */
+  title?: string | null;
+  populateBy?: ('latest' | 'categories' | 'manual') | null;
+  /**
+   * Maximum number of posts to fetch
+   */
+  limit: number;
+  /**
+   * Manually select which category/categries to display
+   */
+  selectedCategories?: (number | Category)[] | null;
+  /**
+   * Manually select which posts to display
+   */
+  selectedPosts?: (number | Post)[] | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  layout?: ('grid' | 'slider') | null;
+  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  gridColumns?: ('col-2' | 'col-3' | 'col-4') | null;
+  autoplay?: boolean | null;
+  showArrows?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'postsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -1371,1138 +584,7 @@ export interface Category {
 export interface Post {
   id: number;
   title: string;
-  layout?:
-    | {
-        blocks?:
-          | (
-              | {
-                  atoms?:
-                    | (
-                        | {
-                            atoms?:
-                              | (
-                                  | {
-                                      atoms?:
-                                        | (
-                                            | {
-                                                /**
-                                                 * Select a menu from the Menus collection
-                                                 */
-                                                menu: number | Menu;
-                                                orientation?: ('horizontal' | 'vertical') | null;
-                                                variant?: ('default' | 'minimal' | 'pills') | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'menu';
-                                              }
-                                            | {
-                                                title?: string | null;
-                                                variant?: ('default' | 'center' | 'right') | null;
-                                                titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                                color?: string | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'heading';
-                                              }
-                                            | {
-                                                text?: {
-                                                  root: {
-                                                    type: string;
-                                                    children: {
-                                                      type: any;
-                                                      version: number;
-                                                      [k: string]: unknown;
-                                                    }[];
-                                                    direction: ('ltr' | 'rtl') | null;
-                                                    format:
-                                                      | 'left'
-                                                      | 'start'
-                                                      | 'center'
-                                                      | 'right'
-                                                      | 'end'
-                                                      | 'justify'
-                                                      | '';
-                                                    indent: number;
-                                                    version: number;
-                                                  };
-                                                  [k: string]: unknown;
-                                                } | null;
-                                                variant?: ('default' | 'center' | 'right') | null;
-                                                color?: string | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'richText';
-                                              }
-                                            | {
-                                                image?: (number | null) | Media;
-                                                linkType?: ('none' | 'internal' | 'external') | null;
-                                                internalLink?: (number | null) | Page;
-                                                externalUrl?: string | null;
-                                                newTab?: boolean | null;
-                                                aspectRatio?:
-                                                  | (
-                                                      | 'auto'
-                                                      | '1/1'
-                                                      | '3/2'
-                                                      | '4/3'
-                                                      | '16/9'
-                                                      | '2/3'
-                                                      | '3/4'
-                                                      | '9/16'
-                                                      | 'custom'
-                                                    )
-                                                  | null;
-                                                /**
-                                                 * Format: 16/9, 4/3, 1/1...
-                                                 */
-                                                customAspectRatio?: string | null;
-                                                variant?: 'default' | null;
-                                                overlay?: {
-                                                  enabled?: boolean | null;
-                                                  color?: string | null;
-                                                  /**
-                                                   * 0 - 100
-                                                   */
-                                                  opacity?: number | null;
-                                                };
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'image';
-                                              }
-                                            | {
-                                                text: string;
-                                                linkType?: ('internal' | 'external') | null;
-                                                internalLink?: (number | null) | Page;
-                                                externalUrl?: string | null;
-                                                newTab?: boolean | null;
-                                                variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                                hasIcon?: boolean | null;
-                                                iconType?: ('picker' | 'customSvg') | null;
-                                                icon?: string | null;
-                                                customSvg?: (number | null) | Media;
-                                                iconPosition?: ('left' | 'right') | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'button';
-                                              }
-                                            | {
-                                                items?:
-                                                  | {
-                                                      blocks?:
-                                                        | (
-                                                            | {
-                                                                title?: string | null;
-                                                                variant?: ('default' | 'center' | 'right') | null;
-                                                                titleTag?:
-                                                                  | ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span')
-                                                                  | null;
-                                                                color?: string | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'heading';
-                                                              }
-                                                            | {
-                                                                text?: {
-                                                                  root: {
-                                                                    type: string;
-                                                                    children: {
-                                                                      type: any;
-                                                                      version: number;
-                                                                      [k: string]: unknown;
-                                                                    }[];
-                                                                    direction: ('ltr' | 'rtl') | null;
-                                                                    format:
-                                                                      | 'left'
-                                                                      | 'start'
-                                                                      | 'center'
-                                                                      | 'right'
-                                                                      | 'end'
-                                                                      | 'justify'
-                                                                      | '';
-                                                                    indent: number;
-                                                                    version: number;
-                                                                  };
-                                                                  [k: string]: unknown;
-                                                                } | null;
-                                                                variant?: ('default' | 'center' | 'right') | null;
-                                                                color?: string | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'richText';
-                                                              }
-                                                            | {
-                                                                image?: (number | null) | Media;
-                                                                linkType?: ('none' | 'internal' | 'external') | null;
-                                                                internalLink?: (number | null) | Page;
-                                                                externalUrl?: string | null;
-                                                                newTab?: boolean | null;
-                                                                aspectRatio?:
-                                                                  | (
-                                                                      | 'auto'
-                                                                      | '1/1'
-                                                                      | '3/2'
-                                                                      | '4/3'
-                                                                      | '16/9'
-                                                                      | '2/3'
-                                                                      | '3/4'
-                                                                      | '9/16'
-                                                                      | 'custom'
-                                                                    )
-                                                                  | null;
-                                                                /**
-                                                                 * Format: 16/9, 4/3, 1/1...
-                                                                 */
-                                                                customAspectRatio?: string | null;
-                                                                variant?: 'default' | null;
-                                                                overlay?: {
-                                                                  enabled?: boolean | null;
-                                                                  color?: string | null;
-                                                                  /**
-                                                                   * 0 - 100
-                                                                   */
-                                                                  opacity?: number | null;
-                                                                };
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'image';
-                                                              }
-                                                            | {
-                                                                text: string;
-                                                                linkType?: ('internal' | 'external') | null;
-                                                                internalLink?: (number | null) | Page;
-                                                                externalUrl?: string | null;
-                                                                newTab?: boolean | null;
-                                                                variant?:
-                                                                  | ('primary' | 'secondary' | 'ghost' | 'outline')
-                                                                  | null;
-                                                                hasIcon?: boolean | null;
-                                                                iconType?: ('picker' | 'customSvg') | null;
-                                                                icon?: string | null;
-                                                                customSvg?: (number | null) | Media;
-                                                                iconPosition?: ('left' | 'right') | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'button';
-                                                              }
-                                                          )[]
-                                                        | null;
-                                                      label: string;
-                                                      defaultActive?: boolean | null;
-                                                      hasIcon?: boolean | null;
-                                                      iconType?: ('picker' | 'customSvg') | null;
-                                                      icon?: string | null;
-                                                      customSvg?: (number | null) | Media;
-                                                      iconPosition?: ('left' | 'right') | null;
-                                                      id?: string | null;
-                                                    }[]
-                                                  | null;
-                                                orientation?: ('horizontal' | 'vertical') | null;
-                                                variant?: ('default' | 'full' | 'minimal') | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'tabs';
-                                              }
-                                            | {
-                                                settings?: {
-                                                  orientation?: ('horizontal' | 'vertical') | null;
-                                                  /**
-                                                   * Space between slides in px
-                                                   */
-                                                  spaceBetween?: number | null;
-                                                  slidesPerView?: number | null;
-                                                };
-                                                slides?:
-                                                  | {
-                                                      image: number | Media;
-                                                      caption?: string | null;
-                                                      id?: string | null;
-                                                    }[]
-                                                  | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'slider';
-                                              }
-                                            | {
-                                                items?:
-                                                  | {
-                                                      blocks?:
-                                                        | (
-                                                            | {
-                                                                title?: string | null;
-                                                                variant?: ('default' | 'center' | 'right') | null;
-                                                                titleTag?:
-                                                                  | ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span')
-                                                                  | null;
-                                                                color?: string | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'heading';
-                                                              }
-                                                            | {
-                                                                text?: {
-                                                                  root: {
-                                                                    type: string;
-                                                                    children: {
-                                                                      type: any;
-                                                                      version: number;
-                                                                      [k: string]: unknown;
-                                                                    }[];
-                                                                    direction: ('ltr' | 'rtl') | null;
-                                                                    format:
-                                                                      | 'left'
-                                                                      | 'start'
-                                                                      | 'center'
-                                                                      | 'right'
-                                                                      | 'end'
-                                                                      | 'justify'
-                                                                      | '';
-                                                                    indent: number;
-                                                                    version: number;
-                                                                  };
-                                                                  [k: string]: unknown;
-                                                                } | null;
-                                                                variant?: ('default' | 'center' | 'right') | null;
-                                                                color?: string | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'richText';
-                                                              }
-                                                            | {
-                                                                image?: (number | null) | Media;
-                                                                linkType?: ('none' | 'internal' | 'external') | null;
-                                                                internalLink?: (number | null) | Page;
-                                                                externalUrl?: string | null;
-                                                                newTab?: boolean | null;
-                                                                aspectRatio?:
-                                                                  | (
-                                                                      | 'auto'
-                                                                      | '1/1'
-                                                                      | '3/2'
-                                                                      | '4/3'
-                                                                      | '16/9'
-                                                                      | '2/3'
-                                                                      | '3/4'
-                                                                      | '9/16'
-                                                                      | 'custom'
-                                                                    )
-                                                                  | null;
-                                                                /**
-                                                                 * Format: 16/9, 4/3, 1/1...
-                                                                 */
-                                                                customAspectRatio?: string | null;
-                                                                variant?: 'default' | null;
-                                                                overlay?: {
-                                                                  enabled?: boolean | null;
-                                                                  color?: string | null;
-                                                                  /**
-                                                                   * 0 - 100
-                                                                   */
-                                                                  opacity?: number | null;
-                                                                };
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'image';
-                                                              }
-                                                            | {
-                                                                text: string;
-                                                                linkType?: ('internal' | 'external') | null;
-                                                                internalLink?: (number | null) | Page;
-                                                                externalUrl?: string | null;
-                                                                newTab?: boolean | null;
-                                                                variant?:
-                                                                  | ('primary' | 'secondary' | 'ghost' | 'outline')
-                                                                  | null;
-                                                                hasIcon?: boolean | null;
-                                                                iconType?: ('picker' | 'customSvg') | null;
-                                                                icon?: string | null;
-                                                                customSvg?: (number | null) | Media;
-                                                                iconPosition?: ('left' | 'right') | null;
-                                                                id?: string | null;
-                                                                blockName?: string | null;
-                                                                blockType: 'button';
-                                                              }
-                                                          )[]
-                                                        | null;
-                                                      label: string;
-                                                      defaultOpen?: boolean | null;
-                                                      hasIcon?: boolean | null;
-                                                      iconType?: ('picker' | 'customSvg') | null;
-                                                      icon?: string | null;
-                                                      customSvg?: (number | null) | Media;
-                                                      iconPosition?: ('left' | 'right') | null;
-                                                      id?: string | null;
-                                                    }[]
-                                                  | null;
-                                                allowMultiple?: boolean | null;
-                                                variant?: ('default' | 'bordered' | 'minimal') | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'accordion';
-                                              }
-                                          )[]
-                                        | null;
-                                      /**
-                                       * Optional — custom ID / anchor
-                                       */
-                                      htmlId?: string | null;
-                                      variant?: 'default' | null;
-                                      layout?: ('block' | 'flex' | 'grid') | null;
-                                      verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-                                      flexVariant?:
-                                        | ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse')
-                                        | null;
-                                      gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
-                                      gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'blockHolder2';
-                                    }
-                                  | {
-                                      /**
-                                       * Select a menu from the Menus collection
-                                       */
-                                      menu: number | Menu;
-                                      orientation?: ('horizontal' | 'vertical') | null;
-                                      variant?: ('default' | 'minimal' | 'pills') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'menu';
-                                    }
-                                  | {
-                                      title?: string | null;
-                                      variant?: ('default' | 'center' | 'right') | null;
-                                      titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                      color?: string | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'heading';
-                                    }
-                                  | {
-                                      text?: {
-                                        root: {
-                                          type: string;
-                                          children: {
-                                            type: any;
-                                            version: number;
-                                            [k: string]: unknown;
-                                          }[];
-                                          direction: ('ltr' | 'rtl') | null;
-                                          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                          indent: number;
-                                          version: number;
-                                        };
-                                        [k: string]: unknown;
-                                      } | null;
-                                      variant?: ('default' | 'center' | 'right') | null;
-                                      color?: string | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'richText';
-                                    }
-                                  | {
-                                      image?: (number | null) | Media;
-                                      linkType?: ('none' | 'internal' | 'external') | null;
-                                      internalLink?: (number | null) | Page;
-                                      externalUrl?: string | null;
-                                      newTab?: boolean | null;
-                                      aspectRatio?:
-                                        | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
-                                        | null;
-                                      /**
-                                       * Format: 16/9, 4/3, 1/1...
-                                       */
-                                      customAspectRatio?: string | null;
-                                      variant?: 'default' | null;
-                                      overlay?: {
-                                        enabled?: boolean | null;
-                                        color?: string | null;
-                                        /**
-                                         * 0 - 100
-                                         */
-                                        opacity?: number | null;
-                                      };
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'image';
-                                    }
-                                  | {
-                                      text: string;
-                                      linkType?: ('internal' | 'external') | null;
-                                      internalLink?: (number | null) | Page;
-                                      externalUrl?: string | null;
-                                      newTab?: boolean | null;
-                                      variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                      hasIcon?: boolean | null;
-                                      iconType?: ('picker' | 'customSvg') | null;
-                                      icon?: string | null;
-                                      customSvg?: (number | null) | Media;
-                                      iconPosition?: ('left' | 'right') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'button';
-                                    }
-                                  | {
-                                      items?:
-                                        | {
-                                            blocks?:
-                                              | (
-                                                  | {
-                                                      title?: string | null;
-                                                      variant?: ('default' | 'center' | 'right') | null;
-                                                      titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                                      color?: string | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'heading';
-                                                    }
-                                                  | {
-                                                      text?: {
-                                                        root: {
-                                                          type: string;
-                                                          children: {
-                                                            type: any;
-                                                            version: number;
-                                                            [k: string]: unknown;
-                                                          }[];
-                                                          direction: ('ltr' | 'rtl') | null;
-                                                          format:
-                                                            | 'left'
-                                                            | 'start'
-                                                            | 'center'
-                                                            | 'right'
-                                                            | 'end'
-                                                            | 'justify'
-                                                            | '';
-                                                          indent: number;
-                                                          version: number;
-                                                        };
-                                                        [k: string]: unknown;
-                                                      } | null;
-                                                      variant?: ('default' | 'center' | 'right') | null;
-                                                      color?: string | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'richText';
-                                                    }
-                                                  | {
-                                                      image?: (number | null) | Media;
-                                                      linkType?: ('none' | 'internal' | 'external') | null;
-                                                      internalLink?: (number | null) | Page;
-                                                      externalUrl?: string | null;
-                                                      newTab?: boolean | null;
-                                                      aspectRatio?:
-                                                        | (
-                                                            | 'auto'
-                                                            | '1/1'
-                                                            | '3/2'
-                                                            | '4/3'
-                                                            | '16/9'
-                                                            | '2/3'
-                                                            | '3/4'
-                                                            | '9/16'
-                                                            | 'custom'
-                                                          )
-                                                        | null;
-                                                      /**
-                                                       * Format: 16/9, 4/3, 1/1...
-                                                       */
-                                                      customAspectRatio?: string | null;
-                                                      variant?: 'default' | null;
-                                                      overlay?: {
-                                                        enabled?: boolean | null;
-                                                        color?: string | null;
-                                                        /**
-                                                         * 0 - 100
-                                                         */
-                                                        opacity?: number | null;
-                                                      };
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'image';
-                                                    }
-                                                  | {
-                                                      text: string;
-                                                      linkType?: ('internal' | 'external') | null;
-                                                      internalLink?: (number | null) | Page;
-                                                      externalUrl?: string | null;
-                                                      newTab?: boolean | null;
-                                                      variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                                      hasIcon?: boolean | null;
-                                                      iconType?: ('picker' | 'customSvg') | null;
-                                                      icon?: string | null;
-                                                      customSvg?: (number | null) | Media;
-                                                      iconPosition?: ('left' | 'right') | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'button';
-                                                    }
-                                                )[]
-                                              | null;
-                                            label: string;
-                                            defaultActive?: boolean | null;
-                                            hasIcon?: boolean | null;
-                                            iconType?: ('picker' | 'customSvg') | null;
-                                            icon?: string | null;
-                                            customSvg?: (number | null) | Media;
-                                            iconPosition?: ('left' | 'right') | null;
-                                            id?: string | null;
-                                          }[]
-                                        | null;
-                                      orientation?: ('horizontal' | 'vertical') | null;
-                                      variant?: ('default' | 'full' | 'minimal') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'tabs';
-                                    }
-                                  | {
-                                      settings?: {
-                                        orientation?: ('horizontal' | 'vertical') | null;
-                                        /**
-                                         * Space between slides in px
-                                         */
-                                        spaceBetween?: number | null;
-                                        slidesPerView?: number | null;
-                                      };
-                                      slides?:
-                                        | {
-                                            image: number | Media;
-                                            caption?: string | null;
-                                            id?: string | null;
-                                          }[]
-                                        | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'slider';
-                                    }
-                                  | {
-                                      items?:
-                                        | {
-                                            blocks?:
-                                              | (
-                                                  | {
-                                                      title?: string | null;
-                                                      variant?: ('default' | 'center' | 'right') | null;
-                                                      titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                                      color?: string | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'heading';
-                                                    }
-                                                  | {
-                                                      text?: {
-                                                        root: {
-                                                          type: string;
-                                                          children: {
-                                                            type: any;
-                                                            version: number;
-                                                            [k: string]: unknown;
-                                                          }[];
-                                                          direction: ('ltr' | 'rtl') | null;
-                                                          format:
-                                                            | 'left'
-                                                            | 'start'
-                                                            | 'center'
-                                                            | 'right'
-                                                            | 'end'
-                                                            | 'justify'
-                                                            | '';
-                                                          indent: number;
-                                                          version: number;
-                                                        };
-                                                        [k: string]: unknown;
-                                                      } | null;
-                                                      variant?: ('default' | 'center' | 'right') | null;
-                                                      color?: string | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'richText';
-                                                    }
-                                                  | {
-                                                      image?: (number | null) | Media;
-                                                      linkType?: ('none' | 'internal' | 'external') | null;
-                                                      internalLink?: (number | null) | Page;
-                                                      externalUrl?: string | null;
-                                                      newTab?: boolean | null;
-                                                      aspectRatio?:
-                                                        | (
-                                                            | 'auto'
-                                                            | '1/1'
-                                                            | '3/2'
-                                                            | '4/3'
-                                                            | '16/9'
-                                                            | '2/3'
-                                                            | '3/4'
-                                                            | '9/16'
-                                                            | 'custom'
-                                                          )
-                                                        | null;
-                                                      /**
-                                                       * Format: 16/9, 4/3, 1/1...
-                                                       */
-                                                      customAspectRatio?: string | null;
-                                                      variant?: 'default' | null;
-                                                      overlay?: {
-                                                        enabled?: boolean | null;
-                                                        color?: string | null;
-                                                        /**
-                                                         * 0 - 100
-                                                         */
-                                                        opacity?: number | null;
-                                                      };
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'image';
-                                                    }
-                                                  | {
-                                                      text: string;
-                                                      linkType?: ('internal' | 'external') | null;
-                                                      internalLink?: (number | null) | Page;
-                                                      externalUrl?: string | null;
-                                                      newTab?: boolean | null;
-                                                      variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                                      hasIcon?: boolean | null;
-                                                      iconType?: ('picker' | 'customSvg') | null;
-                                                      icon?: string | null;
-                                                      customSvg?: (number | null) | Media;
-                                                      iconPosition?: ('left' | 'right') | null;
-                                                      id?: string | null;
-                                                      blockName?: string | null;
-                                                      blockType: 'button';
-                                                    }
-                                                )[]
-                                              | null;
-                                            label: string;
-                                            defaultOpen?: boolean | null;
-                                            hasIcon?: boolean | null;
-                                            iconType?: ('picker' | 'customSvg') | null;
-                                            icon?: string | null;
-                                            customSvg?: (number | null) | Media;
-                                            iconPosition?: ('left' | 'right') | null;
-                                            id?: string | null;
-                                          }[]
-                                        | null;
-                                      allowMultiple?: boolean | null;
-                                      variant?: ('default' | 'bordered' | 'minimal') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'accordion';
-                                    }
-                                )[]
-                              | null;
-                            /**
-                             * Optional — custom ID / anchor
-                             */
-                            htmlId?: string | null;
-                            variant?: 'default' | null;
-                            layout?: ('block' | 'flex' | 'grid') | null;
-                            verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-                            flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
-                            gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
-                            gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'blockHolder1';
-                          }
-                        | {
-                            /**
-                             * Select a menu from the Menus collection
-                             */
-                            menu: number | Menu;
-                            orientation?: ('horizontal' | 'vertical') | null;
-                            variant?: ('default' | 'minimal' | 'pills') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'menu';
-                          }
-                        | {
-                            title?: string | null;
-                            variant?: ('default' | 'center' | 'right') | null;
-                            titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                            color?: string | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'heading';
-                          }
-                        | {
-                            text?: {
-                              root: {
-                                type: string;
-                                children: {
-                                  type: any;
-                                  version: number;
-                                  [k: string]: unknown;
-                                }[];
-                                direction: ('ltr' | 'rtl') | null;
-                                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                indent: number;
-                                version: number;
-                              };
-                              [k: string]: unknown;
-                            } | null;
-                            variant?: ('default' | 'center' | 'right') | null;
-                            color?: string | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'richText';
-                          }
-                        | {
-                            image?: (number | null) | Media;
-                            linkType?: ('none' | 'internal' | 'external') | null;
-                            internalLink?: (number | null) | Page;
-                            externalUrl?: string | null;
-                            newTab?: boolean | null;
-                            aspectRatio?:
-                              | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
-                              | null;
-                            /**
-                             * Format: 16/9, 4/3, 1/1...
-                             */
-                            customAspectRatio?: string | null;
-                            variant?: 'default' | null;
-                            overlay?: {
-                              enabled?: boolean | null;
-                              color?: string | null;
-                              /**
-                               * 0 - 100
-                               */
-                              opacity?: number | null;
-                            };
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'image';
-                          }
-                        | {
-                            text: string;
-                            linkType?: ('internal' | 'external') | null;
-                            internalLink?: (number | null) | Page;
-                            externalUrl?: string | null;
-                            newTab?: boolean | null;
-                            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                            hasIcon?: boolean | null;
-                            iconType?: ('picker' | 'customSvg') | null;
-                            icon?: string | null;
-                            customSvg?: (number | null) | Media;
-                            iconPosition?: ('left' | 'right') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'button';
-                          }
-                        | {
-                            items?:
-                              | {
-                                  blocks?:
-                                    | (
-                                        | {
-                                            title?: string | null;
-                                            variant?: ('default' | 'center' | 'right') | null;
-                                            titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                            color?: string | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'heading';
-                                          }
-                                        | {
-                                            text?: {
-                                              root: {
-                                                type: string;
-                                                children: {
-                                                  type: any;
-                                                  version: number;
-                                                  [k: string]: unknown;
-                                                }[];
-                                                direction: ('ltr' | 'rtl') | null;
-                                                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                                indent: number;
-                                                version: number;
-                                              };
-                                              [k: string]: unknown;
-                                            } | null;
-                                            variant?: ('default' | 'center' | 'right') | null;
-                                            color?: string | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'richText';
-                                          }
-                                        | {
-                                            image?: (number | null) | Media;
-                                            linkType?: ('none' | 'internal' | 'external') | null;
-                                            internalLink?: (number | null) | Page;
-                                            externalUrl?: string | null;
-                                            newTab?: boolean | null;
-                                            aspectRatio?:
-                                              | (
-                                                  | 'auto'
-                                                  | '1/1'
-                                                  | '3/2'
-                                                  | '4/3'
-                                                  | '16/9'
-                                                  | '2/3'
-                                                  | '3/4'
-                                                  | '9/16'
-                                                  | 'custom'
-                                                )
-                                              | null;
-                                            /**
-                                             * Format: 16/9, 4/3, 1/1...
-                                             */
-                                            customAspectRatio?: string | null;
-                                            variant?: 'default' | null;
-                                            overlay?: {
-                                              enabled?: boolean | null;
-                                              color?: string | null;
-                                              /**
-                                               * 0 - 100
-                                               */
-                                              opacity?: number | null;
-                                            };
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'image';
-                                          }
-                                        | {
-                                            text: string;
-                                            linkType?: ('internal' | 'external') | null;
-                                            internalLink?: (number | null) | Page;
-                                            externalUrl?: string | null;
-                                            newTab?: boolean | null;
-                                            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                            hasIcon?: boolean | null;
-                                            iconType?: ('picker' | 'customSvg') | null;
-                                            icon?: string | null;
-                                            customSvg?: (number | null) | Media;
-                                            iconPosition?: ('left' | 'right') | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'button';
-                                          }
-                                      )[]
-                                    | null;
-                                  label: string;
-                                  defaultActive?: boolean | null;
-                                  hasIcon?: boolean | null;
-                                  iconType?: ('picker' | 'customSvg') | null;
-                                  icon?: string | null;
-                                  customSvg?: (number | null) | Media;
-                                  iconPosition?: ('left' | 'right') | null;
-                                  id?: string | null;
-                                }[]
-                              | null;
-                            orientation?: ('horizontal' | 'vertical') | null;
-                            variant?: ('default' | 'full' | 'minimal') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'tabs';
-                          }
-                        | {
-                            settings?: {
-                              orientation?: ('horizontal' | 'vertical') | null;
-                              /**
-                               * Space between slides in px
-                               */
-                              spaceBetween?: number | null;
-                              slidesPerView?: number | null;
-                            };
-                            slides?:
-                              | {
-                                  image: number | Media;
-                                  caption?: string | null;
-                                  id?: string | null;
-                                }[]
-                              | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'slider';
-                          }
-                        | {
-                            items?:
-                              | {
-                                  blocks?:
-                                    | (
-                                        | {
-                                            title?: string | null;
-                                            variant?: ('default' | 'center' | 'right') | null;
-                                            titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                            color?: string | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'heading';
-                                          }
-                                        | {
-                                            text?: {
-                                              root: {
-                                                type: string;
-                                                children: {
-                                                  type: any;
-                                                  version: number;
-                                                  [k: string]: unknown;
-                                                }[];
-                                                direction: ('ltr' | 'rtl') | null;
-                                                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                                indent: number;
-                                                version: number;
-                                              };
-                                              [k: string]: unknown;
-                                            } | null;
-                                            variant?: ('default' | 'center' | 'right') | null;
-                                            color?: string | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'richText';
-                                          }
-                                        | {
-                                            image?: (number | null) | Media;
-                                            linkType?: ('none' | 'internal' | 'external') | null;
-                                            internalLink?: (number | null) | Page;
-                                            externalUrl?: string | null;
-                                            newTab?: boolean | null;
-                                            aspectRatio?:
-                                              | (
-                                                  | 'auto'
-                                                  | '1/1'
-                                                  | '3/2'
-                                                  | '4/3'
-                                                  | '16/9'
-                                                  | '2/3'
-                                                  | '3/4'
-                                                  | '9/16'
-                                                  | 'custom'
-                                                )
-                                              | null;
-                                            /**
-                                             * Format: 16/9, 4/3, 1/1...
-                                             */
-                                            customAspectRatio?: string | null;
-                                            variant?: 'default' | null;
-                                            overlay?: {
-                                              enabled?: boolean | null;
-                                              color?: string | null;
-                                              /**
-                                               * 0 - 100
-                                               */
-                                              opacity?: number | null;
-                                            };
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'image';
-                                          }
-                                        | {
-                                            text: string;
-                                            linkType?: ('internal' | 'external') | null;
-                                            internalLink?: (number | null) | Page;
-                                            externalUrl?: string | null;
-                                            newTab?: boolean | null;
-                                            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                            hasIcon?: boolean | null;
-                                            iconType?: ('picker' | 'customSvg') | null;
-                                            icon?: string | null;
-                                            customSvg?: (number | null) | Media;
-                                            iconPosition?: ('left' | 'right') | null;
-                                            id?: string | null;
-                                            blockName?: string | null;
-                                            blockType: 'button';
-                                          }
-                                      )[]
-                                    | null;
-                                  label: string;
-                                  defaultOpen?: boolean | null;
-                                  hasIcon?: boolean | null;
-                                  iconType?: ('picker' | 'customSvg') | null;
-                                  icon?: string | null;
-                                  customSvg?: (number | null) | Media;
-                                  iconPosition?: ('left' | 'right') | null;
-                                  id?: string | null;
-                                }[]
-                              | null;
-                            allowMultiple?: boolean | null;
-                            variant?: ('default' | 'bordered' | 'minimal') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'accordion';
-                          }
-                      )[]
-                    | null;
-                  /**
-                   * Optional — custom ID / anchor
-                   */
-                  htmlId?: string | null;
-                  variant?: 'default' | null;
-                  layout?: ('block' | 'flex' | 'grid') | null;
-                  verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-                  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
-                  gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
-                  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-                  id?: string | null;
-                  blockName?: string | null;
-                  blockType: 'blockHolder0';
-                }
-              | {
-                  /**
-                   * Optional — section title above the posts loop
-                   */
-                  title?: string | null;
-                  populateBy?: ('latest' | 'categories' | 'manual') | null;
-                  /**
-                   * Maximum number of posts to fetch
-                   */
-                  limit: number;
-                  /**
-                   * Manually select which category/categries to display
-                   */
-                  selectedCategories?: (number | Category)[] | null;
-                  /**
-                   * Manually select which posts to display
-                   */
-                  selectedPosts?: (number | Post)[] | null;
-                  /**
-                   * Optional — custom ID / anchor
-                   */
-                  htmlId?: string | null;
-                  layout?: ('grid' | 'slider') | null;
-                  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-                  gridColumns?: ('col-2' | 'col-3' | 'col-4') | null;
-                  autoplay?: boolean | null;
-                  showArrows?: boolean | null;
-                  id?: string | null;
-                  blockName?: string | null;
-                  blockType: 'postsBlock';
-                }
-            )[]
-          | null;
-        settings?: {
-          /**
-           * Optional — custom ID / anchor
-           */
-          htmlId?: string | null;
-          variant?: 'default' | null;
-          viewport?: ('auto' | 'full') | null;
-          widthType?: ('fullWidth' | 'boxed') | null;
-          /**
-           * Optional — vertical alignment
-           */
-          alignment?: ('top' | 'center' | 'bottom') | null;
-          containerType?: ('container-xl' | 'container-lg' | 'container' | 'container-xs') | null;
-          /**
-           * Optional — space on top & bottom
-           */
-          padding?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-          backgroundType?: ('blank' | 'color' | 'gradient' | 'image') | null;
-          colorTheme?: string | null;
-          gradientTheme?: ('warm' | 'cool') | null;
-          bgImage?: (number | null) | Media;
-          overlay?: {
-            enabled?: boolean | null;
-            color?: string | null;
-            /**
-             * 0 - 100
-             */
-            opacity?: number | null;
-          };
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'section';
-      }[]
-    | null;
+  layout?: SectionBlockProps[] | null;
   /**
    * The primary image for this post.
    */
@@ -2656,850 +738,7 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
-        section?:
-          | T
-          | {
-              blocks?:
-                | T
-                | {
-                    blockHolder0?:
-                      | T
-                      | {
-                          atoms?:
-                            | T
-                            | {
-                                blockHolder1?:
-                                  | T
-                                  | {
-                                      atoms?:
-                                        | T
-                                        | {
-                                            blockHolder2?:
-                                              | T
-                                              | {
-                                                  atoms?:
-                                                    | T
-                                                    | {
-                                                        menu?:
-                                                          | T
-                                                          | {
-                                                              menu?: T;
-                                                              orientation?: T;
-                                                              variant?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        heading?:
-                                                          | T
-                                                          | {
-                                                              title?: T;
-                                                              variant?: T;
-                                                              titleTag?: T;
-                                                              color?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        richText?:
-                                                          | T
-                                                          | {
-                                                              text?: T;
-                                                              variant?: T;
-                                                              color?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        image?:
-                                                          | T
-                                                          | {
-                                                              image?: T;
-                                                              linkType?: T;
-                                                              internalLink?: T;
-                                                              externalUrl?: T;
-                                                              newTab?: T;
-                                                              aspectRatio?: T;
-                                                              customAspectRatio?: T;
-                                                              variant?: T;
-                                                              overlay?:
-                                                                | T
-                                                                | {
-                                                                    enabled?: T;
-                                                                    color?: T;
-                                                                    opacity?: T;
-                                                                  };
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        button?:
-                                                          | T
-                                                          | {
-                                                              text?: T;
-                                                              linkType?: T;
-                                                              internalLink?: T;
-                                                              externalUrl?: T;
-                                                              newTab?: T;
-                                                              variant?: T;
-                                                              hasIcon?: T;
-                                                              iconType?: T;
-                                                              icon?: T;
-                                                              customSvg?: T;
-                                                              iconPosition?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        tabs?:
-                                                          | T
-                                                          | {
-                                                              items?:
-                                                                | T
-                                                                | {
-                                                                    blocks?:
-                                                                      | T
-                                                                      | {
-                                                                          heading?:
-                                                                            | T
-                                                                            | {
-                                                                                title?: T;
-                                                                                variant?: T;
-                                                                                titleTag?: T;
-                                                                                color?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          richText?:
-                                                                            | T
-                                                                            | {
-                                                                                text?: T;
-                                                                                variant?: T;
-                                                                                color?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          image?:
-                                                                            | T
-                                                                            | {
-                                                                                image?: T;
-                                                                                linkType?: T;
-                                                                                internalLink?: T;
-                                                                                externalUrl?: T;
-                                                                                newTab?: T;
-                                                                                aspectRatio?: T;
-                                                                                customAspectRatio?: T;
-                                                                                variant?: T;
-                                                                                overlay?:
-                                                                                  | T
-                                                                                  | {
-                                                                                      enabled?: T;
-                                                                                      color?: T;
-                                                                                      opacity?: T;
-                                                                                    };
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          button?:
-                                                                            | T
-                                                                            | {
-                                                                                text?: T;
-                                                                                linkType?: T;
-                                                                                internalLink?: T;
-                                                                                externalUrl?: T;
-                                                                                newTab?: T;
-                                                                                variant?: T;
-                                                                                hasIcon?: T;
-                                                                                iconType?: T;
-                                                                                icon?: T;
-                                                                                customSvg?: T;
-                                                                                iconPosition?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                        };
-                                                                    label?: T;
-                                                                    defaultActive?: T;
-                                                                    hasIcon?: T;
-                                                                    iconType?: T;
-                                                                    icon?: T;
-                                                                    customSvg?: T;
-                                                                    iconPosition?: T;
-                                                                    id?: T;
-                                                                  };
-                                                              orientation?: T;
-                                                              variant?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        slider?:
-                                                          | T
-                                                          | {
-                                                              settings?:
-                                                                | T
-                                                                | {
-                                                                    orientation?: T;
-                                                                    spaceBetween?: T;
-                                                                    slidesPerView?: T;
-                                                                  };
-                                                              slides?:
-                                                                | T
-                                                                | {
-                                                                    image?: T;
-                                                                    caption?: T;
-                                                                    id?: T;
-                                                                  };
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        accordion?:
-                                                          | T
-                                                          | {
-                                                              items?:
-                                                                | T
-                                                                | {
-                                                                    blocks?:
-                                                                      | T
-                                                                      | {
-                                                                          heading?:
-                                                                            | T
-                                                                            | {
-                                                                                title?: T;
-                                                                                variant?: T;
-                                                                                titleTag?: T;
-                                                                                color?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          richText?:
-                                                                            | T
-                                                                            | {
-                                                                                text?: T;
-                                                                                variant?: T;
-                                                                                color?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          image?:
-                                                                            | T
-                                                                            | {
-                                                                                image?: T;
-                                                                                linkType?: T;
-                                                                                internalLink?: T;
-                                                                                externalUrl?: T;
-                                                                                newTab?: T;
-                                                                                aspectRatio?: T;
-                                                                                customAspectRatio?: T;
-                                                                                variant?: T;
-                                                                                overlay?:
-                                                                                  | T
-                                                                                  | {
-                                                                                      enabled?: T;
-                                                                                      color?: T;
-                                                                                      opacity?: T;
-                                                                                    };
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          button?:
-                                                                            | T
-                                                                            | {
-                                                                                text?: T;
-                                                                                linkType?: T;
-                                                                                internalLink?: T;
-                                                                                externalUrl?: T;
-                                                                                newTab?: T;
-                                                                                variant?: T;
-                                                                                hasIcon?: T;
-                                                                                iconType?: T;
-                                                                                icon?: T;
-                                                                                customSvg?: T;
-                                                                                iconPosition?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                        };
-                                                                    label?: T;
-                                                                    defaultOpen?: T;
-                                                                    hasIcon?: T;
-                                                                    iconType?: T;
-                                                                    icon?: T;
-                                                                    customSvg?: T;
-                                                                    iconPosition?: T;
-                                                                    id?: T;
-                                                                  };
-                                                              allowMultiple?: T;
-                                                              variant?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                      };
-                                                  htmlId?: T;
-                                                  variant?: T;
-                                                  layout?: T;
-                                                  verticalAlignment?: T;
-                                                  flexVariant?: T;
-                                                  gridVariant?: T;
-                                                  gap?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            menu?:
-                                              | T
-                                              | {
-                                                  menu?: T;
-                                                  orientation?: T;
-                                                  variant?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            heading?:
-                                              | T
-                                              | {
-                                                  title?: T;
-                                                  variant?: T;
-                                                  titleTag?: T;
-                                                  color?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            richText?:
-                                              | T
-                                              | {
-                                                  text?: T;
-                                                  variant?: T;
-                                                  color?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            image?:
-                                              | T
-                                              | {
-                                                  image?: T;
-                                                  linkType?: T;
-                                                  internalLink?: T;
-                                                  externalUrl?: T;
-                                                  newTab?: T;
-                                                  aspectRatio?: T;
-                                                  customAspectRatio?: T;
-                                                  variant?: T;
-                                                  overlay?:
-                                                    | T
-                                                    | {
-                                                        enabled?: T;
-                                                        color?: T;
-                                                        opacity?: T;
-                                                      };
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            button?:
-                                              | T
-                                              | {
-                                                  text?: T;
-                                                  linkType?: T;
-                                                  internalLink?: T;
-                                                  externalUrl?: T;
-                                                  newTab?: T;
-                                                  variant?: T;
-                                                  hasIcon?: T;
-                                                  iconType?: T;
-                                                  icon?: T;
-                                                  customSvg?: T;
-                                                  iconPosition?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            tabs?:
-                                              | T
-                                              | {
-                                                  items?:
-                                                    | T
-                                                    | {
-                                                        blocks?:
-                                                          | T
-                                                          | {
-                                                              heading?:
-                                                                | T
-                                                                | {
-                                                                    title?: T;
-                                                                    variant?: T;
-                                                                    titleTag?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              richText?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    variant?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              image?:
-                                                                | T
-                                                                | {
-                                                                    image?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    aspectRatio?: T;
-                                                                    customAspectRatio?: T;
-                                                                    variant?: T;
-                                                                    overlay?:
-                                                                      | T
-                                                                      | {
-                                                                          enabled?: T;
-                                                                          color?: T;
-                                                                          opacity?: T;
-                                                                        };
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              button?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    variant?: T;
-                                                                    hasIcon?: T;
-                                                                    iconType?: T;
-                                                                    icon?: T;
-                                                                    customSvg?: T;
-                                                                    iconPosition?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                            };
-                                                        label?: T;
-                                                        defaultActive?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                      };
-                                                  orientation?: T;
-                                                  variant?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            slider?:
-                                              | T
-                                              | {
-                                                  settings?:
-                                                    | T
-                                                    | {
-                                                        orientation?: T;
-                                                        spaceBetween?: T;
-                                                        slidesPerView?: T;
-                                                      };
-                                                  slides?:
-                                                    | T
-                                                    | {
-                                                        image?: T;
-                                                        caption?: T;
-                                                        id?: T;
-                                                      };
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            accordion?:
-                                              | T
-                                              | {
-                                                  items?:
-                                                    | T
-                                                    | {
-                                                        blocks?:
-                                                          | T
-                                                          | {
-                                                              heading?:
-                                                                | T
-                                                                | {
-                                                                    title?: T;
-                                                                    variant?: T;
-                                                                    titleTag?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              richText?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    variant?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              image?:
-                                                                | T
-                                                                | {
-                                                                    image?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    aspectRatio?: T;
-                                                                    customAspectRatio?: T;
-                                                                    variant?: T;
-                                                                    overlay?:
-                                                                      | T
-                                                                      | {
-                                                                          enabled?: T;
-                                                                          color?: T;
-                                                                          opacity?: T;
-                                                                        };
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              button?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    variant?: T;
-                                                                    hasIcon?: T;
-                                                                    iconType?: T;
-                                                                    icon?: T;
-                                                                    customSvg?: T;
-                                                                    iconPosition?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                            };
-                                                        label?: T;
-                                                        defaultOpen?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                      };
-                                                  allowMultiple?: T;
-                                                  variant?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                          };
-                                      htmlId?: T;
-                                      variant?: T;
-                                      layout?: T;
-                                      verticalAlignment?: T;
-                                      flexVariant?: T;
-                                      gridVariant?: T;
-                                      gap?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                menu?:
-                                  | T
-                                  | {
-                                      menu?: T;
-                                      orientation?: T;
-                                      variant?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                heading?:
-                                  | T
-                                  | {
-                                      title?: T;
-                                      variant?: T;
-                                      titleTag?: T;
-                                      color?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                richText?:
-                                  | T
-                                  | {
-                                      text?: T;
-                                      variant?: T;
-                                      color?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                image?:
-                                  | T
-                                  | {
-                                      image?: T;
-                                      linkType?: T;
-                                      internalLink?: T;
-                                      externalUrl?: T;
-                                      newTab?: T;
-                                      aspectRatio?: T;
-                                      customAspectRatio?: T;
-                                      variant?: T;
-                                      overlay?:
-                                        | T
-                                        | {
-                                            enabled?: T;
-                                            color?: T;
-                                            opacity?: T;
-                                          };
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                button?:
-                                  | T
-                                  | {
-                                      text?: T;
-                                      linkType?: T;
-                                      internalLink?: T;
-                                      externalUrl?: T;
-                                      newTab?: T;
-                                      variant?: T;
-                                      hasIcon?: T;
-                                      iconType?: T;
-                                      icon?: T;
-                                      customSvg?: T;
-                                      iconPosition?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                tabs?:
-                                  | T
-                                  | {
-                                      items?:
-                                        | T
-                                        | {
-                                            blocks?:
-                                              | T
-                                              | {
-                                                  heading?:
-                                                    | T
-                                                    | {
-                                                        title?: T;
-                                                        variant?: T;
-                                                        titleTag?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  richText?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        variant?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  image?:
-                                                    | T
-                                                    | {
-                                                        image?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        aspectRatio?: T;
-                                                        customAspectRatio?: T;
-                                                        variant?: T;
-                                                        overlay?:
-                                                          | T
-                                                          | {
-                                                              enabled?: T;
-                                                              color?: T;
-                                                              opacity?: T;
-                                                            };
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  button?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        variant?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                };
-                                            label?: T;
-                                            defaultActive?: T;
-                                            hasIcon?: T;
-                                            iconType?: T;
-                                            icon?: T;
-                                            customSvg?: T;
-                                            iconPosition?: T;
-                                            id?: T;
-                                          };
-                                      orientation?: T;
-                                      variant?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                slider?:
-                                  | T
-                                  | {
-                                      settings?:
-                                        | T
-                                        | {
-                                            orientation?: T;
-                                            spaceBetween?: T;
-                                            slidesPerView?: T;
-                                          };
-                                      slides?:
-                                        | T
-                                        | {
-                                            image?: T;
-                                            caption?: T;
-                                            id?: T;
-                                          };
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                accordion?:
-                                  | T
-                                  | {
-                                      items?:
-                                        | T
-                                        | {
-                                            blocks?:
-                                              | T
-                                              | {
-                                                  heading?:
-                                                    | T
-                                                    | {
-                                                        title?: T;
-                                                        variant?: T;
-                                                        titleTag?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  richText?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        variant?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  image?:
-                                                    | T
-                                                    | {
-                                                        image?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        aspectRatio?: T;
-                                                        customAspectRatio?: T;
-                                                        variant?: T;
-                                                        overlay?:
-                                                          | T
-                                                          | {
-                                                              enabled?: T;
-                                                              color?: T;
-                                                              opacity?: T;
-                                                            };
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  button?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        variant?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                };
-                                            label?: T;
-                                            defaultOpen?: T;
-                                            hasIcon?: T;
-                                            iconType?: T;
-                                            icon?: T;
-                                            customSvg?: T;
-                                            iconPosition?: T;
-                                            id?: T;
-                                          };
-                                      allowMultiple?: T;
-                                      variant?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                              };
-                          htmlId?: T;
-                          variant?: T;
-                          layout?: T;
-                          verticalAlignment?: T;
-                          flexVariant?: T;
-                          gridVariant?: T;
-                          gap?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                    postsBlock?:
-                      | T
-                      | {
-                          title?: T;
-                          populateBy?: T;
-                          limit?: T;
-                          selectedCategories?: T;
-                          selectedPosts?: T;
-                          htmlId?: T;
-                          layout?: T;
-                          gap?: T;
-                          gridColumns?: T;
-                          autoplay?: T;
-                          showArrows?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                  };
-              settings?:
-                | T
-                | {
-                    htmlId?: T;
-                    variant?: T;
-                    viewport?: T;
-                    widthType?: T;
-                    alignment?: T;
-                    containerType?: T;
-                    padding?: T;
-                    backgroundType?: T;
-                    colorTheme?: T;
-                    gradientTheme?: T;
-                    bgImage?: T;
-                    overlay?:
-                      | T
-                      | {
-                          enabled?: T;
-                          color?: T;
-                          opacity?: T;
-                        };
-                  };
-              id?: T;
-              blockName?: T;
-            };
+        section?: T | SectionBlockPropsSelect<T>;
       };
   seoTitle?: T;
   seoDescription?: T;
@@ -3510,6 +749,302 @@ export interface PagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionBlockProps_select".
+ */
+export interface SectionBlockPropsSelect<T extends boolean = true> {
+  blocks?:
+    | T
+    | {
+        blockHolder0?: T | BlockHolderLevel0BlockPropsSelect<T>;
+        postsBlock?: T | PostsBlockPropsSelect<T>;
+      };
+  settings?:
+    | T
+    | {
+        htmlId?: T;
+        variant?: T;
+        viewport?: T;
+        widthType?: T;
+        alignment?: T;
+        containerType?: T;
+        padding?: T;
+        backgroundType?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        bgImage?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockHolderLevel0BlockProps_select".
+ */
+export interface BlockHolderLevel0BlockPropsSelect<T extends boolean = true> {
+  atoms?:
+    | T
+    | {
+        blockHolder1?: T | BlockHolderLevel1BlockPropsSelect<T>;
+        menu?: T | MenuBlockPropsSelect<T>;
+        heading?: T | HeadingBlockPropsSelect<T>;
+        richText?: T | RichTextBlockPropsSelect<T>;
+        image?: T | ImageBlockPropsSelect<T>;
+        button?: T | ButtonBlockPropsSelect<T>;
+        tabs?: T | TabsBlockPropsSelect<T>;
+        slider?: T | SliderBlockPropsSelect<T>;
+        accordion?: T | AccordionBlockPropsSelect<T>;
+      };
+  htmlId?: T;
+  variant?: T;
+  layout?: T;
+  verticalAlignment?: T;
+  flexVariant?: T;
+  gridVariant?: T;
+  gap?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockHolderLevel1BlockProps_select".
+ */
+export interface BlockHolderLevel1BlockPropsSelect<T extends boolean = true> {
+  atoms?:
+    | T
+    | {
+        blockHolder2?: T | BlockHolderLevel2BlockPropsSelect<T>;
+        menu?: T | MenuBlockPropsSelect<T>;
+        heading?: T | HeadingBlockPropsSelect<T>;
+        richText?: T | RichTextBlockPropsSelect<T>;
+        image?: T | ImageBlockPropsSelect<T>;
+        button?: T | ButtonBlockPropsSelect<T>;
+        tabs?: T | TabsBlockPropsSelect<T>;
+        slider?: T | SliderBlockPropsSelect<T>;
+        accordion?: T | AccordionBlockPropsSelect<T>;
+      };
+  htmlId?: T;
+  variant?: T;
+  layout?: T;
+  verticalAlignment?: T;
+  flexVariant?: T;
+  gridVariant?: T;
+  gap?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockHolderLevel2BlockProps_select".
+ */
+export interface BlockHolderLevel2BlockPropsSelect<T extends boolean = true> {
+  atoms?:
+    | T
+    | {
+        menu?: T | MenuBlockPropsSelect<T>;
+        heading?: T | HeadingBlockPropsSelect<T>;
+        richText?: T | RichTextBlockPropsSelect<T>;
+        image?: T | ImageBlockPropsSelect<T>;
+        button?: T | ButtonBlockPropsSelect<T>;
+        tabs?: T | TabsBlockPropsSelect<T>;
+        slider?: T | SliderBlockPropsSelect<T>;
+        accordion?: T | AccordionBlockPropsSelect<T>;
+      };
+  htmlId?: T;
+  variant?: T;
+  layout?: T;
+  verticalAlignment?: T;
+  flexVariant?: T;
+  gridVariant?: T;
+  gap?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MenuBlockProps_select".
+ */
+export interface MenuBlockPropsSelect<T extends boolean = true> {
+  menu?: T;
+  orientation?: T;
+  variant?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeadingBlockProps_select".
+ */
+export interface HeadingBlockPropsSelect<T extends boolean = true> {
+  title?: T;
+  variant?: T;
+  titleTag?: T;
+  color?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RichTextBlockProps_select".
+ */
+export interface RichTextBlockPropsSelect<T extends boolean = true> {
+  text?: T;
+  variant?: T;
+  color?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageBlockProps_select".
+ */
+export interface ImageBlockPropsSelect<T extends boolean = true> {
+  image?: T;
+  linkType?: T;
+  internalLink?: T;
+  externalUrl?: T;
+  newTab?: T;
+  aspectRatio?: T;
+  customAspectRatio?: T;
+  variant?: T;
+  overlay?:
+    | T
+    | {
+        enabled?: T;
+        color?: T;
+        opacity?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ButtonBlockProps_select".
+ */
+export interface ButtonBlockPropsSelect<T extends boolean = true> {
+  text?: T;
+  linkType?: T;
+  internalLink?: T;
+  externalUrl?: T;
+  newTab?: T;
+  variant?: T;
+  hasIcon?: T;
+  iconType?: T;
+  icon?: T;
+  customSvg?: T;
+  iconPosition?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TabsBlockProps_select".
+ */
+export interface TabsBlockPropsSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        blocks?:
+          | T
+          | {
+              heading?: T | HeadingBlockPropsSelect<T>;
+              richText?: T | RichTextBlockPropsSelect<T>;
+              image?: T | ImageBlockPropsSelect<T>;
+              button?: T | ButtonBlockPropsSelect<T>;
+            };
+        label?: T;
+        defaultActive?: T;
+        hasIcon?: T;
+        iconType?: T;
+        icon?: T;
+        customSvg?: T;
+        iconPosition?: T;
+        id?: T;
+      };
+  orientation?: T;
+  variant?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SliderBlockProps_select".
+ */
+export interface SliderBlockPropsSelect<T extends boolean = true> {
+  settings?:
+    | T
+    | {
+        orientation?: T;
+        spaceBetween?: T;
+        slidesPerView?: T;
+      };
+  slides?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlockProps_select".
+ */
+export interface AccordionBlockPropsSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        blocks?:
+          | T
+          | {
+              heading?: T | HeadingBlockPropsSelect<T>;
+              richText?: T | RichTextBlockPropsSelect<T>;
+              image?: T | ImageBlockPropsSelect<T>;
+              button?: T | ButtonBlockPropsSelect<T>;
+            };
+        label?: T;
+        defaultOpen?: T;
+        hasIcon?: T;
+        iconType?: T;
+        icon?: T;
+        customSvg?: T;
+        iconPosition?: T;
+        id?: T;
+      };
+  allowMultiple?: T;
+  variant?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PostsBlockProps_select".
+ */
+export interface PostsBlockPropsSelect<T extends boolean = true> {
+  title?: T;
+  populateBy?: T;
+  limit?: T;
+  selectedCategories?: T;
+  selectedPosts?: T;
+  htmlId?: T;
+  layout?: T;
+  gap?: T;
+  gridColumns?: T;
+  autoplay?: T;
+  showArrows?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -3517,850 +1052,7 @@ export interface PostsSelect<T extends boolean = true> {
   layout?:
     | T
     | {
-        section?:
-          | T
-          | {
-              blocks?:
-                | T
-                | {
-                    blockHolder0?:
-                      | T
-                      | {
-                          atoms?:
-                            | T
-                            | {
-                                blockHolder1?:
-                                  | T
-                                  | {
-                                      atoms?:
-                                        | T
-                                        | {
-                                            blockHolder2?:
-                                              | T
-                                              | {
-                                                  atoms?:
-                                                    | T
-                                                    | {
-                                                        menu?:
-                                                          | T
-                                                          | {
-                                                              menu?: T;
-                                                              orientation?: T;
-                                                              variant?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        heading?:
-                                                          | T
-                                                          | {
-                                                              title?: T;
-                                                              variant?: T;
-                                                              titleTag?: T;
-                                                              color?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        richText?:
-                                                          | T
-                                                          | {
-                                                              text?: T;
-                                                              variant?: T;
-                                                              color?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        image?:
-                                                          | T
-                                                          | {
-                                                              image?: T;
-                                                              linkType?: T;
-                                                              internalLink?: T;
-                                                              externalUrl?: T;
-                                                              newTab?: T;
-                                                              aspectRatio?: T;
-                                                              customAspectRatio?: T;
-                                                              variant?: T;
-                                                              overlay?:
-                                                                | T
-                                                                | {
-                                                                    enabled?: T;
-                                                                    color?: T;
-                                                                    opacity?: T;
-                                                                  };
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        button?:
-                                                          | T
-                                                          | {
-                                                              text?: T;
-                                                              linkType?: T;
-                                                              internalLink?: T;
-                                                              externalUrl?: T;
-                                                              newTab?: T;
-                                                              variant?: T;
-                                                              hasIcon?: T;
-                                                              iconType?: T;
-                                                              icon?: T;
-                                                              customSvg?: T;
-                                                              iconPosition?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        tabs?:
-                                                          | T
-                                                          | {
-                                                              items?:
-                                                                | T
-                                                                | {
-                                                                    blocks?:
-                                                                      | T
-                                                                      | {
-                                                                          heading?:
-                                                                            | T
-                                                                            | {
-                                                                                title?: T;
-                                                                                variant?: T;
-                                                                                titleTag?: T;
-                                                                                color?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          richText?:
-                                                                            | T
-                                                                            | {
-                                                                                text?: T;
-                                                                                variant?: T;
-                                                                                color?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          image?:
-                                                                            | T
-                                                                            | {
-                                                                                image?: T;
-                                                                                linkType?: T;
-                                                                                internalLink?: T;
-                                                                                externalUrl?: T;
-                                                                                newTab?: T;
-                                                                                aspectRatio?: T;
-                                                                                customAspectRatio?: T;
-                                                                                variant?: T;
-                                                                                overlay?:
-                                                                                  | T
-                                                                                  | {
-                                                                                      enabled?: T;
-                                                                                      color?: T;
-                                                                                      opacity?: T;
-                                                                                    };
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          button?:
-                                                                            | T
-                                                                            | {
-                                                                                text?: T;
-                                                                                linkType?: T;
-                                                                                internalLink?: T;
-                                                                                externalUrl?: T;
-                                                                                newTab?: T;
-                                                                                variant?: T;
-                                                                                hasIcon?: T;
-                                                                                iconType?: T;
-                                                                                icon?: T;
-                                                                                customSvg?: T;
-                                                                                iconPosition?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                        };
-                                                                    label?: T;
-                                                                    defaultActive?: T;
-                                                                    hasIcon?: T;
-                                                                    iconType?: T;
-                                                                    icon?: T;
-                                                                    customSvg?: T;
-                                                                    iconPosition?: T;
-                                                                    id?: T;
-                                                                  };
-                                                              orientation?: T;
-                                                              variant?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        slider?:
-                                                          | T
-                                                          | {
-                                                              settings?:
-                                                                | T
-                                                                | {
-                                                                    orientation?: T;
-                                                                    spaceBetween?: T;
-                                                                    slidesPerView?: T;
-                                                                  };
-                                                              slides?:
-                                                                | T
-                                                                | {
-                                                                    image?: T;
-                                                                    caption?: T;
-                                                                    id?: T;
-                                                                  };
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                        accordion?:
-                                                          | T
-                                                          | {
-                                                              items?:
-                                                                | T
-                                                                | {
-                                                                    blocks?:
-                                                                      | T
-                                                                      | {
-                                                                          heading?:
-                                                                            | T
-                                                                            | {
-                                                                                title?: T;
-                                                                                variant?: T;
-                                                                                titleTag?: T;
-                                                                                color?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          richText?:
-                                                                            | T
-                                                                            | {
-                                                                                text?: T;
-                                                                                variant?: T;
-                                                                                color?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          image?:
-                                                                            | T
-                                                                            | {
-                                                                                image?: T;
-                                                                                linkType?: T;
-                                                                                internalLink?: T;
-                                                                                externalUrl?: T;
-                                                                                newTab?: T;
-                                                                                aspectRatio?: T;
-                                                                                customAspectRatio?: T;
-                                                                                variant?: T;
-                                                                                overlay?:
-                                                                                  | T
-                                                                                  | {
-                                                                                      enabled?: T;
-                                                                                      color?: T;
-                                                                                      opacity?: T;
-                                                                                    };
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                          button?:
-                                                                            | T
-                                                                            | {
-                                                                                text?: T;
-                                                                                linkType?: T;
-                                                                                internalLink?: T;
-                                                                                externalUrl?: T;
-                                                                                newTab?: T;
-                                                                                variant?: T;
-                                                                                hasIcon?: T;
-                                                                                iconType?: T;
-                                                                                icon?: T;
-                                                                                customSvg?: T;
-                                                                                iconPosition?: T;
-                                                                                id?: T;
-                                                                                blockName?: T;
-                                                                              };
-                                                                        };
-                                                                    label?: T;
-                                                                    defaultOpen?: T;
-                                                                    hasIcon?: T;
-                                                                    iconType?: T;
-                                                                    icon?: T;
-                                                                    customSvg?: T;
-                                                                    iconPosition?: T;
-                                                                    id?: T;
-                                                                  };
-                                                              allowMultiple?: T;
-                                                              variant?: T;
-                                                              id?: T;
-                                                              blockName?: T;
-                                                            };
-                                                      };
-                                                  htmlId?: T;
-                                                  variant?: T;
-                                                  layout?: T;
-                                                  verticalAlignment?: T;
-                                                  flexVariant?: T;
-                                                  gridVariant?: T;
-                                                  gap?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            menu?:
-                                              | T
-                                              | {
-                                                  menu?: T;
-                                                  orientation?: T;
-                                                  variant?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            heading?:
-                                              | T
-                                              | {
-                                                  title?: T;
-                                                  variant?: T;
-                                                  titleTag?: T;
-                                                  color?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            richText?:
-                                              | T
-                                              | {
-                                                  text?: T;
-                                                  variant?: T;
-                                                  color?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            image?:
-                                              | T
-                                              | {
-                                                  image?: T;
-                                                  linkType?: T;
-                                                  internalLink?: T;
-                                                  externalUrl?: T;
-                                                  newTab?: T;
-                                                  aspectRatio?: T;
-                                                  customAspectRatio?: T;
-                                                  variant?: T;
-                                                  overlay?:
-                                                    | T
-                                                    | {
-                                                        enabled?: T;
-                                                        color?: T;
-                                                        opacity?: T;
-                                                      };
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            button?:
-                                              | T
-                                              | {
-                                                  text?: T;
-                                                  linkType?: T;
-                                                  internalLink?: T;
-                                                  externalUrl?: T;
-                                                  newTab?: T;
-                                                  variant?: T;
-                                                  hasIcon?: T;
-                                                  iconType?: T;
-                                                  icon?: T;
-                                                  customSvg?: T;
-                                                  iconPosition?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            tabs?:
-                                              | T
-                                              | {
-                                                  items?:
-                                                    | T
-                                                    | {
-                                                        blocks?:
-                                                          | T
-                                                          | {
-                                                              heading?:
-                                                                | T
-                                                                | {
-                                                                    title?: T;
-                                                                    variant?: T;
-                                                                    titleTag?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              richText?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    variant?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              image?:
-                                                                | T
-                                                                | {
-                                                                    image?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    aspectRatio?: T;
-                                                                    customAspectRatio?: T;
-                                                                    variant?: T;
-                                                                    overlay?:
-                                                                      | T
-                                                                      | {
-                                                                          enabled?: T;
-                                                                          color?: T;
-                                                                          opacity?: T;
-                                                                        };
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              button?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    variant?: T;
-                                                                    hasIcon?: T;
-                                                                    iconType?: T;
-                                                                    icon?: T;
-                                                                    customSvg?: T;
-                                                                    iconPosition?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                            };
-                                                        label?: T;
-                                                        defaultActive?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                      };
-                                                  orientation?: T;
-                                                  variant?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            slider?:
-                                              | T
-                                              | {
-                                                  settings?:
-                                                    | T
-                                                    | {
-                                                        orientation?: T;
-                                                        spaceBetween?: T;
-                                                        slidesPerView?: T;
-                                                      };
-                                                  slides?:
-                                                    | T
-                                                    | {
-                                                        image?: T;
-                                                        caption?: T;
-                                                        id?: T;
-                                                      };
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            accordion?:
-                                              | T
-                                              | {
-                                                  items?:
-                                                    | T
-                                                    | {
-                                                        blocks?:
-                                                          | T
-                                                          | {
-                                                              heading?:
-                                                                | T
-                                                                | {
-                                                                    title?: T;
-                                                                    variant?: T;
-                                                                    titleTag?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              richText?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    variant?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              image?:
-                                                                | T
-                                                                | {
-                                                                    image?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    aspectRatio?: T;
-                                                                    customAspectRatio?: T;
-                                                                    variant?: T;
-                                                                    overlay?:
-                                                                      | T
-                                                                      | {
-                                                                          enabled?: T;
-                                                                          color?: T;
-                                                                          opacity?: T;
-                                                                        };
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              button?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    variant?: T;
-                                                                    hasIcon?: T;
-                                                                    iconType?: T;
-                                                                    icon?: T;
-                                                                    customSvg?: T;
-                                                                    iconPosition?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                            };
-                                                        label?: T;
-                                                        defaultOpen?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                      };
-                                                  allowMultiple?: T;
-                                                  variant?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                          };
-                                      htmlId?: T;
-                                      variant?: T;
-                                      layout?: T;
-                                      verticalAlignment?: T;
-                                      flexVariant?: T;
-                                      gridVariant?: T;
-                                      gap?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                menu?:
-                                  | T
-                                  | {
-                                      menu?: T;
-                                      orientation?: T;
-                                      variant?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                heading?:
-                                  | T
-                                  | {
-                                      title?: T;
-                                      variant?: T;
-                                      titleTag?: T;
-                                      color?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                richText?:
-                                  | T
-                                  | {
-                                      text?: T;
-                                      variant?: T;
-                                      color?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                image?:
-                                  | T
-                                  | {
-                                      image?: T;
-                                      linkType?: T;
-                                      internalLink?: T;
-                                      externalUrl?: T;
-                                      newTab?: T;
-                                      aspectRatio?: T;
-                                      customAspectRatio?: T;
-                                      variant?: T;
-                                      overlay?:
-                                        | T
-                                        | {
-                                            enabled?: T;
-                                            color?: T;
-                                            opacity?: T;
-                                          };
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                button?:
-                                  | T
-                                  | {
-                                      text?: T;
-                                      linkType?: T;
-                                      internalLink?: T;
-                                      externalUrl?: T;
-                                      newTab?: T;
-                                      variant?: T;
-                                      hasIcon?: T;
-                                      iconType?: T;
-                                      icon?: T;
-                                      customSvg?: T;
-                                      iconPosition?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                tabs?:
-                                  | T
-                                  | {
-                                      items?:
-                                        | T
-                                        | {
-                                            blocks?:
-                                              | T
-                                              | {
-                                                  heading?:
-                                                    | T
-                                                    | {
-                                                        title?: T;
-                                                        variant?: T;
-                                                        titleTag?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  richText?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        variant?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  image?:
-                                                    | T
-                                                    | {
-                                                        image?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        aspectRatio?: T;
-                                                        customAspectRatio?: T;
-                                                        variant?: T;
-                                                        overlay?:
-                                                          | T
-                                                          | {
-                                                              enabled?: T;
-                                                              color?: T;
-                                                              opacity?: T;
-                                                            };
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  button?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        variant?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                };
-                                            label?: T;
-                                            defaultActive?: T;
-                                            hasIcon?: T;
-                                            iconType?: T;
-                                            icon?: T;
-                                            customSvg?: T;
-                                            iconPosition?: T;
-                                            id?: T;
-                                          };
-                                      orientation?: T;
-                                      variant?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                slider?:
-                                  | T
-                                  | {
-                                      settings?:
-                                        | T
-                                        | {
-                                            orientation?: T;
-                                            spaceBetween?: T;
-                                            slidesPerView?: T;
-                                          };
-                                      slides?:
-                                        | T
-                                        | {
-                                            image?: T;
-                                            caption?: T;
-                                            id?: T;
-                                          };
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                accordion?:
-                                  | T
-                                  | {
-                                      items?:
-                                        | T
-                                        | {
-                                            blocks?:
-                                              | T
-                                              | {
-                                                  heading?:
-                                                    | T
-                                                    | {
-                                                        title?: T;
-                                                        variant?: T;
-                                                        titleTag?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  richText?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        variant?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  image?:
-                                                    | T
-                                                    | {
-                                                        image?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        aspectRatio?: T;
-                                                        customAspectRatio?: T;
-                                                        variant?: T;
-                                                        overlay?:
-                                                          | T
-                                                          | {
-                                                              enabled?: T;
-                                                              color?: T;
-                                                              opacity?: T;
-                                                            };
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  button?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        variant?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                };
-                                            label?: T;
-                                            defaultOpen?: T;
-                                            hasIcon?: T;
-                                            iconType?: T;
-                                            icon?: T;
-                                            customSvg?: T;
-                                            iconPosition?: T;
-                                            id?: T;
-                                          };
-                                      allowMultiple?: T;
-                                      variant?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                              };
-                          htmlId?: T;
-                          variant?: T;
-                          layout?: T;
-                          verticalAlignment?: T;
-                          flexVariant?: T;
-                          gridVariant?: T;
-                          gap?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                    postsBlock?:
-                      | T
-                      | {
-                          title?: T;
-                          populateBy?: T;
-                          limit?: T;
-                          selectedCategories?: T;
-                          selectedPosts?: T;
-                          htmlId?: T;
-                          layout?: T;
-                          gap?: T;
-                          gridColumns?: T;
-                          autoplay?: T;
-                          showArrows?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                  };
-              settings?:
-                | T
-                | {
-                    htmlId?: T;
-                    variant?: T;
-                    viewport?: T;
-                    widthType?: T;
-                    alignment?: T;
-                    containerType?: T;
-                    padding?: T;
-                    backgroundType?: T;
-                    colorTheme?: T;
-                    gradientTheme?: T;
-                    bgImage?: T;
-                    overlay?:
-                      | T
-                      | {
-                          enabled?: T;
-                          color?: T;
-                          opacity?: T;
-                        };
-                  };
-              id?: T;
-              blockName?: T;
-            };
+        section?: T | SectionBlockPropsSelect<T>;
       };
   featuredImage?: T;
   excerpt?: T;
@@ -4524,1327 +1216,15 @@ export interface Header {
   id: number;
   blocks?:
     | (
-        | {
-            atoms?:
-              | (
-                  | {
-                      atoms?:
-                        | (
-                            | {
-                                atoms?:
-                                  | (
-                                      | {
-                                          /**
-                                           * Select a menu from the Menus collection
-                                           */
-                                          menu: number | Menu;
-                                          orientation?: ('horizontal' | 'vertical') | null;
-                                          variant?: ('default' | 'minimal' | 'pills') | null;
-                                          id?: string | null;
-                                          blockName?: string | null;
-                                          blockType: 'menu';
-                                        }
-                                      | {
-                                          title?: string | null;
-                                          variant?: ('default' | 'center' | 'right') | null;
-                                          titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                          color?: string | null;
-                                          id?: string | null;
-                                          blockName?: string | null;
-                                          blockType: 'heading';
-                                        }
-                                      | {
-                                          text?: {
-                                            root: {
-                                              type: string;
-                                              children: {
-                                                type: any;
-                                                version: number;
-                                                [k: string]: unknown;
-                                              }[];
-                                              direction: ('ltr' | 'rtl') | null;
-                                              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                              indent: number;
-                                              version: number;
-                                            };
-                                            [k: string]: unknown;
-                                          } | null;
-                                          variant?: ('default' | 'center' | 'right') | null;
-                                          color?: string | null;
-                                          id?: string | null;
-                                          blockName?: string | null;
-                                          blockType: 'richText';
-                                        }
-                                      | {
-                                          image?: (number | null) | Media;
-                                          linkType?: ('none' | 'internal' | 'external') | null;
-                                          internalLink?: (number | null) | Page;
-                                          externalUrl?: string | null;
-                                          newTab?: boolean | null;
-                                          aspectRatio?:
-                                            | (
-                                                | 'auto'
-                                                | '1/1'
-                                                | '3/2'
-                                                | '4/3'
-                                                | '16/9'
-                                                | '2/3'
-                                                | '3/4'
-                                                | '9/16'
-                                                | 'custom'
-                                              )
-                                            | null;
-                                          /**
-                                           * Format: 16/9, 4/3, 1/1...
-                                           */
-                                          customAspectRatio?: string | null;
-                                          variant?: 'default' | null;
-                                          overlay?: {
-                                            enabled?: boolean | null;
-                                            color?: string | null;
-                                            /**
-                                             * 0 - 100
-                                             */
-                                            opacity?: number | null;
-                                          };
-                                          id?: string | null;
-                                          blockName?: string | null;
-                                          blockType: 'image';
-                                        }
-                                      | {
-                                          text: string;
-                                          linkType?: ('internal' | 'external') | null;
-                                          internalLink?: (number | null) | Page;
-                                          externalUrl?: string | null;
-                                          newTab?: boolean | null;
-                                          variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                          hasIcon?: boolean | null;
-                                          iconType?: ('picker' | 'customSvg') | null;
-                                          icon?: string | null;
-                                          customSvg?: (number | null) | Media;
-                                          iconPosition?: ('left' | 'right') | null;
-                                          id?: string | null;
-                                          blockName?: string | null;
-                                          blockType: 'button';
-                                        }
-                                      | {
-                                          items?:
-                                            | {
-                                                blocks?:
-                                                  | (
-                                                      | {
-                                                          title?: string | null;
-                                                          variant?: ('default' | 'center' | 'right') | null;
-                                                          titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                                          color?: string | null;
-                                                          id?: string | null;
-                                                          blockName?: string | null;
-                                                          blockType: 'heading';
-                                                        }
-                                                      | {
-                                                          text?: {
-                                                            root: {
-                                                              type: string;
-                                                              children: {
-                                                                type: any;
-                                                                version: number;
-                                                                [k: string]: unknown;
-                                                              }[];
-                                                              direction: ('ltr' | 'rtl') | null;
-                                                              format:
-                                                                | 'left'
-                                                                | 'start'
-                                                                | 'center'
-                                                                | 'right'
-                                                                | 'end'
-                                                                | 'justify'
-                                                                | '';
-                                                              indent: number;
-                                                              version: number;
-                                                            };
-                                                            [k: string]: unknown;
-                                                          } | null;
-                                                          variant?: ('default' | 'center' | 'right') | null;
-                                                          color?: string | null;
-                                                          id?: string | null;
-                                                          blockName?: string | null;
-                                                          blockType: 'richText';
-                                                        }
-                                                      | {
-                                                          image?: (number | null) | Media;
-                                                          linkType?: ('none' | 'internal' | 'external') | null;
-                                                          internalLink?: (number | null) | Page;
-                                                          externalUrl?: string | null;
-                                                          newTab?: boolean | null;
-                                                          aspectRatio?:
-                                                            | (
-                                                                | 'auto'
-                                                                | '1/1'
-                                                                | '3/2'
-                                                                | '4/3'
-                                                                | '16/9'
-                                                                | '2/3'
-                                                                | '3/4'
-                                                                | '9/16'
-                                                                | 'custom'
-                                                              )
-                                                            | null;
-                                                          /**
-                                                           * Format: 16/9, 4/3, 1/1...
-                                                           */
-                                                          customAspectRatio?: string | null;
-                                                          variant?: 'default' | null;
-                                                          overlay?: {
-                                                            enabled?: boolean | null;
-                                                            color?: string | null;
-                                                            /**
-                                                             * 0 - 100
-                                                             */
-                                                            opacity?: number | null;
-                                                          };
-                                                          id?: string | null;
-                                                          blockName?: string | null;
-                                                          blockType: 'image';
-                                                        }
-                                                      | {
-                                                          text: string;
-                                                          linkType?: ('internal' | 'external') | null;
-                                                          internalLink?: (number | null) | Page;
-                                                          externalUrl?: string | null;
-                                                          newTab?: boolean | null;
-                                                          variant?:
-                                                            | ('primary' | 'secondary' | 'ghost' | 'outline')
-                                                            | null;
-                                                          hasIcon?: boolean | null;
-                                                          iconType?: ('picker' | 'customSvg') | null;
-                                                          icon?: string | null;
-                                                          customSvg?: (number | null) | Media;
-                                                          iconPosition?: ('left' | 'right') | null;
-                                                          id?: string | null;
-                                                          blockName?: string | null;
-                                                          blockType: 'button';
-                                                        }
-                                                    )[]
-                                                  | null;
-                                                label: string;
-                                                defaultActive?: boolean | null;
-                                                hasIcon?: boolean | null;
-                                                iconType?: ('picker' | 'customSvg') | null;
-                                                icon?: string | null;
-                                                customSvg?: (number | null) | Media;
-                                                iconPosition?: ('left' | 'right') | null;
-                                                id?: string | null;
-                                              }[]
-                                            | null;
-                                          orientation?: ('horizontal' | 'vertical') | null;
-                                          variant?: ('default' | 'full' | 'minimal') | null;
-                                          id?: string | null;
-                                          blockName?: string | null;
-                                          blockType: 'tabs';
-                                        }
-                                      | {
-                                          settings?: {
-                                            orientation?: ('horizontal' | 'vertical') | null;
-                                            /**
-                                             * Space between slides in px
-                                             */
-                                            spaceBetween?: number | null;
-                                            slidesPerView?: number | null;
-                                          };
-                                          slides?:
-                                            | {
-                                                image: number | Media;
-                                                caption?: string | null;
-                                                id?: string | null;
-                                              }[]
-                                            | null;
-                                          id?: string | null;
-                                          blockName?: string | null;
-                                          blockType: 'slider';
-                                        }
-                                      | {
-                                          items?:
-                                            | {
-                                                blocks?:
-                                                  | (
-                                                      | {
-                                                          title?: string | null;
-                                                          variant?: ('default' | 'center' | 'right') | null;
-                                                          titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                                          color?: string | null;
-                                                          id?: string | null;
-                                                          blockName?: string | null;
-                                                          blockType: 'heading';
-                                                        }
-                                                      | {
-                                                          text?: {
-                                                            root: {
-                                                              type: string;
-                                                              children: {
-                                                                type: any;
-                                                                version: number;
-                                                                [k: string]: unknown;
-                                                              }[];
-                                                              direction: ('ltr' | 'rtl') | null;
-                                                              format:
-                                                                | 'left'
-                                                                | 'start'
-                                                                | 'center'
-                                                                | 'right'
-                                                                | 'end'
-                                                                | 'justify'
-                                                                | '';
-                                                              indent: number;
-                                                              version: number;
-                                                            };
-                                                            [k: string]: unknown;
-                                                          } | null;
-                                                          variant?: ('default' | 'center' | 'right') | null;
-                                                          color?: string | null;
-                                                          id?: string | null;
-                                                          blockName?: string | null;
-                                                          blockType: 'richText';
-                                                        }
-                                                      | {
-                                                          image?: (number | null) | Media;
-                                                          linkType?: ('none' | 'internal' | 'external') | null;
-                                                          internalLink?: (number | null) | Page;
-                                                          externalUrl?: string | null;
-                                                          newTab?: boolean | null;
-                                                          aspectRatio?:
-                                                            | (
-                                                                | 'auto'
-                                                                | '1/1'
-                                                                | '3/2'
-                                                                | '4/3'
-                                                                | '16/9'
-                                                                | '2/3'
-                                                                | '3/4'
-                                                                | '9/16'
-                                                                | 'custom'
-                                                              )
-                                                            | null;
-                                                          /**
-                                                           * Format: 16/9, 4/3, 1/1...
-                                                           */
-                                                          customAspectRatio?: string | null;
-                                                          variant?: 'default' | null;
-                                                          overlay?: {
-                                                            enabled?: boolean | null;
-                                                            color?: string | null;
-                                                            /**
-                                                             * 0 - 100
-                                                             */
-                                                            opacity?: number | null;
-                                                          };
-                                                          id?: string | null;
-                                                          blockName?: string | null;
-                                                          blockType: 'image';
-                                                        }
-                                                      | {
-                                                          text: string;
-                                                          linkType?: ('internal' | 'external') | null;
-                                                          internalLink?: (number | null) | Page;
-                                                          externalUrl?: string | null;
-                                                          newTab?: boolean | null;
-                                                          variant?:
-                                                            | ('primary' | 'secondary' | 'ghost' | 'outline')
-                                                            | null;
-                                                          hasIcon?: boolean | null;
-                                                          iconType?: ('picker' | 'customSvg') | null;
-                                                          icon?: string | null;
-                                                          customSvg?: (number | null) | Media;
-                                                          iconPosition?: ('left' | 'right') | null;
-                                                          id?: string | null;
-                                                          blockName?: string | null;
-                                                          blockType: 'button';
-                                                        }
-                                                    )[]
-                                                  | null;
-                                                label: string;
-                                                defaultOpen?: boolean | null;
-                                                hasIcon?: boolean | null;
-                                                iconType?: ('picker' | 'customSvg') | null;
-                                                icon?: string | null;
-                                                customSvg?: (number | null) | Media;
-                                                iconPosition?: ('left' | 'right') | null;
-                                                id?: string | null;
-                                              }[]
-                                            | null;
-                                          allowMultiple?: boolean | null;
-                                          variant?: ('default' | 'bordered' | 'minimal') | null;
-                                          id?: string | null;
-                                          blockName?: string | null;
-                                          blockType: 'accordion';
-                                        }
-                                    )[]
-                                  | null;
-                                /**
-                                 * Optional — custom ID / anchor
-                                 */
-                                htmlId?: string | null;
-                                variant?: 'default' | null;
-                                layout?: ('block' | 'flex' | 'grid') | null;
-                                verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-                                flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
-                                gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
-                                gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-                                id?: string | null;
-                                blockName?: string | null;
-                                blockType: 'blockHolder2';
-                              }
-                            | {
-                                /**
-                                 * Select a menu from the Menus collection
-                                 */
-                                menu: number | Menu;
-                                orientation?: ('horizontal' | 'vertical') | null;
-                                variant?: ('default' | 'minimal' | 'pills') | null;
-                                id?: string | null;
-                                blockName?: string | null;
-                                blockType: 'menu';
-                              }
-                            | {
-                                title?: string | null;
-                                variant?: ('default' | 'center' | 'right') | null;
-                                titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                color?: string | null;
-                                id?: string | null;
-                                blockName?: string | null;
-                                blockType: 'heading';
-                              }
-                            | {
-                                text?: {
-                                  root: {
-                                    type: string;
-                                    children: {
-                                      type: any;
-                                      version: number;
-                                      [k: string]: unknown;
-                                    }[];
-                                    direction: ('ltr' | 'rtl') | null;
-                                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                    indent: number;
-                                    version: number;
-                                  };
-                                  [k: string]: unknown;
-                                } | null;
-                                variant?: ('default' | 'center' | 'right') | null;
-                                color?: string | null;
-                                id?: string | null;
-                                blockName?: string | null;
-                                blockType: 'richText';
-                              }
-                            | {
-                                image?: (number | null) | Media;
-                                linkType?: ('none' | 'internal' | 'external') | null;
-                                internalLink?: (number | null) | Page;
-                                externalUrl?: string | null;
-                                newTab?: boolean | null;
-                                aspectRatio?:
-                                  | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
-                                  | null;
-                                /**
-                                 * Format: 16/9, 4/3, 1/1...
-                                 */
-                                customAspectRatio?: string | null;
-                                variant?: 'default' | null;
-                                overlay?: {
-                                  enabled?: boolean | null;
-                                  color?: string | null;
-                                  /**
-                                   * 0 - 100
-                                   */
-                                  opacity?: number | null;
-                                };
-                                id?: string | null;
-                                blockName?: string | null;
-                                blockType: 'image';
-                              }
-                            | {
-                                text: string;
-                                linkType?: ('internal' | 'external') | null;
-                                internalLink?: (number | null) | Page;
-                                externalUrl?: string | null;
-                                newTab?: boolean | null;
-                                variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                hasIcon?: boolean | null;
-                                iconType?: ('picker' | 'customSvg') | null;
-                                icon?: string | null;
-                                customSvg?: (number | null) | Media;
-                                iconPosition?: ('left' | 'right') | null;
-                                id?: string | null;
-                                blockName?: string | null;
-                                blockType: 'button';
-                              }
-                            | {
-                                items?:
-                                  | {
-                                      blocks?:
-                                        | (
-                                            | {
-                                                title?: string | null;
-                                                variant?: ('default' | 'center' | 'right') | null;
-                                                titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                                color?: string | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'heading';
-                                              }
-                                            | {
-                                                text?: {
-                                                  root: {
-                                                    type: string;
-                                                    children: {
-                                                      type: any;
-                                                      version: number;
-                                                      [k: string]: unknown;
-                                                    }[];
-                                                    direction: ('ltr' | 'rtl') | null;
-                                                    format:
-                                                      | 'left'
-                                                      | 'start'
-                                                      | 'center'
-                                                      | 'right'
-                                                      | 'end'
-                                                      | 'justify'
-                                                      | '';
-                                                    indent: number;
-                                                    version: number;
-                                                  };
-                                                  [k: string]: unknown;
-                                                } | null;
-                                                variant?: ('default' | 'center' | 'right') | null;
-                                                color?: string | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'richText';
-                                              }
-                                            | {
-                                                image?: (number | null) | Media;
-                                                linkType?: ('none' | 'internal' | 'external') | null;
-                                                internalLink?: (number | null) | Page;
-                                                externalUrl?: string | null;
-                                                newTab?: boolean | null;
-                                                aspectRatio?:
-                                                  | (
-                                                      | 'auto'
-                                                      | '1/1'
-                                                      | '3/2'
-                                                      | '4/3'
-                                                      | '16/9'
-                                                      | '2/3'
-                                                      | '3/4'
-                                                      | '9/16'
-                                                      | 'custom'
-                                                    )
-                                                  | null;
-                                                /**
-                                                 * Format: 16/9, 4/3, 1/1...
-                                                 */
-                                                customAspectRatio?: string | null;
-                                                variant?: 'default' | null;
-                                                overlay?: {
-                                                  enabled?: boolean | null;
-                                                  color?: string | null;
-                                                  /**
-                                                   * 0 - 100
-                                                   */
-                                                  opacity?: number | null;
-                                                };
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'image';
-                                              }
-                                            | {
-                                                text: string;
-                                                linkType?: ('internal' | 'external') | null;
-                                                internalLink?: (number | null) | Page;
-                                                externalUrl?: string | null;
-                                                newTab?: boolean | null;
-                                                variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                                hasIcon?: boolean | null;
-                                                iconType?: ('picker' | 'customSvg') | null;
-                                                icon?: string | null;
-                                                customSvg?: (number | null) | Media;
-                                                iconPosition?: ('left' | 'right') | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'button';
-                                              }
-                                          )[]
-                                        | null;
-                                      label: string;
-                                      defaultActive?: boolean | null;
-                                      hasIcon?: boolean | null;
-                                      iconType?: ('picker' | 'customSvg') | null;
-                                      icon?: string | null;
-                                      customSvg?: (number | null) | Media;
-                                      iconPosition?: ('left' | 'right') | null;
-                                      id?: string | null;
-                                    }[]
-                                  | null;
-                                orientation?: ('horizontal' | 'vertical') | null;
-                                variant?: ('default' | 'full' | 'minimal') | null;
-                                id?: string | null;
-                                blockName?: string | null;
-                                blockType: 'tabs';
-                              }
-                            | {
-                                settings?: {
-                                  orientation?: ('horizontal' | 'vertical') | null;
-                                  /**
-                                   * Space between slides in px
-                                   */
-                                  spaceBetween?: number | null;
-                                  slidesPerView?: number | null;
-                                };
-                                slides?:
-                                  | {
-                                      image: number | Media;
-                                      caption?: string | null;
-                                      id?: string | null;
-                                    }[]
-                                  | null;
-                                id?: string | null;
-                                blockName?: string | null;
-                                blockType: 'slider';
-                              }
-                            | {
-                                items?:
-                                  | {
-                                      blocks?:
-                                        | (
-                                            | {
-                                                title?: string | null;
-                                                variant?: ('default' | 'center' | 'right') | null;
-                                                titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                                color?: string | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'heading';
-                                              }
-                                            | {
-                                                text?: {
-                                                  root: {
-                                                    type: string;
-                                                    children: {
-                                                      type: any;
-                                                      version: number;
-                                                      [k: string]: unknown;
-                                                    }[];
-                                                    direction: ('ltr' | 'rtl') | null;
-                                                    format:
-                                                      | 'left'
-                                                      | 'start'
-                                                      | 'center'
-                                                      | 'right'
-                                                      | 'end'
-                                                      | 'justify'
-                                                      | '';
-                                                    indent: number;
-                                                    version: number;
-                                                  };
-                                                  [k: string]: unknown;
-                                                } | null;
-                                                variant?: ('default' | 'center' | 'right') | null;
-                                                color?: string | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'richText';
-                                              }
-                                            | {
-                                                image?: (number | null) | Media;
-                                                linkType?: ('none' | 'internal' | 'external') | null;
-                                                internalLink?: (number | null) | Page;
-                                                externalUrl?: string | null;
-                                                newTab?: boolean | null;
-                                                aspectRatio?:
-                                                  | (
-                                                      | 'auto'
-                                                      | '1/1'
-                                                      | '3/2'
-                                                      | '4/3'
-                                                      | '16/9'
-                                                      | '2/3'
-                                                      | '3/4'
-                                                      | '9/16'
-                                                      | 'custom'
-                                                    )
-                                                  | null;
-                                                /**
-                                                 * Format: 16/9, 4/3, 1/1...
-                                                 */
-                                                customAspectRatio?: string | null;
-                                                variant?: 'default' | null;
-                                                overlay?: {
-                                                  enabled?: boolean | null;
-                                                  color?: string | null;
-                                                  /**
-                                                   * 0 - 100
-                                                   */
-                                                  opacity?: number | null;
-                                                };
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'image';
-                                              }
-                                            | {
-                                                text: string;
-                                                linkType?: ('internal' | 'external') | null;
-                                                internalLink?: (number | null) | Page;
-                                                externalUrl?: string | null;
-                                                newTab?: boolean | null;
-                                                variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                                hasIcon?: boolean | null;
-                                                iconType?: ('picker' | 'customSvg') | null;
-                                                icon?: string | null;
-                                                customSvg?: (number | null) | Media;
-                                                iconPosition?: ('left' | 'right') | null;
-                                                id?: string | null;
-                                                blockName?: string | null;
-                                                blockType: 'button';
-                                              }
-                                          )[]
-                                        | null;
-                                      label: string;
-                                      defaultOpen?: boolean | null;
-                                      hasIcon?: boolean | null;
-                                      iconType?: ('picker' | 'customSvg') | null;
-                                      icon?: string | null;
-                                      customSvg?: (number | null) | Media;
-                                      iconPosition?: ('left' | 'right') | null;
-                                      id?: string | null;
-                                    }[]
-                                  | null;
-                                allowMultiple?: boolean | null;
-                                variant?: ('default' | 'bordered' | 'minimal') | null;
-                                id?: string | null;
-                                blockName?: string | null;
-                                blockType: 'accordion';
-                              }
-                          )[]
-                        | null;
-                      /**
-                       * Optional — custom ID / anchor
-                       */
-                      htmlId?: string | null;
-                      variant?: 'default' | null;
-                      layout?: ('block' | 'flex' | 'grid') | null;
-                      verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-                      flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
-                      gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
-                      gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-                      id?: string | null;
-                      blockName?: string | null;
-                      blockType: 'blockHolder1';
-                    }
-                  | {
-                      /**
-                       * Select a menu from the Menus collection
-                       */
-                      menu: number | Menu;
-                      orientation?: ('horizontal' | 'vertical') | null;
-                      variant?: ('default' | 'minimal' | 'pills') | null;
-                      id?: string | null;
-                      blockName?: string | null;
-                      blockType: 'menu';
-                    }
-                  | {
-                      title?: string | null;
-                      variant?: ('default' | 'center' | 'right') | null;
-                      titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                      color?: string | null;
-                      id?: string | null;
-                      blockName?: string | null;
-                      blockType: 'heading';
-                    }
-                  | {
-                      text?: {
-                        root: {
-                          type: string;
-                          children: {
-                            type: any;
-                            version: number;
-                            [k: string]: unknown;
-                          }[];
-                          direction: ('ltr' | 'rtl') | null;
-                          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                          indent: number;
-                          version: number;
-                        };
-                        [k: string]: unknown;
-                      } | null;
-                      variant?: ('default' | 'center' | 'right') | null;
-                      color?: string | null;
-                      id?: string | null;
-                      blockName?: string | null;
-                      blockType: 'richText';
-                    }
-                  | {
-                      image?: (number | null) | Media;
-                      linkType?: ('none' | 'internal' | 'external') | null;
-                      internalLink?: (number | null) | Page;
-                      externalUrl?: string | null;
-                      newTab?: boolean | null;
-                      aspectRatio?:
-                        | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
-                        | null;
-                      /**
-                       * Format: 16/9, 4/3, 1/1...
-                       */
-                      customAspectRatio?: string | null;
-                      variant?: 'default' | null;
-                      overlay?: {
-                        enabled?: boolean | null;
-                        color?: string | null;
-                        /**
-                         * 0 - 100
-                         */
-                        opacity?: number | null;
-                      };
-                      id?: string | null;
-                      blockName?: string | null;
-                      blockType: 'image';
-                    }
-                  | {
-                      text: string;
-                      linkType?: ('internal' | 'external') | null;
-                      internalLink?: (number | null) | Page;
-                      externalUrl?: string | null;
-                      newTab?: boolean | null;
-                      variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                      hasIcon?: boolean | null;
-                      iconType?: ('picker' | 'customSvg') | null;
-                      icon?: string | null;
-                      customSvg?: (number | null) | Media;
-                      iconPosition?: ('left' | 'right') | null;
-                      id?: string | null;
-                      blockName?: string | null;
-                      blockType: 'button';
-                    }
-                  | {
-                      items?:
-                        | {
-                            blocks?:
-                              | (
-                                  | {
-                                      title?: string | null;
-                                      variant?: ('default' | 'center' | 'right') | null;
-                                      titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                      color?: string | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'heading';
-                                    }
-                                  | {
-                                      text?: {
-                                        root: {
-                                          type: string;
-                                          children: {
-                                            type: any;
-                                            version: number;
-                                            [k: string]: unknown;
-                                          }[];
-                                          direction: ('ltr' | 'rtl') | null;
-                                          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                          indent: number;
-                                          version: number;
-                                        };
-                                        [k: string]: unknown;
-                                      } | null;
-                                      variant?: ('default' | 'center' | 'right') | null;
-                                      color?: string | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'richText';
-                                    }
-                                  | {
-                                      image?: (number | null) | Media;
-                                      linkType?: ('none' | 'internal' | 'external') | null;
-                                      internalLink?: (number | null) | Page;
-                                      externalUrl?: string | null;
-                                      newTab?: boolean | null;
-                                      aspectRatio?:
-                                        | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
-                                        | null;
-                                      /**
-                                       * Format: 16/9, 4/3, 1/1...
-                                       */
-                                      customAspectRatio?: string | null;
-                                      variant?: 'default' | null;
-                                      overlay?: {
-                                        enabled?: boolean | null;
-                                        color?: string | null;
-                                        /**
-                                         * 0 - 100
-                                         */
-                                        opacity?: number | null;
-                                      };
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'image';
-                                    }
-                                  | {
-                                      text: string;
-                                      linkType?: ('internal' | 'external') | null;
-                                      internalLink?: (number | null) | Page;
-                                      externalUrl?: string | null;
-                                      newTab?: boolean | null;
-                                      variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                      hasIcon?: boolean | null;
-                                      iconType?: ('picker' | 'customSvg') | null;
-                                      icon?: string | null;
-                                      customSvg?: (number | null) | Media;
-                                      iconPosition?: ('left' | 'right') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'button';
-                                    }
-                                )[]
-                              | null;
-                            label: string;
-                            defaultActive?: boolean | null;
-                            hasIcon?: boolean | null;
-                            iconType?: ('picker' | 'customSvg') | null;
-                            icon?: string | null;
-                            customSvg?: (number | null) | Media;
-                            iconPosition?: ('left' | 'right') | null;
-                            id?: string | null;
-                          }[]
-                        | null;
-                      orientation?: ('horizontal' | 'vertical') | null;
-                      variant?: ('default' | 'full' | 'minimal') | null;
-                      id?: string | null;
-                      blockName?: string | null;
-                      blockType: 'tabs';
-                    }
-                  | {
-                      settings?: {
-                        orientation?: ('horizontal' | 'vertical') | null;
-                        /**
-                         * Space between slides in px
-                         */
-                        spaceBetween?: number | null;
-                        slidesPerView?: number | null;
-                      };
-                      slides?:
-                        | {
-                            image: number | Media;
-                            caption?: string | null;
-                            id?: string | null;
-                          }[]
-                        | null;
-                      id?: string | null;
-                      blockName?: string | null;
-                      blockType: 'slider';
-                    }
-                  | {
-                      items?:
-                        | {
-                            blocks?:
-                              | (
-                                  | {
-                                      title?: string | null;
-                                      variant?: ('default' | 'center' | 'right') | null;
-                                      titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                                      color?: string | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'heading';
-                                    }
-                                  | {
-                                      text?: {
-                                        root: {
-                                          type: string;
-                                          children: {
-                                            type: any;
-                                            version: number;
-                                            [k: string]: unknown;
-                                          }[];
-                                          direction: ('ltr' | 'rtl') | null;
-                                          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                          indent: number;
-                                          version: number;
-                                        };
-                                        [k: string]: unknown;
-                                      } | null;
-                                      variant?: ('default' | 'center' | 'right') | null;
-                                      color?: string | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'richText';
-                                    }
-                                  | {
-                                      image?: (number | null) | Media;
-                                      linkType?: ('none' | 'internal' | 'external') | null;
-                                      internalLink?: (number | null) | Page;
-                                      externalUrl?: string | null;
-                                      newTab?: boolean | null;
-                                      aspectRatio?:
-                                        | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
-                                        | null;
-                                      /**
-                                       * Format: 16/9, 4/3, 1/1...
-                                       */
-                                      customAspectRatio?: string | null;
-                                      variant?: 'default' | null;
-                                      overlay?: {
-                                        enabled?: boolean | null;
-                                        color?: string | null;
-                                        /**
-                                         * 0 - 100
-                                         */
-                                        opacity?: number | null;
-                                      };
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'image';
-                                    }
-                                  | {
-                                      text: string;
-                                      linkType?: ('internal' | 'external') | null;
-                                      internalLink?: (number | null) | Page;
-                                      externalUrl?: string | null;
-                                      newTab?: boolean | null;
-                                      variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                                      hasIcon?: boolean | null;
-                                      iconType?: ('picker' | 'customSvg') | null;
-                                      icon?: string | null;
-                                      customSvg?: (number | null) | Media;
-                                      iconPosition?: ('left' | 'right') | null;
-                                      id?: string | null;
-                                      blockName?: string | null;
-                                      blockType: 'button';
-                                    }
-                                )[]
-                              | null;
-                            label: string;
-                            defaultOpen?: boolean | null;
-                            hasIcon?: boolean | null;
-                            iconType?: ('picker' | 'customSvg') | null;
-                            icon?: string | null;
-                            customSvg?: (number | null) | Media;
-                            iconPosition?: ('left' | 'right') | null;
-                            id?: string | null;
-                          }[]
-                        | null;
-                      allowMultiple?: boolean | null;
-                      variant?: ('default' | 'bordered' | 'minimal') | null;
-                      id?: string | null;
-                      blockName?: string | null;
-                      blockType: 'accordion';
-                    }
-                )[]
-              | null;
-            /**
-             * Optional — custom ID / anchor
-             */
-            htmlId?: string | null;
-            variant?: 'default' | null;
-            layout?: ('block' | 'flex' | 'grid') | null;
-            verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-            flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
-            gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
-            gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'blockHolder0';
-          }
-        | {
-            /**
-             * Select a menu from the Menus collection
-             */
-            menu: number | Menu;
-            orientation?: ('horizontal' | 'vertical') | null;
-            variant?: ('default' | 'minimal' | 'pills') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'menu';
-          }
-        | {
-            title?: string | null;
-            variant?: ('default' | 'center' | 'right') | null;
-            titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-            color?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'heading';
-          }
-        | {
-            text?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            variant?: ('default' | 'center' | 'right') | null;
-            color?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'richText';
-          }
-        | {
-            image?: (number | null) | Media;
-            linkType?: ('none' | 'internal' | 'external') | null;
-            internalLink?: (number | null) | Page;
-            externalUrl?: string | null;
-            newTab?: boolean | null;
-            aspectRatio?: ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom') | null;
-            /**
-             * Format: 16/9, 4/3, 1/1...
-             */
-            customAspectRatio?: string | null;
-            variant?: 'default' | null;
-            overlay?: {
-              enabled?: boolean | null;
-              color?: string | null;
-              /**
-               * 0 - 100
-               */
-              opacity?: number | null;
-            };
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'image';
-          }
-        | {
-            text: string;
-            linkType?: ('internal' | 'external') | null;
-            internalLink?: (number | null) | Page;
-            externalUrl?: string | null;
-            newTab?: boolean | null;
-            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-            hasIcon?: boolean | null;
-            iconType?: ('picker' | 'customSvg') | null;
-            icon?: string | null;
-            customSvg?: (number | null) | Media;
-            iconPosition?: ('left' | 'right') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'button';
-          }
-        | {
-            items?:
-              | {
-                  blocks?:
-                    | (
-                        | {
-                            title?: string | null;
-                            variant?: ('default' | 'center' | 'right') | null;
-                            titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                            color?: string | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'heading';
-                          }
-                        | {
-                            text?: {
-                              root: {
-                                type: string;
-                                children: {
-                                  type: any;
-                                  version: number;
-                                  [k: string]: unknown;
-                                }[];
-                                direction: ('ltr' | 'rtl') | null;
-                                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                indent: number;
-                                version: number;
-                              };
-                              [k: string]: unknown;
-                            } | null;
-                            variant?: ('default' | 'center' | 'right') | null;
-                            color?: string | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'richText';
-                          }
-                        | {
-                            image?: (number | null) | Media;
-                            linkType?: ('none' | 'internal' | 'external') | null;
-                            internalLink?: (number | null) | Page;
-                            externalUrl?: string | null;
-                            newTab?: boolean | null;
-                            aspectRatio?:
-                              | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
-                              | null;
-                            /**
-                             * Format: 16/9, 4/3, 1/1...
-                             */
-                            customAspectRatio?: string | null;
-                            variant?: 'default' | null;
-                            overlay?: {
-                              enabled?: boolean | null;
-                              color?: string | null;
-                              /**
-                               * 0 - 100
-                               */
-                              opacity?: number | null;
-                            };
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'image';
-                          }
-                        | {
-                            text: string;
-                            linkType?: ('internal' | 'external') | null;
-                            internalLink?: (number | null) | Page;
-                            externalUrl?: string | null;
-                            newTab?: boolean | null;
-                            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                            hasIcon?: boolean | null;
-                            iconType?: ('picker' | 'customSvg') | null;
-                            icon?: string | null;
-                            customSvg?: (number | null) | Media;
-                            iconPosition?: ('left' | 'right') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'button';
-                          }
-                      )[]
-                    | null;
-                  label: string;
-                  defaultActive?: boolean | null;
-                  hasIcon?: boolean | null;
-                  iconType?: ('picker' | 'customSvg') | null;
-                  icon?: string | null;
-                  customSvg?: (number | null) | Media;
-                  iconPosition?: ('left' | 'right') | null;
-                  id?: string | null;
-                }[]
-              | null;
-            orientation?: ('horizontal' | 'vertical') | null;
-            variant?: ('default' | 'full' | 'minimal') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'tabs';
-          }
-        | {
-            settings?: {
-              orientation?: ('horizontal' | 'vertical') | null;
-              /**
-               * Space between slides in px
-               */
-              spaceBetween?: number | null;
-              slidesPerView?: number | null;
-            };
-            slides?:
-              | {
-                  image: number | Media;
-                  caption?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'slider';
-          }
-        | {
-            items?:
-              | {
-                  blocks?:
-                    | (
-                        | {
-                            title?: string | null;
-                            variant?: ('default' | 'center' | 'right') | null;
-                            titleTag?: ('h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span') | null;
-                            color?: string | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'heading';
-                          }
-                        | {
-                            text?: {
-                              root: {
-                                type: string;
-                                children: {
-                                  type: any;
-                                  version: number;
-                                  [k: string]: unknown;
-                                }[];
-                                direction: ('ltr' | 'rtl') | null;
-                                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                                indent: number;
-                                version: number;
-                              };
-                              [k: string]: unknown;
-                            } | null;
-                            variant?: ('default' | 'center' | 'right') | null;
-                            color?: string | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'richText';
-                          }
-                        | {
-                            image?: (number | null) | Media;
-                            linkType?: ('none' | 'internal' | 'external') | null;
-                            internalLink?: (number | null) | Page;
-                            externalUrl?: string | null;
-                            newTab?: boolean | null;
-                            aspectRatio?:
-                              | ('auto' | '1/1' | '3/2' | '4/3' | '16/9' | '2/3' | '3/4' | '9/16' | 'custom')
-                              | null;
-                            /**
-                             * Format: 16/9, 4/3, 1/1...
-                             */
-                            customAspectRatio?: string | null;
-                            variant?: 'default' | null;
-                            overlay?: {
-                              enabled?: boolean | null;
-                              color?: string | null;
-                              /**
-                               * 0 - 100
-                               */
-                              opacity?: number | null;
-                            };
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'image';
-                          }
-                        | {
-                            text: string;
-                            linkType?: ('internal' | 'external') | null;
-                            internalLink?: (number | null) | Page;
-                            externalUrl?: string | null;
-                            newTab?: boolean | null;
-                            variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
-                            hasIcon?: boolean | null;
-                            iconType?: ('picker' | 'customSvg') | null;
-                            icon?: string | null;
-                            customSvg?: (number | null) | Media;
-                            iconPosition?: ('left' | 'right') | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'button';
-                          }
-                      )[]
-                    | null;
-                  label: string;
-                  defaultOpen?: boolean | null;
-                  hasIcon?: boolean | null;
-                  iconType?: ('picker' | 'customSvg') | null;
-                  icon?: string | null;
-                  customSvg?: (number | null) | Media;
-                  iconPosition?: ('left' | 'right') | null;
-                  id?: string | null;
-                }[]
-              | null;
-            allowMultiple?: boolean | null;
-            variant?: ('default' | 'bordered' | 'minimal') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'accordion';
-          }
+        | BlockHolderLevel0BlockProps
+        | MenuBlockProps
+        | HeadingBlockProps
+        | RichTextBlockProps
+        | ImageBlockProps
+        | ButtonBlockProps
+        | TabsBlockProps
+        | SliderBlockProps
+        | AccordionBlockProps
       )[]
     | null;
   variant?: ('default' | 'transparent' | 'minimal') | null;
@@ -5939,1049 +1319,15 @@ export interface HeaderSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
-        blockHolder0?:
-          | T
-          | {
-              atoms?:
-                | T
-                | {
-                    blockHolder1?:
-                      | T
-                      | {
-                          atoms?:
-                            | T
-                            | {
-                                blockHolder2?:
-                                  | T
-                                  | {
-                                      atoms?:
-                                        | T
-                                        | {
-                                            menu?:
-                                              | T
-                                              | {
-                                                  menu?: T;
-                                                  orientation?: T;
-                                                  variant?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            heading?:
-                                              | T
-                                              | {
-                                                  title?: T;
-                                                  variant?: T;
-                                                  titleTag?: T;
-                                                  color?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            richText?:
-                                              | T
-                                              | {
-                                                  text?: T;
-                                                  variant?: T;
-                                                  color?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            image?:
-                                              | T
-                                              | {
-                                                  image?: T;
-                                                  linkType?: T;
-                                                  internalLink?: T;
-                                                  externalUrl?: T;
-                                                  newTab?: T;
-                                                  aspectRatio?: T;
-                                                  customAspectRatio?: T;
-                                                  variant?: T;
-                                                  overlay?:
-                                                    | T
-                                                    | {
-                                                        enabled?: T;
-                                                        color?: T;
-                                                        opacity?: T;
-                                                      };
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            button?:
-                                              | T
-                                              | {
-                                                  text?: T;
-                                                  linkType?: T;
-                                                  internalLink?: T;
-                                                  externalUrl?: T;
-                                                  newTab?: T;
-                                                  variant?: T;
-                                                  hasIcon?: T;
-                                                  iconType?: T;
-                                                  icon?: T;
-                                                  customSvg?: T;
-                                                  iconPosition?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            tabs?:
-                                              | T
-                                              | {
-                                                  items?:
-                                                    | T
-                                                    | {
-                                                        blocks?:
-                                                          | T
-                                                          | {
-                                                              heading?:
-                                                                | T
-                                                                | {
-                                                                    title?: T;
-                                                                    variant?: T;
-                                                                    titleTag?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              richText?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    variant?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              image?:
-                                                                | T
-                                                                | {
-                                                                    image?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    aspectRatio?: T;
-                                                                    customAspectRatio?: T;
-                                                                    variant?: T;
-                                                                    overlay?:
-                                                                      | T
-                                                                      | {
-                                                                          enabled?: T;
-                                                                          color?: T;
-                                                                          opacity?: T;
-                                                                        };
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              button?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    variant?: T;
-                                                                    hasIcon?: T;
-                                                                    iconType?: T;
-                                                                    icon?: T;
-                                                                    customSvg?: T;
-                                                                    iconPosition?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                            };
-                                                        label?: T;
-                                                        defaultActive?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                      };
-                                                  orientation?: T;
-                                                  variant?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            slider?:
-                                              | T
-                                              | {
-                                                  settings?:
-                                                    | T
-                                                    | {
-                                                        orientation?: T;
-                                                        spaceBetween?: T;
-                                                        slidesPerView?: T;
-                                                      };
-                                                  slides?:
-                                                    | T
-                                                    | {
-                                                        image?: T;
-                                                        caption?: T;
-                                                        id?: T;
-                                                      };
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                            accordion?:
-                                              | T
-                                              | {
-                                                  items?:
-                                                    | T
-                                                    | {
-                                                        blocks?:
-                                                          | T
-                                                          | {
-                                                              heading?:
-                                                                | T
-                                                                | {
-                                                                    title?: T;
-                                                                    variant?: T;
-                                                                    titleTag?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              richText?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    variant?: T;
-                                                                    color?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              image?:
-                                                                | T
-                                                                | {
-                                                                    image?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    aspectRatio?: T;
-                                                                    customAspectRatio?: T;
-                                                                    variant?: T;
-                                                                    overlay?:
-                                                                      | T
-                                                                      | {
-                                                                          enabled?: T;
-                                                                          color?: T;
-                                                                          opacity?: T;
-                                                                        };
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                              button?:
-                                                                | T
-                                                                | {
-                                                                    text?: T;
-                                                                    linkType?: T;
-                                                                    internalLink?: T;
-                                                                    externalUrl?: T;
-                                                                    newTab?: T;
-                                                                    variant?: T;
-                                                                    hasIcon?: T;
-                                                                    iconType?: T;
-                                                                    icon?: T;
-                                                                    customSvg?: T;
-                                                                    iconPosition?: T;
-                                                                    id?: T;
-                                                                    blockName?: T;
-                                                                  };
-                                                            };
-                                                        label?: T;
-                                                        defaultOpen?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                      };
-                                                  allowMultiple?: T;
-                                                  variant?: T;
-                                                  id?: T;
-                                                  blockName?: T;
-                                                };
-                                          };
-                                      htmlId?: T;
-                                      variant?: T;
-                                      layout?: T;
-                                      verticalAlignment?: T;
-                                      flexVariant?: T;
-                                      gridVariant?: T;
-                                      gap?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                menu?:
-                                  | T
-                                  | {
-                                      menu?: T;
-                                      orientation?: T;
-                                      variant?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                heading?:
-                                  | T
-                                  | {
-                                      title?: T;
-                                      variant?: T;
-                                      titleTag?: T;
-                                      color?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                richText?:
-                                  | T
-                                  | {
-                                      text?: T;
-                                      variant?: T;
-                                      color?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                image?:
-                                  | T
-                                  | {
-                                      image?: T;
-                                      linkType?: T;
-                                      internalLink?: T;
-                                      externalUrl?: T;
-                                      newTab?: T;
-                                      aspectRatio?: T;
-                                      customAspectRatio?: T;
-                                      variant?: T;
-                                      overlay?:
-                                        | T
-                                        | {
-                                            enabled?: T;
-                                            color?: T;
-                                            opacity?: T;
-                                          };
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                button?:
-                                  | T
-                                  | {
-                                      text?: T;
-                                      linkType?: T;
-                                      internalLink?: T;
-                                      externalUrl?: T;
-                                      newTab?: T;
-                                      variant?: T;
-                                      hasIcon?: T;
-                                      iconType?: T;
-                                      icon?: T;
-                                      customSvg?: T;
-                                      iconPosition?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                tabs?:
-                                  | T
-                                  | {
-                                      items?:
-                                        | T
-                                        | {
-                                            blocks?:
-                                              | T
-                                              | {
-                                                  heading?:
-                                                    | T
-                                                    | {
-                                                        title?: T;
-                                                        variant?: T;
-                                                        titleTag?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  richText?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        variant?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  image?:
-                                                    | T
-                                                    | {
-                                                        image?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        aspectRatio?: T;
-                                                        customAspectRatio?: T;
-                                                        variant?: T;
-                                                        overlay?:
-                                                          | T
-                                                          | {
-                                                              enabled?: T;
-                                                              color?: T;
-                                                              opacity?: T;
-                                                            };
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  button?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        variant?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                };
-                                            label?: T;
-                                            defaultActive?: T;
-                                            hasIcon?: T;
-                                            iconType?: T;
-                                            icon?: T;
-                                            customSvg?: T;
-                                            iconPosition?: T;
-                                            id?: T;
-                                          };
-                                      orientation?: T;
-                                      variant?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                slider?:
-                                  | T
-                                  | {
-                                      settings?:
-                                        | T
-                                        | {
-                                            orientation?: T;
-                                            spaceBetween?: T;
-                                            slidesPerView?: T;
-                                          };
-                                      slides?:
-                                        | T
-                                        | {
-                                            image?: T;
-                                            caption?: T;
-                                            id?: T;
-                                          };
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                                accordion?:
-                                  | T
-                                  | {
-                                      items?:
-                                        | T
-                                        | {
-                                            blocks?:
-                                              | T
-                                              | {
-                                                  heading?:
-                                                    | T
-                                                    | {
-                                                        title?: T;
-                                                        variant?: T;
-                                                        titleTag?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  richText?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        variant?: T;
-                                                        color?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  image?:
-                                                    | T
-                                                    | {
-                                                        image?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        aspectRatio?: T;
-                                                        customAspectRatio?: T;
-                                                        variant?: T;
-                                                        overlay?:
-                                                          | T
-                                                          | {
-                                                              enabled?: T;
-                                                              color?: T;
-                                                              opacity?: T;
-                                                            };
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                  button?:
-                                                    | T
-                                                    | {
-                                                        text?: T;
-                                                        linkType?: T;
-                                                        internalLink?: T;
-                                                        externalUrl?: T;
-                                                        newTab?: T;
-                                                        variant?: T;
-                                                        hasIcon?: T;
-                                                        iconType?: T;
-                                                        icon?: T;
-                                                        customSvg?: T;
-                                                        iconPosition?: T;
-                                                        id?: T;
-                                                        blockName?: T;
-                                                      };
-                                                };
-                                            label?: T;
-                                            defaultOpen?: T;
-                                            hasIcon?: T;
-                                            iconType?: T;
-                                            icon?: T;
-                                            customSvg?: T;
-                                            iconPosition?: T;
-                                            id?: T;
-                                          };
-                                      allowMultiple?: T;
-                                      variant?: T;
-                                      id?: T;
-                                      blockName?: T;
-                                    };
-                              };
-                          htmlId?: T;
-                          variant?: T;
-                          layout?: T;
-                          verticalAlignment?: T;
-                          flexVariant?: T;
-                          gridVariant?: T;
-                          gap?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                    menu?:
-                      | T
-                      | {
-                          menu?: T;
-                          orientation?: T;
-                          variant?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                    heading?:
-                      | T
-                      | {
-                          title?: T;
-                          variant?: T;
-                          titleTag?: T;
-                          color?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                    richText?:
-                      | T
-                      | {
-                          text?: T;
-                          variant?: T;
-                          color?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                    image?:
-                      | T
-                      | {
-                          image?: T;
-                          linkType?: T;
-                          internalLink?: T;
-                          externalUrl?: T;
-                          newTab?: T;
-                          aspectRatio?: T;
-                          customAspectRatio?: T;
-                          variant?: T;
-                          overlay?:
-                            | T
-                            | {
-                                enabled?: T;
-                                color?: T;
-                                opacity?: T;
-                              };
-                          id?: T;
-                          blockName?: T;
-                        };
-                    button?:
-                      | T
-                      | {
-                          text?: T;
-                          linkType?: T;
-                          internalLink?: T;
-                          externalUrl?: T;
-                          newTab?: T;
-                          variant?: T;
-                          hasIcon?: T;
-                          iconType?: T;
-                          icon?: T;
-                          customSvg?: T;
-                          iconPosition?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                    tabs?:
-                      | T
-                      | {
-                          items?:
-                            | T
-                            | {
-                                blocks?:
-                                  | T
-                                  | {
-                                      heading?:
-                                        | T
-                                        | {
-                                            title?: T;
-                                            variant?: T;
-                                            titleTag?: T;
-                                            color?: T;
-                                            id?: T;
-                                            blockName?: T;
-                                          };
-                                      richText?:
-                                        | T
-                                        | {
-                                            text?: T;
-                                            variant?: T;
-                                            color?: T;
-                                            id?: T;
-                                            blockName?: T;
-                                          };
-                                      image?:
-                                        | T
-                                        | {
-                                            image?: T;
-                                            linkType?: T;
-                                            internalLink?: T;
-                                            externalUrl?: T;
-                                            newTab?: T;
-                                            aspectRatio?: T;
-                                            customAspectRatio?: T;
-                                            variant?: T;
-                                            overlay?:
-                                              | T
-                                              | {
-                                                  enabled?: T;
-                                                  color?: T;
-                                                  opacity?: T;
-                                                };
-                                            id?: T;
-                                            blockName?: T;
-                                          };
-                                      button?:
-                                        | T
-                                        | {
-                                            text?: T;
-                                            linkType?: T;
-                                            internalLink?: T;
-                                            externalUrl?: T;
-                                            newTab?: T;
-                                            variant?: T;
-                                            hasIcon?: T;
-                                            iconType?: T;
-                                            icon?: T;
-                                            customSvg?: T;
-                                            iconPosition?: T;
-                                            id?: T;
-                                            blockName?: T;
-                                          };
-                                    };
-                                label?: T;
-                                defaultActive?: T;
-                                hasIcon?: T;
-                                iconType?: T;
-                                icon?: T;
-                                customSvg?: T;
-                                iconPosition?: T;
-                                id?: T;
-                              };
-                          orientation?: T;
-                          variant?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                    slider?:
-                      | T
-                      | {
-                          settings?:
-                            | T
-                            | {
-                                orientation?: T;
-                                spaceBetween?: T;
-                                slidesPerView?: T;
-                              };
-                          slides?:
-                            | T
-                            | {
-                                image?: T;
-                                caption?: T;
-                                id?: T;
-                              };
-                          id?: T;
-                          blockName?: T;
-                        };
-                    accordion?:
-                      | T
-                      | {
-                          items?:
-                            | T
-                            | {
-                                blocks?:
-                                  | T
-                                  | {
-                                      heading?:
-                                        | T
-                                        | {
-                                            title?: T;
-                                            variant?: T;
-                                            titleTag?: T;
-                                            color?: T;
-                                            id?: T;
-                                            blockName?: T;
-                                          };
-                                      richText?:
-                                        | T
-                                        | {
-                                            text?: T;
-                                            variant?: T;
-                                            color?: T;
-                                            id?: T;
-                                            blockName?: T;
-                                          };
-                                      image?:
-                                        | T
-                                        | {
-                                            image?: T;
-                                            linkType?: T;
-                                            internalLink?: T;
-                                            externalUrl?: T;
-                                            newTab?: T;
-                                            aspectRatio?: T;
-                                            customAspectRatio?: T;
-                                            variant?: T;
-                                            overlay?:
-                                              | T
-                                              | {
-                                                  enabled?: T;
-                                                  color?: T;
-                                                  opacity?: T;
-                                                };
-                                            id?: T;
-                                            blockName?: T;
-                                          };
-                                      button?:
-                                        | T
-                                        | {
-                                            text?: T;
-                                            linkType?: T;
-                                            internalLink?: T;
-                                            externalUrl?: T;
-                                            newTab?: T;
-                                            variant?: T;
-                                            hasIcon?: T;
-                                            iconType?: T;
-                                            icon?: T;
-                                            customSvg?: T;
-                                            iconPosition?: T;
-                                            id?: T;
-                                            blockName?: T;
-                                          };
-                                    };
-                                label?: T;
-                                defaultOpen?: T;
-                                hasIcon?: T;
-                                iconType?: T;
-                                icon?: T;
-                                customSvg?: T;
-                                iconPosition?: T;
-                                id?: T;
-                              };
-                          allowMultiple?: T;
-                          variant?: T;
-                          id?: T;
-                          blockName?: T;
-                        };
-                  };
-              htmlId?: T;
-              variant?: T;
-              layout?: T;
-              verticalAlignment?: T;
-              flexVariant?: T;
-              gridVariant?: T;
-              gap?: T;
-              id?: T;
-              blockName?: T;
-            };
-        menu?:
-          | T
-          | {
-              menu?: T;
-              orientation?: T;
-              variant?: T;
-              id?: T;
-              blockName?: T;
-            };
-        heading?:
-          | T
-          | {
-              title?: T;
-              variant?: T;
-              titleTag?: T;
-              color?: T;
-              id?: T;
-              blockName?: T;
-            };
-        richText?:
-          | T
-          | {
-              text?: T;
-              variant?: T;
-              color?: T;
-              id?: T;
-              blockName?: T;
-            };
-        image?:
-          | T
-          | {
-              image?: T;
-              linkType?: T;
-              internalLink?: T;
-              externalUrl?: T;
-              newTab?: T;
-              aspectRatio?: T;
-              customAspectRatio?: T;
-              variant?: T;
-              overlay?:
-                | T
-                | {
-                    enabled?: T;
-                    color?: T;
-                    opacity?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        button?:
-          | T
-          | {
-              text?: T;
-              linkType?: T;
-              internalLink?: T;
-              externalUrl?: T;
-              newTab?: T;
-              variant?: T;
-              hasIcon?: T;
-              iconType?: T;
-              icon?: T;
-              customSvg?: T;
-              iconPosition?: T;
-              id?: T;
-              blockName?: T;
-            };
-        tabs?:
-          | T
-          | {
-              items?:
-                | T
-                | {
-                    blocks?:
-                      | T
-                      | {
-                          heading?:
-                            | T
-                            | {
-                                title?: T;
-                                variant?: T;
-                                titleTag?: T;
-                                color?: T;
-                                id?: T;
-                                blockName?: T;
-                              };
-                          richText?:
-                            | T
-                            | {
-                                text?: T;
-                                variant?: T;
-                                color?: T;
-                                id?: T;
-                                blockName?: T;
-                              };
-                          image?:
-                            | T
-                            | {
-                                image?: T;
-                                linkType?: T;
-                                internalLink?: T;
-                                externalUrl?: T;
-                                newTab?: T;
-                                aspectRatio?: T;
-                                customAspectRatio?: T;
-                                variant?: T;
-                                overlay?:
-                                  | T
-                                  | {
-                                      enabled?: T;
-                                      color?: T;
-                                      opacity?: T;
-                                    };
-                                id?: T;
-                                blockName?: T;
-                              };
-                          button?:
-                            | T
-                            | {
-                                text?: T;
-                                linkType?: T;
-                                internalLink?: T;
-                                externalUrl?: T;
-                                newTab?: T;
-                                variant?: T;
-                                hasIcon?: T;
-                                iconType?: T;
-                                icon?: T;
-                                customSvg?: T;
-                                iconPosition?: T;
-                                id?: T;
-                                blockName?: T;
-                              };
-                        };
-                    label?: T;
-                    defaultActive?: T;
-                    hasIcon?: T;
-                    iconType?: T;
-                    icon?: T;
-                    customSvg?: T;
-                    iconPosition?: T;
-                    id?: T;
-                  };
-              orientation?: T;
-              variant?: T;
-              id?: T;
-              blockName?: T;
-            };
-        slider?:
-          | T
-          | {
-              settings?:
-                | T
-                | {
-                    orientation?: T;
-                    spaceBetween?: T;
-                    slidesPerView?: T;
-                  };
-              slides?:
-                | T
-                | {
-                    image?: T;
-                    caption?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        accordion?:
-          | T
-          | {
-              items?:
-                | T
-                | {
-                    blocks?:
-                      | T
-                      | {
-                          heading?:
-                            | T
-                            | {
-                                title?: T;
-                                variant?: T;
-                                titleTag?: T;
-                                color?: T;
-                                id?: T;
-                                blockName?: T;
-                              };
-                          richText?:
-                            | T
-                            | {
-                                text?: T;
-                                variant?: T;
-                                color?: T;
-                                id?: T;
-                                blockName?: T;
-                              };
-                          image?:
-                            | T
-                            | {
-                                image?: T;
-                                linkType?: T;
-                                internalLink?: T;
-                                externalUrl?: T;
-                                newTab?: T;
-                                aspectRatio?: T;
-                                customAspectRatio?: T;
-                                variant?: T;
-                                overlay?:
-                                  | T
-                                  | {
-                                      enabled?: T;
-                                      color?: T;
-                                      opacity?: T;
-                                    };
-                                id?: T;
-                                blockName?: T;
-                              };
-                          button?:
-                            | T
-                            | {
-                                text?: T;
-                                linkType?: T;
-                                internalLink?: T;
-                                externalUrl?: T;
-                                newTab?: T;
-                                variant?: T;
-                                hasIcon?: T;
-                                iconType?: T;
-                                icon?: T;
-                                customSvg?: T;
-                                iconPosition?: T;
-                                id?: T;
-                                blockName?: T;
-                              };
-                        };
-                    label?: T;
-                    defaultOpen?: T;
-                    hasIcon?: T;
-                    iconType?: T;
-                    icon?: T;
-                    customSvg?: T;
-                    iconPosition?: T;
-                    id?: T;
-                  };
-              allowMultiple?: T;
-              variant?: T;
-              id?: T;
-              blockName?: T;
-            };
+        blockHolder0?: T | BlockHolderLevel0BlockPropsSelect<T>;
+        menu?: T | MenuBlockPropsSelect<T>;
+        heading?: T | HeadingBlockPropsSelect<T>;
+        richText?: T | RichTextBlockPropsSelect<T>;
+        image?: T | ImageBlockPropsSelect<T>;
+        button?: T | ButtonBlockPropsSelect<T>;
+        tabs?: T | TabsBlockPropsSelect<T>;
+        slider?: T | SliderBlockPropsSelect<T>;
+        accordion?: T | AccordionBlockPropsSelect<T>;
       };
   variant?: T;
   sticky?: T;
