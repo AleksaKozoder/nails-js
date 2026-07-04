@@ -102,11 +102,13 @@ export interface Config {
   globals: {
     colors: Color;
     header: Header;
+    footer: Footer;
     'site-settings': SiteSetting;
   };
   globalsSelect: {
     colors: ColorsSelect<false> | ColorsSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
   locale: null;
@@ -2253,6 +2255,7 @@ export interface Header {
   id: number;
   blocks?:
     | (
+        | SectionBlockProps
         | BlockHolderLevel0BlockProps
         | MenuBlockProps
         | HeadingBlockProps
@@ -2272,9 +2275,44 @@ export interface Header {
     | null;
   variant?: ('default' | 'transparent' | 'minimal') | null;
   sticky?: ('none' | 'sticky' | 'sticky-up') | null;
-  containerType?: ('container-xl' | 'container-lg' | 'container' | 'container-xs') | null;
   /**
    * Optional — custom ID attribute on the header element
+   */
+  htmlId?: string | null;
+  paddingTop?: number | null;
+  paddingBottom?: number | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  blocks?:
+    | (
+        | SectionBlockProps
+        | BlockHolderLevel0BlockProps
+        | MenuBlockProps
+        | HeadingBlockProps
+        | RichTextBlockProps
+        | ImageBlockProps
+        | ButtonBlockProps
+        | TabsBlockProps
+        | SliderBlockProps
+        | AccordionBlockProps
+        | CTABlockProps
+        | TestimonialsBlockProps
+        | StatsBlockProps
+        | TeamBlockProps
+        | FormBlockProps
+        | DividerBlockProps
+      )[]
+    | null;
+  variant?: ('default' | 'minimal') | null;
+  /**
+   * Optional — custom ID attribute on the footer element
    */
   htmlId?: string | null;
   paddingTop?: number | null;
@@ -2362,6 +2400,7 @@ export interface HeaderSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
+        section?: T | SectionBlockPropsSelect<T>;
         blockHolder0?: T | BlockHolderLevel0BlockPropsSelect<T>;
         menu?: T | MenuBlockPropsSelect<T>;
         heading?: T | HeadingBlockPropsSelect<T>;
@@ -2380,7 +2419,39 @@ export interface HeaderSelect<T extends boolean = true> {
       };
   variant?: T;
   sticky?: T;
-  containerType?: T;
+  htmlId?: T;
+  paddingTop?: T;
+  paddingBottom?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  blocks?:
+    | T
+    | {
+        section?: T | SectionBlockPropsSelect<T>;
+        blockHolder0?: T | BlockHolderLevel0BlockPropsSelect<T>;
+        menu?: T | MenuBlockPropsSelect<T>;
+        heading?: T | HeadingBlockPropsSelect<T>;
+        richText?: T | RichTextBlockPropsSelect<T>;
+        image?: T | ImageBlockPropsSelect<T>;
+        button?: T | ButtonBlockPropsSelect<T>;
+        tabs?: T | TabsBlockPropsSelect<T>;
+        slider?: T | SliderBlockPropsSelect<T>;
+        accordion?: T | AccordionBlockPropsSelect<T>;
+        cta?: T | CTABlockPropsSelect<T>;
+        testimonials?: T | TestimonialsBlockPropsSelect<T>;
+        stats?: T | StatsBlockPropsSelect<T>;
+        team?: T | TeamBlockPropsSelect<T>;
+        formBlock?: T | FormBlockPropsSelect<T>;
+        divider?: T | DividerBlockPropsSelect<T>;
+      };
+  variant?: T;
   htmlId?: T;
   paddingTop?: T;
   paddingBottom?: T;

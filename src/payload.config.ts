@@ -9,7 +9,7 @@ import sharp from 'sharp'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Pages } from '@/collections/Pages'
-import { Colors, Header, SiteSettings } from '@/globals'
+import { Colors, Header, Footer, SiteSettings } from '@/globals'
 import { Menus } from '@/collections/Menus'
 import { Posts } from '@/collections/Posts'
 import { Categories } from '@/collections/Categories'
@@ -25,7 +25,7 @@ export default buildConfig({
     },
   },
   collections: [Pages, Posts, Media, Categories, Menus, Users],
-  globals: [Colors, Header, SiteSettings],
+  globals: [Colors, Header, Footer, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -8,7 +8,7 @@ import { SPACING_OPTIONS } from '@/fields/constants'
  * shared manifest. blockHolder itself is added separately per depth level
  * below (see the block-manifest.ts comment for why it isn't in the manifest).
  */
-const nestableBlocks: Block[] = blockManifest
+export const nestableBlocks: Block[] = blockManifest
   .filter((entry) => entry.nestable !== false)
   .map((entry) => entry.config)
 

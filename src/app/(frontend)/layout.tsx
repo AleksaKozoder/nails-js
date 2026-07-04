@@ -3,7 +3,13 @@ import '../../scss/main.scss'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { Header } from '@/components/layout/Header'
-import type { SiteSetting, Header as PayloadHeader, Media } from '@/payload-types'
+import { Footer } from '@/components/layout/Footer'
+import type {
+  SiteSetting,
+  Header as PayloadHeader,
+  Footer as PayloadFooter,
+  Media,
+} from '@/payload-types'
 
 async function getColors() {
   const payload = await getPayload({ config })
@@ -21,6 +27,11 @@ async function getHeader(): Promise<PayloadHeader> {
   return payload.findGlobal({ slug: 'header', depth: 10 })
 }
 
+async function getFooter(): Promise<PayloadFooter> {
+  const payload = await getPayload({ config })
+  return payload.findGlobal({ slug: 'footer', depth: 10 })
+}
+
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
   title: 'Payload Blank Template',
@@ -29,10 +40,11 @@ export const metadata = {
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
-  const [colors, siteSettings, header] = await Promise.all([
+  const [colors, siteSettings, header, footer] = await Promise.all([
     getColors(),
     getSiteSettings(),
     getHeader(),
+    getFooter(),
   ])
 
   const cssVariables = colors.map(({ value, hex }) => `--color-${value}: ${hex};`).join('\n')
@@ -59,12 +71,20 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
             variant={header.variant ?? 'default'}
             sticky={header.sticky ?? 'none'}
             htmlId={header.htmlId ?? undefined}
-            containerType={header.containerType ?? undefined}
             paddingTop={header.paddingTop ?? undefined}
             paddingBottom={header.paddingBottom ?? undefined}
           />
         )}
         <main>{children}</main>
+        {footer.id && (
+          <Footer
+            blocks={footer.blocks ?? []}
+            variant={footer.variant ?? 'default'}
+            htmlId={footer.htmlId ?? undefined}
+            paddingTop={footer.paddingTop ?? undefined}
+            paddingBottom={footer.paddingBottom ?? undefined}
+          />
+        )}
       </body>
     </html>
   )

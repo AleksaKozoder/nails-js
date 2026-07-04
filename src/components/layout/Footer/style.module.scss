@@ -1,0 +1,12 @@
+@use '@/scss/mixins' as mixins;
+@use '@/scss/variables' as vars;
+
+.footer {
+  width: 100%;
+  background: mixins.color-alpha(vars.$color-primary, 40%);
+
+  &--minimal {
+    background: transparent;
+    border-top: 1px solid mixins.color-alpha(vars.$color-primary, 8%);
+  }
+}

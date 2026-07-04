@@ -7,7 +7,7 @@ import s from './style.module.scss'
 
 type HeaderProps = Pick<
   HeaderGlobal,
-  'blocks' | 'variant' | 'sticky' | 'htmlId' | 'containerType' | 'paddingTop' | 'paddingBottom'
+  'blocks' | 'variant' | 'sticky' | 'htmlId' | 'paddingTop' | 'paddingBottom'
 >
 
 export const Header: React.FC<HeaderProps> = ({
@@ -15,7 +15,6 @@ export const Header: React.FC<HeaderProps> = ({
   variant = 'default',
   sticky = 'none',
   htmlId,
-  containerType,
   paddingTop = 0,
   paddingBottom = 0,
 }) => {
@@ -56,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({
         paddingBottom: `${paddingBottom}px`,
       }}
     >
-      <BlockRenderer blocks={blocks ?? []} container={containerType} />
+      <BlockRenderer blocks={blocks ?? []} />
     </header>
   )
 }

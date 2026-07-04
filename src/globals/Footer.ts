@@ -1,9 +1,9 @@
 import { GlobalConfig } from 'payload'
 import { layoutBlocksFields } from '@/fields/layoutBlocks/config'
 
-export const Header: GlobalConfig = {
-  slug: 'header',
-  label: 'Header',
+export const Footer: GlobalConfig = {
+  slug: 'footer',
+  label: 'Footer',
   access: { read: () => true },
   fields: [
     {
@@ -26,35 +26,23 @@ export const Header: GlobalConfig = {
                   admin: { width: '50%' },
                   options: [
                     { label: 'Default', value: 'default' },
-                    { label: 'Transparent', value: 'transparent' },
                     { label: 'Minimal', value: 'minimal' },
                   ],
                 },
-                {
-                  name: 'sticky',
-                  type: 'select',
-                  defaultValue: 'none',
-                  admin: { width: '50%' },
-                  options: [
-                    { label: 'None', value: 'none' },
-                    { label: 'Sticky', value: 'sticky' },
-                    { label: 'Sticky on scroll up', value: 'sticky-up' },
-                  ],
-                },
-              ],
-            },
-            {
-              type: 'row',
-              fields: [
                 {
                   name: 'htmlId',
                   type: 'text',
                   label: 'HTML ID',
                   admin: {
                     width: '50%',
-                    description: 'Optional — custom ID attribute on the header element',
+                    description: 'Optional — custom ID attribute on the footer element',
                   },
                 },
+              ],
+            },
+            {
+              type: 'row',
+              fields: [
                 {
                   name: 'paddingTop',
                   type: 'number',
