@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import type { SectionBlockProps } from '@/payload-types'
+import { getSpacingClasses } from '@/utils/getSpacingClasses'
 import { BlockRenderer } from '../BlockRenderer'
 import s from './style.module.scss'
 
@@ -28,14 +29,7 @@ export const Section: React.FC<SectionBlockProps> = ({ settings = {}, blocks }) 
     backgroundType === 'gradient' && s[`section--gradient-${gradientTheme}`],
     backgroundType === 'image' && s['section--image'],
     viewport === 'full' && s[`section--full-height`],
-    spacing?.paddingTop && spacing.paddingTop !== 'none' && `padding-top-${spacing.paddingTop}`,
-    spacing?.paddingBottom &&
-      spacing.paddingBottom !== 'none' &&
-      `padding-bottom-${spacing.paddingBottom}`,
-    spacing?.marginTop && spacing.marginTop !== 'none' && `margin-top-${spacing.marginTop}`,
-    spacing?.marginBottom &&
-      spacing.marginBottom !== 'none' &&
-      `margin-bottom-${spacing.marginBottom}`,
+    ...getSpacingClasses(spacing),
     customClassName,
   ]
     .filter(Boolean)

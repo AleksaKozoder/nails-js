@@ -2,11 +2,19 @@
 
 import React, { useMemo, useState } from 'react'
 import type { TabsBlockProps } from '@/payload-types'
+import { getSpacingClasses } from '@/utils/getSpacingClasses'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
 import s from './style.module.scss'
 
 export const TabsBlock: React.FC<TabsBlockProps> = (props) => {
-  const { orientation: orientationProp, variant = 'default', items = [] } = props
+  const {
+    orientation: orientationProp,
+    variant = 'default',
+    items = [],
+    htmlId,
+    customClassName,
+    spacing,
+  } = props
   const orientation = orientationProp ?? 'horizontal'
 
   const tabs = items ?? []
@@ -18,14 +26,20 @@ export const TabsBlock: React.FC<TabsBlockProps> = (props) => {
   const [activeIndex, setActiveIndex] = useState(defaultIndex)
   const activeItem = items?.[activeIndex]
 
-  const blockClasses = [s.tabs, s[`tabs--${orientation}`], variant && s[`tabs--${variant}`]]
+  const blockClasses = [
+    s.tabs,
+    s[`tabs--${orientation}`],
+    variant && s[`tabs--${variant}`],
+    ...getSpacingClasses(spacing),
+    customClassName,
+  ]
     .filter(Boolean)
     .join(' ')
 
   if (!items?.length) return null
 
   return (
-    <div className={blockClasses}>
+    <div className={blockClasses} id={htmlId || undefined}>
       <div className={s.tabs__nav} role="tablist" aria-orientation={orientation}>
         {items.map((item, index) => {
           const isActive = index === activeIndex

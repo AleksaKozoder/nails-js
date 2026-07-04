@@ -1,4 +1,5 @@
 @use '@/scss/mixins' as mixins;
+@use '@/scss/variables' as vars;
 
 .slider {
   width: 100%;
@@ -6,8 +7,22 @@
   margin: 0 auto;
   position: relative;
 
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      background-color: $value;
+    }
+  }
+
+  @each $name, $value in vars.$gradients {
+    &--gradient-#{$name} {
+      background: $value;
+    }
+  }
+
   // Swiper kontejner
   &__wrapper {
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: 400px; // Default visina za horizontalni
 
@@ -45,4 +60,21 @@
     padding: 10px 15px;
     border-radius: 4px;
   }
+}
+
+.slider__bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
 }

@@ -1,4 +1,7 @@
 import { Block } from 'payload'
+import { advancedFields } from '@/fields/advanced/config'
+import { spacingFields } from '@/fields/spacing/config'
+import { backgroundFields } from '@/fields/background/config'
 
 export const SliderBlock: Block = {
   slug: 'slider',
@@ -48,5 +51,8 @@ export const SliderBlock: Block = {
         },
       ],
     },
+    ...advancedFields,
+    ...spacingFields,
+    ...backgroundFields,
   ],
 }

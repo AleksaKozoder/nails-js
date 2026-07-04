@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
 import Image from 'next/image'
 import type { SliderBlockProps } from '@/payload-types'
+import { getSpacingClasses } from '@/utils/getSpacingClasses'
 
 // Import Swiper stilova
 import 'swiper/css'
@@ -12,12 +13,49 @@ import 'swiper/css/pagination'
 
 import s from './style.module.scss'
 
-export const Slider: React.FC<SliderBlockProps> = ({ settings = {}, slides }) => {
+export const Slider: React.FC<SliderBlockProps> = ({
+  settings = {},
+  slides,
+  htmlId,
+  customClassName,
+  spacing,
+  background,
+}) => {
   const orientation = settings.orientation ?? 'horizontal'
   const isVertical = orientation === 'vertical'
 
+  const backgroundType = background?.type
+  const bgImageMedia = typeof background?.image === 'object' ? background.image : undefined
+  const overlay = background?.overlay
+  const showOverlay = overlay?.enabled && overlay?.color
+
+  const sliderClasses = [
+    s.slider,
+    isVertical && s['slider--vertical'],
+    backgroundType === 'color' && s[`slider--color-${background?.colorTheme}`],
+    backgroundType === 'gradient' && s[`slider--gradient-${background?.gradientTheme}`],
+    ...getSpacingClasses(spacing),
+    customClassName,
+  ]
+    .filter(Boolean)
+    .join(' ')
+
   return (
-    <div className={`${s.slider} ${isVertical ? s['slider--vertical'] : ''}`}>
+    <div className={sliderClasses} id={htmlId || undefined}>
+      {backgroundType === 'image' && bgImageMedia?.url && (
+        <Image src={bgImageMedia.url} alt="" fill className={s['slider__bgImage']} />
+      )}
+
+      {showOverlay && (
+        <div
+          className={s.overlay}
+          style={{
+            backgroundColor: `var(--color-${overlay.color})`,
+            opacity: (overlay.opacity ?? 50) / 100,
+          }}
+        />
+      )}
+
       <div className={s.slider__wrapper}>
         <Swiper
           modules={[Navigation, Pagination]}

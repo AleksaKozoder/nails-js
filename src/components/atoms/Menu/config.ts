@@ -1,4 +1,5 @@
 import { Block, Field } from 'payload'
+import { advancedFields } from '@/fields/advanced/config'
 
 export const menuFields: Field[] = [
   {
@@ -47,6 +48,7 @@ export const menuFields: Field[] = [
               },
             ],
           },
+          ...advancedFields,
         ],
       },
     ],

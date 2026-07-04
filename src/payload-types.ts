@@ -322,6 +322,14 @@ export interface MenuBlockProps {
   menu: number | Menu;
   orientation?: ('horizontal' | 'vertical') | null;
   variant?: ('default' | 'minimal' | 'pills') | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'menu';
@@ -470,6 +478,14 @@ export interface ButtonBlockProps {
   icon?: string | null;
   customSvg?: (number | null) | Media;
   iconPosition?: ('left' | 'right') | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'button';
@@ -494,6 +510,20 @@ export interface TabsBlockProps {
     | null;
   orientation?: ('horizontal' | 'vertical') | null;
   variant?: ('default' | 'full' | 'minimal') | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'tabs';
@@ -518,6 +548,34 @@ export interface SliderBlockProps {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'slider';
@@ -542,6 +600,34 @@ export interface AccordionBlockProps {
     | null;
   allowMultiple?: boolean | null;
   variant?: ('default' | 'bordered' | 'minimal') | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'accordion';
@@ -904,6 +990,8 @@ export interface MenuBlockPropsSelect<T extends boolean = true> {
   menu?: T;
   orientation?: T;
   variant?: T;
+  htmlId?: T;
+  customClassName?: T;
   id?: T;
   blockName?: T;
 }
@@ -968,6 +1056,8 @@ export interface ButtonBlockPropsSelect<T extends boolean = true> {
   icon?: T;
   customSvg?: T;
   iconPosition?: T;
+  htmlId?: T;
+  customClassName?: T;
   id?: T;
   blockName?: T;
 }
@@ -998,6 +1088,16 @@ export interface TabsBlockPropsSelect<T extends boolean = true> {
       };
   orientation?: T;
   variant?: T;
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1019,6 +1119,31 @@ export interface SliderBlockPropsSelect<T extends boolean = true> {
         image?: T;
         caption?: T;
         id?: T;
+      };
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
       };
   id?: T;
   blockName?: T;
@@ -1050,6 +1175,31 @@ export interface AccordionBlockPropsSelect<T extends boolean = true> {
       };
   allowMultiple?: T;
   variant?: T;
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
   id?: T;
   blockName?: T;
 }

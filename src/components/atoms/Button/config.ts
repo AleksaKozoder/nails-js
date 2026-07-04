@@ -1,5 +1,6 @@
 import { Block, Field } from 'payload'
 import { iconFields } from '@/components/atoms/Icon/config'
+import { advancedFields } from '@/fields/advanced/config'
 
 const variants = [
   { label: 'Primary', value: 'primary' },
@@ -70,6 +71,7 @@ export const buttonFields: Field[] = [
             options: variants,
           },
           ...iconFields,
+          ...advancedFields,
         ],
       },
     ],

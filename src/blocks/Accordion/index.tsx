@@ -1,12 +1,22 @@
 'use client'
 
 import React, { useState } from 'react'
+import Image from 'next/image'
 import type { AccordionBlockProps } from '@/payload-types'
+import { getSpacingClasses } from '@/utils/getSpacingClasses'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
 import s from './style.module.scss'
 
 export const AccordionBlock: React.FC<AccordionBlockProps> = (props) => {
-  const { items = [], allowMultiple = false, variant = 'default' } = props
+  const {
+    items = [],
+    allowMultiple = false,
+    variant = 'default',
+    htmlId,
+    customClassName,
+    spacing,
+    background,
+  } = props
 
   const [openIndexes, setOpenIndexes] = useState<number[]>(() =>
     (items ?? []).reduce<number[]>((acc, item, i) => {
@@ -27,10 +37,38 @@ export const AccordionBlock: React.FC<AccordionBlockProps> = (props) => {
     }
   }
 
-  const blockClasses = [s.accordion, s[`accordion--${variant}`]].filter(Boolean).join(' ')
+  const backgroundType = background?.type
+  const bgImageMedia = typeof background?.image === 'object' ? background.image : undefined
+  const overlay = background?.overlay
+  const showOverlay = overlay?.enabled && overlay?.color
+
+  const blockClasses = [
+    s.accordion,
+    s[`accordion--${variant}`],
+    backgroundType === 'color' && s[`accordion--color-${background?.colorTheme}`],
+    backgroundType === 'gradient' && s[`accordion--gradient-${background?.gradientTheme}`],
+    ...getSpacingClasses(spacing),
+    customClassName,
+  ]
+    .filter(Boolean)
+    .join(' ')
 
   return (
-    <div className={blockClasses}>
+    <div className={blockClasses} id={htmlId || undefined}>
+      {backgroundType === 'image' && bgImageMedia?.url && (
+        <Image src={bgImageMedia.url} alt="" fill className={s['accordion__bgImage']} />
+      )}
+
+      {showOverlay && (
+        <div
+          className={s.overlay}
+          style={{
+            backgroundColor: `var(--color-${overlay.color})`,
+            opacity: (overlay.opacity ?? 50) / 100,
+          }}
+        />
+      )}
+
       {items.map((item, index) => {
         const isOpen = openIndexes.includes(index)
 

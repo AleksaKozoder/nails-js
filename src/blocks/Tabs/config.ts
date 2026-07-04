@@ -4,6 +4,8 @@ import { ButtonBlock } from '@/components/atoms/Button/config'
 import { HeadingBlock } from '@/components/atoms/Heading/config'
 import { RichTextBlock } from '@/components/atoms/RichText/config'
 import { iconFields } from '@/components/atoms/Icon/config'
+import { advancedFields } from '@/fields/advanced/config'
+import { spacingFields } from '@/fields/spacing/config'
 
 export const TabsBlock: Block = {
   slug: 'tabs',
@@ -97,6 +99,8 @@ export const TabsBlock: Block = {
                 },
               ],
             },
+            ...advancedFields,
+            ...spacingFields,
           ],
         },
       ],

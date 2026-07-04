@@ -79,15 +79,17 @@ export const Menu: React.FC<MenuBlockProps> = ({
   menu,
   orientation = 'horizontal',
   variant = 'default',
+  htmlId,
+  customClassName,
 }) => {
   const items = typeof menu === 'object' ? (menu?.items as MenuItemNode[] | null | undefined) : null
   if (!items?.length) return null
-  const classes = [s.menu, s[`menu--${orientation}`], s[`menu--${variant}`]]
+  const classes = [s.menu, s[`menu--${orientation}`], s[`menu--${variant}`], customClassName]
     .filter(Boolean)
     .join(' ')
 
   return (
-    <nav className={classes}>
+    <nav id={htmlId || undefined} className={classes}>
       <ul className={s.menu__list} role="list">
         {items.map((item, i) => (
           <MenuItemComponent key={i} item={item} />

@@ -16,6 +16,8 @@ export const Button: React.FC<ButtonBlockProps> = ({
   icon,
   customSvg,
   iconPosition = 'right',
+  htmlId,
+  customClassName,
 }) => {
   const resolvedHref =
     linkType === 'internal'
@@ -43,21 +45,21 @@ export const Button: React.FC<ButtonBlockProps> = ({
     </>
   )
 
-  const classes = [s.button, s[variant ?? 'primary']].filter(Boolean).join(' ')
+  const classes = [s.button, s[variant ?? 'primary'], customClassName].filter(Boolean).join(' ')
 
   const linkProps =
     newTab || linkType === 'external' ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 
   if (linkType === 'external') {
     return (
-      <a href={resolvedHref} className={classes} {...linkProps}>
+      <a id={htmlId || undefined} href={resolvedHref} className={classes} {...linkProps}>
         {content}
       </a>
     )
   }
 
   return (
-    <Link href={resolvedHref} className={classes} {...linkProps}>
+    <Link id={htmlId || undefined} href={resolvedHref} className={classes} {...linkProps}>
       {content}
     </Link>
   )

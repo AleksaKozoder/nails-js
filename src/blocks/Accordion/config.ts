@@ -4,6 +4,9 @@ import { ButtonBlock } from '@/components/atoms/Button/config'
 import { HeadingBlock } from '@/components/atoms/Heading/config'
 import { RichTextBlock } from '@/components/atoms/RichText/config'
 import { iconFields } from '@/components/atoms/Icon/config'
+import { advancedFields } from '@/fields/advanced/config'
+import { spacingFields } from '@/fields/spacing/config'
+import { backgroundFields } from '@/fields/background/config'
 
 export const AccordionBlock: Block = {
   slug: 'accordion',
@@ -94,6 +97,9 @@ export const AccordionBlock: Block = {
                 },
               ],
             },
+            ...advancedFields,
+            ...spacingFields,
+            ...backgroundFields,
           ],
         },
       ],
