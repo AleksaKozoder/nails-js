@@ -668,32 +668,6 @@ const sectionVideoProps: SectionBlockProps = {
   ],
 }
 
-// Same as sectionVideoProps, but sourced from a YouTube URL instead of an
-// uploaded file — exercises the useVideoUrl embed path.
-const sectionVideoUrlProps: SectionBlockProps = {
-  blockType: 'section',
-  settings: {
-    viewport: 'auto',
-    widthType: 'boxed',
-    containerType: 'container',
-    background: {
-      type: 'video',
-      useVideoUrl: true,
-      videoUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ',
-    },
-  },
-  blocks: [
-    {
-      blockType: 'blockHolder0',
-      layout: 'block',
-      atoms: [
-        { blockType: 'heading', title: 'Pulled from YouTube', titleTag: 'h2', variant: 'default' },
-        { blockType: 'richText', text: richText(LOREM), variant: 'default' },
-      ],
-    },
-  ],
-}
-
 const BLOCKS = [
   { slug: 'tabs', name: 'Tabs', render: () => <BlockRenderer blocks={[boxed(tabsProps)]} /> },
   {
@@ -725,11 +699,6 @@ const BLOCKS = [
     slug: 'section-video',
     name: 'Section (video background)',
     render: () => <BlockRenderer blocks={[sectionVideoProps]} />,
-  },
-  {
-    slug: 'section-video-url',
-    name: 'Section (video URL)',
-    render: () => <BlockRenderer blocks={[sectionVideoUrlProps]} />,
   },
 ] as const
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { type BackgroundLike, resolveBackgroundVideo } from '@/utils/getBackgroundClasses'
+import type { BackgroundLike } from '@/utils/getBackgroundClasses'
 
 type BackgroundLayerProps = {
   background: BackgroundLike
@@ -15,7 +15,7 @@ export const BackgroundLayer: React.FC<BackgroundLayerProps> = ({
 }) => {
   const backgroundType = background?.type
   const bgImageMedia = typeof background?.image === 'object' ? background.image : undefined
-  const videoEmbed = resolveBackgroundVideo(background)
+  const bgVideoMedia = typeof background?.video === 'object' ? background.video : undefined
   const overlay = background?.overlay
   const showOverlay = overlay?.enabled && overlay?.color
 
@@ -25,18 +25,8 @@ export const BackgroundLayer: React.FC<BackgroundLayerProps> = ({
         <Image src={bgImageMedia.url} alt="" fill className={imageClassName} />
       )}
 
-      {videoEmbed?.kind === 'file' && (
-        <video src={videoEmbed.url} className={imageClassName} autoPlay muted loop playsInline />
-      )}
-
-      {(videoEmbed?.kind === 'youtube' || videoEmbed?.kind === 'vimeo') && (
-        <iframe
-          src={videoEmbed.embedUrl}
-          className={imageClassName}
-          style={{ border: 0, pointerEvents: 'none' }}
-          allow="autoplay; fullscreen"
-          title="Background video"
-        />
+      {backgroundType === 'video' && bgVideoMedia?.url && (
+        <video src={bgVideoMedia.url} className={imageClassName} autoPlay muted loop playsInline />
       )}
 
       {showOverlay && (

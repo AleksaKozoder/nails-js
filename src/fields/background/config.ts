@@ -60,36 +60,13 @@ export const backgroundFields: Field[] = [
         },
       },
       {
-        // A checkbox (native boolean column), not a select/radio — a
-        // 'videoSourceType' enum blew past Postgres's 63-char identifier
-        // limit once nested under Header/Footer's Section rows (e.g.
-        // enum_header_blocks_section_settings_background_video_source_type).
-        name: 'useVideoUrl',
-        type: 'checkbox',
-        label: 'Use Video URL instead of upload',
-        defaultValue: false,
-        admin: {
-          condition: (_, siblingData) => siblingData?.type === 'video',
-        },
-      },
-      {
         name: 'video',
         type: 'upload',
         label: 'Video',
         relationTo: 'media',
         admin: {
           description: 'Plays muted, looped, and autoplaying — no sound controls.',
-          condition: (_, siblingData) => siblingData?.type === 'video' && !siblingData?.useVideoUrl,
-        },
-      },
-      {
-        name: 'videoUrl',
-        type: 'text',
-        label: 'Video URL',
-        admin: {
-          description:
-            'YouTube or Vimeo link, or a direct video file URL. Plays muted, looped, and autoplaying.',
-          condition: (_, siblingData) => siblingData?.type === 'video' && siblingData?.useVideoUrl,
+          condition: (_, siblingData) => siblingData?.type === 'video',
         },
       },
       {
