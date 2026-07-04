@@ -14,12 +14,14 @@ The project uses `pnpm` as the package manager and Docker for local database man
 - **CMS**: Payload CMS 3.84.x
 - **Database**: PostgreSQL (via `@payloadcms/db-postgres`)
 - **Rich Text**: Lexical editor (`@payloadcms/richtext-lexical`)
-- **Styling**: SCSS modules + global SCSS (`src/scss/`)
+- **Forms**: `@payloadcms/plugin-form-builder` (adds `forms` / `form-submissions` collections; do not hand-roll a Form collection)
+- **Styling**: SCSS modules + global SCSS (`src/scss/`), all `@use`-based (no `@import`)
 - **Icons**: FontAwesome, Lucide React, Simple Icons
 - **Animations**: Framer Motion
 - **Slider**: Swiper
 - **Testing**: Vitest (integration), Playwright (e2e)
 - **Package Manager**: pnpm
+- **Tooling**: Prettier + Husky/lint-staged pre-commit hook (run `pnpm format` to format manually)
 
 ---
 
@@ -39,12 +41,25 @@ src/
 │   ├── Accordion/
 │   ├── Section/
 │   ├── Slider/
+│   ├── PostsBlock/
+│   ├── CTA/
+│   ├── Testimonials/
+│   ├── Stats/
+│   ├── Team/
+│   ├── FormBlock/           # Contact form (@payloadcms/plugin-form-builder)
 │   ├── BlockRenderer.tsx    # Renders correct block by type
 │   └── block-registry.ts   # Maps block slugs to components
+├── fields/                  # Shared, reusable Payload field-groups
+│   ├── constants.ts         # SPACING_OPTIONS (none/xs/sm/md/lg/xl)
+│   ├── spacing/config.ts    # paddingTop/Bottom + marginTop/Bottom
+│   ├── background/config.ts # color/gradient/image + overlay
+│   └── advanced/config.ts   # htmlId + customClassName
 ├── collections/
 │   ├── Pages.ts
 │   ├── Users.ts
 │   ├── Media.ts
+│   ├── Posts.ts
+│   ├── Categories.ts
 │   └── Menus.ts
 ├── globals/
 │   ├── Colors.ts
@@ -55,6 +70,7 @@ src/
 │   └── atoms/               # Reusable UI components
 │       ├── Button/
 │       ├── Heading/
+│       ├── Icon/
 │       ├── Image/
 │       ├── Menu/
 │       └── RichText/
@@ -63,7 +79,8 @@ src/
 │   ├── _variables.scss
 │   └── _mixins.scss
 ├── utils/
-│   └── generateMeta.ts
+│   ├── generateMeta.ts
+│   └── getSpacingClasses.ts # Builds padding/margin class names from a `spacing` field group
 ├── migrations/              # PostgreSQL migrations
 └── payload.config.ts        # Main Payload configuration
 ```
@@ -80,7 +97,26 @@ Each block lives in `src/blocks/[BlockName]/` and consists of:
 - `index.tsx` — React component (frontend render)
 - `style.module.scss` — Scoped styles
 
-Blocks are registered in `block-registry.ts` and rendered via `BlockRenderer.tsx`. When adding a new block, always create all three files and register it in both files.
+Blocks are registered in `block-registry.ts` and rendered via `BlockRenderer.tsx`. When adding a new block, always create all three files and register it in both files, plus add it to `BlockHolder`'s `blocks` array (`src/blocks/BlockHolder/config.ts`, both the recursive `atoms` array and `blockHolderFields`) so it's available in the page builder.
+
+### Shared Field Groups (`src/fields/`)
+
+Don't hand-roll padding, background, or HTML-ID/custom-class fields on a new block — spread the shared groups into its `fields` array instead:
+
+```ts
+import { advancedFields } from '@/fields/advanced/config'
+import { spacingFields } from '@/fields/spacing/config'
+import { backgroundFields } from '@/fields/background/config'
+
+fields: [
+  // ...block-specific content fields
+  ...advancedFields, // htmlId + customClassName
+  ...spacingFields, // spacing.paddingTop/paddingBottom/marginTop/marginBottom
+  ...backgroundFields, // background.type/colorTheme/gradientTheme/image/overlay
+]
+```
+
+On the frontend, apply `htmlId`/`customClassName` to the block's root element, and build spacing classes with `getSpacingClasses(spacing)` from `src/utils/getSpacingClasses.ts` (produces `padding-top-*`, `padding-bottom-*`, `margin-top-*`, `margin-bottom-*`, backed by utility classes in `src/scss/main.scss`). See `src/blocks/CTA/index.tsx` or `src/blocks/Testimonials/index.tsx` for the full pattern including background color/gradient/image + overlay rendering.
 
 ### Components (Atoms)
 
@@ -92,7 +128,7 @@ Each atom in `src/components/atoms/[Name]/` follows the same pattern:
 
 ### Collections & Globals
 
-- Collections: `Pages`, `Users`, `Media`, `Menus`
+- Collections: `Pages`, `Users`, `Media`, `Menus`, `Posts`, `Categories` (plus `forms` / `form-submissions` added automatically by `@payloadcms/plugin-form-builder`)
 - Globals: `Colors`, `Header`, `SiteSettings`
 - All are registered in `src/payload.config.ts`
 
@@ -160,6 +196,8 @@ NEXT_PUBLIC_SERVER_URL=http://localhost:3000
 6. **TypeScript strict** — always use generated types from `payload-types.ts`, never write manual type duplicates
 7. **Migrations are immutable** — never modify an already-applied migration file; create a new one instead
 8. **Page builder pattern** — all page content is composed via blocks inside `BlockHolder`; avoid hardcoded page layouts
+9. **Reuse shared field groups** (`src/fields/spacing`, `background`, `advanced`) on new blocks instead of duplicating padding/background/ID fields — see the "Shared Field Groups" section above
+10. **SCSS uses `@use`, never `@import`** — reference `@/scss/mixins`/`@/scss/variables` with `as mixins`/`as vars` namespaces (see any existing block's `style.module.scss` for the pattern)
 
 ---
 
