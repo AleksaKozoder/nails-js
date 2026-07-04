@@ -195,10 +195,19 @@ export interface SectionBlockProps {
       marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
     };
     background?: {
-      type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+      type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
       colorTheme?: string | null;
       gradientTheme?: ('warm' | 'cool') | null;
       image?: (number | null) | Media;
+      useVideoUrl?: boolean | null;
+      /**
+       * Plays muted, looped, and autoplaying — no sound controls.
+       */
+      video?: (number | null) | Media;
+      /**
+       * YouTube or Vimeo link, or a direct video file URL. Plays muted, looped, and autoplaying.
+       */
+      videoUrl?: string | null;
       overlay?: {
         enabled?: boolean | null;
         color?: string | null;
@@ -587,10 +596,19 @@ export interface SliderBlockProps {
     marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   };
   background?: {
-    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
     colorTheme?: string | null;
     gradientTheme?: ('warm' | 'cool') | null;
     image?: (number | null) | Media;
+    useVideoUrl?: boolean | null;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    /**
+     * YouTube or Vimeo link, or a direct video file URL. Plays muted, looped, and autoplaying.
+     */
+    videoUrl?: string | null;
     overlay?: {
       enabled?: boolean | null;
       color?: string | null;
@@ -639,10 +657,19 @@ export interface AccordionBlockProps {
     marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   };
   background?: {
-    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
     colorTheme?: string | null;
     gradientTheme?: ('warm' | 'cool') | null;
     image?: (number | null) | Media;
+    useVideoUrl?: boolean | null;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    /**
+     * YouTube or Vimeo link, or a direct video file URL. Plays muted, looped, and autoplaying.
+     */
+    videoUrl?: string | null;
     overlay?: {
       enabled?: boolean | null;
       color?: string | null;
@@ -694,10 +721,19 @@ export interface CTABlockProps {
     marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   };
   background?: {
-    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
     colorTheme?: string | null;
     gradientTheme?: ('warm' | 'cool') | null;
     image?: (number | null) | Media;
+    useVideoUrl?: boolean | null;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    /**
+     * YouTube or Vimeo link, or a direct video file URL. Plays muted, looped, and autoplaying.
+     */
+    videoUrl?: string | null;
     overlay?: {
       enabled?: boolean | null;
       color?: string | null;
@@ -742,10 +778,19 @@ export interface TestimonialsBlockProps {
     marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   };
   background?: {
-    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
     colorTheme?: string | null;
     gradientTheme?: ('warm' | 'cool') | null;
     image?: (number | null) | Media;
+    useVideoUrl?: boolean | null;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    /**
+     * YouTube or Vimeo link, or a direct video file URL. Plays muted, looped, and autoplaying.
+     */
+    videoUrl?: string | null;
     overlay?: {
       enabled?: boolean | null;
       color?: string | null;
@@ -790,10 +835,19 @@ export interface StatsBlockProps {
     marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   };
   background?: {
-    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
     colorTheme?: string | null;
     gradientTheme?: ('warm' | 'cool') | null;
     image?: (number | null) | Media;
+    useVideoUrl?: boolean | null;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    /**
+     * YouTube or Vimeo link, or a direct video file URL. Plays muted, looped, and autoplaying.
+     */
+    videoUrl?: string | null;
     overlay?: {
       enabled?: boolean | null;
       color?: string | null;
@@ -844,10 +898,19 @@ export interface TeamBlockProps {
     marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   };
   background?: {
-    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
     colorTheme?: string | null;
     gradientTheme?: ('warm' | 'cool') | null;
     image?: (number | null) | Media;
+    useVideoUrl?: boolean | null;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    /**
+     * YouTube or Vimeo link, or a direct video file URL. Plays muted, looped, and autoplaying.
+     */
+    videoUrl?: string | null;
     overlay?: {
       enabled?: boolean | null;
       color?: string | null;
@@ -882,10 +945,19 @@ export interface FormBlockProps {
     marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   };
   background?: {
-    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
     colorTheme?: string | null;
     gradientTheme?: ('warm' | 'cool') | null;
     image?: (number | null) | Media;
+    useVideoUrl?: boolean | null;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    /**
+     * YouTube or Vimeo link, or a direct video file URL. Plays muted, looped, and autoplaying.
+     */
+    videoUrl?: string | null;
     overlay?: {
       enabled?: boolean | null;
       color?: string | null;
@@ -1366,6 +1438,9 @@ export interface SectionBlockPropsSelect<T extends boolean = true> {
               colorTheme?: T;
               gradientTheme?: T;
               image?: T;
+              useVideoUrl?: T;
+              video?: T;
+              videoUrl?: T;
               overlay?:
                 | T
                 | {
@@ -1634,6 +1709,9 @@ export interface SliderBlockPropsSelect<T extends boolean = true> {
         colorTheme?: T;
         gradientTheme?: T;
         image?: T;
+        useVideoUrl?: T;
+        video?: T;
+        videoUrl?: T;
         overlay?:
           | T
           | {
@@ -1689,6 +1767,9 @@ export interface AccordionBlockPropsSelect<T extends boolean = true> {
         colorTheme?: T;
         gradientTheme?: T;
         image?: T;
+        useVideoUrl?: T;
+        video?: T;
+        videoUrl?: T;
         overlay?:
           | T
           | {
@@ -1730,6 +1811,9 @@ export interface CTABlockPropsSelect<T extends boolean = true> {
         colorTheme?: T;
         gradientTheme?: T;
         image?: T;
+        useVideoUrl?: T;
+        video?: T;
+        videoUrl?: T;
         overlay?:
           | T
           | {
@@ -1774,6 +1858,9 @@ export interface TestimonialsBlockPropsSelect<T extends boolean = true> {
         colorTheme?: T;
         gradientTheme?: T;
         image?: T;
+        useVideoUrl?: T;
+        video?: T;
+        videoUrl?: T;
         overlay?:
           | T
           | {
@@ -1815,6 +1902,9 @@ export interface StatsBlockPropsSelect<T extends boolean = true> {
         colorTheme?: T;
         gradientTheme?: T;
         image?: T;
+        useVideoUrl?: T;
+        video?: T;
+        videoUrl?: T;
         overlay?:
           | T
           | {
@@ -1865,6 +1955,9 @@ export interface TeamBlockPropsSelect<T extends boolean = true> {
         colorTheme?: T;
         gradientTheme?: T;
         image?: T;
+        useVideoUrl?: T;
+        video?: T;
+        videoUrl?: T;
         overlay?:
           | T
           | {
@@ -1899,6 +1992,9 @@ export interface FormBlockPropsSelect<T extends boolean = true> {
         colorTheme?: T;
         gradientTheme?: T;
         image?: T;
+        useVideoUrl?: T;
+        video?: T;
+        videoUrl?: T;
         overlay?:
           | T
           | {

@@ -118,7 +118,7 @@ fields: [
   // ...block-specific content fields
   ...advancedFields, // htmlId + customClassName
   ...spacingFields, // spacing.paddingTop/paddingBottom/marginTop/marginBottom
-  ...backgroundFields, // background.type/colorTheme/gradientTheme/image/overlay
+  ...backgroundFields, // background.type/colorTheme/gradientTheme/image/video/overlay
 ]
 ```
 
