@@ -33,7 +33,8 @@ src/
 │   ├── (frontend)/          # Public-facing Next.js pages
 │   │   ├── layout.tsx
 │   │   ├── page.tsx         # Homepage
-│   │   └── [slug]/page.tsx  # Dynamic pages
+│   │   ├── [slug]/page.tsx  # Dynamic pages
+│   │   └── blocks-preview/  # Internal tool: every Header/atom/block rendered with dummy data
 │   └── (payload)/           # Payload admin panel routes
 ├── blocks/                  # Page builder blocks
 │   ├── BlockHolder/         # Grid/layout wrapper block
@@ -53,7 +54,8 @@ src/
 │   ├── constants.ts         # SPACING_OPTIONS (none/xs/sm/md/lg/xl)
 │   ├── spacing/config.ts    # paddingTop/Bottom + marginTop/Bottom
 │   ├── background/config.ts # color/gradient/image + overlay
-│   └── advanced/config.ts   # htmlId + customClassName
+│   ├── advanced/config.ts   # htmlId + customClassName
+│   └── layoutBlocks/config.ts # blocks field for Header/Footer (Section + BlockHolder)
 ├── collections/
 │   ├── Pages.ts
 │   ├── Users.ts
@@ -64,9 +66,13 @@ src/
 ├── globals/
 │   ├── Colors.ts
 │   ├── Header.ts
+│   ├── Footer.ts
 │   ├── SiteSettings.ts
 │   └── index.ts
 ├── components/
+│   ├── layout/              # Header/Footer — render the `blocks` a global resolves to
+│   │   ├── Header/
+│   │   └── Footer/
 │   └── atoms/               # Reusable UI components
 │       ├── Button/
 │       ├── Heading/
@@ -129,8 +135,12 @@ Each atom in `src/components/atoms/[Name]/` follows the same pattern:
 ### Collections & Globals
 
 - Collections: `Pages`, `Users`, `Media`, `Menus`, `Posts`, `Categories` (plus `forms` / `form-submissions` added automatically by `@payloadcms/plugin-form-builder`)
-- Globals: `Colors`, `Header`, `SiteSettings`
+- Globals: `Colors`, `Header`, `Footer`, `SiteSettings`
 - All are registered in `src/payload.config.ts`
+
+### Header & Footer (layout globals)
+
+`Header` and `Footer` compose their content the same way a Page does: their `blocks` field (`src/fields/layoutBlocks/config.ts`) accepts `Section` blocks alongside `BlockHolder`. Each row is its own `Section`, so it independently controls a full-width background that breaks out of the boxed content column — `Header`/`Footer` themselves render `<BlockRenderer blocks={blocks} />` with **no shared container wrapping all rows**. Don't reintroduce a shared `containerType` field on Header/Footer; if a row needs to be boxed, wrap it in a `Section` with `widthType: 'boxed'` instead.
 
 ### SCSS
 
