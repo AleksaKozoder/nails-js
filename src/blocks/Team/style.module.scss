@@ -1,0 +1,108 @@
+@use '@/scss/mixins' as mixins;
+@use '@/scss/variables' as vars;
+
+.team {
+  width: 100%;
+  position: relative;
+
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      background-color: $value;
+    }
+  }
+
+  @each $name, $value in vars.$gradients {
+    &--gradient-#{$name} {
+      background: $value;
+    }
+  }
+}
+
+.team__bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.team__wrapper {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 3.2rem;
+
+  &--col-2 {
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  }
+
+  &--col-3 {
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  }
+
+  &--col-4 {
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+}
+
+.member {
+  text-align: center;
+}
+
+.member__photo {
+  width: 100%;
+  max-width: 16rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.2rem;
+}
+
+.member__name {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.member__role {
+  font-size: 1.4rem;
+  color: mixins.color-alpha(vars.$color-text, 70%);
+  margin-top: 0.2rem;
+}
+
+.member__bio {
+  margin-top: 0.8rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+.member__socials {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.member__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  color: vars.$color-primary;
+  background: mixins.color-alpha(vars.$color-primary, 8%);
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: mixins.color-alpha(vars.$color-primary, 18%);
+  }
+}

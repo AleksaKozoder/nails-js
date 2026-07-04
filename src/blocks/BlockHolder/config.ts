@@ -7,6 +7,10 @@ import { TabsBlock } from '@/blocks/Tabs/config'
 import { SliderBlock } from '@/blocks/Slider/config'
 import { AccordionBlock } from '@/blocks/Accordion/config'
 import { MenuBlock } from '@/components/atoms/Menu/config'
+import { CTABlock } from '@/blocks/CTA/config'
+import { TestimonialsBlock } from '@/blocks/Testimonials/config'
+import { StatsBlock } from '@/blocks/Stats/config'
+import { TeamBlock } from '@/blocks/Team/config'
 import { advancedFields } from '@/fields/advanced/config'
 import { SPACING_OPTIONS } from '@/fields/constants'
 
@@ -51,6 +55,10 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                   TabsBlock,
                   SliderBlock,
                   AccordionBlock,
+                  CTABlock,
+                  TestimonialsBlock,
+                  StatsBlock,
+                  TeamBlock,
                 ],
               },
             ],
@@ -144,6 +152,10 @@ export const blockHolderFields: Field[] = [
       TabsBlock,
       SliderBlock,
       AccordionBlock,
+      CTABlock,
+      TestimonialsBlock,
+      StatsBlock,
+      TeamBlock,
     ],
   },
 ]

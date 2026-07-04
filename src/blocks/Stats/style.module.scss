@@ -1,0 +1,69 @@
+@use '@/scss/mixins' as mixins;
+@use '@/scss/variables' as vars;
+
+.stats {
+  width: 100%;
+  position: relative;
+
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      background-color: $value;
+    }
+  }
+
+  @each $name, $value in vars.$gradients {
+    &--gradient-#{$name} {
+      background: $value;
+    }
+  }
+}
+
+.stats__bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stats__wrapper {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 3.2rem;
+  text-align: center;
+
+  &--col-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &--col-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--col-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat__value {
+  font-size: 4rem;
+  font-weight: 800;
+  color: vars.$color-primary;
+  line-height: 1.1;
+}
+
+.stat__label {
+  margin-top: 0.4rem;
+  font-size: 1.6rem;
+  color: mixins.color-alpha(vars.$color-text, 70%);
+}

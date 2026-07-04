@@ -1,0 +1,104 @@
+@use '@/scss/mixins' as mixins;
+@use '@/scss/variables' as vars;
+
+.testimonials {
+  width: 100%;
+  position: relative;
+
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      background-color: $value;
+    }
+  }
+
+  @each $name, $value in vars.$gradients {
+    &--gradient-#{$name} {
+      background: $value;
+    }
+  }
+}
+
+.testimonials__bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.testimonials__wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+  &--grid {
+    display: grid;
+    gap: 2.4rem;
+  }
+
+  &--col-2 {
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  }
+
+  &--col-3 {
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  }
+
+  &--carousel {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    .testimonial {
+      flex: 0 0 32rem;
+      scroll-snap-align: start;
+    }
+  }
+}
+
+.testimonial {
+  padding: 2.4rem;
+  border-radius: 8px;
+  background: mixins.color-alpha(vars.$color-primary, 5%);
+}
+
+.testimonial__quote {
+  margin: 0 0 1.6rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.testimonial__author {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.testimonial__avatar {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial__name {
+  font-weight: 600;
+}
+
+.testimonial__role {
+  font-size: 1.4rem;
+  color: mixins.color-alpha(vars.$color-text, 70%);
+}

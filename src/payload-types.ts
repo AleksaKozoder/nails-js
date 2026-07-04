@@ -223,6 +223,10 @@ export interface BlockHolderLevel0BlockProps {
         | TabsBlockProps
         | SliderBlockProps
         | AccordionBlockProps
+        | CTABlockProps
+        | TestimonialsBlockProps
+        | StatsBlockProps
+        | TeamBlockProps
       )[]
     | null;
   /**
@@ -258,6 +262,10 @@ export interface BlockHolderLevel1BlockProps {
         | TabsBlockProps
         | SliderBlockProps
         | AccordionBlockProps
+        | CTABlockProps
+        | TestimonialsBlockProps
+        | StatsBlockProps
+        | TeamBlockProps
       )[]
     | null;
   /**
@@ -292,6 +300,10 @@ export interface BlockHolderLevel2BlockProps {
         | TabsBlockProps
         | SliderBlockProps
         | AccordionBlockProps
+        | CTABlockProps
+        | TestimonialsBlockProps
+        | StatsBlockProps
+        | TeamBlockProps
       )[]
     | null;
   /**
@@ -634,6 +646,211 @@ export interface AccordionBlockProps {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTABlockProps".
+ */
+export interface CTABlockProps {
+  title: string;
+  text?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  buttons?: ButtonBlockProps[] | null;
+  alignment?: ('left' | 'center') | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cta';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlockProps".
+ */
+export interface TestimonialsBlockProps {
+  items?:
+    | {
+        quote: string;
+        name: string;
+        role?: string | null;
+        avatar?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  layout?: ('grid' | 'carousel') | null;
+  columns?: ('col-2' | 'col-3') | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonials';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatsBlockProps".
+ */
+export interface StatsBlockProps {
+  items?:
+    | {
+        /**
+         * e.g. 500+, 99%, 24/7
+         */
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  columns?: ('col-2' | 'col-3' | 'col-4') | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'stats';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamBlockProps".
+ */
+export interface TeamBlockProps {
+  items?:
+    | {
+        photo?: (number | null) | Media;
+        name: string;
+        role?: string | null;
+        bio?: string | null;
+        socialLinks?:
+          | {
+              platform?: ('link' | 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'xTwitter' | 'whatsapp') | null;
+              url: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  columns?: ('col-2' | 'col-3' | 'col-4') | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'team';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "PostsBlockProps".
  */
 export interface PostsBlockProps {
@@ -916,6 +1133,10 @@ export interface BlockHolderLevel0BlockPropsSelect<T extends boolean = true> {
         tabs?: T | TabsBlockPropsSelect<T>;
         slider?: T | SliderBlockPropsSelect<T>;
         accordion?: T | AccordionBlockPropsSelect<T>;
+        cta?: T | CTABlockPropsSelect<T>;
+        testimonials?: T | TestimonialsBlockPropsSelect<T>;
+        stats?: T | StatsBlockPropsSelect<T>;
+        team?: T | TeamBlockPropsSelect<T>;
       };
   htmlId?: T;
   customClassName?: T;
@@ -944,6 +1165,10 @@ export interface BlockHolderLevel1BlockPropsSelect<T extends boolean = true> {
         tabs?: T | TabsBlockPropsSelect<T>;
         slider?: T | SliderBlockPropsSelect<T>;
         accordion?: T | AccordionBlockPropsSelect<T>;
+        cta?: T | CTABlockPropsSelect<T>;
+        testimonials?: T | TestimonialsBlockPropsSelect<T>;
+        stats?: T | StatsBlockPropsSelect<T>;
+        team?: T | TeamBlockPropsSelect<T>;
       };
   htmlId?: T;
   customClassName?: T;
@@ -971,6 +1196,10 @@ export interface BlockHolderLevel2BlockPropsSelect<T extends boolean = true> {
         tabs?: T | TabsBlockPropsSelect<T>;
         slider?: T | SliderBlockPropsSelect<T>;
         accordion?: T | AccordionBlockPropsSelect<T>;
+        cta?: T | CTABlockPropsSelect<T>;
+        testimonials?: T | TestimonialsBlockPropsSelect<T>;
+        stats?: T | StatsBlockPropsSelect<T>;
+        team?: T | TeamBlockPropsSelect<T>;
       };
   htmlId?: T;
   customClassName?: T;
@@ -1205,6 +1434,182 @@ export interface AccordionBlockPropsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTABlockProps_select".
+ */
+export interface CTABlockPropsSelect<T extends boolean = true> {
+  title?: T;
+  text?: T;
+  buttons?:
+    | T
+    | {
+        button?: T | ButtonBlockPropsSelect<T>;
+      };
+  alignment?: T;
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlockProps_select".
+ */
+export interface TestimonialsBlockPropsSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        quote?: T;
+        name?: T;
+        role?: T;
+        avatar?: T;
+        id?: T;
+      };
+  layout?: T;
+  columns?: T;
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatsBlockProps_select".
+ */
+export interface StatsBlockPropsSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  columns?: T;
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamBlockProps_select".
+ */
+export interface TeamBlockPropsSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        photo?: T;
+        name?: T;
+        role?: T;
+        bio?: T;
+        socialLinks?:
+          | T
+          | {
+              platform?: T;
+              url?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  columns?: T;
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "PostsBlockProps_select".
  */
 export interface PostsBlockPropsSelect<T extends boolean = true> {
@@ -1405,6 +1810,10 @@ export interface Header {
         | TabsBlockProps
         | SliderBlockProps
         | AccordionBlockProps
+        | CTABlockProps
+        | TestimonialsBlockProps
+        | StatsBlockProps
+        | TeamBlockProps
       )[]
     | null;
   variant?: ('default' | 'transparent' | 'minimal') | null;
@@ -1508,6 +1917,10 @@ export interface HeaderSelect<T extends boolean = true> {
         tabs?: T | TabsBlockPropsSelect<T>;
         slider?: T | SliderBlockPropsSelect<T>;
         accordion?: T | AccordionBlockPropsSelect<T>;
+        cta?: T | CTABlockPropsSelect<T>;
+        testimonials?: T | TestimonialsBlockPropsSelect<T>;
+        stats?: T | StatsBlockPropsSelect<T>;
+        team?: T | TeamBlockPropsSelect<T>;
       };
   variant?: T;
   sticky?: T;
