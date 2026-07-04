@@ -5,7 +5,7 @@
   margin: 0;
   line-height: 1.2;
   width: 100%;
-  color: map-get(vars.$colors, 'dark');
+  color: vars.$color-text;
 
   &--h1 {
     font-size: 4rem;

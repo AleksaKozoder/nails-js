@@ -9,17 +9,19 @@ $container-max-width: 128rem;
 $container-inline-padding: 3rem;
 
 // Colors
+// Every entry falls back to a hardcoded default so blocks still render
+// correctly before the Colors global has been seeded in Payload.
 $colors: (
-  'primary': var(--color-primary),
-  'secondary': var(--color-secondary),
-  'blue': var(--color-blue),
-  'red': var(--color-red),
-  'bg-gray': var(--color-bg-gray),
-  'green': var(--color-green),
+  'primary': var(--color-primary, #01696f),
+  'secondary': var(--color-secondary, #0c4e54),
+  'blue': var(--color-blue, #2563eb),
+  'red': var(--color-red, #dc2626),
+  'bg-gray': var(--color-bg-gray, #f3f0ec),
+  'green': var(--color-green, #16a34a),
 );
 
-$color-bg: map-get($colors, 'light');
-$color-text: map-get($colors, 'dark');
+$color-bg: var(--color-bg, #ffffff);
+$color-text: var(--color-text, #28251d);
 $color-primary: map-get($colors, 'primary');
 $color-secondary: map-get($colors, 'secondary');
 $color-red: map-get($colors, 'red');
