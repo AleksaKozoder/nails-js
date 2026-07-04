@@ -13,6 +13,7 @@ import { CTA } from '@/blocks/CTA'
 import { Testimonials } from '@/blocks/Testimonials'
 import { Stats } from '@/blocks/Stats'
 import { Team } from '@/blocks/Team'
+import { FormBlock } from '@/blocks/FormBlock'
 
 const TabsBlock = React.lazy(() => import('@/blocks/Tabs').then((m) => ({ default: m.TabsBlock })))
 
@@ -34,4 +35,5 @@ export const blockComponents: { [key: string]: React.FC<any> } = {
   testimonials: Testimonials,
   stats: Stats,
   team: Team,
+  formBlock: FormBlock,
 }

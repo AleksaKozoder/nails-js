@@ -1,0 +1,124 @@
+@use '@/scss/mixins' as mixins;
+@use '@/scss/variables' as vars;
+
+.formBlock {
+  width: 100%;
+  position: relative;
+
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      background-color: $value;
+    }
+  }
+
+  @each $name, $value in vars.$gradients {
+    &--gradient-#{$name} {
+      background: $value;
+    }
+  }
+}
+
+.formBlock__bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.formBlock__form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  max-width: 64rem;
+}
+
+.formBlock__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  label {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  input,
+  textarea,
+  select {
+    padding: 1rem 1.2rem;
+    border: 1px solid mixins.color-alpha(vars.$color-primary, 20%);
+    border-radius: 6px;
+    font-size: 1.6rem;
+    font-family: inherit;
+
+    &:focus {
+      outline: 2px solid vars.$color-primary;
+      outline-offset: 1px;
+    }
+  }
+
+  textarea {
+    min-height: 12rem;
+    resize: vertical;
+  }
+}
+
+.formBlock__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.5rem;
+}
+
+.formBlock__message {
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.formBlock__submit {
+  align-self: flex-start;
+  padding: 1.2rem 2.4rem;
+  border: 0;
+  border-radius: 6px;
+  background: vars.$color-primary;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+}
+
+.formBlock__error {
+  width: 100%;
+  color: vars.$color-red;
+  font-size: 1.4rem;
+}
+
+.formBlock__confirmation {
+  position: relative;
+  z-index: 1;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}

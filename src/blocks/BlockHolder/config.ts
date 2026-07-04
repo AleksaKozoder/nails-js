@@ -11,6 +11,7 @@ import { CTABlock } from '@/blocks/CTA/config'
 import { TestimonialsBlock } from '@/blocks/Testimonials/config'
 import { StatsBlock } from '@/blocks/Stats/config'
 import { TeamBlock } from '@/blocks/Team/config'
+import { FormBlock } from '@/blocks/FormBlock/config'
 import { advancedFields } from '@/fields/advanced/config'
 import { SPACING_OPTIONS } from '@/fields/constants'
 
@@ -59,6 +60,7 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                   TestimonialsBlock,
                   StatsBlock,
                   TeamBlock,
+                  FormBlock,
                 ],
               },
             ],
@@ -156,6 +158,7 @@ export const blockHolderFields: Field[] = [
       TestimonialsBlock,
       StatsBlock,
       TeamBlock,
+      FormBlock,
     ],
   },
 ]
