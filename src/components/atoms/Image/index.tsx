@@ -8,7 +8,6 @@ export const Image: React.FC<ImageBlockProps> = ({
   image,
   aspectRatio,
   customAspectRatio,
-  variant,
   linkType = 'none',
   internalLink,
   externalUrl,
@@ -18,7 +17,7 @@ export const Image: React.FC<ImageBlockProps> = ({
   const media = typeof image === 'object' ? image : undefined
   if (!media?.url) return null
 
-  const classes = [s.wrapper, variant && s[`wrapper-${variant}`]].filter(Boolean).join(' ')
+  const classes = s.wrapper
 
   const ratio = aspectRatio === 'custom' ? customAspectRatio : aspectRatio
 

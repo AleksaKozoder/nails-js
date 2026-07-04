@@ -31,8 +31,6 @@ const gaps = [
   { label: 'Extra Large', value: 'xl' },
 ]
 
-const variants = [{ label: 'Default', value: 'default' }]
-
 const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
   const canNest = depth < maxDepth - 1
 
@@ -75,22 +73,15 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     type: 'text',
                     label: 'HTML ID',
                     admin: {
-                      width: '25%',
+                      width: '34%',
                       description: 'Optional — custom ID / anchor',
                     },
-                  },
-                  {
-                    name: 'variant',
-                    type: 'select',
-                    defaultValue: 'default',
-                    admin: { width: '25%' },
-                    options: variants,
                   },
                   {
                     name: 'layout',
                     type: 'select',
                     defaultValue: 'block',
-                    admin: { width: '25%' },
+                    admin: { width: '33%' },
                     options: [
                       { label: 'Block', value: 'block' },
                       { label: 'Flex', value: 'flex' },
@@ -101,7 +92,7 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     name: 'verticalAlignment',
                     type: 'select',
                     defaultValue: 'top',
-                    admin: { width: '25%' },
+                    admin: { width: '33%' },
                     options: [
                       { label: 'Top', value: 'top' },
                       { label: 'Middle', value: 'middle' },

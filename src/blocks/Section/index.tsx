@@ -14,7 +14,6 @@ export const Section: React.FC<SectionBlockProps> = ({ settings = {}, blocks }) 
     viewport,
     widthType,
     containerType,
-    variant,
     alignment,
     htmlId,
     overlay,
@@ -28,7 +27,6 @@ export const Section: React.FC<SectionBlockProps> = ({ settings = {}, blocks }) 
     backgroundType === 'gradient' && s[`section--gradient-${gradientTheme}`],
     backgroundType === 'image' && s['section--image'],
     viewport === 'full' && s[`section--full-height`],
-    variant !== 'default' && s[`section--${variant}`],
     padding && padding !== 'none' && `padding-${padding}`,
   ]
     .filter(Boolean)

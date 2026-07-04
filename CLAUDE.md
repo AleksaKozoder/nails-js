@@ -75,6 +75,7 @@ src/
 ### Blocks
 
 Each block lives in `src/blocks/[BlockName]/` and consists of:
+
 - `config.ts` — Payload field config (used in CMS schema)
 - `index.tsx` — React component (frontend render)
 - `style.module.scss` — Scoped styles
@@ -84,6 +85,7 @@ Blocks are registered in `block-registry.ts` and rendered via `BlockRenderer.tsx
 ### Components (Atoms)
 
 Each atom in `src/components/atoms/[Name]/` follows the same pattern:
+
 - `config.ts` — Reusable Payload field group config (imported into collections/blocks)
 - `index.tsx` — React component
 - `style.module.scss` — Scoped styles
@@ -126,6 +128,7 @@ docker-compose down    # Stop
 ### Database Migrations
 
 After any schema change in collections or globals:
+
 ```bash
 pnpm payload migrate:create  # Create new migration file
 pnpm payload migrate         # Apply pending migrations
@@ -163,5 +166,6 @@ NEXT_PUBLIC_SERVER_URL=http://localhost:3000
 ## Payload CMS Skill Reference
 
 Detailed Payload CMS patterns and API reference are available in:
+
 - `.claude/skills/payload/SKILL.md` — Quick reference
 - `.claude/skills/payload/reference/` — Detailed documentation

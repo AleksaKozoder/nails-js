@@ -1,7 +1,5 @@
 import { Block } from 'payload'
 
-const variants = [{ label: 'Default', value: 'default' }]
-
 export const ImageBlock: Block = {
   slug: 'image',
   interfaceName: 'ImageBlockProps',
@@ -71,7 +69,7 @@ export const ImageBlock: Block = {
                   type: 'select',
                   label: 'Aspect Ratio',
                   defaultValue: 'auto',
-                  admin: { width: '25%' },
+                  admin: { width: '50%' },
                   options: [
                     { label: 'Auto', value: 'auto' },
                     { label: '1:1', value: '1/1' },
@@ -89,17 +87,10 @@ export const ImageBlock: Block = {
                   type: 'text',
                   label: 'Custom Aspect Ratio',
                   admin: {
-                    width: '25%',
+                    width: '50%',
                     description: 'Format: 16/9, 4/3, 1/1...',
                     condition: (_, siblingData) => siblingData?.aspectRatio === 'custom',
                   },
-                },
-                {
-                  name: 'variant',
-                  type: 'select',
-                  admin: { width: '50%' },
-                  defaultValue: 'default',
-                  options: variants,
                 },
               ],
             },

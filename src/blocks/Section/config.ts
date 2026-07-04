@@ -2,8 +2,6 @@ import { Block } from 'payload'
 import { BlockHolder } from '@/blocks/BlockHolder/config'
 import { PostsBlock } from '@/blocks/PostsBlock/config'
 
-const variants = [{ label: 'Default', value: 'default' }]
-
 const alignment = [
   { label: 'Top', value: 'top' },
   { label: 'Center', value: 'center' },
@@ -51,23 +49,16 @@ export const SectionBlock: Block = {
                       type: 'text',
                       label: 'HTML ID',
                       admin: {
-                        width: '33%',
+                        width: '50%',
                         description: 'Optional — custom ID / anchor',
                       },
-                    },
-                    {
-                      name: 'variant',
-                      type: 'select',
-                      admin: { width: '33%' },
-                      defaultValue: 'default',
-                      options: variants,
                     },
                     {
                       name: 'viewport',
                       type: 'select',
                       defaultValue: 'auto',
                       admin: {
-                        width: '33%',
+                        width: '50%',
                       },
                       options: [
                         { label: 'auto', value: 'auto' },

@@ -37,6 +37,33 @@
       margin-top: 0.4rem;
     }
   }
+
+  &--default {
+  }
+
+  &--minimal {
+    .menu__link {
+      padding: 0.8rem 0.4rem;
+      border-radius: 0;
+
+      &:hover {
+        background: transparent;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+  }
+
+  &--pills {
+    .menu__link {
+      border-radius: 999px;
+      background: mixins.color-alpha(vars.$color-primary, 6%);
+
+      &:hover {
+        background: mixins.color-alpha(vars.$color-primary, 15%);
+      }
+    }
+  }
 }
 
 .menu__list {

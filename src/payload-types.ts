@@ -171,7 +171,6 @@ export interface SectionBlockProps {
      * Optional — custom ID / anchor
      */
     htmlId?: string | null;
-    variant?: 'default' | null;
     viewport?: ('auto' | 'full') | null;
     widthType?: ('fullWidth' | 'boxed') | null;
     /**
@@ -222,7 +221,6 @@ export interface BlockHolderLevel0BlockProps {
    * Optional — custom ID / anchor
    */
   htmlId?: string | null;
-  variant?: 'default' | null;
   layout?: ('block' | 'flex' | 'grid') | null;
   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
   flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -254,7 +252,6 @@ export interface BlockHolderLevel1BlockProps {
    * Optional — custom ID / anchor
    */
   htmlId?: string | null;
-  variant?: 'default' | null;
   layout?: ('block' | 'flex' | 'grid') | null;
   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
   flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -285,7 +282,6 @@ export interface BlockHolderLevel2BlockProps {
    * Optional — custom ID / anchor
    */
   htmlId?: string | null;
-  variant?: 'default' | null;
   layout?: ('block' | 'flex' | 'grid') | null;
   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
   flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -407,7 +403,6 @@ export interface ImageBlockProps {
    * Format: 16/9, 4/3, 1/1...
    */
   customAspectRatio?: string | null;
-  variant?: 'default' | null;
   overlay?: {
     enabled?: boolean | null;
     color?: string | null;
@@ -762,7 +757,6 @@ export interface SectionBlockPropsSelect<T extends boolean = true> {
     | T
     | {
         htmlId?: T;
-        variant?: T;
         viewport?: T;
         widthType?: T;
         alignment?: T;
@@ -802,7 +796,6 @@ export interface BlockHolderLevel0BlockPropsSelect<T extends boolean = true> {
         accordion?: T | AccordionBlockPropsSelect<T>;
       };
   htmlId?: T;
-  variant?: T;
   layout?: T;
   verticalAlignment?: T;
   flexVariant?: T;
@@ -830,7 +823,6 @@ export interface BlockHolderLevel1BlockPropsSelect<T extends boolean = true> {
         accordion?: T | AccordionBlockPropsSelect<T>;
       };
   htmlId?: T;
-  variant?: T;
   layout?: T;
   verticalAlignment?: T;
   flexVariant?: T;
@@ -857,7 +849,6 @@ export interface BlockHolderLevel2BlockPropsSelect<T extends boolean = true> {
         accordion?: T | AccordionBlockPropsSelect<T>;
       };
   htmlId?: T;
-  variant?: T;
   layout?: T;
   verticalAlignment?: T;
   flexVariant?: T;
@@ -912,7 +903,6 @@ export interface ImageBlockPropsSelect<T extends boolean = true> {
   newTab?: T;
   aspectRatio?: T;
   customAspectRatio?: T;
-  variant?: T;
   overlay?:
     | T
     | {
