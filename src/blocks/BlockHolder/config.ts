@@ -7,6 +7,8 @@ import { TabsBlock } from '@/blocks/Tabs/config'
 import { SliderBlock } from '@/blocks/Slider/config'
 import { AccordionBlock } from '@/blocks/Accordion/config'
 import { MenuBlock } from '@/components/atoms/Menu/config'
+import { advancedFields } from '@/fields/advanced/config'
+import { SPACING_OPTIONS } from '@/fields/constants'
 
 const flexOptions = [
   { label: 'Row', value: 'row' },
@@ -20,15 +22,6 @@ const gridOptions = [
   { label: 'Auto', value: 'auto' },
   { label: '2 columns', value: 'col-2' },
   { label: '3 columns', value: 'col-3' },
-]
-
-const gaps = [
-  { label: 'None', value: 'none' },
-  { label: 'Extra Small', value: 'xs' },
-  { label: 'Small', value: 'sm' },
-  { label: 'Medium', value: 'md' },
-  { label: 'Large', value: 'lg' },
-  { label: 'Extra Large', value: 'xl' },
 ]
 
 const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
@@ -65,23 +58,15 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
           {
             label: 'Settings',
             fields: [
+              ...advancedFields,
               {
                 type: 'row',
                 fields: [
                   {
-                    name: 'htmlId',
-                    type: 'text',
-                    label: 'HTML ID',
-                    admin: {
-                      width: '34%',
-                      description: 'Optional — custom ID / anchor',
-                    },
-                  },
-                  {
                     name: 'layout',
                     type: 'select',
                     defaultValue: 'block',
-                    admin: { width: '33%' },
+                    admin: { width: '50%' },
                     options: [
                       { label: 'Block', value: 'block' },
                       { label: 'Flex', value: 'flex' },
@@ -92,7 +77,7 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     name: 'verticalAlignment',
                     type: 'select',
                     defaultValue: 'top',
-                    admin: { width: '33%' },
+                    admin: { width: '50%' },
                     options: [
                       { label: 'Top', value: 'top' },
                       { label: 'Middle', value: 'middle' },
@@ -129,7 +114,7 @@ const createBlockHolder = (depth = 0, maxDepth = 3): Block => {
                     label: 'Gap',
                     type: 'select',
                     defaultValue: 'none',
-                    options: gaps,
+                    options: SPACING_OPTIONS,
                     admin: {
                       width: '50%',
                       condition: (_, s) => s?.layout === 'flex' || s?.layout === 'grid',

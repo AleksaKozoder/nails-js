@@ -1,4 +1,6 @@
 import { Block } from 'payload'
+import { advancedFields } from '@/fields/advanced/config'
+import { SPACING_OPTIONS } from '@/fields/constants'
 
 const layoutOptions = [
   { label: 'Grid', value: 'grid' },
@@ -9,15 +11,6 @@ const gridColumns = [
   { label: '2 columns', value: 'col-2' },
   { label: '3 columns', value: 'col-3' },
   { label: '4 columns', value: 'col-4' },
-]
-
-const gaps = [
-  { label: 'None', value: 'none' },
-  { label: 'Extra Small', value: 'xs' },
-  { label: 'Small', value: 'sm' },
-  { label: 'Medium', value: 'md' },
-  { label: 'Large', value: 'lg' },
-  { label: 'Extra Large', value: 'xl' },
 ]
 
 export const PostsBlock: Block = {
@@ -97,34 +90,26 @@ export const PostsBlock: Block = {
         {
           label: 'Settings',
           fields: [
+            ...advancedFields,
             {
               type: 'row',
               fields: [
-                {
-                  name: 'htmlId',
-                  type: 'text',
-                  label: 'HTML ID',
-                  admin: {
-                    width: '30%',
-                    description: 'Optional — custom ID / anchor',
-                  },
-                },
                 {
                   name: 'layout',
                   label: 'Layout Type',
                   type: 'select',
                   defaultValue: 'grid',
                   options: layoutOptions,
-                  admin: { width: '30%' },
+                  admin: { width: '50%' },
                 },
                 {
                   name: 'gap',
                   label: 'Gap',
                   type: 'select',
                   defaultValue: 'none',
-                  options: gaps,
+                  options: SPACING_OPTIONS,
                   admin: {
-                    width: '30%',
+                    width: '50%',
                     condition: (_, s) => s?.layout === 'flex' || s?.layout === 'grid',
                   },
                 },

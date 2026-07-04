@@ -66,6 +66,38 @@ img {
   }
 }
 
+.padding-top {
+  @each $name, $value in vars.$sizes {
+    &-#{$name} {
+      padding-top: $value;
+    }
+  }
+}
+
+.padding-bottom {
+  @each $name, $value in vars.$sizes {
+    &-#{$name} {
+      padding-bottom: $value;
+    }
+  }
+}
+
+.margin-top {
+  @each $name, $value in vars.$sizes {
+    &-#{$name} {
+      margin-top: $value;
+    }
+  }
+}
+
+.margin-bottom {
+  @each $name, $value in vars.$sizes {
+    &-#{$name} {
+      margin-bottom: $value;
+    }
+  }
+}
+
 .gap {
   @each $name, $value in vars.$sizes {
     &-#{$name} {

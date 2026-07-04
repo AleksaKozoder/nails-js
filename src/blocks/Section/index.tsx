@@ -6,20 +6,21 @@ import s from './style.module.scss'
 
 export const Section: React.FC<SectionBlockProps> = ({ settings = {}, blocks }) => {
   const {
-    backgroundType,
-    colorTheme,
-    gradientTheme,
-    bgImage,
-    padding,
+    background,
+    spacing,
     viewport,
     widthType,
     containerType,
     alignment,
     htmlId,
-    overlay,
+    customClassName,
   } = settings
 
-  const bgImageMedia = typeof bgImage === 'object' ? bgImage : undefined
+  const backgroundType = background?.type
+  const colorTheme = background?.colorTheme
+  const gradientTheme = background?.gradientTheme
+  const overlay = background?.overlay
+  const bgImageMedia = typeof background?.image === 'object' ? background.image : undefined
 
   const sectionClasses = [
     s['section'],
@@ -27,7 +28,15 @@ export const Section: React.FC<SectionBlockProps> = ({ settings = {}, blocks }) 
     backgroundType === 'gradient' && s[`section--gradient-${gradientTheme}`],
     backgroundType === 'image' && s['section--image'],
     viewport === 'full' && s[`section--full-height`],
-    padding && padding !== 'none' && `padding-${padding}`,
+    spacing?.paddingTop && spacing.paddingTop !== 'none' && `padding-top-${spacing.paddingTop}`,
+    spacing?.paddingBottom &&
+      spacing.paddingBottom !== 'none' &&
+      `padding-bottom-${spacing.paddingBottom}`,
+    spacing?.marginTop && spacing.marginTop !== 'none' && `margin-top-${spacing.marginTop}`,
+    spacing?.marginBottom &&
+      spacing.marginBottom !== 'none' &&
+      `margin-bottom-${spacing.marginBottom}`,
+    customClassName,
   ]
     .filter(Boolean)
     .join(' ')

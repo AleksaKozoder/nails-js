@@ -171,6 +171,10 @@ export interface SectionBlockProps {
      * Optional — custom ID / anchor
      */
     htmlId?: string | null;
+    /**
+     * Optional — extra class name(s) for custom styling
+     */
+    customClassName?: string | null;
     viewport?: ('auto' | 'full') | null;
     widthType?: ('fullWidth' | 'boxed') | null;
     /**
@@ -178,21 +182,25 @@ export interface SectionBlockProps {
      */
     alignment?: ('top' | 'center' | 'bottom') | null;
     containerType?: ('container-xl' | 'container-lg' | 'container' | 'container-xs') | null;
-    /**
-     * Optional — space on top & bottom
-     */
-    padding?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-    backgroundType?: ('blank' | 'color' | 'gradient' | 'image') | null;
-    colorTheme?: string | null;
-    gradientTheme?: ('warm' | 'cool') | null;
-    bgImage?: (number | null) | Media;
-    overlay?: {
-      enabled?: boolean | null;
-      color?: string | null;
-      /**
-       * 0 - 100
-       */
-      opacity?: number | null;
+    spacing?: {
+      paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+      paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+      marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+      marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    };
+    background?: {
+      type?: ('blank' | 'color' | 'gradient' | 'image') | null;
+      colorTheme?: string | null;
+      gradientTheme?: ('warm' | 'cool') | null;
+      image?: (number | null) | Media;
+      overlay?: {
+        enabled?: boolean | null;
+        color?: string | null;
+        /**
+         * 0 - 100
+         */
+        opacity?: number | null;
+      };
     };
   };
   id?: string | null;
@@ -221,6 +229,10 @@ export interface BlockHolderLevel0BlockProps {
    * Optional — custom ID / anchor
    */
   htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
   layout?: ('block' | 'flex' | 'grid') | null;
   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
   flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -252,6 +264,10 @@ export interface BlockHolderLevel1BlockProps {
    * Optional — custom ID / anchor
    */
   htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
   layout?: ('block' | 'flex' | 'grid') | null;
   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
   flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -282,6 +298,10 @@ export interface BlockHolderLevel2BlockProps {
    * Optional — custom ID / anchor
    */
   htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
   layout?: ('block' | 'flex' | 'grid') | null;
   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
   flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
@@ -552,6 +572,10 @@ export interface PostsBlockProps {
    * Optional — custom ID / anchor
    */
   htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
   layout?: ('grid' | 'slider') | null;
   gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   gridColumns?: ('col-2' | 'col-3' | 'col-4') | null;
@@ -757,21 +781,33 @@ export interface SectionBlockPropsSelect<T extends boolean = true> {
     | T
     | {
         htmlId?: T;
+        customClassName?: T;
         viewport?: T;
         widthType?: T;
         alignment?: T;
         containerType?: T;
-        padding?: T;
-        backgroundType?: T;
-        colorTheme?: T;
-        gradientTheme?: T;
-        bgImage?: T;
-        overlay?:
+        spacing?:
           | T
           | {
-              enabled?: T;
-              color?: T;
-              opacity?: T;
+              paddingTop?: T;
+              paddingBottom?: T;
+              marginTop?: T;
+              marginBottom?: T;
+            };
+        background?:
+          | T
+          | {
+              type?: T;
+              colorTheme?: T;
+              gradientTheme?: T;
+              image?: T;
+              overlay?:
+                | T
+                | {
+                    enabled?: T;
+                    color?: T;
+                    opacity?: T;
+                  };
             };
       };
   id?: T;
@@ -796,6 +832,7 @@ export interface BlockHolderLevel0BlockPropsSelect<T extends boolean = true> {
         accordion?: T | AccordionBlockPropsSelect<T>;
       };
   htmlId?: T;
+  customClassName?: T;
   layout?: T;
   verticalAlignment?: T;
   flexVariant?: T;
@@ -823,6 +860,7 @@ export interface BlockHolderLevel1BlockPropsSelect<T extends boolean = true> {
         accordion?: T | AccordionBlockPropsSelect<T>;
       };
   htmlId?: T;
+  customClassName?: T;
   layout?: T;
   verticalAlignment?: T;
   flexVariant?: T;
@@ -849,6 +887,7 @@ export interface BlockHolderLevel2BlockPropsSelect<T extends boolean = true> {
         accordion?: T | AccordionBlockPropsSelect<T>;
       };
   htmlId?: T;
+  customClassName?: T;
   layout?: T;
   verticalAlignment?: T;
   flexVariant?: T;
@@ -1025,6 +1064,7 @@ export interface PostsBlockPropsSelect<T extends boolean = true> {
   selectedCategories?: T;
   selectedPosts?: T;
   htmlId?: T;
+  customClassName?: T;
   layout?: T;
   gap?: T;
   gridColumns?: T;

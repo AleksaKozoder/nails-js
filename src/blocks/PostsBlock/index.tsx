@@ -11,6 +11,7 @@ export type PostsBlockProps = GeneratedPostsBlockProps & {
 export const PostsBlock: React.FC<PostsBlockProps> = ({
   title,
   htmlId,
+  customClassName,
   layout = 'grid',
   gridColumns = 'col-3',
   autoplay,
@@ -30,7 +31,10 @@ export const PostsBlock: React.FC<PostsBlockProps> = ({
     .join(' ')
 
   return (
-    <div id={htmlId || undefined} className={s['posts']}>
+    <div
+      id={htmlId || undefined}
+      className={[s['posts'], customClassName].filter(Boolean).join(' ')}
+    >
       {title && <h2 className={s['posts-section__title']}>{title}</h2>}
 
       <div className={wrapperClasses}>
