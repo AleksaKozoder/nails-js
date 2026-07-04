@@ -229,6 +229,7 @@ export interface BlockHolderLevel0BlockProps {
         | HeadingBlockProps
         | RichTextBlockProps
         | ImageBlockProps
+        | VideoBlockProps
         | ButtonBlockProps
         | TabsBlockProps
         | SliderBlockProps
@@ -270,6 +271,7 @@ export interface BlockHolderLevel1BlockProps {
         | HeadingBlockProps
         | RichTextBlockProps
         | ImageBlockProps
+        | VideoBlockProps
         | ButtonBlockProps
         | TabsBlockProps
         | SliderBlockProps
@@ -310,6 +312,7 @@ export interface BlockHolderLevel2BlockProps {
         | HeadingBlockProps
         | RichTextBlockProps
         | ImageBlockProps
+        | VideoBlockProps
         | ButtonBlockProps
         | TabsBlockProps
         | SliderBlockProps
@@ -489,6 +492,37 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlockProps".
+ */
+export interface VideoBlockProps {
+  sourceType?: ('upload' | 'url') | null;
+  file?: (number | null) | Media;
+  /**
+   * Shown before playback starts, so the video file itself is only fetched once a visitor presses play.
+   */
+  poster?: (number | null) | Media;
+  /**
+   * YouTube, Vimeo, or a direct video file link.
+   */
+  url?: string | null;
+  aspectRatio?: ('16/9' | '4/3' | '1/1' | '9/16' | 'custom') | null;
+  /**
+   * Format: 16/9, 4/3, 1/1...
+   */
+  customAspectRatio?: string | null;
+  controls?: boolean | null;
+  /**
+   * Forces mute — browsers block sound-on autoplay.
+   */
+  autoplay?: boolean | null;
+  loop?: boolean | null;
+  muted?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'video';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1424,6 +1458,7 @@ export interface BlockHolderLevel0BlockPropsSelect<T extends boolean = true> {
         heading?: T | HeadingBlockPropsSelect<T>;
         richText?: T | RichTextBlockPropsSelect<T>;
         image?: T | ImageBlockPropsSelect<T>;
+        video?: T | VideoBlockPropsSelect<T>;
         button?: T | ButtonBlockPropsSelect<T>;
         tabs?: T | TabsBlockPropsSelect<T>;
         slider?: T | SliderBlockPropsSelect<T>;
@@ -1458,6 +1493,7 @@ export interface BlockHolderLevel1BlockPropsSelect<T extends boolean = true> {
         heading?: T | HeadingBlockPropsSelect<T>;
         richText?: T | RichTextBlockPropsSelect<T>;
         image?: T | ImageBlockPropsSelect<T>;
+        video?: T | VideoBlockPropsSelect<T>;
         button?: T | ButtonBlockPropsSelect<T>;
         tabs?: T | TabsBlockPropsSelect<T>;
         slider?: T | SliderBlockPropsSelect<T>;
@@ -1491,6 +1527,7 @@ export interface BlockHolderLevel2BlockPropsSelect<T extends boolean = true> {
         heading?: T | HeadingBlockPropsSelect<T>;
         richText?: T | RichTextBlockPropsSelect<T>;
         image?: T | ImageBlockPropsSelect<T>;
+        video?: T | VideoBlockPropsSelect<T>;
         button?: T | ButtonBlockPropsSelect<T>;
         tabs?: T | TabsBlockPropsSelect<T>;
         slider?: T | SliderBlockPropsSelect<T>;
@@ -1567,6 +1604,24 @@ export interface ImageBlockPropsSelect<T extends boolean = true> {
         color?: T;
         opacity?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlockProps_select".
+ */
+export interface VideoBlockPropsSelect<T extends boolean = true> {
+  sourceType?: T;
+  file?: T;
+  poster?: T;
+  url?: T;
+  aspectRatio?: T;
+  customAspectRatio?: T;
+  controls?: T;
+  autoplay?: T;
+  loop?: T;
+  muted?: T;
   id?: T;
   blockName?: T;
 }
@@ -2301,6 +2356,7 @@ export interface Header {
         | HeadingBlockProps
         | RichTextBlockProps
         | ImageBlockProps
+        | VideoBlockProps
         | ButtonBlockProps
         | TabsBlockProps
         | SliderBlockProps
@@ -2338,6 +2394,7 @@ export interface Footer {
         | HeadingBlockProps
         | RichTextBlockProps
         | ImageBlockProps
+        | VideoBlockProps
         | ButtonBlockProps
         | TabsBlockProps
         | SliderBlockProps
@@ -2446,6 +2503,7 @@ export interface HeaderSelect<T extends boolean = true> {
         heading?: T | HeadingBlockPropsSelect<T>;
         richText?: T | RichTextBlockPropsSelect<T>;
         image?: T | ImageBlockPropsSelect<T>;
+        video?: T | VideoBlockPropsSelect<T>;
         button?: T | ButtonBlockPropsSelect<T>;
         tabs?: T | TabsBlockPropsSelect<T>;
         slider?: T | SliderBlockPropsSelect<T>;
@@ -2480,6 +2538,7 @@ export interface FooterSelect<T extends boolean = true> {
         heading?: T | HeadingBlockPropsSelect<T>;
         richText?: T | RichTextBlockPropsSelect<T>;
         image?: T | ImageBlockPropsSelect<T>;
+        video?: T | VideoBlockPropsSelect<T>;
         button?: T | ButtonBlockPropsSelect<T>;
         tabs?: T | TabsBlockPropsSelect<T>;
         slider?: T | SliderBlockPropsSelect<T>;

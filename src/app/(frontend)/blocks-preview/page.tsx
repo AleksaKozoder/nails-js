@@ -25,6 +25,7 @@ import { Button } from '@/components/atoms/Button'
 import { Heading } from '@/components/atoms/Heading'
 import { Icon, type IconName } from '@/components/atoms/Icon'
 import { Image as ImageAtom } from '@/components/atoms/Image'
+import { Video as VideoAtom } from '@/components/atoms/Video'
 import { Menu as MenuAtom } from '@/components/atoms/Menu'
 import { RichText as RichTextAtom } from '@/components/atoms/RichText'
 
@@ -342,6 +343,36 @@ const ATOMS = [
           image={media('atom-image', 800, 450)}
           aspectRatio="16/9"
           linkType="none"
+        />
+      </div>
+    ),
+  },
+  {
+    slug: 'atom-video-upload',
+    name: 'Video (upload)',
+    render: () => (
+      <div className="container" style={{ maxWidth: '32rem' }}>
+        <VideoAtom
+          blockType="video"
+          sourceType="upload"
+          file={videoMedia()}
+          aspectRatio="16/9"
+          controls
+        />
+      </div>
+    ),
+  },
+  {
+    slug: 'atom-video-url',
+    name: 'Video (URL)',
+    render: () => (
+      <div className="container" style={{ maxWidth: '32rem' }}>
+        <VideoAtom
+          blockType="video"
+          sourceType="url"
+          url="https://www.youtube.com/watch?v=aqz-KE-bpKQ"
+          aspectRatio="16/9"
+          controls
         />
       </div>
     ),

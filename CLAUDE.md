@@ -48,8 +48,10 @@ src/
 │   ├── Stats/
 │   ├── Team/
 │   ├── FormBlock/           # Contact form (@payloadcms/plugin-form-builder)
+│   ├── Divider/
 │   ├── BlockRenderer.tsx    # Renders correct block by type
-│   └── block-registry.ts   # Maps block slugs to components
+│   ├── block-manifest.ts   # Single source of truth: slug + config + lazy component per nestable block/atom
+│   └── block-registry.ts   # Maps block slugs to components (derived from block-manifest.ts)
 ├── fields/                  # Shared, reusable Payload field-groups
 │   ├── constants.ts         # SPACING_OPTIONS (none/xs/sm/md/lg/xl)
 │   ├── spacing/config.ts    # paddingTop/Bottom + marginTop/Bottom
@@ -74,12 +76,14 @@ src/
 │   │   ├── Header/
 │   │   └── Footer/
 │   └── atoms/               # Reusable UI components
+│       ├── BackgroundLayer/ # Renders a background field group's color/gradient/image/video layer
 │       ├── Button/
 │       ├── Heading/
 │       ├── Icon/
 │       ├── Image/
 │       ├── Menu/
-│       └── RichText/
+│       ├── RichText/
+│       └── Video/           # Upload or URL (YouTube/Vimeo/direct file) source
 ├── scss/
 │   ├── main.scss
 │   ├── _variables.scss
@@ -103,7 +107,7 @@ Each block lives in `src/blocks/[BlockName]/` and consists of:
 - `index.tsx` — React component (frontend render)
 - `style.module.scss` — Scoped styles
 
-Blocks are registered in `block-registry.ts` and rendered via `BlockRenderer.tsx`. When adding a new block, always create all three files and register it in both files, plus add it to `BlockHolder`'s `blocks` array (`src/blocks/BlockHolder/config.ts`, both the recursive `atoms` array and `blockHolderFields`) so it's available in the page builder.
+Blocks (and atoms usable as page-builder blocks) are registered in one place: `src/blocks/block-manifest.ts`. Each entry has a `slug`, a `config` (the `Block` field config), and a `component` — the component must be `React.lazy`-imported (never statically imported), since a static import would pull the block's `style.module.scss` into `BlockHolder/config.ts`'s import chain, which Payload's config loader can't resolve. `nestableBlocks` (derived from the manifest) is spread into `BlockHolder`'s `atoms`/`blocks` arrays automatically, and `blockComponents` in `block-registry.ts` is built from the manifest too — so adding a block/atom to the manifest is enough to make it available everywhere and rendered via `BlockRenderer.tsx`. The one exception is `blockHolder0/1/2` and `section`, which stay hand-wired in `block-registry.ts` and `BlockHolder/config.ts`/`Section/config.ts` — putting them in the manifest would create a circular import (`BlockHolder/config.ts` is recursive and `Section/config.ts` imports it, while the manifest is itself imported by `BlockHolder/config.ts`).
 
 ### Shared Field Groups (`src/fields/`)
 

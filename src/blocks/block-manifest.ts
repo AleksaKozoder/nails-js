@@ -5,6 +5,7 @@ import { MenuBlock } from '@/components/atoms/Menu/config'
 import { HeadingBlock } from '@/components/atoms/Heading/config'
 import { RichTextBlock } from '@/components/atoms/RichText/config'
 import { ImageBlock } from '@/components/atoms/Image/config'
+import { VideoBlock } from '@/components/atoms/Video/config'
 import { ButtonBlock } from '@/components/atoms/Button/config'
 import { TabsBlock as TabsBlockConfig } from '@/blocks/Tabs/config'
 import { SliderBlock } from '@/blocks/Slider/config'
@@ -34,6 +35,9 @@ const RichText = React.lazy(() =>
 )
 const Image = React.lazy(() =>
   import('@/components/atoms/Image').then((m) => ({ default: m.Image })),
+)
+const Video = React.lazy(() =>
+  import('@/components/atoms/Video').then((m) => ({ default: m.Video })),
 )
 const Button = React.lazy(() =>
   import('@/components/atoms/Button').then((m) => ({ default: m.Button })),
@@ -86,6 +90,7 @@ export const blockManifest: BlockManifestEntry[] = [
   { slug: 'heading', config: HeadingBlock, component: Heading },
   { slug: 'richText', config: RichTextBlock, component: RichText },
   { slug: 'image', config: ImageBlock, component: Image },
+  { slug: 'video', config: VideoBlock, component: Video },
   { slug: 'button', config: ButtonBlock, component: Button },
   { slug: 'tabs', config: TabsBlockConfig, component: TabsBlockComponent },
   { slug: 'slider', config: SliderBlock, component: Slider },
