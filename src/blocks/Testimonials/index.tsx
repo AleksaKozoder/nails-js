@@ -2,6 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 import type { TestimonialsBlockProps } from '@/payload-types'
 import { getSpacingClasses } from '@/utils/getSpacingClasses'
+import { getBackgroundClasses } from '@/utils/getBackgroundClasses'
+import { BackgroundLayer } from '@/components/atoms/BackgroundLayer'
 import s from './style.module.scss'
 
 export const Testimonials: React.FC<TestimonialsBlockProps> = ({
@@ -15,15 +17,9 @@ export const Testimonials: React.FC<TestimonialsBlockProps> = ({
 }) => {
   if (!items?.length) return null
 
-  const backgroundType = background?.type
-  const bgImageMedia = typeof background?.image === 'object' ? background.image : undefined
-  const overlay = background?.overlay
-  const showOverlay = overlay?.enabled && overlay?.color
-
   const classes = [
     s.testimonials,
-    backgroundType === 'color' && s[`testimonials--color-${background?.colorTheme}`],
-    backgroundType === 'gradient' && s[`testimonials--gradient-${background?.gradientTheme}`],
+    ...getBackgroundClasses(background, s, 'testimonials'),
     ...getSpacingClasses(spacing),
     customClassName,
   ]
@@ -41,19 +37,11 @@ export const Testimonials: React.FC<TestimonialsBlockProps> = ({
 
   return (
     <div className={classes} id={htmlId || undefined}>
-      {backgroundType === 'image' && bgImageMedia?.url && (
-        <Image src={bgImageMedia.url} alt="" fill className={s['testimonials__bgImage']} />
-      )}
-
-      {showOverlay && (
-        <div
-          className={s.overlay}
-          style={{
-            backgroundColor: `var(--color-${overlay.color})`,
-            opacity: (overlay.opacity ?? 50) / 100,
-          }}
-        />
-      )}
+      <BackgroundLayer
+        background={background}
+        imageClassName={s['testimonials__bgImage']}
+        overlayClassName={s.overlay}
+      />
 
       <div className={wrapperClasses}>
         {items.map((item, index) => {

@@ -1,7 +1,8 @@
 import React from 'react'
-import Image from 'next/image'
 import type { StatsBlockProps } from '@/payload-types'
 import { getSpacingClasses } from '@/utils/getSpacingClasses'
+import { getBackgroundClasses } from '@/utils/getBackgroundClasses'
+import { BackgroundLayer } from '@/components/atoms/BackgroundLayer'
 import s from './style.module.scss'
 
 export const Stats: React.FC<StatsBlockProps> = ({
@@ -14,15 +15,9 @@ export const Stats: React.FC<StatsBlockProps> = ({
 }) => {
   if (!items?.length) return null
 
-  const backgroundType = background?.type
-  const bgImageMedia = typeof background?.image === 'object' ? background.image : undefined
-  const overlay = background?.overlay
-  const showOverlay = overlay?.enabled && overlay?.color
-
   const classes = [
     s.stats,
-    backgroundType === 'color' && s[`stats--color-${background?.colorTheme}`],
-    backgroundType === 'gradient' && s[`stats--gradient-${background?.gradientTheme}`],
+    ...getBackgroundClasses(background, s, 'stats'),
     ...getSpacingClasses(spacing),
     customClassName,
   ]
@@ -35,19 +30,11 @@ export const Stats: React.FC<StatsBlockProps> = ({
 
   return (
     <div className={classes} id={htmlId || undefined}>
-      {backgroundType === 'image' && bgImageMedia?.url && (
-        <Image src={bgImageMedia.url} alt="" fill className={s['stats__bgImage']} />
-      )}
-
-      {showOverlay && (
-        <div
-          className={s.overlay}
-          style={{
-            backgroundColor: `var(--color-${overlay.color})`,
-            opacity: (overlay.opacity ?? 50) / 100,
-          }}
-        />
-      )}
+      <BackgroundLayer
+        background={background}
+        imageClassName={s['stats__bgImage']}
+        overlayClassName={s.overlay}
+      />
 
       <div className={wrapperClasses}>
         {items.map((item, index) => (

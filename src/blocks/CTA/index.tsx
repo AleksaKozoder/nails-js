@@ -1,8 +1,9 @@
 import React from 'react'
-import Image from 'next/image'
 import { RichText as PayloadRichText } from '@payloadcms/richtext-lexical/react'
 import type { CTABlockProps } from '@/payload-types'
 import { getSpacingClasses } from '@/utils/getSpacingClasses'
+import { getBackgroundClasses } from '@/utils/getBackgroundClasses'
+import { BackgroundLayer } from '@/components/atoms/BackgroundLayer'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
 import s from './style.module.scss'
 
@@ -16,16 +17,10 @@ export const CTA: React.FC<CTABlockProps> = ({
   spacing,
   background,
 }) => {
-  const backgroundType = background?.type
-  const bgImageMedia = typeof background?.image === 'object' ? background.image : undefined
-  const overlay = background?.overlay
-  const showOverlay = overlay?.enabled && overlay?.color
-
   const classes = [
     s.cta,
     s[`cta--${alignment}`],
-    backgroundType === 'color' && s[`cta--color-${background?.colorTheme}`],
-    backgroundType === 'gradient' && s[`cta--gradient-${background?.gradientTheme}`],
+    ...getBackgroundClasses(background, s, 'cta'),
     ...getSpacingClasses(spacing),
     customClassName,
   ]
@@ -34,19 +29,11 @@ export const CTA: React.FC<CTABlockProps> = ({
 
   return (
     <div className={classes} id={htmlId || undefined}>
-      {backgroundType === 'image' && bgImageMedia?.url && (
-        <Image src={bgImageMedia.url} alt="" fill className={s['cta__bgImage']} />
-      )}
-
-      {showOverlay && (
-        <div
-          className={s.overlay}
-          style={{
-            backgroundColor: `var(--color-${overlay.color})`,
-            opacity: (overlay.opacity ?? 50) / 100,
-          }}
-        />
-      )}
+      <BackgroundLayer
+        background={background}
+        imageClassName={s['cta__bgImage']}
+        overlayClassName={s.overlay}
+      />
 
       <div className={s.cta__inner}>
         {title && <h2 className={s.cta__title}>{title}</h2>}

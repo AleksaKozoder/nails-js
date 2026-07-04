@@ -3,6 +3,8 @@ import Image from 'next/image'
 import type { TeamBlockProps } from '@/payload-types'
 import { Icon, type IconName } from '@/components/atoms/Icon'
 import { getSpacingClasses } from '@/utils/getSpacingClasses'
+import { getBackgroundClasses } from '@/utils/getBackgroundClasses'
+import { BackgroundLayer } from '@/components/atoms/BackgroundLayer'
 import s from './style.module.scss'
 
 export const Team: React.FC<TeamBlockProps> = ({
@@ -15,15 +17,9 @@ export const Team: React.FC<TeamBlockProps> = ({
 }) => {
   if (!items?.length) return null
 
-  const backgroundType = background?.type
-  const bgImageMedia = typeof background?.image === 'object' ? background.image : undefined
-  const overlay = background?.overlay
-  const showOverlay = overlay?.enabled && overlay?.color
-
   const classes = [
     s.team,
-    backgroundType === 'color' && s[`team--color-${background?.colorTheme}`],
-    backgroundType === 'gradient' && s[`team--gradient-${background?.gradientTheme}`],
+    ...getBackgroundClasses(background, s, 'team'),
     ...getSpacingClasses(spacing),
     customClassName,
   ]
@@ -34,19 +30,11 @@ export const Team: React.FC<TeamBlockProps> = ({
 
   return (
     <div className={classes} id={htmlId || undefined}>
-      {backgroundType === 'image' && bgImageMedia?.url && (
-        <Image src={bgImageMedia.url} alt="" fill className={s['team__bgImage']} />
-      )}
-
-      {showOverlay && (
-        <div
-          className={s.overlay}
-          style={{
-            backgroundColor: `var(--color-${overlay.color})`,
-            opacity: (overlay.opacity ?? 50) / 100,
-          }}
-        />
-      )}
+      <BackgroundLayer
+        background={background}
+        imageClassName={s['team__bgImage']}
+        overlayClassName={s.overlay}
+      />
 
       <div className={wrapperClasses}>
         {items.map((item, index) => {
