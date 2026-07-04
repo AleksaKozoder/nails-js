@@ -1,0 +1,40 @@
+@use '@/scss/mixins' as mixins;
+@use '@/scss/variables' as vars;
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top-width: 0.1rem;
+  border-top-color: currentColor;
+  color: map-get(vars.$colors, 'bg-gray');
+
+  &--solid {
+    border-top-style: solid;
+  }
+
+  &--dashed {
+    border-top-style: dashed;
+  }
+
+  &--dotted {
+    border-top-style: dotted;
+  }
+
+  &--thin {
+    border-top-width: 0.1rem;
+  }
+
+  &--medium {
+    border-top-width: 0.2rem;
+  }
+
+  &--thick {
+    border-top-width: 0.4rem;
+  }
+
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      color: $value;
+    }
+  }
+}

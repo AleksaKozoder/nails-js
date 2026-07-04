@@ -15,6 +15,7 @@ import { StatsBlock } from '@/blocks/Stats/config'
 import { TeamBlock } from '@/blocks/Team/config'
 import { FormBlock as FormBlockConfig } from '@/blocks/FormBlock/config'
 import { PostsBlock as PostsBlockConfig } from '@/blocks/PostsBlock/config'
+import { DividerBlock } from '@/blocks/Divider/config'
 
 /**
  * Component references are dynamically imported (never statically imported)
@@ -56,6 +57,7 @@ const FormBlockComponent = React.lazy(() =>
 const PostsBlockComponent = React.lazy(() =>
   import('@/blocks/PostsBlock').then((m) => ({ default: m.PostsBlock })),
 )
+const Divider = React.lazy(() => import('@/blocks/Divider').then((m) => ({ default: m.Divider })))
 
 export interface BlockManifestEntry {
   slug: string
@@ -94,4 +96,5 @@ export const blockManifest: BlockManifestEntry[] = [
   { slug: 'team', config: TeamBlock, component: Team },
   { slug: 'formBlock', config: FormBlockConfig, component: FormBlockComponent },
   { slug: 'postsBlock', config: PostsBlockConfig, component: PostsBlockComponent, nestable: false },
+  { slug: 'divider', config: DividerBlock, component: Divider },
 ]

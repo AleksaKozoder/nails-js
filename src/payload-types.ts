@@ -232,6 +232,7 @@ export interface BlockHolderLevel0BlockProps {
         | StatsBlockProps
         | TeamBlockProps
         | FormBlockProps
+        | DividerBlockProps
       )[]
     | null;
   /**
@@ -272,6 +273,7 @@ export interface BlockHolderLevel1BlockProps {
         | StatsBlockProps
         | TeamBlockProps
         | FormBlockProps
+        | DividerBlockProps
       )[]
     | null;
   /**
@@ -311,6 +313,7 @@ export interface BlockHolderLevel2BlockProps {
         | StatsBlockProps
         | TeamBlockProps
         | FormBlockProps
+        | DividerBlockProps
       )[]
     | null;
   /**
@@ -1057,6 +1060,32 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DividerBlockProps".
+ */
+export interface DividerBlockProps {
+  lineStyle?: ('solid' | 'dashed' | 'dotted') | null;
+  thickness?: ('thin' | 'medium' | 'thick') | null;
+  colorTheme?: string | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'divider';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "PostsBlockProps".
  */
 export interface PostsBlockProps {
@@ -1369,6 +1398,7 @@ export interface BlockHolderLevel0BlockPropsSelect<T extends boolean = true> {
         stats?: T | StatsBlockPropsSelect<T>;
         team?: T | TeamBlockPropsSelect<T>;
         formBlock?: T | FormBlockPropsSelect<T>;
+        divider?: T | DividerBlockPropsSelect<T>;
       };
   htmlId?: T;
   customClassName?: T;
@@ -1402,6 +1432,7 @@ export interface BlockHolderLevel1BlockPropsSelect<T extends boolean = true> {
         stats?: T | StatsBlockPropsSelect<T>;
         team?: T | TeamBlockPropsSelect<T>;
         formBlock?: T | FormBlockPropsSelect<T>;
+        divider?: T | DividerBlockPropsSelect<T>;
       };
   htmlId?: T;
   customClassName?: T;
@@ -1434,6 +1465,7 @@ export interface BlockHolderLevel2BlockPropsSelect<T extends boolean = true> {
         stats?: T | StatsBlockPropsSelect<T>;
         team?: T | TeamBlockPropsSelect<T>;
         formBlock?: T | FormBlockPropsSelect<T>;
+        divider?: T | DividerBlockPropsSelect<T>;
       };
   htmlId?: T;
   customClassName?: T;
@@ -1878,6 +1910,27 @@ export interface FormBlockPropsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DividerBlockProps_select".
+ */
+export interface DividerBlockPropsSelect<T extends boolean = true> {
+  lineStyle?: T;
+  thickness?: T;
+  colorTheme?: T;
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "PostsBlockProps_select".
  */
 export interface PostsBlockPropsSelect<T extends boolean = true> {
@@ -2214,6 +2267,7 @@ export interface Header {
         | StatsBlockProps
         | TeamBlockProps
         | FormBlockProps
+        | DividerBlockProps
       )[]
     | null;
   variant?: ('default' | 'transparent' | 'minimal') | null;
@@ -2322,6 +2376,7 @@ export interface HeaderSelect<T extends boolean = true> {
         stats?: T | StatsBlockPropsSelect<T>;
         team?: T | TeamBlockPropsSelect<T>;
         formBlock?: T | FormBlockPropsSelect<T>;
+        divider?: T | DividerBlockPropsSelect<T>;
       };
   variant?: T;
   sticky?: T;
