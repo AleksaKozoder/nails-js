@@ -214,6 +214,59 @@ const ATOMS = [
   },
 ] as const
 
+// ============================================================
+// COMPOSITIONS — image + heading/text/button split, image on
+// either side. There's no dedicated block for this yet; it's an
+// atoms composition, laid out with a plain flex wrapper here since
+// BlockHolder has no per-child width control of its own.
+// ============================================================
+const mediaSplit = (imageSeed: string, imageOnRight: boolean) => (
+  <div
+    className="container"
+    style={{
+      display: 'flex',
+      flexDirection: imageOnRight ? 'row-reverse' : 'row',
+      gap: '3rem',
+      alignItems: 'center',
+    }}
+  >
+    <div style={{ flex: '1 1 0' }}>
+      <ImageAtom
+        blockType="image"
+        image={media(imageSeed, 800, 600)}
+        aspectRatio="4/3"
+        linkType="none"
+      />
+    </div>
+    <div style={{ flex: '1 1 0', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+      <Heading blockType="heading" title="Feature title" titleTag="h2" variant="default" />
+      <RichTextAtom blockType="richText" text={richText(LOREM)} variant="default" />
+      <div>
+        <Button
+          blockType="button"
+          text="Learn more"
+          linkType="external"
+          externalUrl="#"
+          variant="primary"
+        />
+      </div>
+    </div>
+  </div>
+)
+
+const COMPOSITIONS = [
+  {
+    slug: 'composition-image-left',
+    name: 'Image left',
+    render: () => mediaSplit('composition-left', false),
+  },
+  {
+    slug: 'composition-image-right',
+    name: 'Image right',
+    render: () => mediaSplit('composition-right', true),
+  },
+] as const
+
 // ---------- Tabs ----------
 const tabsProps: TabsBlockProps = {
   blockType: 'tabs',
@@ -491,6 +544,7 @@ const GROUPS = [
     items: [{ slug: 'header', name: 'Header', render: () => <Header {...headerProps} /> }],
   },
   { key: 'atoms', label: 'Atoms', items: ATOMS },
+  { key: 'compositions', label: 'Compositions', items: COMPOSITIONS },
   { key: 'blocks', label: 'Blocks', items: BLOCKS },
 ] as const
 
@@ -518,7 +572,7 @@ export default function BlocksPreviewPage() {
           font-size: 1.2rem;
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          width: 7rem;
+          width: 11rem;
           flex-shrink: 0;
         }
         .blocks-preview-nav a {
@@ -541,7 +595,7 @@ export default function BlocksPreviewPage() {
         }
         .blocks-preview-section {
           padding: 3rem 0;
-          scroll-margin-top: 4rem;
+          scroll-margin-top: 16rem;
         }
         .blocks-preview-section:nth-of-type(odd) {
           background: #eef0f3;
