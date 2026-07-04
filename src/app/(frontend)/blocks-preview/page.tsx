@@ -3,6 +3,7 @@ import type {
   Category,
   Form,
   Header as HeaderGlobal,
+  Footer as FooterGlobal,
   Media,
   Menu as MenuDoc,
   Post,
@@ -19,6 +20,7 @@ import type {
 import type { PostsBlockProps } from '@/blocks/PostsBlock'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
 import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
 import { Button } from '@/components/atoms/Button'
 import { Heading } from '@/components/atoms/Heading'
 import { Icon, type IconName } from '@/components/atoms/Icon'
@@ -47,6 +49,9 @@ const media = (seed: string, width = 800, height = 600, alt = 'Placeholder image
   createdAt: '2026-01-01T00:00:00.000Z',
 })
 
+const LOREM =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti nunc sit amet.'
+
 const richText = (text: string): NonNullable<CTABlockProps['text']> => ({
   root: {
     type: 'root',
@@ -67,8 +72,91 @@ const richText = (text: string): NonNullable<CTABlockProps['text']> => ({
   },
 })
 
-const LOREM =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti nunc sit amet.'
+const listItem = (text: string, value: number) => ({
+  type: 'listitem',
+  direction: 'ltr' as const,
+  format: '',
+  indent: 0,
+  version: 1,
+  value,
+  children: [{ type: 'text', text, version: 1 }],
+})
+
+// Richer demo doc for the RichText atom: paragraph with an inline link, plus
+// a bulleted and a numbered list, so the atom's list/link styling shows up.
+const richTextWithListsAndLink = (): NonNullable<CTABlockProps['text']> => ({
+  root: {
+    type: 'root',
+    direction: 'ltr',
+    format: '',
+    indent: 0,
+    version: 1,
+    children: [
+      {
+        type: 'paragraph',
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+        children: [
+          { type: 'text', text: `${LOREM} See the `, version: 1 },
+          {
+            type: 'link',
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 2,
+            fields: { url: '#', newTab: false, linkType: 'custom' },
+            children: [{ type: 'text', text: 'documentation', version: 1 }],
+          },
+          { type: 'text', text: ' for more details.', version: 1 },
+        ],
+      },
+      {
+        type: 'list',
+        tag: 'ul',
+        listType: 'bullet',
+        start: 1,
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+        children: [
+          listItem('First bullet point', 1),
+          listItem('Second bullet point', 2),
+          listItem('Third bullet point', 3),
+        ],
+      },
+      {
+        type: 'list',
+        tag: 'ol',
+        listType: 'number',
+        start: 1,
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+        children: [listItem('Step one', 1), listItem('Step two', 2), listItem('Step three', 3)],
+      },
+    ],
+  },
+})
+
+// Every preview below is rendered through the real Section block (boxed
+// container) so it looks like it does composed on an actual page, rather
+// than as a bare component floating on the page background.
+type AnyBlockEntry = { blockType: string }
+
+const boxed = (block: AnyBlockEntry): SectionBlockProps => ({
+  blockType: 'section',
+  settings: {
+    viewport: 'auto',
+    widthType: 'boxed',
+    containerType: 'container',
+    background: { type: 'blank' },
+  },
+  blocks: [block] as unknown as SectionBlockProps['blocks'],
+})
 
 // ============================================================
 // HEADER
@@ -109,14 +197,70 @@ const headerBlockHolder = {
 
 const headerProps: Pick<
   HeaderGlobal,
-  'blocks' | 'variant' | 'sticky' | 'htmlId' | 'containerType' | 'paddingTop' | 'paddingBottom'
+  'blocks' | 'variant' | 'sticky' | 'htmlId' | 'paddingTop' | 'paddingBottom'
 > = {
-  blocks: [headerBlockHolder] as unknown as HeaderGlobal['blocks'],
+  blocks: [boxed(headerBlockHolder)] as unknown as HeaderGlobal['blocks'],
   variant: 'default',
   sticky: 'none',
-  containerType: 'container',
   paddingTop: 8,
   paddingBottom: 8,
+}
+
+// ============================================================
+// FOOTER
+// ============================================================
+// Two rows demonstrating why Footer/Header take Section blocks: the top
+// row needs a full-width background that breaks out of the boxed content
+// column, the bottom row is a plain boxed row.
+const footerCtaRow = {
+  blockType: 'blockHolder0',
+  layout: 'flex',
+  flexVariant: 'row',
+  gap: 'md',
+  verticalAlignment: 'middle',
+  atoms: [
+    { blockType: 'heading', title: 'Stay in touch', titleTag: 'h3', variant: 'default' },
+    {
+      blockType: 'button',
+      text: 'Subscribe',
+      linkType: 'external',
+      externalUrl: '#',
+      variant: 'primary',
+    },
+  ],
+}
+
+const footerCtaSection = {
+  blockType: 'section',
+  settings: {
+    viewport: 'auto',
+    widthType: 'boxed',
+    containerType: 'container',
+    background: { type: 'gradient', gradientTheme: 'cool' },
+  },
+  blocks: [footerCtaRow],
+}
+
+const footerCopyrightRow = {
+  blockType: 'blockHolder0',
+  layout: 'block',
+  atoms: [
+    {
+      blockType: 'richText',
+      text: richText('© 2026 Boilerplate Inc. All rights reserved.'),
+      variant: 'default',
+    },
+  ],
+}
+
+const footerProps: Pick<
+  FooterGlobal,
+  'blocks' | 'variant' | 'htmlId' | 'paddingTop' | 'paddingBottom'
+> = {
+  blocks: [footerCtaSection, boxed(footerCopyrightRow)] as unknown as FooterGlobal['blocks'],
+  variant: 'default',
+  paddingTop: 16,
+  paddingBottom: 16,
 }
 
 // ============================================================
@@ -208,7 +352,7 @@ const ATOMS = [
     name: 'RichText',
     render: () => (
       <div className="container">
-        <RichTextAtom blockType="richText" text={richText(LOREM)} variant="default" />
+        <RichTextAtom blockType="richText" text={richTextWithListsAndLink()} variant="default" />
       </div>
     ),
   },
@@ -491,22 +635,6 @@ const sectionProps: SectionBlockProps = {
   blocks: [{ ...postsBlockProps, title: 'Latest Posts (nested in Section)' }],
 }
 
-// Every preview below is rendered through the real Section block (boxed
-// container) so it looks like it does composed on an actual page, rather
-// than as a bare component floating on the page background.
-type AnyBlockEntry = { blockType: string }
-
-const boxed = (block: AnyBlockEntry): SectionBlockProps => ({
-  blockType: 'section',
-  settings: {
-    viewport: 'auto',
-    widthType: 'boxed',
-    containerType: 'container',
-    background: { type: 'blank' },
-  },
-  blocks: [block] as unknown as SectionBlockProps['blocks'],
-})
-
 const BLOCKS = [
   { slug: 'tabs', name: 'Tabs', render: () => <BlockRenderer blocks={[boxed(tabsProps)]} /> },
   {
@@ -536,7 +664,6 @@ const BLOCKS = [
   { slug: 'section', name: 'Section', render: () => <BlockRenderer blocks={[sectionProps]} /> },
 ] as const
 
-// Footer isn't built yet — add a group here once it exists.
 const GROUPS = [
   {
     key: 'header',
@@ -546,6 +673,11 @@ const GROUPS = [
   { key: 'atoms', label: 'Atoms', items: ATOMS },
   { key: 'compositions', label: 'Compositions', items: COMPOSITIONS },
   { key: 'blocks', label: 'Blocks', items: BLOCKS },
+  {
+    key: 'footer',
+    label: 'Footer',
+    items: [{ slug: 'footer', name: 'Footer', render: () => <Footer {...footerProps} /> }],
+  },
 ] as const
 
 export default function BlocksPreviewPage() {
@@ -595,7 +727,7 @@ export default function BlocksPreviewPage() {
         }
         .blocks-preview-section {
           padding: 3rem 0;
-          scroll-margin-top: 16rem;
+          scroll-margin-top: 21rem;
         }
         .blocks-preview-section:nth-of-type(odd) {
           background: #eef0f3;
