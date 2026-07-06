@@ -1,0 +1,23 @@
+// _tokens.scss
+//
+// Documentation only — describes how SCSS variables in _variables.scss
+// already bridge to the CSS custom properties synced from the Payload
+// "Colors" global (see src/utils/getColorsCss.ts and the root layout).
+// Nothing here is imported; no existing SCSS variable has been migrated.
+//
+// Pattern used in _variables.scss:
+//
+//   $colors: (
+//     'primary': var(--color-primary, #01696f),
+//     //           ^ token name set by Payload  ^ hardcoded fallback,
+//     //             matches Colors global's `defaultValue` seed
+//   );
+//
+// To add a new Payload-driven color:
+//   1. Add a row to the Colors global in the admin (or its `defaultValue`
+//      seed in src/globals/Colors.ts) with a slug-safe `value` (e.g. "accent").
+//   2. Add the matching entry to $colors in _variables.scss, wrapped in
+//      var(--color-accent, <hardcoded fallback>) so the site still renders
+//      before the global is seeded or if the row is later removed.
+//   3. Do not rename existing $colors keys — the fallback value is the
+//      contract that keeps blocks rendering correctly with an empty global.

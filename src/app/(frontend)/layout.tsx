@@ -4,18 +4,13 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { getColorsCss } from '@/utils/getColorsCss'
 import type {
   SiteSetting,
   Header as PayloadHeader,
   Footer as PayloadFooter,
   Media,
 } from '@/payload-types'
-
-async function getColors() {
-  const payload = await getPayload({ config })
-  const data = await payload.findGlobal({ slug: 'colors' })
-  return data.colors || []
-}
 
 async function getSiteSettings(): Promise<SiteSetting> {
   const payload = await getPayload({ config })
@@ -40,14 +35,12 @@ export const metadata = {
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
-  const [colors, siteSettings, header, footer] = await Promise.all([
-    getColors(),
+  const [colorsCss, siteSettings, header, footer] = await Promise.all([
+    getColorsCss(),
     getSiteSettings(),
     getHeader(),
     getFooter(),
   ])
-
-  const cssVariables = colors.map(({ value, hex }) => `--color-${value}: ${hex};`).join('\n')
 
   const faviconUrl =
     siteSettings.favicon && typeof siteSettings.favicon === 'object'
@@ -57,7 +50,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {cssVariables && <style>{`:root { ${cssVariables} }`}</style>}
+        {colorsCss && <style>{colorsCss}</style>}
         {faviconUrl && <link rel="icon" href={faviconUrl} />}
         <link
           rel="stylesheet"
