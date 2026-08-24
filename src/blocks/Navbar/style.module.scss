@@ -1,0 +1,181 @@
+@use '@/scss/variables' as vars;
+
+$breakpoint: 53.75rem; // 860px — matches reference nav collapse point
+
+.navbar {
+  position: relative;
+  width: 100%;
+}
+
+.navbar__inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.4rem clamp(2rem, 5vw, 4.8rem);
+}
+
+// ─── Brand ───────────────────────────────────────────────────
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar__logo {
+  width: 4.6rem;
+  height: 4.6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0.4rem 1.4rem rgba(168, 92, 104, 0.25);
+}
+
+.navbar__brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.navbar__brandName {
+  font-family: vars.$font-script;
+  font-size: 2.2rem;
+  color: vars.$color-ink;
+}
+
+.navbar__brandSub {
+  font-size: 0.95rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: vars.$color-rose-deep;
+  margin-top: 0.1rem;
+}
+
+// ─── Desktop links ───────────────────────────────────────────
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+
+  a {
+    font-family: vars.$font-body;
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
+    color: vars.$color-ink-soft;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: vars.$color-rose-deep;
+    }
+  }
+
+  @media (max-width: $breakpoint) {
+    display: none;
+  }
+}
+
+// ─── Right side (CTA + burger) ──────────────────────────────
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex-shrink: 0;
+}
+
+.navbar__cta {
+  display: none;
+
+  @media (min-width: $breakpoint) {
+    display: inline-flex;
+  }
+}
+
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem;
+
+  span {
+    width: 2.2rem;
+    height: 0.16rem;
+    background: vars.$color-ink;
+    transition:
+      transform 0.3s,
+      opacity 0.3s;
+  }
+
+  &--open {
+    span:nth-child(1) {
+      transform: translateY(0.66rem) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-0.66rem) rotate(-45deg);
+    }
+  }
+
+  @media (max-width: $breakpoint) {
+    display: flex;
+  }
+}
+
+// ─── Mobile full-screen panel ────────────────────────────────
+
+.navbar__panel {
+  position: fixed;
+  inset: 0;
+  // Below the header (250, see Header/style.module.scss) so the header — including the
+  // burger/close toggle — stays visible and clickable on top of the panel, but above
+  // MobileCta (150, see MobileCta/style.module.scss) so that bar is hidden while open.
+  z-index: 200;
+  background: vars.$color-blush-soft;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  transform: translateY(-1.2rem);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+
+  a {
+    font-family: vars.$font-heading;
+    font-size: 2.4rem;
+    color: vars.$color-ink;
+    text-decoration: none;
+  }
+
+  &--open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  @media (min-width: $breakpoint) {
+    display: none;
+  }
+}
+
+.navbar__panelCta {
+  margin-top: 1rem;
+}

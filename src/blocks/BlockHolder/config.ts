@@ -18,6 +18,7 @@ const flexOptions = [
   { label: 'Row Wrap', value: 'row-wrap' },
   { label: 'Column', value: 'column' },
   { label: 'Column Reverse', value: 'column-reverse' },
+  { label: 'Column Center', value: 'column-center' },
 ]
 
 const gridOptions = [

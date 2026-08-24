@@ -41,6 +41,17 @@ export const Footer: GlobalConfig = {
               ],
             },
             {
+              name: 'colorTheme',
+              type: 'text',
+              label: 'Background Color',
+              admin: {
+                description: 'Footer background color. Leave empty for a transparent background.',
+                components: {
+                  Field: '/components/admin/ColorSelectField',
+                },
+              },
+            },
+            {
               type: 'row',
               fields: [
                 {

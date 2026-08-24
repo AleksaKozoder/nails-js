@@ -5,6 +5,7 @@
   font-size: 1.6rem;
   line-height: 1.7;
   color: inherit;
+  width: 100%;
 
   // Variants
   &--center {
@@ -61,13 +62,13 @@
 
   // Links
   a {
-    color: vars.$color-primary;
+    color: vars.$color-rose-deep;
     text-decoration: underline;
     text-underline-offset: 3px;
     transition: color 0.2s ease;
 
     &:hover {
-      color: vars.$color-secondary;
+      color: vars.$color-ink;
     }
   }
 
@@ -116,10 +117,10 @@
 
   // Blockquote
   blockquote {
-    border-left: 3px solid vars.$color-primary;
+    border-left: 3px solid vars.$color-rose-deep;
     margin: 2.4rem 0;
     padding: 1.2rem 2rem;
-    background: mixins.color-alpha(vars.$color-primary, 5%);
+    background: mixins.color-alpha(vars.$color-rose-deep, 5%);
     font-style: italic;
     color: mixins.color-alpha(vars.$color-text, 80%);
 
@@ -132,16 +133,16 @@
   code {
     font-family: 'Fira Code', 'Courier New', monospace;
     font-size: 1.4rem;
-    background: mixins.color-alpha(vars.$color-primary, 8%);
-    color: vars.$color-primary;
+    background: mixins.color-alpha(vars.$color-rose-deep, 8%);
+    color: vars.$color-rose-deep;
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
   }
 
   // Code block
   pre {
-    background: mixins.color-alpha(vars.$color-primary, 6%);
-    border: 1px solid mixins.color-alpha(vars.$color-primary, 15%);
+    background: mixins.color-alpha(vars.$color-rose-deep, 6%);
+    border: 1px solid mixins.color-alpha(vars.$color-rose-deep, 15%);
     border-radius: 6px;
     padding: 1.6rem 2rem;
     overflow-x: auto;
@@ -162,7 +163,7 @@
   // Horizontal rule
   hr {
     border: none;
-    border-top: 1px solid mixins.color-alpha(vars.$color-primary, 15%);
+    border-top: 1px solid mixins.color-alpha(vars.$color-rose-deep, 15%);
     margin: 3.2rem 0;
   }
 

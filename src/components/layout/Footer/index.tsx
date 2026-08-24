@@ -5,17 +5,24 @@ import s from './style.module.scss'
 
 type FooterProps = Pick<
   FooterGlobal,
-  'blocks' | 'variant' | 'htmlId' | 'paddingTop' | 'paddingBottom'
+  'blocks' | 'variant' | 'colorTheme' | 'htmlId' | 'paddingTop' | 'paddingBottom'
 >
 
 export const Footer: React.FC<FooterProps> = ({
   blocks,
   variant = 'default',
+  colorTheme,
   htmlId,
   paddingTop = 0,
   paddingBottom = 0,
 }) => {
-  const footerClasses = [s.footer, s[`footer--${variant}`]].filter(Boolean).join(' ')
+  const footerClasses = [
+    s.footer,
+    s[`footer--${variant}`],
+    colorTheme && s[`footer--color-${colorTheme}`],
+  ]
+    .filter(Boolean)
+    .join(' ')
 
   return (
     <footer

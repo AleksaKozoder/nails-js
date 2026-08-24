@@ -7,6 +7,7 @@
   &--horizontal {
     .menu__list {
       flex-direction: row;
+      flex-wrap: wrap;
       align-items: center;
     }
 
@@ -17,9 +18,9 @@
       min-width: 20rem;
       flex-direction: column;
       background: #fff;
-      border: 1px solid mixins.color-alpha(vars.$color-primary, 12%);
+      border: 1px solid mixins.color-alpha(vars.$color-rose-deep, 12%);
       border-radius: 6px;
-      box-shadow: 0 8px 24px mixins.color-alpha(vars.$color-primary, 10%);
+      box-shadow: 0 8px 24px mixins.color-alpha(vars.$color-rose-deep, 10%);
       padding: 0.6rem;
       z-index: 100;
     }
@@ -33,7 +34,7 @@
     .menu__dropdown {
       position: static;
       padding-left: 1.6rem;
-      border-left: 2px solid mixins.color-alpha(vars.$color-primary, 15%);
+      border-left: 2px solid mixins.color-alpha(vars.$color-rose-deep, 15%);
       margin-top: 0.4rem;
     }
   }
@@ -57,10 +58,10 @@
   &--pills {
     .menu__link {
       border-radius: 999px;
-      background: mixins.color-alpha(vars.$color-primary, 6%);
+      background: mixins.color-alpha(vars.$color-rose-deep, 6%);
 
       &:hover {
-        background: mixins.color-alpha(vars.$color-primary, 15%);
+        background: mixins.color-alpha(vars.$color-rose-deep, 15%);
       }
     }
   }
@@ -86,7 +87,7 @@
 .menu__link {
   display: block;
   padding: 0.8rem 1.2rem;
-  color: vars.$color-primary;
+  color: vars.$color-rose-deep;
   text-decoration: none;
   font-weight: 500;
   border-radius: 4px;
@@ -96,8 +97,8 @@
   white-space: nowrap;
 
   &:hover {
-    background: mixins.color-alpha(vars.$color-primary, 8%);
-    color: vars.$color-secondary;
+    background: mixins.color-alpha(vars.$color-rose-deep, 8%);
+    color: vars.$color-ink;
   }
 }
 
@@ -109,13 +110,13 @@
   height: 2.8rem;
   padding: 0;
   border-radius: 4px;
-  color: vars.$color-primary;
+  color: vars.$color-rose-deep;
   transition:
     background 0.2s ease,
     transform 0.2s ease;
 
   &:hover {
-    background: mixins.color-alpha(vars.$color-primary, 8%);
+    background: mixins.color-alpha(vars.$color-rose-deep, 8%);
   }
 }
 

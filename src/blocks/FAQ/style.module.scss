@@ -1,0 +1,179 @@
+@use '@/scss/variables' as vars;
+
+.faq {
+  max-width: 1160px;
+  margin: 0 auto;
+  position: relative;
+  padding: clamp(6.4rem, 9vw, 11rem) 0;
+
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      background-color: $value;
+    }
+  }
+
+  @each $name, $value in vars.$gradients {
+    &--gradient-#{$name} {
+      background: $value;
+    }
+  }
+}
+
+.faq__bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+// ─── Section head ───────────────────────────────────────────
+
+.faq__head {
+  position: relative;
+  z-index: 1;
+  max-width: 56rem;
+  margin: 0 auto clamp(3.6rem, 5vw, 5.6rem);
+  text-align: center;
+}
+
+.faq__eyebrow {
+  display: inline-block;
+  font-size: 1.25rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: vars.$color-rose-deep;
+  font-weight: 500;
+}
+
+.faq__title {
+  font-family: vars.$font-heading;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: vars.$color-ink;
+  font-size: clamp(2.8rem, 3.6vw, 4.2rem);
+  margin-top: 1rem;
+}
+
+.flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.4rem 0 0;
+
+  &::before,
+  &::after {
+    content: '';
+    width: 3.4rem;
+    height: 1px;
+    background: vars.$color-rose-line;
+  }
+
+  span {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: vars.$color-gold;
+    display: block;
+  }
+}
+
+// ─── List ────────────────────────────────────────────────────
+
+.faq__list {
+  position: relative;
+  z-index: 1;
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+.faq__item {
+  border-bottom: 1px solid vars.$color-rose-line;
+}
+
+.faq__question {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 2.2rem 0.2rem;
+  text-align: left;
+
+  h3 {
+    font-family: vars.$font-heading;
+    font-weight: 500;
+    font-size: 1.7rem;
+    color: vars.$color-ink;
+  }
+}
+
+.faq__chev {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: vars.$color-rose-deep;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &::before {
+    width: 1.4rem;
+    height: 0.16rem;
+  }
+
+  &::after {
+    width: 0.16rem;
+    height: 1.4rem;
+    transition:
+      transform 0.3s,
+      opacity 0.3s;
+  }
+}
+
+.faq__item--open .faq__chev::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+
+.faq__item--open .faq__answer {
+  grid-template-rows: 1fr;
+}
+
+.faq__answerInner {
+  overflow: hidden;
+
+  p {
+    color: vars.$color-ink-soft;
+    font-size: 1.45rem;
+    padding: 0 0.2rem 2.2rem;
+    max-width: 62ch;
+  }
+}

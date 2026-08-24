@@ -7,13 +7,14 @@ import s from './style.module.scss'
 
 type HeaderProps = Pick<
   HeaderGlobal,
-  'blocks' | 'variant' | 'sticky' | 'htmlId' | 'paddingTop' | 'paddingBottom'
+  'blocks' | 'variant' | 'sticky' | 'colorTheme' | 'htmlId' | 'paddingTop' | 'paddingBottom'
 >
 
 export const Header: React.FC<HeaderProps> = ({
   blocks,
   variant = 'default',
   sticky = 'none',
+  colorTheme,
   htmlId,
   paddingTop = 0,
   paddingBottom = 0,
@@ -39,6 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
   const headerClasses = [
     s.header,
     s[`header--${variant}`],
+    colorTheme && s[`header--color-${colorTheme}`],
     sticky !== 'none' && s['header--sticky'],
     hidden && s['header--hidden'],
     scrolled && s['header--scrolled'],

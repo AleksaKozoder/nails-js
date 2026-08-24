@@ -11,6 +11,17 @@ import type {
   AccordionBlockProps,
   SliderBlockProps,
   CTABlockProps,
+  HeroBlockProps,
+  ServicesBlockProps,
+  ProcessBlockProps,
+  GalleryBlockProps,
+  InstagramStripBlockProps,
+  ContactBlockProps,
+  NavbarBlockProps,
+  FooterColumnsBlockProps,
+  AboutBlockProps,
+  PricingBlockProps,
+  FAQBlockProps,
   TestimonialsBlockProps,
   StatsBlockProps,
   TeamBlockProps,
@@ -181,6 +192,82 @@ const menuDoc: MenuDoc = {
   ],
   updatedAt: '2026-01-01T00:00:00.000Z',
   createdAt: '2026-01-01T00:00:00.000Z',
+}
+
+const navbarMenuDoc: MenuDoc = {
+  id: nextId(),
+  name: 'Primary Nav',
+  items: [
+    { type: 'external', label: 'Radovi', url: '#radovi' },
+    { type: 'external', label: 'Usluge', url: '#usluge' },
+    { type: 'external', label: 'Cenovnik', url: '#cenovnik' },
+    { type: 'external', label: 'Utisci', url: '#utisci' },
+    { type: 'external', label: 'FAQ', url: '#faq' },
+    { type: 'external', label: 'Kontakt', url: '#kontakt' },
+  ],
+  updatedAt: '2026-01-01T00:00:00.000Z',
+  createdAt: '2026-01-01T00:00:00.000Z',
+}
+
+const navbarProps: NavbarBlockProps = {
+  blockType: 'navbar',
+  logo: media('logo', 92, 92, 'Jovana Simović'),
+  brandName: 'Jovana Simović',
+  brandSub: 'NAILS · KRAGUJEVAC',
+  menu: navbarMenuDoc,
+  cta: [
+    {
+      blockType: 'button',
+      text: 'Zakaži termin',
+      linkType: 'external',
+      externalUrl: 'https://instagram.com/nails.js_',
+      newTab: true,
+      variant: 'primary',
+    },
+  ],
+}
+
+const footerColumnsProps: FooterColumnsBlockProps = {
+  blockType: 'footerColumns',
+  logo: media('logo', 80, 80, 'Jovana Simović'),
+  brandName: 'Jovana Simović',
+  brandSub: 'NAILS · KRAGUJEVAC',
+  description:
+    'Nail artist iz Kragujevca — izlivanje, ojačanje, korekcije i ručno rađen nail art po meri.',
+  social: [
+    { platform: 'instagram', url: 'https://instagram.com/nails.js_' },
+    { platform: 'link', url: 'tel:+381616878225' },
+  ],
+  columns: [
+    {
+      heading: 'Navigacija',
+      links: [
+        { label: 'Radovi', url: '#radovi' },
+        { label: 'Usluge', url: '#usluge' },
+        { label: 'Cenovnik', url: '#cenovnik' },
+        { label: 'FAQ', url: '#faq' },
+      ],
+    },
+    {
+      heading: 'Usluge',
+      links: [
+        { label: 'Izlivanje', url: '#usluge' },
+        { label: 'Ojačanje', url: '#usluge' },
+        { label: 'Korekcije', url: '#usluge' },
+        { label: 'Nail Art & 3D', url: '#usluge' },
+      ],
+    },
+    {
+      heading: 'Kontakt',
+      links: [
+        { label: '061 687 8225', url: 'tel:+381616878225' },
+        { label: '@nails.js_', url: 'https://instagram.com/nails.js_' },
+        { label: 'Kragujevac', url: '#kontakt' },
+      ],
+    },
+  ],
+  bottomText: '© 2026 Jovana Simović Nails. Sva prava zadržana.',
+  bottomSecondaryText: 'Dizajn koncept',
 }
 
 // BlockHolder isn't part of the block-manifest union type (see block-manifest.ts
@@ -516,6 +603,46 @@ const accordionProps: AccordionBlockProps = {
   ],
 }
 
+// ---------- FAQ ----------
+const faqProps: FAQBlockProps = {
+  blockType: 'faq',
+  eyebrow: 'Pitanja',
+  title: 'Često postavljana pitanja',
+  allowMultiple: true,
+  items: [
+    {
+      question: 'Kako mogu da zakažem termin?',
+      defaultOpen: true,
+      answer:
+        'Zakazivanje ide isključivo putem DM poruke na Instagramu (@nails.js_) ili pozivom na 061 687 8225. Javite se sa željenim datumom, veličinom i idejom za dizajn.',
+    },
+    {
+      question: 'Koliko traje izlivanje noktiju?',
+      answer:
+        'U proseku između 2 i 3 sata, u zavisnosti od dužine, oblika i složenosti dizajna koji ste izabrali.',
+    },
+    {
+      question: 'Koliko često treba raditi korekciju?',
+      answer: 'Preporučeni razmak je 3–4 nedelje, kako bi nokti ostali uredni, ojačani i zdravi.',
+    },
+    {
+      question: 'Da li mogu da donesem sliku inspiracije?',
+      answer:
+        'Naravno! Slike sa Pinteresta ili Instagrama su odličan početak — dizajn se zatim prilagođava obliku i dužini vaših noktiju.',
+    },
+    {
+      question: 'Koje veličine i dužine radite?',
+      answer:
+        'Sve dužine, od S do XXL, prikazane u cenovniku — biramo zajedno ono što najbolje odgovara vašem svakodnevnom ritmu.',
+    },
+    {
+      question: 'Da li izlivanje šteti prirodnom noktu?',
+      answer:
+        'Uz pravilnu aplikaciju i profesionalno skidanje materijala (posebna usluga u cenovniku), izlivanje ne bi trebalo da ošteti nokat. Ne preporučuje se samostalno struganje kod kuće.',
+    },
+  ],
+}
+
 // ---------- Slider ----------
 const sliderProps: SliderBlockProps = {
   blockType: 'slider',
@@ -551,25 +678,315 @@ const ctaProps: CTABlockProps = {
   ],
 }
 
+// ---------- Hero ----------
+const heroProps: HeroBlockProps = {
+  blockType: 'hero',
+  eyebrow: 'Nail Artist · Kragujevac',
+  title: 'Nokti kao mala',
+  highlightedTitle: 'umetnička dela.',
+  description:
+    'Izlivanje, ojačanje i korekcije gel noktiju — precizan rad, čist završni izgled i nail art rađen ručno, po meri svake klijentkinje.',
+  buttons: [
+    {
+      blockType: 'button',
+      text: 'Piši na Instagram DM',
+      linkType: 'external',
+      externalUrl: '#',
+      variant: 'primary',
+    },
+    {
+      blockType: 'button',
+      text: 'Pozovi · 061 687 8225',
+      linkType: 'external',
+      externalUrl: 'tel:+381616878225',
+      variant: 'outline',
+    },
+  ],
+  trustItems: [
+    { label: '📍 Kragujevac' },
+    { label: '✋ 100% ručni rad' },
+    { label: '📸 315+ pratilaca' },
+    { label: '💅 S–XXL veličine' },
+  ],
+  images: [
+    { image: media('hero-1', 600, 800, 'Pastelni nail art') },
+    { image: media('hero-2', 500, 650, 'Nail art sa til efektom') },
+    { image: media('hero-3', 450, 530, 'Crveni french manikir') },
+  ],
+}
+
+// ---------- Services ----------
+const servicesProps: ServicesBlockProps = {
+  blockType: 'services',
+  eyebrow: 'Usluge',
+  title: 'Sve što je noktima potrebno,',
+  titleLine2: 'na jednom mestu.',
+  items: [
+    {
+      hasIcon: true,
+      iconType: 'picker',
+      icon: 'star',
+      title: 'Izlivanje',
+      description:
+        'Gradnja noktiju u gelu od nule — dužina i oblik po želji, uz prirodan i uredan izgled od korena do vrha.',
+      price: 'od 1600 RSD',
+    },
+    {
+      hasIcon: true,
+      iconType: 'picker',
+      icon: 'shoppingBag',
+      title: 'Ojačanje',
+      description:
+        'Zaštita i ojačanje prirodnog nokta gelom — idealno rešenje za slabe, tanke ili lomljive nokte.',
+      price: 'po dogovoru',
+    },
+    {
+      hasIcon: true,
+      iconType: 'picker',
+      icon: 'settings',
+      title: 'Korekcije',
+      description:
+        'Redovno održavanje izlivenih noktiju svake 3–4 nedelje, uz mogućnost promene oblika i dizajna.',
+      price: 'od 1500 RSD',
+    },
+    {
+      hasIcon: true,
+      iconType: 'picker',
+      icon: 'heart',
+      title: 'Nail Art & 3D',
+      description:
+        'Ručno crtanje, 3D detalji, cirkoni i sitni ukrasi — dizajn po inspiraciji ili potpuno originalna ideja.',
+      price: 'od 50 RSD/nokat',
+    },
+  ],
+}
+
+// ---------- Process ----------
+const processProps: ProcessBlockProps = {
+  blockType: 'process',
+  eyebrow: 'Kako izgleda proces',
+  title: 'Od poruke do gotovih noktiju',
+  steps: [
+    {
+      title: 'Pošalji DM',
+      description: 'Javi se sa željenim terminom, dužinom i idejom ili inspirativnom slikom.',
+    },
+    {
+      title: 'Dogovor termina',
+      description: 'Potvrđujemo datum, vreme i sve detalje pre dolaska.',
+    },
+    {
+      title: 'Izrada noktiju',
+      description: 'Opuštena atmosfera, precizan rad i pažnja na svaki detalj dizajna.',
+    },
+    {
+      title: 'Nega i korekcija',
+      description: 'Saveti za održavanje i termin za korekciju za 3–4 nedelje.',
+    },
+  ],
+}
+
+// ---------- Gallery ----------
+const galleryCategories = [
+  { label: 'Francuski', value: 'francuski' },
+  { label: 'Cvetni & 3D', value: 'cvetni' },
+  { label: 'Šareno & Print', value: 'sareno' },
+  { label: 'Minimalistički', value: 'minimal' },
+]
+
+const galleryProps: GalleryBlockProps = {
+  blockType: 'gallery',
+  eyebrow: 'Portfolio',
+  title: 'Radovi sa profila',
+  description:
+    'Deo najnovijih radova — pun portfolio i svakodnevne objave možete pratiti na Instagram profilu @nails.js_.',
+  allLabel: 'Sve',
+  categories: galleryCategories,
+  items: [
+    { image: media('gallery-1', 600, 600, 'Nail art 1'), category: 'cvetni' },
+    { image: media('gallery-2', 600, 600, 'Nail art 2'), category: 'francuski' },
+    { image: media('gallery-3', 600, 600, 'Nail art 3'), category: 'francuski' },
+    { image: media('gallery-4', 600, 600, 'Nail art 4'), category: 'francuski' },
+    { image: media('gallery-5', 600, 600, 'Nail art 5'), category: 'cvetni' },
+    { image: media('gallery-6', 600, 600, 'Nail art 6'), category: 'sareno' },
+    { image: media('gallery-7', 600, 600, 'Nail art 7'), category: 'minimal' },
+    { image: media('gallery-8', 600, 600, 'Nail art 8'), category: 'francuski' },
+    { image: media('gallery-9', 600, 600, 'Nail art 9'), category: 'cvetni' },
+    { image: media('gallery-10', 600, 600, 'Nail art 10'), category: 'francuski' },
+    { image: media('gallery-11', 600, 600, 'Nail art 11'), category: 'sareno' },
+  ],
+}
+
+// ---------- Instagram Strip ----------
+const instagramStripProps: InstagramStripBlockProps = {
+  blockType: 'instagramStrip',
+  eyebrow: 'Instagram',
+  title: 'Zapratite radove uživo',
+  description: 'Poslednjih 5 objava sa profila — sveže, svaki put kad ih klijentkinje pogledaju.',
+  instagramHandle: '@nails.js_',
+  instagramUrl: 'https://instagram.com/nails.js_',
+  // elfsightWidgetId je namerno prazno u ovom mock-u — preview prikazuje
+  // fallback stanje jer nema pravog Elfsight naloga povezanog u ovom prikazu.
+}
+
+// ---------- Contact ----------
+const contactProps: ContactBlockProps = {
+  blockType: 'contact',
+  eyebrow: 'Kontakt',
+  title: 'Zakaži svoj termin',
+  items: [
+    { icon: '📍', label: 'Nail artist', value: 'Kragujevac' },
+    { icon: '📞', label: 'Pozovi ili piši', value: '061 687 8225', url: 'tel:+381616878225' },
+    { icon: '✉️', label: 'Zakazivanje isključivo putem', value: 'DM poruke na Instagramu' },
+    {
+      icon: '@',
+      label: 'Prati radove na profilu',
+      value: '@nails.js_',
+      url: 'https://instagram.com/nails.js_',
+    },
+    { icon: '🕐', label: 'Termini po dogovoru', value: 'Javite se za dostupne termine' },
+  ],
+  card: {
+    scriptText: 'Vidimo se uskoro 🩷',
+    text: 'Pošalji DM sa željenom dužinom, oblikom i terminom koji ti odgovara — javljam se u toku dana.',
+    button: [
+      {
+        blockType: 'button',
+        text: 'Otvori Instagram',
+        linkType: 'external',
+        externalUrl: 'https://instagram.com/nails.js_',
+        newTab: true,
+        variant: 'primary',
+      },
+    ],
+  },
+}
+
+// ---------- About ----------
+const twoParagraphs = (a: string, b: string): NonNullable<CTABlockProps['text']> => ({
+  root: {
+    type: 'root',
+    direction: 'ltr',
+    format: '',
+    indent: 0,
+    version: 1,
+    children: [
+      {
+        type: 'paragraph',
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+        children: [{ type: 'text', text: a, version: 1 }],
+      },
+      {
+        type: 'paragraph',
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+        children: [{ type: 'text', text: b, version: 1 }],
+      },
+    ],
+  },
+})
+
+const aboutProps: AboutBlockProps = {
+  blockType: 'about',
+  image: media('about-photo', 640, 800, 'Detalj rada — Jovana Simović Nails'),
+  eyebrow: 'O umetnici',
+  title: 'Upoznajte Jovanu',
+  text: twoParagraphs(
+    'Jovana Simović je nail umetnica iz Kragujevca, fokusirana na precizno izlivanje i ručno rađen nail art. Svaki set radi individualno — od izbora oblika i dužine do najsitnijeg detalja dizajna — prilagođen ruci i željama svake klijentkinje.',
+    'Rad prati kroz Instagram profil, gde deli nove radove i cenovnik, a zakazivanje ide direktno kroz poruku.',
+  ),
+  facts: [
+    { label: '📍 Kragujevac' },
+    { label: '🎨 Ručni nail art' },
+    { label: '💬 Zakazivanje putem DM' },
+  ],
+  imagePosition: 'left',
+}
+
+// ---------- Pricing ----------
+const pricingProps: PricingBlockProps = {
+  blockType: 'pricing',
+  title: 'Cenovnik',
+  subtitle: '📌 SVE CENE SU IZRAŽENE U DINARIMA',
+  priceBlocks: [
+    {
+      heading: 'IZLIVANJE',
+      smallRows: false,
+      rows: [
+        { label: 'S', value: '1600 RSD' },
+        { label: 'M', value: '1800 RSD' },
+        { label: 'L', value: '1900 RSD' },
+        { label: 'XL', value: '2100 RSD' },
+        { label: 'XXL', value: '2200 RSD' },
+      ],
+    },
+    {
+      heading: 'KOREKCIJA',
+      smallRows: false,
+      rows: [
+        { label: 'S', value: '1500 RSD' },
+        { label: 'M', value: '1700 RSD' },
+        { label: 'L', value: '1800 RSD' },
+        { label: 'XL', value: '2000 RSD' },
+        { label: 'XXL', value: '2100 RSD' },
+      ],
+    },
+    {
+      heading: 'DOPLATE',
+      smallRows: true,
+      rows: [
+        { label: 'Skidanje materijala', value: '400 RSD' },
+        { label: 'Crtanje 3D gelom', value: '200 RSD' },
+        { label: 'Tuđa korekcija', value: '200 RSD' },
+        { label: 'Popravka nokta (van korekcije)', value: '200 RSD' },
+        { label: 'Nail art', value: '50–200 / noktu' },
+      ],
+    },
+  ],
+  note: 'Tačna cena zavisi od dužine, oblika i izabranog dizajna.',
+  button: {
+    text: 'Zakaži svoj termin',
+    linkType: 'external',
+    externalUrl: 'https://instagram.com/nails.js_',
+    newTab: true,
+    variant: 'primary',
+  },
+}
+
 // ---------- Testimonials ----------
 const testimonialsProps: TestimonialsBlockProps = {
   blockType: 'testimonials',
+  eyebrow: 'Utisci',
+  title: 'Šta kažu klijentkinje',
   layout: 'grid',
   columns: 'col-3',
   items: [
     {
-      quote: LOREM,
-      name: 'Jordan Ellis',
-      role: 'CTO, Northwind',
-      avatar: media('avatar-1', 96, 96),
+      quote:
+        'Nokti su mi izdržali čitav mesec bez okrnjenog ruba. Jovana je strpljiva i predloži dizajn koji stvarno odgovara obliku ruke.',
+      rating: 5,
+      name: 'Milica J.',
+      role: 'Kragujevac',
     },
     {
-      quote: LOREM,
-      name: 'Priya Nair',
-      role: 'Founder, Loopwork',
-      avatar: media('avatar-2', 96, 96),
+      quote:
+        'Dolazim redovno na korekcije već duže vreme, uvek izađem oduševljena. Atmosfera je opuštena, a rezultat besprekoran.',
+      rating: 5,
+      name: 'Teodora S.',
+      role: 'Kragujevac',
     },
-    { quote: LOREM, name: 'Marco Diaz', role: 'PM, Buildstack', avatar: media('avatar-3', 96, 96) },
+    {
+      quote:
+        'Poslala sam inspiraciju sa Pinteresta i dobila tačno ono što sam zamislila, čak i bolje. Preporučujem svima u gradu!',
+      rating: 5,
+      name: 'Ana M.',
+      role: 'Kragujevac',
+    },
   ],
 }
 
@@ -578,10 +995,10 @@ const statsProps: StatsBlockProps = {
   blockType: 'stats',
   columns: 'col-4',
   items: [
-    { value: '500+', label: 'Projects shipped' },
-    { value: '99%', label: 'Uptime' },
-    { value: '24/7', label: 'Support' },
-    { value: '4.9', label: 'Average rating' },
+    { value: '117+', label: 'Objavljenih radova' },
+    { value: 'S–XXL', label: '5 veličina po izboru' },
+    { value: '3–4', label: 'Nedelje između korekcija' },
+    { value: '100%', label: 'Ručno rađen dizajn' },
   ],
 }
 
@@ -700,12 +1117,50 @@ const sectionVideoProps: SectionBlockProps = {
 }
 
 const BLOCKS = [
+  {
+    slug: 'navbar',
+    name: 'Navbar',
+    render: () => <BlockRenderer blocks={[navbarProps]} />,
+  },
+  { slug: 'hero', name: 'Hero', render: () => <BlockRenderer blocks={[boxed(heroProps)]} /> },
+  {
+    slug: 'services',
+    name: 'Services',
+    render: () => <BlockRenderer blocks={[boxed(servicesProps)]} />,
+  },
+  {
+    slug: 'process',
+    name: 'Process',
+    render: () => <BlockRenderer blocks={[boxed(processProps)]} />,
+  },
+  {
+    slug: 'gallery',
+    name: 'Gallery',
+    render: () => <BlockRenderer blocks={[boxed(galleryProps)]} />,
+  },
+  {
+    slug: 'instagramStrip',
+    name: 'Instagram Strip',
+    render: () => <BlockRenderer blocks={[boxed(instagramStripProps)]} />,
+  },
+  {
+    slug: 'contact',
+    name: 'Contact',
+    render: () => <BlockRenderer blocks={[boxed(contactProps)]} />,
+  },
+  { slug: 'about', name: 'About', render: () => <BlockRenderer blocks={[boxed(aboutProps)]} /> },
+  {
+    slug: 'pricing',
+    name: 'Pricing',
+    render: () => <BlockRenderer blocks={[boxed(pricingProps)]} />,
+  },
   { slug: 'tabs', name: 'Tabs', render: () => <BlockRenderer blocks={[boxed(tabsProps)]} /> },
   {
     slug: 'accordion',
     name: 'Accordion',
     render: () => <BlockRenderer blocks={[boxed(accordionProps)]} />,
   },
+  { slug: 'faq', name: 'FAQ', render: () => <BlockRenderer blocks={[boxed(faqProps)]} /> },
   { slug: 'slider', name: 'Slider', render: () => <BlockRenderer blocks={[boxed(sliderProps)]} /> },
   { slug: 'cta', name: 'CTA', render: () => <BlockRenderer blocks={[boxed(ctaProps)]} /> },
   {
@@ -730,6 +1185,11 @@ const BLOCKS = [
     slug: 'section-video',
     name: 'Section (video background)',
     render: () => <BlockRenderer blocks={[sectionVideoProps]} />,
+  },
+  {
+    slug: 'footerColumns',
+    name: 'Footer Columns',
+    render: () => <BlockRenderer blocks={[footerColumnsProps]} />,
   },
 ] as const
 

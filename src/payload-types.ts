@@ -235,6 +235,17 @@ export interface BlockHolderLevel0BlockProps {
         | SliderBlockProps
         | AccordionBlockProps
         | CTABlockProps
+        | HeroBlockProps
+        | ServicesBlockProps
+        | ProcessBlockProps
+        | GalleryBlockProps
+        | InstagramStripBlockProps
+        | ContactBlockProps
+        | NavbarBlockProps
+        | FooterColumnsBlockProps
+        | AboutBlockProps
+        | PricingBlockProps
+        | FAQBlockProps
         | TestimonialsBlockProps
         | StatsBlockProps
         | TeamBlockProps
@@ -252,7 +263,7 @@ export interface BlockHolderLevel0BlockProps {
   customClassName?: string | null;
   layout?: ('block' | 'flex' | 'grid') | null;
   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
+  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse' | 'column-center') | null;
   gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
   gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   id?: string | null;
@@ -277,6 +288,17 @@ export interface BlockHolderLevel1BlockProps {
         | SliderBlockProps
         | AccordionBlockProps
         | CTABlockProps
+        | HeroBlockProps
+        | ServicesBlockProps
+        | ProcessBlockProps
+        | GalleryBlockProps
+        | InstagramStripBlockProps
+        | ContactBlockProps
+        | NavbarBlockProps
+        | FooterColumnsBlockProps
+        | AboutBlockProps
+        | PricingBlockProps
+        | FAQBlockProps
         | TestimonialsBlockProps
         | StatsBlockProps
         | TeamBlockProps
@@ -294,7 +316,7 @@ export interface BlockHolderLevel1BlockProps {
   customClassName?: string | null;
   layout?: ('block' | 'flex' | 'grid') | null;
   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
+  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse' | 'column-center') | null;
   gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
   gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   id?: string | null;
@@ -318,6 +340,17 @@ export interface BlockHolderLevel2BlockProps {
         | SliderBlockProps
         | AccordionBlockProps
         | CTABlockProps
+        | HeroBlockProps
+        | ServicesBlockProps
+        | ProcessBlockProps
+        | GalleryBlockProps
+        | InstagramStripBlockProps
+        | ContactBlockProps
+        | NavbarBlockProps
+        | FooterColumnsBlockProps
+        | AboutBlockProps
+        | PricingBlockProps
+        | FAQBlockProps
         | TestimonialsBlockProps
         | StatsBlockProps
         | TeamBlockProps
@@ -335,7 +368,7 @@ export interface BlockHolderLevel2BlockProps {
   customClassName?: string | null;
   layout?: ('block' | 'flex' | 'grid') | null;
   verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
-  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse') | null;
+  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse' | 'column-center') | null;
   gridVariant?: ('auto' | 'col-2' | 'col-3') | null;
   gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   id?: string | null;
@@ -763,12 +796,718 @@ export interface CTABlockProps {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlockProps".
+ */
+export interface HeroBlockProps {
+  eyebrow?: string | null;
+  title: string;
+  /**
+   * Rendered on its own line, wrapped in <em>.
+   */
+  highlightedTitle?: string | null;
+  description?: string | null;
+  buttons?: ButtonBlockProps[] | null;
+  trustItems?:
+    | {
+        /**
+         * e.g. "📍 Kragujevac" — include the emoji in the text.
+         */
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Up to 3 images, pinned/rotated like polaroids. First image is the large one.
+   */
+  images?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesBlockProps".
+ */
+export interface ServicesBlockProps {
+  eyebrow?: string | null;
+  title: string;
+  /**
+   * Optional — rendered on its own line.
+   */
+  titleLine2?: string | null;
+  items?:
+    | {
+        hasIcon?: boolean | null;
+        iconType?: ('picker' | 'customSvg') | null;
+        icon?: string | null;
+        customSvg?: (number | null) | Media;
+        iconPosition?: ('left' | 'right') | null;
+        title: string;
+        description?: string | null;
+        /**
+         * e.g. "od 1600 RSD" or "po dogovoru"
+         */
+        price?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'services';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProcessBlockProps".
+ */
+export interface ProcessBlockProps {
+  eyebrow?: string | null;
+  title: string;
+  /**
+   * Optional — rendered on its own line.
+   */
+  titleLine2?: string | null;
+  /**
+   * Step numbers (01, 02, ...) are generated automatically from order.
+   */
+  steps?:
+    | {
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'process';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlockProps".
+ */
+export interface GalleryBlockProps {
+  eyebrow?: string | null;
+  title: string;
+  description?: string | null;
+  /**
+   * Label for the filter button that shows every item.
+   */
+  allLabel?: string | null;
+  /**
+   * Leave empty to hide the filter bar and show all items.
+   */
+  categories?:
+    | {
+        label: string;
+        /**
+         * Matched against each item's Category field below.
+         */
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Items shown before the "Show all" button appears. Applies per filter too.
+   */
+  initialCount?: number | null;
+  showAllLabel?: string | null;
+  showLessLabel?: string | null;
+  items?:
+    | {
+        image: number | Media;
+        /**
+         * A category "value" above. Leave blank to always show.
+         */
+        category?: string | null;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "InstagramStripBlockProps".
+ */
+export interface InstagramStripBlockProps {
+  eyebrow?: string | null;
+  title: string;
+  description?: string | null;
+  /**
+   * e.g. @nails.js_ — used on the fallback button before the feed is connected.
+   */
+  instagramHandle?: string | null;
+  instagramUrl: string;
+  /**
+   * ID from your Elfsight "Instagram Feed" widget embed code (the part after "elfsight-app-"). Create the widget at elfsight.com, connect the Instagram account, limit it to 5 posts, and turn on its Header option so the live follower count + Follow button render inside the widget. Leave empty to show a static fallback button instead.
+   */
+  elfsightWidgetId?: string | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'instagramStrip';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlockProps".
+ */
+export interface ContactBlockProps {
+  eyebrow?: string | null;
+  title: string;
+  items?:
+    | {
+        /**
+         * e.g. 📍
+         */
+        icon?: string | null;
+        /**
+         * First line, e.g. "Pozovi ili piši"
+         */
+        label: string;
+        /**
+         * Second line, e.g. "061 687 8225"
+         */
+        value: string;
+        /**
+         * If set, the Value is rendered as a link (tel:, mailto:, https://…).
+         */
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  card?: {
+    /**
+     * e.g. "Vidimo se uskoro 🩷"
+     */
+    scriptText?: string | null;
+    text?: string | null;
+    button?: ButtonBlockProps[] | null;
+  };
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contact';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NavbarBlockProps".
+ */
+export interface NavbarBlockProps {
+  /**
+   * Optional — round brand mark shown next to the name.
+   */
+  logo?: (number | null) | Media;
+  brandName: string;
+  /**
+   * e.g. "NAILS · KRAGUJEVAC"
+   */
+  brandSub?: string | null;
+  /**
+   * Select a menu from the Menus collection. Rendered flat (top-level items only) as the desktop links and inside the mobile full-screen menu.
+   */
+  menu: number | Menu;
+  /**
+   * Shown on desktop next to the links, and inside the mobile menu.
+   */
+  cta?: ButtonBlockProps[] | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'navbar';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FooterColumnsBlockProps".
+ */
+export interface FooterColumnsBlockProps {
+  /**
+   * Optional — round brand mark next to the name.
+   */
+  logo?: (number | null) | Media;
+  brandName: string;
+  /**
+   * e.g. "NAILS · KRAGUJEVAC"
+   */
+  brandSub?: string | null;
+  description?: string | null;
+  social?:
+    | {
+        /**
+         * e.g. 📍
+         */
+        icon: string;
+        /**
+         * Full URL, or mailto:/tel: for email and phone.
+         */
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  columns?:
+    | {
+        /**
+         * e.g. "Navigacija"
+         */
+        heading: string;
+        links?:
+          | {
+              label: string;
+              /**
+               * Anchor (#usluge), tel:, mailto:, or full URL.
+               */
+              url: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * e.g. "© 2026 Jovana Simović Nails. Sva prava zadržana."
+   */
+  bottomText?: string | null;
+  /**
+   * Optional — e.g. a design credit.
+   */
+  bottomSecondaryText?: string | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'footerColumns';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutBlockProps".
+ */
+export interface AboutBlockProps {
+  image: number | Media;
+  eyebrow?: string | null;
+  title: string;
+  text?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  facts?:
+    | {
+        /**
+         * e.g. "📍 Kragujevac" — include the emoji in the text.
+         */
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  imagePosition?: ('left' | 'right') | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'about';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlockProps".
+ */
+export interface PricingBlockProps {
+  title?: string | null;
+  subtitle?: string | null;
+  priceBlocks?:
+    | {
+        /**
+         * e.g. "IZLIVANJE"
+         */
+        heading: string;
+        /**
+         * For long lists of add-ons/surcharges.
+         */
+        smallRows?: boolean | null;
+        rows?:
+          | {
+              label: string;
+              /**
+               * e.g. "1600 RSD"
+               */
+              value: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  note?: string | null;
+  button: {
+    text: string;
+    linkType?: ('internal' | 'external') | null;
+    internalLink?: (number | null) | Page;
+    externalUrl?: string | null;
+    newTab?: boolean | null;
+    variant?: ('primary' | 'secondary' | 'ghost' | 'outline') | null;
+    hasIcon?: boolean | null;
+    iconType?: ('picker' | 'customSvg') | null;
+    icon?: string | null;
+    customSvg?: (number | null) | Media;
+    iconPosition?: ('left' | 'right') | null;
+    /**
+     * Optional — custom ID / anchor
+     */
+    htmlId?: string | null;
+    /**
+     * Optional — extra class name(s) for custom styling
+     */
+    customClassName?: string | null;
+  };
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricing';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FAQBlockProps".
+ */
+export interface FAQBlockProps {
+  eyebrow?: string | null;
+  title?: string | null;
+  items?:
+    | {
+        question: string;
+        answer: string;
+        defaultOpen?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  allowMultiple?: boolean | null;
+  /**
+   * Optional — custom ID / anchor
+   */
+  htmlId?: string | null;
+  /**
+   * Optional — extra class name(s) for custom styling
+   */
+  customClassName?: string | null;
+  spacing?: {
+    paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    marginBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  };
+  background?: {
+    type?: ('blank' | 'color' | 'gradient' | 'image' | 'video') | null;
+    colorTheme?: string | null;
+    gradientTheme?: ('warm' | 'cool') | null;
+    image?: (number | null) | Media;
+    /**
+     * Plays muted, looped, and autoplaying — no sound controls.
+     */
+    video?: (number | null) | Media;
+    overlay?: {
+      enabled?: boolean | null;
+      color?: string | null;
+      /**
+       * 0 - 100
+       */
+      opacity?: number | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faq';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "TestimonialsBlockProps".
  */
 export interface TestimonialsBlockProps {
+  eyebrow?: string | null;
+  title?: string | null;
   items?:
     | {
         quote: string;
+        /**
+         * Stars, 1–5.
+         */
+        rating?: number | null;
         name: string;
         role?: string | null;
         avatar?: (number | null) | Media;
@@ -886,7 +1625,7 @@ export interface TeamBlockProps {
         id?: string | null;
       }[]
     | null;
-  columns?: ('col-2' | 'col-3' | 'col-4') | null;
+  columns?: ('col-1' | 'col-2' | 'col-3' | 'col-4') | null;
   /**
    * Optional — custom ID / anchor
    */
@@ -895,6 +1634,11 @@ export interface TeamBlockProps {
    * Optional — extra class name(s) for custom styling
    */
   customClassName?: string | null;
+  layout?: ('block' | 'flex' | 'grid') | null;
+  verticalAlignment?: ('top' | 'middle' | 'bottom') | null;
+  flexVariant?: ('row' | 'row-reverse' | 'row-wrap' | 'column' | 'column-reverse' | 'column-center') | null;
+  gridVariant?: ('auto' | 'col-2' | 'col-3' | 'col-4') | null;
+  gap?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
   spacing?: {
     paddingTop?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
     paddingBottom?: ('none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
@@ -1464,6 +2208,17 @@ export interface BlockHolderLevel0BlockPropsSelect<T extends boolean = true> {
         slider?: T | SliderBlockPropsSelect<T>;
         accordion?: T | AccordionBlockPropsSelect<T>;
         cta?: T | CTABlockPropsSelect<T>;
+        hero?: T | HeroBlockPropsSelect<T>;
+        services?: T | ServicesBlockPropsSelect<T>;
+        process?: T | ProcessBlockPropsSelect<T>;
+        gallery?: T | GalleryBlockPropsSelect<T>;
+        instagramStrip?: T | InstagramStripBlockPropsSelect<T>;
+        contact?: T | ContactBlockPropsSelect<T>;
+        navbar?: T | NavbarBlockPropsSelect<T>;
+        footerColumns?: T | FooterColumnsBlockPropsSelect<T>;
+        about?: T | AboutBlockPropsSelect<T>;
+        pricing?: T | PricingBlockPropsSelect<T>;
+        faq?: T | FAQBlockPropsSelect<T>;
         testimonials?: T | TestimonialsBlockPropsSelect<T>;
         stats?: T | StatsBlockPropsSelect<T>;
         team?: T | TeamBlockPropsSelect<T>;
@@ -1499,6 +2254,17 @@ export interface BlockHolderLevel1BlockPropsSelect<T extends boolean = true> {
         slider?: T | SliderBlockPropsSelect<T>;
         accordion?: T | AccordionBlockPropsSelect<T>;
         cta?: T | CTABlockPropsSelect<T>;
+        hero?: T | HeroBlockPropsSelect<T>;
+        services?: T | ServicesBlockPropsSelect<T>;
+        process?: T | ProcessBlockPropsSelect<T>;
+        gallery?: T | GalleryBlockPropsSelect<T>;
+        instagramStrip?: T | InstagramStripBlockPropsSelect<T>;
+        contact?: T | ContactBlockPropsSelect<T>;
+        navbar?: T | NavbarBlockPropsSelect<T>;
+        footerColumns?: T | FooterColumnsBlockPropsSelect<T>;
+        about?: T | AboutBlockPropsSelect<T>;
+        pricing?: T | PricingBlockPropsSelect<T>;
+        faq?: T | FAQBlockPropsSelect<T>;
         testimonials?: T | TestimonialsBlockPropsSelect<T>;
         stats?: T | StatsBlockPropsSelect<T>;
         team?: T | TeamBlockPropsSelect<T>;
@@ -1533,6 +2299,17 @@ export interface BlockHolderLevel2BlockPropsSelect<T extends boolean = true> {
         slider?: T | SliderBlockPropsSelect<T>;
         accordion?: T | AccordionBlockPropsSelect<T>;
         cta?: T | CTABlockPropsSelect<T>;
+        hero?: T | HeroBlockPropsSelect<T>;
+        services?: T | ServicesBlockPropsSelect<T>;
+        process?: T | ProcessBlockPropsSelect<T>;
+        gallery?: T | GalleryBlockPropsSelect<T>;
+        instagramStrip?: T | InstagramStripBlockPropsSelect<T>;
+        contact?: T | ContactBlockPropsSelect<T>;
+        navbar?: T | NavbarBlockPropsSelect<T>;
+        footerColumns?: T | FooterColumnsBlockPropsSelect<T>;
+        about?: T | AboutBlockPropsSelect<T>;
+        pricing?: T | PricingBlockPropsSelect<T>;
+        faq?: T | FAQBlockPropsSelect<T>;
         testimonials?: T | TestimonialsBlockPropsSelect<T>;
         stats?: T | StatsBlockPropsSelect<T>;
         team?: T | TeamBlockPropsSelect<T>;
@@ -1834,13 +2611,530 @@ export interface CTABlockPropsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlockProps_select".
+ */
+export interface HeroBlockPropsSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  highlightedTitle?: T;
+  description?: T;
+  buttons?:
+    | T
+    | {
+        button?: T | ButtonBlockPropsSelect<T>;
+      };
+  trustItems?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        video?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesBlockProps_select".
+ */
+export interface ServicesBlockPropsSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  titleLine2?: T;
+  items?:
+    | T
+    | {
+        hasIcon?: T;
+        iconType?: T;
+        icon?: T;
+        customSvg?: T;
+        iconPosition?: T;
+        title?: T;
+        description?: T;
+        price?: T;
+        id?: T;
+      };
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        video?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProcessBlockProps_select".
+ */
+export interface ProcessBlockPropsSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  titleLine2?: T;
+  steps?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        video?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlockProps_select".
+ */
+export interface GalleryBlockPropsSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  description?: T;
+  allLabel?: T;
+  categories?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        id?: T;
+      };
+  initialCount?: T;
+  showAllLabel?: T;
+  showLessLabel?: T;
+  items?:
+    | T
+    | {
+        image?: T;
+        category?: T;
+        caption?: T;
+        id?: T;
+      };
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        video?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "InstagramStripBlockProps_select".
+ */
+export interface InstagramStripBlockPropsSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  description?: T;
+  instagramHandle?: T;
+  instagramUrl?: T;
+  elfsightWidgetId?: T;
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        video?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlockProps_select".
+ */
+export interface ContactBlockPropsSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  items?:
+    | T
+    | {
+        icon?: T;
+        label?: T;
+        value?: T;
+        url?: T;
+        id?: T;
+      };
+  card?:
+    | T
+    | {
+        scriptText?: T;
+        text?: T;
+        button?:
+          | T
+          | {
+              button?: T | ButtonBlockPropsSelect<T>;
+            };
+      };
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        video?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NavbarBlockProps_select".
+ */
+export interface NavbarBlockPropsSelect<T extends boolean = true> {
+  logo?: T;
+  brandName?: T;
+  brandSub?: T;
+  menu?: T;
+  cta?:
+    | T
+    | {
+        button?: T | ButtonBlockPropsSelect<T>;
+      };
+  htmlId?: T;
+  customClassName?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FooterColumnsBlockProps_select".
+ */
+export interface FooterColumnsBlockPropsSelect<T extends boolean = true> {
+  logo?: T;
+  brandName?: T;
+  brandSub?: T;
+  description?: T;
+  social?:
+    | T
+    | {
+        icon?: T;
+        url?: T;
+        id?: T;
+      };
+  columns?:
+    | T
+    | {
+        heading?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  bottomText?: T;
+  bottomSecondaryText?: T;
+  htmlId?: T;
+  customClassName?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutBlockProps_select".
+ */
+export interface AboutBlockPropsSelect<T extends boolean = true> {
+  image?: T;
+  eyebrow?: T;
+  title?: T;
+  text?: T;
+  facts?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  imagePosition?: T;
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        video?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlockProps_select".
+ */
+export interface PricingBlockPropsSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  priceBlocks?:
+    | T
+    | {
+        heading?: T;
+        smallRows?: T;
+        rows?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  note?: T;
+  button?:
+    | T
+    | {
+        text?: T;
+        linkType?: T;
+        internalLink?: T;
+        externalUrl?: T;
+        newTab?: T;
+        variant?: T;
+        hasIcon?: T;
+        iconType?: T;
+        icon?: T;
+        customSvg?: T;
+        iconPosition?: T;
+        htmlId?: T;
+        customClassName?: T;
+      };
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        video?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FAQBlockProps_select".
+ */
+export interface FAQBlockPropsSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  items?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        defaultOpen?: T;
+        id?: T;
+      };
+  allowMultiple?: T;
+  htmlId?: T;
+  customClassName?: T;
+  spacing?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        marginTop?: T;
+        marginBottom?: T;
+      };
+  background?:
+    | T
+    | {
+        type?: T;
+        colorTheme?: T;
+        gradientTheme?: T;
+        image?: T;
+        video?: T;
+        overlay?:
+          | T
+          | {
+              enabled?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "TestimonialsBlockProps_select".
  */
 export interface TestimonialsBlockPropsSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
   items?:
     | T
     | {
         quote?: T;
+        rating?: T;
         name?: T;
         role?: T;
         avatar?: T;
@@ -1943,6 +3237,11 @@ export interface TeamBlockPropsSelect<T extends boolean = true> {
   columns?: T;
   htmlId?: T;
   customClassName?: T;
+  layout?: T;
+  verticalAlignment?: T;
+  flexVariant?: T;
+  gridVariant?: T;
+  gap?: T;
   spacing?:
     | T
     | {
@@ -2362,6 +3661,17 @@ export interface Header {
         | SliderBlockProps
         | AccordionBlockProps
         | CTABlockProps
+        | HeroBlockProps
+        | ServicesBlockProps
+        | ProcessBlockProps
+        | GalleryBlockProps
+        | InstagramStripBlockProps
+        | ContactBlockProps
+        | NavbarBlockProps
+        | FooterColumnsBlockProps
+        | AboutBlockProps
+        | PricingBlockProps
+        | FAQBlockProps
         | TestimonialsBlockProps
         | StatsBlockProps
         | TeamBlockProps
@@ -2371,6 +3681,10 @@ export interface Header {
     | null;
   variant?: ('default' | 'transparent' | 'minimal') | null;
   sticky?: ('none' | 'sticky' | 'sticky-up') | null;
+  /**
+   * Header background color (applied at ~86% opacity, with blur).
+   */
+  colorTheme?: string | null;
   /**
    * Optional — custom ID attribute on the header element
    */
@@ -2400,6 +3714,17 @@ export interface Footer {
         | SliderBlockProps
         | AccordionBlockProps
         | CTABlockProps
+        | HeroBlockProps
+        | ServicesBlockProps
+        | ProcessBlockProps
+        | GalleryBlockProps
+        | InstagramStripBlockProps
+        | ContactBlockProps
+        | NavbarBlockProps
+        | FooterColumnsBlockProps
+        | AboutBlockProps
+        | PricingBlockProps
+        | FAQBlockProps
         | TestimonialsBlockProps
         | StatsBlockProps
         | TeamBlockProps
@@ -2412,6 +3737,10 @@ export interface Footer {
    * Optional — custom ID attribute on the footer element
    */
   htmlId?: string | null;
+  /**
+   * Footer background color. Leave empty for a transparent background.
+   */
+  colorTheme?: string | null;
   paddingTop?: number | null;
   paddingBottom?: number | null;
   updatedAt?: string | null;
@@ -2439,6 +3768,18 @@ export interface SiteSetting {
    * Optional — used when header is on dark background
    */
   logoDark?: (number | null) | Media;
+  /**
+   * Fiksna traka na dnu ekrana, vidljiva samo na mobilnim uređajima (≤640px), sa dugmićima za DM i poziv
+   */
+  mobileCtaEnabled?: boolean | null;
+  /**
+   * Boja pozadine trake. Ostavi prazno za podrazumevanu (blush soft).
+   */
+  colorTheme?: string | null;
+  instagramUrl?: string | null;
+  instagramLabel?: string | null;
+  phone?: string | null;
+  phoneLabel?: string | null;
   /**
    * ICO, PNG ili SVG — preporučeno 32×32px ili 512×512px
    */
@@ -2509,6 +3850,17 @@ export interface HeaderSelect<T extends boolean = true> {
         slider?: T | SliderBlockPropsSelect<T>;
         accordion?: T | AccordionBlockPropsSelect<T>;
         cta?: T | CTABlockPropsSelect<T>;
+        hero?: T | HeroBlockPropsSelect<T>;
+        services?: T | ServicesBlockPropsSelect<T>;
+        process?: T | ProcessBlockPropsSelect<T>;
+        gallery?: T | GalleryBlockPropsSelect<T>;
+        instagramStrip?: T | InstagramStripBlockPropsSelect<T>;
+        contact?: T | ContactBlockPropsSelect<T>;
+        navbar?: T | NavbarBlockPropsSelect<T>;
+        footerColumns?: T | FooterColumnsBlockPropsSelect<T>;
+        about?: T | AboutBlockPropsSelect<T>;
+        pricing?: T | PricingBlockPropsSelect<T>;
+        faq?: T | FAQBlockPropsSelect<T>;
         testimonials?: T | TestimonialsBlockPropsSelect<T>;
         stats?: T | StatsBlockPropsSelect<T>;
         team?: T | TeamBlockPropsSelect<T>;
@@ -2517,6 +3869,7 @@ export interface HeaderSelect<T extends boolean = true> {
       };
   variant?: T;
   sticky?: T;
+  colorTheme?: T;
   htmlId?: T;
   paddingTop?: T;
   paddingBottom?: T;
@@ -2544,6 +3897,17 @@ export interface FooterSelect<T extends boolean = true> {
         slider?: T | SliderBlockPropsSelect<T>;
         accordion?: T | AccordionBlockPropsSelect<T>;
         cta?: T | CTABlockPropsSelect<T>;
+        hero?: T | HeroBlockPropsSelect<T>;
+        services?: T | ServicesBlockPropsSelect<T>;
+        process?: T | ProcessBlockPropsSelect<T>;
+        gallery?: T | GalleryBlockPropsSelect<T>;
+        instagramStrip?: T | InstagramStripBlockPropsSelect<T>;
+        contact?: T | ContactBlockPropsSelect<T>;
+        navbar?: T | NavbarBlockPropsSelect<T>;
+        footerColumns?: T | FooterColumnsBlockPropsSelect<T>;
+        about?: T | AboutBlockPropsSelect<T>;
+        pricing?: T | PricingBlockPropsSelect<T>;
+        faq?: T | FAQBlockPropsSelect<T>;
         testimonials?: T | TestimonialsBlockPropsSelect<T>;
         stats?: T | StatsBlockPropsSelect<T>;
         team?: T | TeamBlockPropsSelect<T>;
@@ -2552,6 +3916,7 @@ export interface FooterSelect<T extends boolean = true> {
       };
   variant?: T;
   htmlId?: T;
+  colorTheme?: T;
   paddingTop?: T;
   paddingBottom?: T;
   updatedAt?: T;
@@ -2567,6 +3932,12 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   tagline?: T;
   logo?: T;
   logoDark?: T;
+  mobileCtaEnabled?: T;
+  colorTheme?: T;
+  instagramUrl?: T;
+  instagramLabel?: T;
+  phone?: T;
+  phoneLabel?: T;
   favicon?: T;
   appleTouchIcon?: T;
   defaultMeta?:

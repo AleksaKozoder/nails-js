@@ -24,7 +24,11 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    height: 400px; // Default visina za horizontalni
+    height: 260px; // Default visina za horizontalni (mobile-first)
+
+    @include mixins.tablet {
+      height: 400px;
+    }
 
     :global(.swiper) {
       width: 100%;
@@ -34,7 +38,11 @@
 
   &--vertical {
     .slider__wrapper {
-      height: 600px; // Veća visina za vertikalni prikaz
+      height: 360px; // Veća visina za vertikalni prikaz (mobile-first)
+
+      @include mixins.tablet {
+        height: 600px;
+      }
     }
   }
 

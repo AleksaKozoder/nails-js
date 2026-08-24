@@ -1,3 +1,5 @@
+@use '@/scss/mixins' as mixins;
+
 .posts-block {
   position: relative;
 
@@ -6,15 +8,35 @@
   }
 
   &--col-2 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &--col-3 {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mixins.desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   &--col-4 {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+
+    @include mixins.tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mixins.desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   .post-card {

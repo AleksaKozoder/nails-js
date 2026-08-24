@@ -1,0 +1,146 @@
+@use '@/scss/variables' as vars;
+
+.footerColumns {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 clamp(2rem, 5vw, 4.8rem);
+}
+
+// ─── Grid ────────────────────────────────────────────────────
+
+.footerColumns__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 3.6rem;
+  margin-bottom: 4rem;
+
+  @media (max-width: 48.75rem) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 30rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Brand column ────────────────────────────────────────────
+
+.footerColumns__brandCol {
+  grid-column: span 1;
+}
+
+.footerColumns__brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footerColumns__logo {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.footerColumns__brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.footerColumns__brandName {
+  font-family: vars.$font-script;
+  font-size: 2.4rem;
+  color: vars.$color-ink;
+}
+
+.footerColumns__brandSub {
+  font-size: 0.95rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: vars.$color-rose-deep;
+  margin-top: 0.1rem;
+}
+
+.footerColumns__description {
+  font-size: 1.3rem;
+  color: vars.$color-ink-soft;
+  margin-top: 1.2rem;
+  max-width: 32ch;
+}
+
+.footerColumns__social {
+  display: flex;
+  gap: 1.4rem;
+  margin-top: 1.8rem;
+}
+
+.footerColumns__socialLink {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  border: 1px solid vars.$color-rose-line;
+  color: vars.$color-ink;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+
+  &:hover {
+    background: vars.$color-rose-deep;
+    border-color: vars.$color-rose-deep;
+    color: #fff;
+  }
+}
+
+.footerColumns__socialIcon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+// ─── Link columns ────────────────────────────────────────────
+
+.footerColumns__heading {
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: vars.$color-ink;
+  margin-bottom: 1.4rem;
+}
+
+.footerColumns__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: none;
+
+  a {
+    font-size: 1.35rem;
+    color: vars.$color-ink-soft;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: vars.$color-rose-deep;
+    }
+  }
+}
+
+// ─── Bottom bar ──────────────────────────────────────────────
+
+.footerColumns__bottom {
+  border-top: 1px solid vars.$color-rose-line;
+  padding-top: 2.2rem;
+  padding-bottom: 2.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  font-size: 1.2rem;
+  color: vars.$color-ink-soft;
+}

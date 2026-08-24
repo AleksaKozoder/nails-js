@@ -10,21 +10,43 @@ $container-inline-padding: 3rem;
 
 // Colors
 // Every entry falls back to a hardcoded default so blocks still render
-// correctly before the Colors global has been seeded in Payload.
+// correctly before the Colors global has been seeded in Payload. Map KEYS
+// here (e.g. 'rose-deep') must match the `value` tokens in the Colors global
+// seed (src/globals/Colors.ts) exactly — they become the --color-{key} CSS
+// custom property name. The bare $color-rose-deep / $color-ink /
+// $color-red / $color-rose-line variables below are the load-bearing, stable
+// names actually referenced throughout Button/Heading/Tabs/FormBlock/Divider
+// and most block styles — when the brand palette changes, repoint their
+// map-get() key here rather than renaming those variables everywhere.
 $colors: (
-  'primary': var(--color-primary, #01696f),
-  'secondary': var(--color-secondary, #0c4e54),
-  'blue': var(--color-blue, #2563eb),
+  'rose-deep': var(--color-rose-deep, #a85c68),
+  'ink': var(--color-ink, #241c1d),
   'red': var(--color-red, #dc2626),
-  'bg-gray': var(--color-bg-gray, #f3f0ec),
-  'green': var(--color-green, #16a34a),
+  'rose-line': var(--color-rose-line, #e3bcc0),
+  'rose': var(--color-rose, #c98a93),
+  'gold': var(--color-gold, #c9a876),
+  'ink-soft': var(--color-ink-soft, #5b4a4c),
+  'cream': var(--color-cream, #fffbf9),
+  'blush': var(--color-blush, #f6e1e3),
+  'blush-soft': var(--color-blush-soft, #fbf0ef),
 );
 
 $color-bg: var(--color-bg, #ffffff);
-$color-text: var(--color-text, #28251d);
-$color-primary: map-get($colors, 'primary');
-$color-secondary: map-get($colors, 'secondary');
+$color-text: var(--color-text, #241c1d);
+$color-rose-deep: map-get($colors, 'rose-deep');
+$color-ink: map-get($colors, 'ink');
 $color-red: map-get($colors, 'red');
+$color-rose-line: map-get($colors, 'rose-line');
+$color-rose: map-get($colors, 'rose');
+$color-gold: map-get($colors, 'gold');
+$color-ink-soft: map-get($colors, 'ink-soft');
+$color-cream: map-get($colors, 'cream');
+$color-blush: map-get($colors, 'blush');
+$color-blush-soft: map-get($colors, 'blush-soft');
+// Fonts (Jovana Simović Nails brand)
+$font-heading: 'Bodoni Moda', serif;
+$font-body: 'Jost', sans-serif;
+$font-script: 'Mrs Saint Delafield', cursive;
 
 // Gradients
 $gradients: (

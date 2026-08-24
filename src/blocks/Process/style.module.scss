@@ -1,0 +1,105 @@
+@use '@/scss/variables' as vars;
+
+.process {
+  max-width: 1160px;
+  margin: 0 auto;
+  position: relative;
+  padding: clamp(6.4rem, 9vw, 11rem) 0;
+
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      background-color: $value;
+    }
+  }
+
+  @each $name, $value in vars.$gradients {
+    &--gradient-#{$name} {
+      background: $value;
+    }
+  }
+}
+
+.process__bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+// ─── Section head ───────────────────────────────────────────
+
+.process__head {
+  position: relative;
+  z-index: 1;
+  max-width: 60rem;
+  margin-bottom: clamp(3.6rem, 5vw, 5.6rem);
+}
+
+.process__eyebrow {
+  display: inline-block;
+  font-size: 1.25rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: vars.$color-rose-deep;
+  font-weight: 500;
+}
+
+.process__title {
+  font-family: vars.$font-heading;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: vars.$color-ink;
+  font-size: clamp(2.8rem, 3.6vw, 4.2rem);
+  margin-top: 1rem;
+}
+
+// ─── Grid ────────────────────────────────────────────────────
+
+.process__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+
+  @media (max-width: 53.75rem) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 35rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Step ────────────────────────────────────────────────────
+
+.step__num {
+  font-family: vars.$font-heading;
+  font-size: 3.8rem;
+  color: vars.$color-rose;
+  opacity: 0.55;
+  line-height: 1;
+}
+
+.step__title {
+  font-family: vars.$font-heading;
+  font-weight: 500;
+  font-size: 1.75rem;
+  margin: 1rem 0 0.8rem;
+  color: vars.$color-ink;
+}
+
+.step__description {
+  font-size: 1.35rem;
+  color: vars.$color-ink-soft;
+}

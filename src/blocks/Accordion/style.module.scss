@@ -19,7 +19,7 @@
 
   &--bordered {
     .accordion__item {
-      border: 1px solid mixins.color-alpha(vars.$color-primary, 20%);
+      border: 1px solid mixins.color-alpha(vars.$color-rose-deep, 20%);
       border-radius: 6px;
       overflow: hidden;
     }
@@ -54,7 +54,7 @@
 .accordion__item {
   position: relative;
   z-index: 1;
-  border-bottom: 1px solid mixins.color-alpha(vars.$color-primary, 10%);
+  border-bottom: 1px solid mixins.color-alpha(vars.$color-rose-deep, 10%);
 
   & + & {
     margin-top: 0.4rem;
@@ -64,7 +64,7 @@
 .accordion__trigger {
   appearance: none;
   border: 0;
-  background: mixins.color-alpha(vars.$color-primary, 5%);
+  background: mixins.color-alpha(vars.$color-rose-deep, 5%);
   cursor: pointer;
   width: 100%;
   display: flex;
@@ -72,7 +72,7 @@
   justify-content: space-between;
   gap: 1.6rem;
   padding: 1.6rem 2rem;
-  color: vars.$color-primary;
+  color: vars.$color-rose-deep;
   text-align: left;
   font-weight: 600;
   transition:
@@ -80,14 +80,14 @@
     color 0.2s ease;
 
   &:hover {
-    background: mixins.color-alpha(vars.$color-primary, 15%);
+    background: mixins.color-alpha(vars.$color-rose-deep, 15%);
   }
 }
 
 .accordion__item--open {
   .accordion__trigger {
-    color: vars.$color-secondary;
-    background: mixins.color-alpha(vars.$color-primary, 10%);
+    color: vars.$color-ink;
+    background: mixins.color-alpha(vars.$color-rose-deep, 10%);
   }
 }
 

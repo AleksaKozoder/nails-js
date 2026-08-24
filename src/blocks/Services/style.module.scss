@@ -1,0 +1,132 @@
+@use '@/scss/variables' as vars;
+
+.services {
+  max-width: 1160px;
+  position: relative;
+  padding: clamp(6.4rem, 9vw, 11rem) 0;
+  margin: 0 auto;
+
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      background-color: $value;
+    }
+  }
+
+  @each $name, $value in vars.$gradients {
+    &--gradient-#{$name} {
+      background: $value;
+    }
+  }
+}
+
+.services__bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+// ─── Section head ───────────────────────────────────────────
+
+.services__head {
+  position: relative;
+  z-index: 0;
+  max-width: 60rem;
+  margin-bottom: clamp(3.6rem, 5vw, 5.6rem);
+}
+
+.services__eyebrow {
+  display: inline-block;
+  font-size: 1.25rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: vars.$color-rose-deep;
+  font-weight: 500;
+}
+
+.services__title {
+  font-family: vars.$font-heading;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: vars.$color-ink;
+  font-size: clamp(2.8rem, 3.6vw, 4.2rem);
+  margin-top: 1rem;
+}
+
+// ─── Grid ────────────────────────────────────────────────────
+
+.services__grid {
+  position: relative;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3.4rem;
+
+  @media (max-width: 61.25rem) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 37.5rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Card ────────────────────────────────────────────────────
+
+.card {
+  background: vars.$color-blush-soft;
+  border: 1px solid vars.$color-rose-line;
+  border-radius: 1.4rem;
+  padding: 3rem 2.4rem;
+  width: 100%;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-0.6rem);
+    box-shadow: 0 1.8rem 4rem -1.8rem rgba(36, 28, 29, 0.35);
+  }
+}
+
+.card__icon {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1.8rem;
+  color: vars.$color-rose-deep;
+}
+
+.card__title {
+  font-family: vars.$font-heading;
+  font-weight: 500;
+  font-size: 1.9rem;
+  margin-bottom: 0.8rem;
+  color: vars.$color-ink;
+}
+
+.card__description {
+  font-size: 1.4rem;
+  color: vars.$color-ink-soft;
+  margin-bottom: 1.4rem;
+  width: 100%;
+  line-height: 1.6;
+}
+
+.card__price {
+  display: inline-block;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  color: vars.$color-rose-deep;
+}

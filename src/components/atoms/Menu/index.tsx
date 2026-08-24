@@ -2,20 +2,9 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import type { Menu as MenuDoc, MenuBlockProps } from '@/payload-types'
+import type { MenuBlockProps } from '@/payload-types'
+import { resolveMenuItemHref, type MenuItemNode } from '@/utils/resolveMenuHref'
 import s from './style.module.scss'
-
-// The schema only models 2 levels of nesting, but the component supports arbitrary depth.
-type MenuItemNode = Omit<NonNullable<MenuDoc['items']>[number], 'children'> & {
-  children?: MenuItemNode[] | null
-}
-
-const resolveHref = (item: MenuItemNode): string => {
-  if (item.type === 'external') return item.url || '#'
-  const page = typeof item.page === 'object' ? item.page : undefined
-  const slug = page?.slug ? `/${page.slug}` : '/'
-  return item.anchor ? `${slug}#${item.anchor}` : slug
-}
 
 const MenuItemComponent: React.FC<{ item: MenuItemNode; depth?: number }> = ({
   item,
@@ -23,7 +12,7 @@ const MenuItemComponent: React.FC<{ item: MenuItemNode; depth?: number }> = ({
 }) => {
   const [open, setOpen] = useState(false)
   const hasChildren = !!item.children?.length
-  const href = resolveHref(item)
+  const href = resolveMenuItemHref(item)
   const isExternal = item.type === 'external'
   const page = typeof item.page === 'object' ? item.page : undefined
 

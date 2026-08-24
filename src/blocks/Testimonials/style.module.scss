@@ -1,9 +1,10 @@
-@use '@/scss/mixins' as mixins;
 @use '@/scss/variables' as vars;
 
 .testimonials {
-  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
   position: relative;
+  padding: clamp(6.4rem, 9vw, 11rem) 0;
 
   @each $name, $value in vars.$colors {
     &--color-#{$name} {
@@ -35,6 +36,60 @@
   z-index: 0;
 }
 
+// ─── Section head ───────────────────────────────────────────
+
+.testimonials__head {
+  position: relative;
+  z-index: 1;
+  max-width: 56rem;
+  margin: 0 auto clamp(3.6rem, 5vw, 5.6rem);
+  text-align: center;
+}
+
+.testimonials__eyebrow {
+  display: inline-block;
+  font-size: 1.25rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: vars.$color-rose-deep;
+  font-weight: 500;
+}
+
+.testimonials__title {
+  font-family: vars.$font-heading;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: vars.$color-ink;
+  font-size: clamp(2.8rem, 3.6vw, 4.2rem);
+  margin-top: 1rem;
+}
+
+.flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.4rem 0 0;
+
+  &::before,
+  &::after {
+    content: '';
+    width: 3.4rem;
+    height: 1px;
+    background: vars.$color-rose-line;
+  }
+
+  span {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: vars.$color-gold;
+    display: block;
+  }
+}
+
+// ─── Grid ────────────────────────────────────────────────────
+
 .testimonials__wrapper {
   position: relative;
   z-index: 1;
@@ -48,11 +103,19 @@
   }
 
   &--col-2 {
-    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+
+    @media (max-width: 53.75rem) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &--col-3 {
-    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 53.75rem) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &--carousel {
@@ -68,17 +131,36 @@
   }
 }
 
+// ─── Card ────────────────────────────────────────────────────
+
 .testimonial {
-  padding: 2.4rem;
-  border-radius: 8px;
-  background: mixins.color-alpha(vars.$color-primary, 5%);
+  position: relative;
+  background: vars.$color-cream;
+  border: 1px solid vars.$color-rose-line;
+  border-radius: 1.6rem;
+  padding: 3rem 2.6rem;
+}
+
+.testimonial__quoteMark {
+  font-family: vars.$font-heading;
+  font-size: 5.2rem;
+  color: vars.$color-rose;
+  opacity: 0.55;
+  line-height: 1;
+}
+
+.testimonial__stars {
+  color: vars.$color-gold;
+  letter-spacing: 0.2rem;
+  margin: 0.2rem 0 1.4rem;
+  font-size: 1.4rem;
 }
 
 .testimonial__quote {
-  margin: 0 0 1.6rem;
-  font-size: 1.6rem;
+  margin: 0 0 1.8rem;
+  font-size: 1.45rem;
   line-height: 1.6;
-  font-style: italic;
+  color: vars.$color-ink-soft;
 }
 
 .testimonial__author {
@@ -95,10 +177,15 @@
 }
 
 .testimonial__name {
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: vars.$color-ink;
 }
 
 .testimonial__role {
-  font-size: 1.4rem;
-  color: mixins.color-alpha(vars.$color-text, 70%);
+  display: block;
+  font-size: 1.15rem;
+  color: vars.$color-ink-soft;
+  font-weight: 400;
+  margin-top: 0.2rem;
 }

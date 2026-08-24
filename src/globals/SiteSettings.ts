@@ -71,6 +71,70 @@ export const SiteSettings: GlobalConfig = {
           ],
         },
 
+        // ─── Mobile CTA bar ──────────────────────────────────────
+        {
+          label: 'Mobile CTA Bar',
+          fields: [
+            {
+              name: 'mobileCtaEnabled',
+              type: 'checkbox',
+              label: 'Show sticky mobile CTA bar',
+              defaultValue: true,
+              admin: {
+                description:
+                  'Fiksna traka na dnu ekrana, vidljiva samo na mobilnim uređajima (≤640px), sa dugmićima za DM i poziv',
+              },
+            },
+            {
+              name: 'colorTheme',
+              type: 'text',
+              label: 'Background Color',
+              admin: {
+                description: 'Boja pozadine trake. Ostavi prazno za podrazumevanu (blush soft).',
+                components: {
+                  Field: '/components/admin/ColorSelectField',
+                },
+              },
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'instagramUrl',
+                  type: 'text',
+                  label: 'Instagram URL',
+                  admin: { width: '50%', placeholder: 'https://instagram.com/nails.js_' },
+                },
+                {
+                  name: 'instagramLabel',
+                  type: 'text',
+                  label: 'Dugme label',
+                  defaultValue: 'Piši DM',
+                  admin: { width: '50%' },
+                },
+              ],
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'phone',
+                  type: 'text',
+                  label: 'Telefon (tel: format)',
+                  admin: { width: '50%', placeholder: '+381616878225' },
+                },
+                {
+                  name: 'phoneLabel',
+                  type: 'text',
+                  label: 'Dugme label',
+                  defaultValue: 'Pozovi',
+                  admin: { width: '50%' },
+                },
+              ],
+            },
+          ],
+        },
+
         // ─── Favicon ─────────────────────────────────────────────
         {
           label: 'Favicon',

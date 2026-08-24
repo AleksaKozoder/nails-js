@@ -1,9 +1,8 @@
-@use '@/scss/mixins' as mixins;
 @use '@/scss/variables' as vars;
 
 .stats {
-  width: 100%;
   position: relative;
+  padding: 3.6rem 0;
 
   @each $name, $value in vars.$colors {
     &--color-#{$name} {
@@ -39,7 +38,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 3.2rem;
+  gap: 2rem;
   text-align: center;
 
   &--col-2 {
@@ -52,18 +51,25 @@
 
   &--col-4 {
     grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: 43.75rem) {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 3rem;
+    }
   }
 }
 
 .stat__value {
-  font-size: 4rem;
-  font-weight: 800;
-  color: vars.$color-primary;
+  font-family: vars.$font-heading;
+  font-size: clamp(2.6rem, 3vw, 3.6rem);
+  color: vars.$color-rose-deep;
   line-height: 1.1;
 }
 
 .stat__label {
-  margin-top: 0.4rem;
-  font-size: 1.6rem;
-  color: mixins.color-alpha(vars.$color-text, 70%);
+  margin-top: 0.6rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: vars.$color-ink-soft;
 }

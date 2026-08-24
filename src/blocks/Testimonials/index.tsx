@@ -7,6 +7,8 @@ import { BackgroundLayer } from '@/components/atoms/BackgroundLayer'
 import s from './style.module.scss'
 
 export const Testimonials: React.FC<TestimonialsBlockProps> = ({
+  eyebrow,
+  title,
   items = [],
   layout = 'grid',
   columns = 'col-3',
@@ -43,12 +45,25 @@ export const Testimonials: React.FC<TestimonialsBlockProps> = ({
         overlayClassName={s.overlay}
       />
 
+      {(eyebrow || title) && (
+        <div className={s.testimonials__head}>
+          {eyebrow && <span className={s.testimonials__eyebrow}>{eyebrow}</span>}
+          {title && <h2 className={s.testimonials__title}>{title}</h2>}
+          <div className={s.flourish}>
+            <span />
+          </div>
+        </div>
+      )}
+
       <div className={wrapperClasses}>
         {items.map((item, index) => {
           const avatar = typeof item.avatar === 'object' ? item.avatar : undefined
+          const rating = Math.min(5, Math.max(1, item.rating ?? 5))
 
           return (
             <figure key={index} className={s.testimonial}>
+              <div className={s.testimonial__quoteMark}>„</div>
+              <div className={s.testimonial__stars}>{'★'.repeat(rating)}</div>
               <blockquote className={s.testimonial__quote}>{item.quote}</blockquote>
               <figcaption className={s.testimonial__author}>
                 {avatar?.url && (
@@ -62,7 +77,7 @@ export const Testimonials: React.FC<TestimonialsBlockProps> = ({
                 )}
                 <div>
                   <div className={s.testimonial__name}>{item.name}</div>
-                  {item.role && <div className={s.testimonial__role}>{item.role}</div>}
+                  {item.role && <span className={s.testimonial__role}>{item.role}</span>}
                 </div>
               </figcaption>
             </figure>

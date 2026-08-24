@@ -1,0 +1,70 @@
+@use '@/scss/mixins' as mixins;
+@use '@/scss/variables' as vars;
+
+$breakpoint: 40rem; // 640px — matches reference
+
+.mobileCta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+  --mobile-cta-bg: #{mixins.color-alpha(vars.$color-blush-soft, 97%)};
+  background: var(--mobile-cta-bg);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid vars.$color-rose-line;
+
+  // Color (admin-selected via colorTheme, see Site Settings → Mobile CTA Bar)
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      --mobile-cta-bg: #{mixins.color-alpha($value, 97%)};
+    }
+  }
+
+  @media (max-width: $breakpoint) {
+    display: flex;
+  }
+}
+
+.mobileCta__spacer {
+  display: none;
+
+  @media (max-width: $breakpoint) {
+    display: block;
+    height: 7.2rem;
+  }
+}
+
+.btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem 1.6rem;
+  border-radius: 999px;
+  font-family: vars.$font-body;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: 2px solid transparent;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.primary {
+  background: vars.$color-rose-deep;
+  color: #fff;
+  border-color: vars.$color-rose-deep;
+}
+
+.outline {
+  background: transparent;
+  color: vars.$color-rose-deep;
+  border-color: vars.$color-rose-deep;
+}

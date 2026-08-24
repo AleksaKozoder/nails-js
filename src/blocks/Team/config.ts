@@ -2,8 +2,26 @@ import { Block } from 'payload'
 import { advancedFields } from '@/fields/advanced/config'
 import { spacingFields } from '@/fields/spacing/config'
 import { backgroundFields } from '@/fields/background/config'
+import { SPACING_OPTIONS } from '@/fields/constants'
+
+const flexOptions = [
+  { label: 'Row', value: 'row' },
+  { label: 'Row Reverse', value: 'row-reverse' },
+  { label: 'Row Wrap', value: 'row-wrap' },
+  { label: 'Column', value: 'column' },
+  { label: 'Column Reverse', value: 'column-reverse' },
+  { label: 'Column Center', value: 'column-center' },
+]
+
+const gridOptions = [
+  { label: 'Auto', value: 'auto' },
+  { label: '2 columns', value: 'col-2' },
+  { label: '3 columns', value: 'col-3' },
+  { label: '4 columns', value: 'col-4' },
+]
 
 const columnOptions = [
+  { label: '1 column', value: 'col-1' },
   { label: '2 columns', value: 'col-2' },
   { label: '3 columns', value: 'col-3' },
   { label: '4 columns', value: 'col-4' },
@@ -101,6 +119,69 @@ export const TeamBlock: Block = {
               options: columnOptions,
             },
             ...advancedFields,
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'layout',
+                  type: 'select',
+                  defaultValue: 'block',
+                  admin: { width: '50%' },
+                  options: [
+                    { label: 'Block', value: 'block' },
+                    { label: 'Flex', value: 'flex' },
+                    { label: 'Grid', value: 'grid' },
+                  ],
+                },
+                {
+                  name: 'verticalAlignment',
+                  type: 'select',
+                  defaultValue: 'top',
+                  admin: { width: '50%' },
+                  options: [
+                    { label: 'Top', value: 'top' },
+                    { label: 'Middle', value: 'middle' },
+                    { label: 'Bottom', value: 'bottom' },
+                  ],
+                },
+              ],
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'flexVariant',
+                  type: 'select',
+                  defaultValue: 'row',
+                  options: flexOptions,
+                  admin: {
+                    width: '50%',
+                    condition: (_, s) => s?.layout === 'flex',
+                  },
+                },
+                {
+                  name: 'gridVariant',
+                  type: 'select',
+                  defaultValue: 'auto',
+                  options: gridOptions,
+                  admin: {
+                    width: '50%',
+                    condition: (_, s) => s?.layout === 'grid',
+                  },
+                },
+                {
+                  name: 'gap',
+                  label: 'Gap',
+                  type: 'select',
+                  defaultValue: 'none',
+                  options: SPACING_OPTIONS,
+                  admin: {
+                    width: '50%',
+                    condition: (_, s) => s?.layout === 'flex' || s?.layout === 'grid',
+                  },
+                },
+              ],
+            },
             ...spacingFields,
             ...backgroundFields,
           ],

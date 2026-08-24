@@ -4,13 +4,20 @@ import { GlobalConfig } from 'payload'
 
 // Seed defaults mirror the hardcoded fallbacks in src/scss/_variables.scss
 // ($colors map) so an empty/fresh Colors global never breaks the frontend.
+// `value` tokens must match the $colors map keys in _variables.scss exactly
+// (they become the --color-{value} CSS custom property name) — `label` is
+// just the human-readable name shown in the admin.
 const DEFAULT_COLORS = [
-  { label: 'Primary', value: 'primary', hex: '#01696f' },
-  { label: 'Secondary', value: 'secondary', hex: '#0c4e54' },
-  { label: 'Blue', value: 'blue', hex: '#2563eb' },
-  { label: 'Red', value: 'red', hex: '#dc2626' },
-  { label: 'Bg Gray', value: 'bg-gray', hex: '#f3f0ec' },
-  { label: 'Green', value: 'green', hex: '#16a34a' },
+  { label: 'Rose Deep', value: 'rose-deep', hex: '#a85c68' },
+  { label: 'Ink', value: 'ink', hex: '#241c1d' },
+  { label: 'Red (Error)', value: 'red', hex: '#dc2626' },
+  { label: 'Rose Line', value: 'rose-line', hex: '#e3bcc0' },
+  { label: 'Rose', value: 'rose', hex: '#c98a93' },
+  { label: 'Gold', value: 'gold', hex: '#c9a876' },
+  { label: 'Ink Soft', value: 'ink-soft', hex: '#5b4a4c' },
+  { label: 'Cream', value: 'cream', hex: '#fffbf9' },
+  { label: 'Blush', value: 'blush', hex: '#f6e1e3' },
+  { label: 'Blush Soft', value: 'blush-soft', hex: '#fbf0ef' },
 ]
 
 export const Colors: GlobalConfig = {

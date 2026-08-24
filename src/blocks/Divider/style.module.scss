@@ -6,7 +6,7 @@
   border: none;
   border-top-width: 0.1rem;
   border-top-color: currentColor;
-  color: map-get(vars.$colors, 'bg-gray');
+  color: map-get(vars.$colors, 'rose-line');
 
   &--solid {
     border-top-style: solid;

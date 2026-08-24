@@ -1,0 +1,156 @@
+@use '@/scss/variables' as vars;
+
+.contact {
+  max-width: 1160px;
+  margin: 0 auto;
+  position: relative;
+  padding: clamp(6.4rem, 9vw, 11rem) 0;
+
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      background-color: $value;
+    }
+  }
+
+  @each $name, $value in vars.$gradients {
+    &--gradient-#{$name} {
+      background: $value;
+    }
+  }
+}
+
+.contact__bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+// ─── Layout ──────────────────────────────────────────────────
+
+.contact__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 5vw, 6rem);
+  align-items: center;
+
+  @media (max-width: 53.75rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Info column ─────────────────────────────────────────────
+
+.contact__eyebrow {
+  display: inline-block;
+  font-size: 1.25rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: vars.$color-rose-deep;
+  font-weight: 500;
+}
+
+.contact__title {
+  font-family: vars.$font-heading;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: vars.$color-ink;
+  font-size: clamp(2.8rem, 3.6vw, 4.2rem);
+  margin-top: 1rem;
+}
+
+.contact__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 2.4rem;
+  list-style: none;
+
+  li {
+    display: flex;
+    gap: 1.4rem;
+    align-items: flex-start;
+    font-size: 1.5rem;
+  }
+}
+
+.contact__icon {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  background: vars.$color-blush;
+  color: vars.$color-rose-deep;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+}
+
+.contact__label {
+  color: vars.$color-ink-soft;
+}
+
+.contact__value {
+  color: vars.$color-ink;
+  font-weight: 500;
+}
+
+.contact__value--link {
+  color: vars.$color-rose-deep;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ─── Card ────────────────────────────────────────────────────
+
+.contact__card {
+  background: vars.$color-ink;
+  color: #f7e9ea;
+  border-radius: 2rem;
+  padding: clamp(3rem, 5vw, 5rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 0%, rgba(201, 168, 118, 0.25), transparent 55%);
+  }
+}
+
+.contact__script {
+  display: block;
+  font-family: vars.$font-script;
+  font-size: clamp(3rem, 4vw, 4rem);
+  color: #fff;
+  position: relative;
+}
+
+.contact__cardText {
+  color: #e7c9cd;
+  margin: 1.4rem 0 2.6rem;
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.contact__cardButton {
+  position: relative;
+  display: inline-flex;
+}

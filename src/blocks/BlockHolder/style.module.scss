@@ -1,19 +1,34 @@
+@use '@/scss/mixins' as mixins;
+
 .block-holder {
   display: block;
+  width: 100%;
 
   &--flex {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-direction: row;
+    flex-direction: column;
+
+    @include mixins.tablet {
+      flex-direction: row;
+    }
 
     &-row-reverse {
-      flex-direction: row-reverse;
+      flex-direction: column-reverse;
+
+      @include mixins.tablet {
+        flex-direction: row-reverse;
+      }
     }
 
     &-row-wrap {
-      flex-direction: row;
+      flex-direction: column;
       flex-wrap: wrap;
+
+      @include mixins.tablet {
+        flex-direction: row;
+      }
     }
 
     &-column {
@@ -23,6 +38,11 @@
     &-column-reverse {
       flex-direction: column-reverse;
     }
+    &-column-center {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
   }
 
   &--grid {
@@ -30,10 +50,22 @@
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
 
     &-col-2 {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
+
+      @include mixins.tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     &-col-3 {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
+
+      @include mixins.tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include mixins.desktop {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   }
 

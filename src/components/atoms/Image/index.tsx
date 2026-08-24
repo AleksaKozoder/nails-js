@@ -42,6 +42,7 @@ export const Image: React.FC<ImageBlockProps> = ({
       style={{
         aspectRatio: ratio !== 'auto' ? (ratio ?? undefined) : width / height,
         width: ratio !== 'auto' ? '100%' : `${width}px`,
+        maxWidth: '100%',
       }}
     >
       <NextImage

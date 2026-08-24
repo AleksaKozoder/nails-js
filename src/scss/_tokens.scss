@@ -8,9 +8,9 @@
 // Pattern used in _variables.scss:
 //
 //   $colors: (
-//     'primary': var(--color-primary, #01696f),
-//     //           ^ token name set by Payload  ^ hardcoded fallback,
-//     //             matches Colors global's `defaultValue` seed
+//     'rose-deep': var(--color-rose-deep, #a85c68),
+//     //             ^ token name set by Payload  ^ hardcoded fallback,
+//     //               matches Colors global's `defaultValue` seed
 //   );
 //
 // To add a new Payload-driven color:
@@ -19,5 +19,8 @@
 //   2. Add the matching entry to $colors in _variables.scss, wrapped in
 //      var(--color-accent, <hardcoded fallback>) so the site still renders
 //      before the global is seeded or if the row is later removed.
-//   3. Do not rename existing $colors keys — the fallback value is the
-//      contract that keeps blocks rendering correctly with an empty global.
+//   3. $colors map keys CAN be renamed (just keep the Colors.ts `value` and
+//      the $colors key in sync) — but the bare derived variables further
+//      down _variables.scss ($color-rose-deep, $color-ink, $color-red,
+//      $color-rose-line) are load-bearing and used by name across many block
+//      styles, so repoint their map-get() key instead of renaming them.

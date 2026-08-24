@@ -21,7 +21,7 @@ export const Team: React.FC<TeamBlockProps> = ({
     s.team,
     ...getBackgroundClasses(background, s, 'team'),
     ...getSpacingClasses(spacing),
-    customClassName,
+    customClassName && s[`team--${customClassName}`],
   ]
     .filter(Boolean)
     .join(' ')
@@ -51,9 +51,9 @@ export const Team: React.FC<TeamBlockProps> = ({
                   className={s.member__photo}
                 />
               )}
-              <div className={s.member__name}>{item.name}</div>
-              {item.role && <div className={s.member__role}>{item.role}</div>}
-              {item.bio && <p className={s.member__bio}>{item.bio}</p>}
+              <h3 className={s.member__name}>{item.name}</h3>
+              {item.role && <p className={s.member__role}>{item.role}</p>}
+              {item.bio && <span className={s.member__bio}>{item.bio}</span>}
 
               {item.socialLinks && item.socialLinks.length > 0 && (
                 <div className={s.member__socials}>

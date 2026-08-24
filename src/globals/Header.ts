@@ -44,6 +44,19 @@ export const Header: GlobalConfig = {
               ],
             },
             {
+              name: 'colorTheme',
+              type: 'text',
+              label: 'Background Color',
+              defaultValue: 'blush-soft',
+              admin: {
+                description: 'Header background color (applied at ~86% opacity, with blur).',
+                components: {
+                  Field: '/components/admin/ColorSelectField',
+                },
+                condition: (_, siblingData) => siblingData?.variant !== 'transparent',
+              },
+            },
+            {
               type: 'row',
               fields: [
                 {

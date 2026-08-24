@@ -36,8 +36,22 @@
 
   &--vertical {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
     gap: 1.6rem;
+
+    @include mixins.tablet {
+      grid-template-columns: auto 1fr;
+    }
+
+    .tabs__nav {
+      flex-direction: row;
+      border-bottom: 1px solid mixins.color-alpha(vars.$color-rose-deep, 10%);
+
+      @include mixins.tablet {
+        flex-direction: column;
+        border-bottom: none;
+      }
+    }
   }
 }
 
@@ -46,17 +60,17 @@
   gap: 0.4rem;
   margin-bottom: 1.6rem;
   flex-wrap: wrap;
-  border-bottom: 1px solid mixins.color-alpha(vars.$color-primary, 10%);
+  border-bottom: 1px solid mixins.color-alpha(vars.$color-rose-deep, 10%);
 }
 
 .tabs__trigger {
   appearance: none;
   border: 0;
-  background: mixins.color-alpha(vars.$color-primary, 10%);
+  background: mixins.color-alpha(vars.$color-rose-deep, 10%);
   cursor: pointer;
   padding: 1.2rem 1.8rem;
   border-bottom: 2px solid transparent;
-  color: vars.$color-primary;
+  color: vars.$color-rose-deep;
   border-radius: 5px 5px 0 0;
   transition:
     color 0.2s ease,
@@ -65,8 +79,8 @@
 }
 
 .tabs__trigger:hover {
-  color: vars.$color-secondary;
-  background: mixins.color-alpha(vars.$color-primary, 30%);
+  color: vars.$color-ink;
+  background: mixins.color-alpha(vars.$color-rose-deep, 30%);
 }
 
 .tabs__trigger--active {

@@ -25,6 +25,16 @@ export const TestimonialsBlock: Block = {
           label: 'Content',
           fields: [
             {
+              name: 'eyebrow',
+              type: 'text',
+              label: 'Eyebrow',
+            },
+            {
+              name: 'title',
+              type: 'text',
+              label: 'Title',
+            },
+            {
               name: 'items',
               type: 'array',
               minRows: 1,
@@ -34,6 +44,14 @@ export const TestimonialsBlock: Block = {
                   name: 'quote',
                   type: 'textarea',
                   required: true,
+                },
+                {
+                  name: 'rating',
+                  type: 'number',
+                  min: 1,
+                  max: 5,
+                  defaultValue: 5,
+                  admin: { description: 'Stars, 1–5.' },
                 },
                 {
                   type: 'row',
@@ -47,7 +65,7 @@ export const TestimonialsBlock: Block = {
                     {
                       name: 'role',
                       type: 'text',
-                      label: 'Role / Company',
+                      label: 'Role / Location',
                       admin: { width: '33%' },
                     },
                     {

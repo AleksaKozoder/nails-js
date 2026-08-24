@@ -3,10 +3,16 @@
 
 .footer {
   width: 100%;
-  background: mixins.color-alpha(vars.$color-primary, 40%);
+  border-top: 1px solid vars.$color-rose-line;
+
+  // Color (admin-selected via colorTheme, see Footer global Settings)
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      background: $value;
+    }
+  }
 
   &--minimal {
-    background: transparent;
-    border-top: 1px solid mixins.color-alpha(vars.$color-primary, 8%);
+    border-top: 1px solid mixins.color-alpha(vars.$color-rose-deep, 8%);
   }
 }

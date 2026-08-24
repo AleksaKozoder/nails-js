@@ -30,7 +30,6 @@ export const BlockHolder: React.FC<BlockHolderProps> = (props) => {
     flexVariant !== 'row' && s[`block-holder--flex-${flexVariant}`],
     gridVariant !== 'auto' && s[`block-holder--grid-${gridVariant}`],
     verticalAlignment !== 'top' && s[`block-holder--align-${verticalAlignment}`],
-    customClassName,
   ]
     .filter(Boolean)
     .join(' ')

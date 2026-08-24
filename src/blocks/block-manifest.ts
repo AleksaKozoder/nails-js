@@ -11,6 +11,17 @@ import { TabsBlock as TabsBlockConfig } from '@/blocks/Tabs/config'
 import { SliderBlock } from '@/blocks/Slider/config'
 import { AccordionBlock } from '@/blocks/Accordion/config'
 import { CTABlock } from '@/blocks/CTA/config'
+import { HeroBlock } from '@/blocks/Hero/config'
+import { ServicesBlock } from '@/blocks/Services/config'
+import { ProcessBlock } from '@/blocks/Process/config'
+import { GalleryBlock } from '@/blocks/Gallery/config'
+import { InstagramStripBlock } from '@/blocks/InstagramStrip/config'
+import { ContactBlock } from '@/blocks/Contact/config'
+import { NavbarBlock } from '@/blocks/Navbar/config'
+import { FooterColumnsBlock } from '@/blocks/FooterColumns/config'
+import { AboutBlock } from '@/blocks/About/config'
+import { PricingBlock } from '@/blocks/Pricing/config'
+import { FAQBlock } from '@/blocks/FAQ/config'
 import { TestimonialsBlock } from '@/blocks/Testimonials/config'
 import { StatsBlock } from '@/blocks/Stats/config'
 import { TeamBlock } from '@/blocks/Team/config'
@@ -50,6 +61,23 @@ const Accordion = React.lazy(() =>
   import('@/blocks/Accordion').then((m) => ({ default: m.AccordionBlock })),
 )
 const CTA = React.lazy(() => import('@/blocks/CTA').then((m) => ({ default: m.CTA })))
+const Hero = React.lazy(() => import('@/blocks/Hero').then((m) => ({ default: m.Hero })))
+const Services = React.lazy(() =>
+  import('@/blocks/Services').then((m) => ({ default: m.Services })),
+)
+const Process = React.lazy(() => import('@/blocks/Process').then((m) => ({ default: m.Process })))
+const Gallery = React.lazy(() => import('@/blocks/Gallery').then((m) => ({ default: m.Gallery })))
+const InstagramStrip = React.lazy(() =>
+  import('@/blocks/InstagramStrip').then((m) => ({ default: m.InstagramStrip })),
+)
+const Contact = React.lazy(() => import('@/blocks/Contact').then((m) => ({ default: m.Contact })))
+const Navbar = React.lazy(() => import('@/blocks/Navbar').then((m) => ({ default: m.Navbar })))
+const FooterColumns = React.lazy(() =>
+  import('@/blocks/FooterColumns').then((m) => ({ default: m.FooterColumns })),
+)
+const About = React.lazy(() => import('@/blocks/About').then((m) => ({ default: m.About })))
+const Pricing = React.lazy(() => import('@/blocks/Pricing').then((m) => ({ default: m.Pricing })))
+const FAQ = React.lazy(() => import('@/blocks/FAQ').then((m) => ({ default: m.FAQ })))
 const Testimonials = React.lazy(() =>
   import('@/blocks/Testimonials').then((m) => ({ default: m.Testimonials })),
 )
@@ -96,6 +124,17 @@ export const blockManifest: BlockManifestEntry[] = [
   { slug: 'slider', config: SliderBlock, component: Slider },
   { slug: 'accordion', config: AccordionBlock, component: Accordion },
   { slug: 'cta', config: CTABlock, component: CTA },
+  { slug: 'hero', config: HeroBlock, component: Hero },
+  { slug: 'services', config: ServicesBlock, component: Services },
+  { slug: 'process', config: ProcessBlock, component: Process },
+  { slug: 'gallery', config: GalleryBlock, component: Gallery },
+  { slug: 'instagramStrip', config: InstagramStripBlock, component: InstagramStrip },
+  { slug: 'contact', config: ContactBlock, component: Contact },
+  { slug: 'navbar', config: NavbarBlock, component: Navbar },
+  { slug: 'footerColumns', config: FooterColumnsBlock, component: FooterColumns },
+  { slug: 'about', config: AboutBlock, component: About },
+  { slug: 'pricing', config: PricingBlock, component: Pricing },
+  { slug: 'faq', config: FAQBlock, component: FAQ },
   { slug: 'testimonials', config: TestimonialsBlock, component: Testimonials },
   { slug: 'stats', config: StatsBlock, component: Stats },
   { slug: 'team', config: TeamBlock, component: Team },
