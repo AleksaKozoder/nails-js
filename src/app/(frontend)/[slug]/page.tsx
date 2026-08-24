@@ -2,6 +2,9 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
 import { notFound } from 'next/navigation'
+import { generateMeta } from '@/utils/generateMeta'
+import { getSiteSettings } from '@/utils/getSiteSettings'
+import type { Metadata } from 'next'
 
 type BlockItem = {
   blockType: string
@@ -92,8 +95,7 @@ async function enrichBlocks(blocksArray: BlockItem[], payload: any): Promise<Blo
   )
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
+async function getPage(slug: string) {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
 
@@ -106,7 +108,25 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     },
   })
 
-  const page = query.docs[0]
+  return { page: query.docs[0], payload }
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const [{ page }, siteSettings] = await Promise.all([getPage(slug), getSiteSettings()])
+
+  if (!page) return {}
+
+  return generateMeta(page, siteSettings, `/${slug}`)
+}
+
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const { page, payload } = await getPage(slug)
 
   if (!page) {
     return notFound()

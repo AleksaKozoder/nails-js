@@ -2,6 +2,9 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { BlockRenderer } from '@/blocks/BlockRenderer'
 import { notFound } from 'next/navigation'
+import { generateMeta } from '@/utils/generateMeta'
+import { getSiteSettings } from '@/utils/getSiteSettings'
+import type { Metadata } from 'next'
 
 // Tipovi podataka za bezbednu proveru unutar funkcije
 type BlockItem = {
@@ -66,7 +69,7 @@ async function enrichBlocks(blocksArray: BlockItem[], payload: any): Promise<Blo
   )
 }
 
-export default async function HomePage() {
+async function getHomePage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
 
@@ -79,7 +82,19 @@ export default async function HomePage() {
     },
   })
 
-  const page = query.docs[0]
+  return { page: query.docs[0], payload }
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const [{ page }, siteSettings] = await Promise.all([getHomePage(), getSiteSettings()])
+
+  if (!page) return {}
+
+  return generateMeta(page, siteSettings, '/')
+}
+
+export default async function HomePage() {
+  const { page, payload } = await getHomePage()
 
   if (!page) {
     return notFound()

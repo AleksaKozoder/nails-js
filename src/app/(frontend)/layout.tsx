@@ -6,16 +6,42 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { MobileCta } from '@/components/layout/MobileCta'
 import { getColorsCss } from '@/utils/getColorsCss'
-import type {
-  SiteSetting,
-  Header as PayloadHeader,
-  Footer as PayloadFooter,
-  Media,
-} from '@/payload-types'
+import { getSiteSettings } from '@/utils/getSiteSettings'
+import type { Metadata } from 'next'
+import type { Header as PayloadHeader, Footer as PayloadFooter, Media } from '@/payload-types'
 
-async function getSiteSettings(): Promise<SiteSetting> {
-  const payload = await getPayload({ config })
-  return payload.findGlobal({ slug: 'site-settings', depth: 1 })
+const resolveImageUrl = (image?: (number | null) | Media): string | undefined => {
+  if (image && typeof image === 'object' && image.url) return image.url
+  return undefined
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const siteSettings = await getSiteSettings()
+
+  const titleTemplate = (siteSettings.titleTemplate || '%s | %site').replace(
+    '%site',
+    siteSettings.siteTitle,
+  )
+
+  return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'),
+    title: {
+      default: siteSettings.defaultMeta?.title || siteSettings.siteTitle,
+      template: titleTemplate,
+    },
+    description: siteSettings.defaultMeta?.description || siteSettings.tagline || undefined,
+    robots: siteSettings.robots ?? undefined,
+    icons: {
+      icon: resolveImageUrl(siteSettings.favicon),
+      apple: resolveImageUrl(siteSettings.appleTouchIcon),
+    },
+    openGraph: {
+      siteName: siteSettings.siteTitle,
+      images: resolveImageUrl(siteSettings.defaultMeta?.ogImage)
+        ? [{ url: resolveImageUrl(siteSettings.defaultMeta?.ogImage)! }]
+        : undefined,
+    },
+  }
 }
 
 async function getHeader(): Promise<PayloadHeader> {
@@ -26,12 +52,6 @@ async function getHeader(): Promise<PayloadHeader> {
 async function getFooter(): Promise<PayloadFooter> {
   const payload = await getPayload({ config })
   return payload.findGlobal({ slug: 'footer', depth: 10 })
-}
-
-export const metadata = {
-  description:
-    'Jovana Simović Nails Kragujevac — Profesionalno izlivanje, ojačanje i korekcija gel noktiju. Ručno rađen nail art i unikatni dizajn. Zakaži termin putem Instagrama!',
-  title: 'Nails Js',
 }
 
 export const viewport = {
@@ -51,16 +71,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     getFooter(),
   ])
 
-  const faviconUrl =
-    siteSettings.favicon && typeof siteSettings.favicon === 'object'
-      ? (siteSettings.favicon as Media).url
-      : null
-
   return (
     <html lang="en">
       <head>
         {colorsCss && <style>{colorsCss}</style>}
-        {faviconUrl && <link rel="icon" href={faviconUrl} />}
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"

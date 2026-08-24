@@ -2,11 +2,13 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { notFound } from 'next/navigation'
 import React from 'react'
+import { generateMeta } from '@/utils/generateMeta'
+import { getSiteSettings } from '@/utils/getSiteSettings'
+import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
+async function getPost(slug: string) {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
 
@@ -17,7 +19,25 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     },
   })
 
-  const post = query.docs[0]
+  return query.docs[0]
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const [post, siteSettings] = await Promise.all([getPost(slug), getSiteSettings()])
+
+  if (!post) return {}
+
+  return generateMeta(post, siteSettings, `/posts/${slug}`)
+}
+
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getPost(slug)
   if (!post) return notFound()
 
   return (
