@@ -2,7 +2,6 @@ import { Metadata } from 'next'
 import type { Media, SiteSetting } from '@/payload-types'
 
 type SeoPageData = {
-  title: string
   seoTitle?: string | null
   seoDescription?: string | null
   seoImage?: (number | null) | Media
@@ -18,8 +17,7 @@ export const generateMeta = (
   siteSettings: SiteSetting,
   path?: string,
 ): Metadata => {
-  const title =
-    pageData.seoTitle || pageData.title || siteSettings.defaultMeta?.title || siteSettings.siteTitle
+  const title = pageData.seoTitle || siteSettings.defaultMeta?.title || siteSettings.siteTitle
 
   const description =
     pageData.seoDescription ||
