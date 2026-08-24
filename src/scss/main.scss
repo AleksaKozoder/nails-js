@@ -32,7 +32,10 @@ body {
   user-select: none;
 
   @media (max-width: vars.$breakpoint-mobile) {
-    padding-bottom: 66px;
+    // Matches MobileCta's rendered height, including the safe-area inset
+    // added to its bottom padding (see MobileCta/style.module.scss) — keep
+    // these two in sync so the fixed bar doesn't overlap page content.
+    padding-bottom: calc(66px + env(safe-area-inset-bottom));
   }
 }
 

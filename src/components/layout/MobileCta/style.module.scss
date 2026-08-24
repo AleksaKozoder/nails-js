@@ -12,16 +12,33 @@ $breakpoint: vars.$breakpoint-mobile;
   z-index: 150;
   gap: 1rem;
   padding: 1rem 1.4rem;
+  // Reserves space for the gesture-nav / home-indicator inset so the bar's
+  // own background extends under it instead of leaving a gap of the page's
+  // (white) body background below the bar — most visible on Android phones
+  // that use 3-button gesture navigation (e.g. Galaxy S23) where the OS
+  // reports a non-zero inset here.
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
   --mobile-cta-bg: #{mixins.color-alpha(vars.$color-blush-soft, 97%)};
   background: var(--mobile-cta-bg);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-top: 1px solid vars.$color-rose-line;
-  // Forces its own compositing layer — without this, position:fixed
-  // combined with backdrop-filter drifts/lags during scroll on iOS Safari.
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  will-change: transform;
+
+  // Forces its own compositing layer — without this, position:fixed combined
+  // with backdrop-filter drifts/lags during scroll on iOS Safari. Scoped to
+  // iOS only (via the -webkit-touch-callout feature check, which only iOS
+  // Safari/WebKit recognizes): on some Android Chrome builds (observed on
+  // Samsung's Chrome on a Galaxy S23, not reproduced on a Xiaomi Redmi Note
+  // 13 Pro) this same will-change/translateZ compositing hint makes the
+  // fixed layer briefly detach from the visual viewport while the address
+  // bar animates in/out, showing a gap of the page background below the bar
+  // or making it appear to "float". Android's Blink positions position:fixed
+  // correctly without this hint, so it's safe to withhold there.
+  @supports (-webkit-touch-callout: none) {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+  }
 
   // Color (admin-selected via colorTheme, see Site Settings → Mobile CTA Bar)
   @each $name, $value in vars.$colors {
