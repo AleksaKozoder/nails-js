@@ -29,8 +29,9 @@ async function getFooter(): Promise<PayloadFooter> {
 }
 
 export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  description:
+    'Jovana Simović Nails Kragujevac — Profesionalno izlivanje, ojačanje i korekcija gel noktiju. Ručno rađen nail art i unikatni dizajn. Zakaži termin putem Instagrama!',
+  title: 'NAILS JS',
 }
 
 export const viewport = {
