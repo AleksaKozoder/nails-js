@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
+    "clear-migration-lock": "cross-env NODE_OPTIONS=--no-deprecation payload run ./scripts/clear-dev-migration-flag.ts",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --webpack",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev --webpack",
     "format": "prettier --write .",
@@ -19,7 +20,7 @@
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
-    "vercel-build": "cross-env NODE_OPTIONS=--no-deprecation payload migrate && pnpm run build"
+    "vercel-build": "pnpm run clear-migration-lock && cross-env NODE_OPTIONS=--no-deprecation payload migrate && pnpm run build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
