@@ -6,6 +6,7 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
   scroll-padding-top: 8rem; // keeps anchor targets clear of the sticky header
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -26,6 +27,16 @@ body {
   color: vars.$color-text;
   -webkit-font-smoothing: antialiased;
   font-size: 1.6rem;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input,
+textarea,
+[contenteditable] {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 img {

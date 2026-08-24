@@ -14,8 +14,13 @@ $breakpoint: 40rem; // 640px — matches reference
   padding: 1rem 1.4rem;
   --mobile-cta-bg: #{mixins.color-alpha(vars.$color-blush-soft, 97%)};
   background: var(--mobile-cta-bg);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-top: 1px solid vars.$color-rose-line;
+  // Forces its own compositing layer — without this, position:fixed
+  // combined with backdrop-filter drifts/lags during scroll on iOS Safari.
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 
   // Color (admin-selected via colorTheme, see Site Settings → Mobile CTA Bar)
   @each $name, $value in vars.$colors {
