@@ -21,6 +21,7 @@ $breakpoint: 40rem; // 640px — matches reference
   // combined with backdrop-filter drifts/lags during scroll on iOS Safari.
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  will-change: transform;
 
   // Color (admin-selected via colorTheme, see Site Settings → Mobile CTA Bar)
   @each $name, $value in vars.$colors {
@@ -36,6 +37,17 @@ $breakpoint: 40rem; // 640px — matches reference
 
 .mobileCta__spacer {
   display: none;
+  // Matches .mobileCta's background so a sub-pixel height mismatch
+  // between this spacer and the fixed bar above it doesn't show up
+  // as a visible seam at the very bottom of the page.
+  --mobile-cta-bg: #{mixins.color-alpha(vars.$color-blush-soft, 97%)};
+  background: var(--mobile-cta-bg);
+
+  @each $name, $value in vars.$colors {
+    &--color-#{$name} {
+      --mobile-cta-bg: #{mixins.color-alpha($value, 97%)};
+    }
+  }
 
   @media (max-width: $breakpoint) {
     display: block;
