@@ -235,8 +235,8 @@ const footerColumnsProps: FooterColumnsBlockProps = {
   description:
     'Nail artist iz Kragujevca — izlivanje, ojačanje, korekcije i ručno rađen nail art po meri.',
   social: [
-    { platform: 'instagram', url: 'https://instagram.com/nails.js_' },
-    { platform: 'link', url: 'tel:+381616878225' },
+    { icon: '📷', url: 'https://instagram.com/nails.js_' },
+    { icon: '📞', url: 'tel:+381616878225' },
   ],
   columns: [
     {

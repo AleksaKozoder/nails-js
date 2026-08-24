@@ -1,5 +1,6 @@
 import { getPayload } from 'payload'
 import config from '@/payload.config'
+import type { Page } from '@/payload-types'
 
 const richText = (text: string) => ({
   root: {
@@ -51,7 +52,7 @@ async function seed() {
     limit: 1,
   })
 
-  const layout = [
+  const layout: Page['layout'] = [
     {
       blockType: 'section',
       settings: {
