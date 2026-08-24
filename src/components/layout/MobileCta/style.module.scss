@@ -24,21 +24,15 @@ $breakpoint: vars.$breakpoint-mobile;
   backdrop-filter: blur(10px);
   border-top: 1px solid vars.$color-rose-line;
 
-  // Forces its own compositing layer — without this, position:fixed combined
-  // with backdrop-filter drifts/lags during scroll on iOS Safari. Scoped to
-  // iOS only (via the -webkit-touch-callout feature check, which only iOS
-  // Safari/WebKit recognizes): on some Android Chrome builds (observed on
-  // Samsung's Chrome on a Galaxy S23, not reproduced on a Xiaomi Redmi Note
-  // 13 Pro) this same will-change/translateZ compositing hint makes the
-  // fixed layer briefly detach from the visual viewport while the address
-  // bar animates in/out, showing a gap of the page background below the bar
-  // or making it appear to "float". Android's Blink positions position:fixed
-  // correctly without this hint, so it's safe to withhold there.
-  @supports (-webkit-touch-callout: none) {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    will-change: transform;
-  }
+  // NOTE: do not add `will-change: transform` / `translateZ(0)` here.
+  // It was previously added to fix iOS Safari drift, but promoting this bar
+  // to its own compositor layer makes the dynamic toolbar resize (address
+  // bar hide/show) reposition it against a stale viewport snapshot on some
+  // Android Chrome builds (confirmed on Samsung Galaxy S23, not on Xiaomi
+  // Redmi Note 13 Pro) — the bar jumps up by exactly the address bar's
+  // height when it hides. `@supports (-webkit-touch-callout: none)` is NOT
+  // a reliable way to scope this to iOS only — Chromium/Samsung's browser
+  // also matches that feature query, so the hack leaked onto Android too.
 
   // Color (admin-selected via colorTheme, see Site Settings → Mobile CTA Bar)
   @each $name, $value in vars.$colors {
