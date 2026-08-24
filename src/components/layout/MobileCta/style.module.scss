@@ -1,7 +1,7 @@
 @use '@/scss/mixins' as mixins;
 @use '@/scss/variables' as vars;
 
-$breakpoint: 40rem; // 640px — matches reference
+$breakpoint: vars.$breakpoint-mobile;
 
 .mobileCta {
   display: none;

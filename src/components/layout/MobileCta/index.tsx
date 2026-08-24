@@ -50,7 +50,6 @@ export const MobileCta: React.FC<MobileCtaProps> = ({
           </a>
         )}
       </div>
-      <div className={spacerClasses} aria-hidden="true" />
     </>
   )
 }
