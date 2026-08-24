@@ -31,7 +31,7 @@ async function getFooter(): Promise<PayloadFooter> {
 export const metadata = {
   description:
     'Jovana Simović Nails Kragujevac — Profesionalno izlivanje, ojačanje i korekcija gel noktiju. Ručno rađen nail art i unikatni dizajn. Zakaži termin putem Instagrama!',
-  title: 'NAILS JS',
+  title: 'Nails Js',
 }
 
 export const viewport = {
